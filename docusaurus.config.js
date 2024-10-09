@@ -8,12 +8,12 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Providence 2.0 Documentation',
+  title: 'CollectiveAccess Documentation',
   tagline: '',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
 
   // Set the production url of your site here
-  url: 'http://prov2docs.whirl-i-gig.com:8084',
+  url: 'https://manual2.collectiveaccess.org',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -40,6 +40,8 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          path: 'providence',
+          routeBasePath: 'providence',
           sidebarPath: './sidebars.js',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -60,16 +62,30 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'pawtucket',
+        path: 'pawtucket',
+        routeBasePath: 'pawtucket',
+        sidebarPath: './sidebars.js',
+      },
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      //image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'Providence 2.0 Documentation',
+        //title: 'Documentation',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'CollectiveAccess',
           src: 'img/logo.svg',
+          srcDark: 'img/logo_dark.svg',
+          width: 200,
         },
         items: [
           {to: '/quickstart', label: 'Quickstart', position: 'left'},
@@ -77,7 +93,14 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'docSidebar',
             position: 'left',
-            label: 'Documentation',
+            label: 'Providence',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'docSidebar',
+            position: 'left',
+            docsPluginId: 'pawtucket',
+            label: 'Pawtucket',
           },
           {
             href: 'https://github.com/collectiveaccess/Providence2Docs',
@@ -93,8 +116,12 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Providence',
+                to: '/providence',
+              },
+              {
+                label: 'Pawtucket',
+                to: '/pawtucket',
               },
             ],
           },
@@ -102,7 +129,7 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Support',
+                label: 'Forum',
                 href: 'https://support.collectiveaccess.org',
               },
               {
@@ -130,6 +157,12 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+      },
+      docs: {
+        sidebar: {
+          hideable: true,
+          autoCollapseCategories: true,
+        },
       },
     }),
 };
