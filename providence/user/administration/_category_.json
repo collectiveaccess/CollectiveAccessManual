@@ -1,0 +1,10 @@
+{
+    "position": 9,
+    "collapsible": true,
+    "collapsed": false,
+    "label": "Administration",
+    "link": {
+      "type": "generated-index",
+      "title": "Administration"
+    }
+  }
