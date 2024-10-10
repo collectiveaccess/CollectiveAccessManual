@@ -1,0 +1,305 @@
+---
+title: Information Services
+---
+
+CollectiveAccess supports several external information services to
+attached metadata to CollectiveAccess records. It does this by
+performing a lookup operation at the remote service and then allowing
+you to pick a value from a results list. It stores core information
+about the referenced piece of data and a reference (URI) to the original
+resource. To configure metadata fields in the user interface, select the
+InformationService or LCSH *metadata element type*.
+
+InformationService is also a plugin API that makes it easy to add
+support for other external services. The exact information stored
+locally differs from plugin to plugin.
+
+# Library of Congress Plugins (LC)
+
+> -   [LC subject headings](http://id.loc.gov/authorities/subjects.html)
+> -   [LC Name Authority file](http://id.loc.gov/authorities/names.html)
+> -   [LC subject headings for
+>     children](http://id.loc.gov/authorities/childrensSubjects.html)
+> -   [LC Genre/Forms
+>     File](http://id.loc.gov/authorities/genreForms.html)
+> -   [Thesaurus of Graphic
+>     Materials](http://id.loc.gov/vocabulary/graphicMaterials.html)
+> -   [Preservation
+>     Events](http://id.loc.gov/vocabulary/preservation.html)
+> -   [Preservation Level
+>     Role](http://id.loc.gov/vocabulary/preservation/preservationLevelRole.html)
+> -   [Cryptographic Hash
+>     Functions](http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions.html)
+> -   [MARC Relators](http://id.loc.gov/vocabulary/relators.html)
+> -   [MARC Countries](http://id.loc.gov/vocabulary/countries.html)
+> -   [MARC Geographic
+>     Areas](http://id.loc.gov/vocabulary/geographicAreas.html)
+> -   [MARC Languages](http://id.loc.gov/vocabulary/languages.html)
+> -   [ISO639-1 Languages](http://id.loc.gov/vocabulary/iso639-1.html)
+> -   [ISO639-2 Languages](http://id.loc.gov/vocabulary/iso639-2.html)
+> -   [ISO639-5 Languages](http://id.loc.gov/vocabulary/iso639-5.html)
+
+# Example LC installation profile code
+
+``` none
+<metadataElement code="lcsh_terms" datatype="LCSH">
+    <labels>
+     <label locale="en_US">
+          <name>Library of Congress Subject Headings</name>
+       <description>Library of Congress Subject headings describing this object.</description>
+     </label>
+    </labels>
+    <settings>
+       <setting name="fieldWidth">80</setting>
+      <setting name="fieldHeight">1</setting>
+      <setting name="vocabulary">cs:http://id.loc.gov/authorities/subjects</setting>
+    </settings>
+    <typeRestrictions>
+        <restriction code="ca_objects">
+        <table>ca_objects</table>
+            <settings>
+                <setting name="minAttributesPerRow">0</setting>
+                <setting name="maxAttributesPerRow">100</setting>
+                <setting name="minimumAttributeBundlesToDisplay">1</setting>
+        </settings>
+        </restriction>
+    </typeRestrictions>
+</metadataElement>
+```
+
+# Information Services Plugins
+
+## [Getty Vocabularies](http://vocab.getty.edu)
+
+> AAT (Art and Architecture Thesaurus), TGN (Thesaurus of Geographic
+> Names), and ULAN (The Union List of Artist Names) are all provided via
+> SparqlEndpoint Linked Open Data Service by the Getty Vocabularies.
+> None of these 3 plugins has any custom settings on element level, but
+> they share a more comprehensive configuration in the configuration
+> file `linked_data.conf`. The default
+> configuration should work for most use cases.
+
+## [ALA-National Species List](https://api.ala.org.au/apps)
+
+> \"Open access to the Atlas of Living Australia\'s biodiversity data\"
+
+## [CollectiveAccess](https://github.com/collectiveaccess)
+
+> This plugin allows you to reference records in remote CollectiveAccess
+> instances. Available settings are as follows:
+
+  ---------------------------------------------------------------------------------
+  Setting Name                        Description                         Example
+  ----------------------------------- ----------------------------------- ---------
+
+  ---------------------------------------------------------------------------------
+
+  : CollectiveAccess Information Service
+
+## [Encyclopedia of Life (EOL)](https://eol.org/docs/what-is-eol/data-services/classic-apis)
+
+> \"Global acccess to knowledge about life on Earth\"
+
+## [Iconclass](http://www.iconclass.org/)
+
+> \"A multilingual classification system for cultural content\"
+
+## [ResourceSpace](https://www.resourcespace.com/knowledge-base/api)
+
+> \"ResourceSpace is a web-based Digital Asset Management software
+> offering a solution for organising and sharing files\"
+
+## [VIAF](https://www.oclc.org/developer/develop/web-services/viaf.en.html)
+
+> \"Open access to linked names for the same entity across the world\'s
+> major name authority files, including national and regional variations
+> in language, character set, and spelling.\"
+
+## [Wikipedia](https://www.mediawiki.org/wiki/API:Web_APIs_hub)
+
+> This service allows referencing Wikipedia articles. Available settings
+> are:
+
+  ---------------------------------------------------------------------------------
+  Setting Name                        Description                         Example
+  ----------------------------------- ----------------------------------- ---------
+
+  ---------------------------------------------------------------------------------
+
+  : Wikipedia Information Service Installation Profile Settings
+
+### Wikipedia Display Template Options
+
+This plugin can pull in data for local display. For example, both the
+abstract and preview image are available in bundle displays. Suppose
+your wikipedia metadata element has the code **wikipedia**. You can
+reference additional properties about a referenced article like this:
+
+``` none
+ca_objects.wikipedia.<property> 
+```
+
+Where property is one of the following:
+
+  -------------------------------------------------------------------------------------
+  Setting Name                                                            Description
+  ----------------------------------------------------------------------- -------------
+
+  -------------------------------------------------------------------------------------
+
+  : Wikipedia Information Service Installation Profile Settings
+
+## [WorldCat](https://www.oclc.org/developer/develop/web-services/worldcat-search-api.en.html)
+
+> To use WorldCat you\'ll need either a valid OCLC [Z39.50
+> login](https://help.oclc.org/Metadata_Services/Z3950_Cataloging) or
+> WorldCat Web Search API key. The two connection method have different
+> technical requirements but offer identical functionality. Note that
+> your OCLC user agreement may prohibit you from using the [Web Search
+> API](https://www.oclc.org/developer/develop/web-services/worldcat-search-api.en.html)
+> for cataloguing activity. Consult your OCLC service representative as
+> to your rights before using the API. Your PHP installation must have
+> [cURL support](https://www.php.net/manual/en/book.curl.php) to use the
+> Web Search API. PHP must be built with
+> [YAZ](https://www.php.net/manual/en/book.yaz.php) support to use
+> Z39.50. YAZ is available as a standard package on many Linux
+> distributions and installation is generally straightforward.
+
+Specify your Web Search API key or Z39.50 login in App.conf. The entries
+are:
+
+> -   worldcat_api_key
+> -   worldcat_z39.50_user
+> -   worldcat_z39.50_password
+
+### WorldCat Options
+
+> You can use WorldCat as a metadata element type \"information
+> service\", but you can also use it to import bibliographic data from
+> WorldCat directly into your CollectiveAccess system using the WorldCat
+> import interface, available in the \"Import\" menu. The importer works
+> much as the general data importer, but with a specialized interface
+> for interactively locating and retrieving one or more entries from
+> WorldCat. For more information, read the \<PLACE LINK HERE\> Importer
+> documentation.
+
+# Example Information Service installation profile code
+
+``` none
+<metadataElement code="my_element" datatype="InformationService">
+  <labels>
+    <label locale="en_US">
+      <name>My InformationService Element</name>
+    </label>
+  </labels>
+  <settings>
+    <setting name="service"><!-- enter service here --></setting>
+  </settings>
+  <typeRestrictions>
+    <restriction code="r1">
+      <table>ca_objects</table>
+      <settings>
+        <setting name="minAttributesPerRow">0</setting>
+        <setting name="maxAttributesPerRow">255</setting>
+        <setting name="minimumAttributeBundlesToDisplay">1</setting>
+      </settings>
+    </restriction>
+  </typeRestrictions>
+</metadataElement>
+```
+
+# Implementing new plugins
+
+InformationService implementations reside in
+*app/lib/core/Plugins/InformationService* and should implement
+[IWLPlugInformationService](https://github.com/collectiveaccess/providence/blob/master/app/lib/core/Plugins/IWLPlugInformationService.php)
+and extend
+[BaseInformationServicePlugin](https://github.com/collectiveaccess/providence/blob/master/app/lib/core/Plugins/InformationService/BaseInformationServicePlugin.php).
+The class name must be \"WLPlugInformationService\<Service\>\" and the
+file name \"\<Service\>.php\".
+
+It can provide additional settings using the static \$s_settings
+variable, usually derived from
+\$g_information_service_settings_\<Service\>. It should set the
+\"NAME\" property of the info array in the constructor.
+
+The [Wikipedia
+implementation](https://github.com/collectiveaccess/providence/blob/master/app/lib/core/Plugins/InformationService/Wikipedia.php)
+is relatively simple and uses most of the available features (except
+getDataForSearchIndexing()) so you could use that as a template.
+
+**Core functions**
+
+The core functions you must implement are:
+
+``` none
+public function lookup($pa_settings, $ps_search, $pa_options=null);
+```
+
+where \$pa_settings is an array containing the settings for this
+particular element (including the ones you provided) and \$ps_search is
+the search expression provided by the user. The function should return
+an array with the \"results\" key being a list results for the given
+search expression. Each result should have a label, url and idno.
+
+``` none
+public function getExtendedInformation($pa_settings, $ps_url);
+```
+
+This should return an array with the \"display\" key set to an HTML
+representation of the given record (identified by the URL/URI). You can
+either go and look the detailed data up remotely or, for instance, call
+getExtraInfo() to get locally stored data (see below).
+
+**Optional functions**
+
+The functions listed below are optional and have default (empty)
+implementations in
+[BaseInformationServicePlugin](https://github.com/collectiveaccess/providence/blob/master/app/lib/core/Plugins/InformationService/BaseInformationServicePlugin.php)
+so it doesn\'t hurt to leave them out of your plugin entirely. They can
+be used to provide useful features though.
+
+``` none
+public function getExtraInfo($pa_settings, $ps_url);
+```
+
+Returns an array of key=\>value pairs containing extra information to be
+stored locally, alongside the id, the display label and the URL. This
+data can be accessed using SearchResult::get(), so you should keep the
+keys alphanumeric, lowercase and without spaces.
+
+``` none
+public function getDataForSearchIndexing($pa_settings, $ps_url);
+```
+
+Returns a list of strings that are added to the search index for the
+record associated with this attribute. This allows you to add additional
+data points that can be used to find the CollectiveAccess record but are
+not necessarily available for display. Note that the data returnd by
+getExtraInfo() is not indexed for search, so you might have to add the
+same data twice.
+
+``` none
+public function getDisplayValueFromLookupText($ps_text);
+```
+
+The default behavior is to use the (selected) label returned by the
+lookup() function as display value for attribute values. That can be
+undesirable for use cases like the AAT where one the one hand you want a
+lot of identifying information in the lookup dropdown but on the other
+you probably don\'t care about all that info once the \"relationship\"
+has been created because the keyword is doing its job in the background
+(making the associated record findable). Maybe you just want a simple
+and short label instead to save space.
+
+This function allows you to mangle the lookup text to create a different
+display value. The lookup text usually has the URL in it, so you could
+even look up additional info to pull in here if you wanted. An example
+can be found in the [AAT
+implementation](https://github.com/collectiveaccess/providence/blob/master/app/lib/core/Plugins/InformationService/AAT.php),
+where we do some regular expression magic to convert lookup texts:
+
+``` none
+before: [300025342] swordsmiths [people in crafts and trades by product, people in crafts and trades]
+after: swordsmiths
+```
