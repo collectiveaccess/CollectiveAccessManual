@@ -1,0 +1,10 @@
+{
+    "position": 9,
+    "collapsible": true,
+    "collapsed": false,
+    "label": "Search & Browse",
+    "link": {
+      "type": "generated-index",
+      "title": "Search & Browse"
+    }
+  }
