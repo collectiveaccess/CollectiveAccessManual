@@ -1,7 +1,7 @@
 {
-    "position": 9,
+    "position": 3,
     "collapsible": true,
-    "collapsed": false,
+    "collapsed": true,
     "label": "Configuration",
     "link": {
       "type": "generated-index",

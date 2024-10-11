@@ -1,7 +1,7 @@
 {
-    "position": 9,
+    "position": 6,
     "collapsible": true,
-    "collapsed": false,
+    "collapsed": true,
     "label": "Media",
     "link": {
       "type": "generated-index",
