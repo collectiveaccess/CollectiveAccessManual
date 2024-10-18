@@ -55,25 +55,25 @@ C. You should now be able to connect to the web server by going to the URL
 address, the `hostname -I` command will return it.
 
 2. PHP 8.3 Installation
-   A. Install and enable Remi repository
+A. Install and enable Remi repository
    
    ```bash
    sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-9.rpm -y && sudo dnf config-manager --set-enabled remi
    ```
    
-   B. Set desired PHP version (available versions of PHP can be viewed with `sudo dnf module list php`)
+B. Set desired PHP version (available versions of PHP can be viewed with `sudo dnf module list php`)
    
    ```bash
    sudo dnf module enable php:remi-8.3 -y
    ```
-   
-   C. Install PHP and required php modules
+
+C. Install PHP and required php modules
    
    ```bash
    sudo dnf install php php-cli php-gd php-curl php-zip php-mbstring php-mysqlnd php-gmagick php-process php-redis php-intl php-bcmath -y
    ```
    
-   D: Test PHP installed correctly with `php -v`
+D: Test PHP installed correctly with `php -v`
    
    ```bash
    PHP 8.3.12 (cli) (built: Sep 24 2024 18:08:04) (NTS gcc x86_64)
@@ -82,7 +82,7 @@ address, the `hostname -I` command will return it.
     with Zend OPcache v8.3.12, Copyright (c), by Zend Technologies
    ```
    
-   E: **LINK TO PAGE ON CONFIGURING PHP.INI**
+E: **LINK TO PAGE ON CONFIGURING PHP.INI**
 
 Source: https://docs.rockylinux.org/guides/web/php/
 
