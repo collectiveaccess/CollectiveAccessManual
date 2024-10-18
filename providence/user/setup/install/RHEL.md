@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-sidebar_label: CentOS/RHEL
+sidebar_label: RHEL 9-Based/
 #sidebar_custom_props:
 #sidebar_class_name: first
 ---
