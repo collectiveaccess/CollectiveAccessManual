@@ -153,6 +153,7 @@ allowing your edits to take effect:
 sudo systemctl restart httpd
 ```
 
+
 :::: tip
 ::: title
 Tip
@@ -164,6 +165,19 @@ the following PHP code to your [setup.php] file:
 [display_errors] in [setup.php] does not require
 a web server restart, making it very convenient when debugging.
 ::::
+
+:::: tip
+::: title
+Tip
+:::
+
+If http/https ports are not accessible open the firewall with these commands
+
+firewall-cmd --zone=public --add-service=http  --permanent
+firewall-cmd --zone=public --add-service=https  --permanent
+firewall-cmd --reload
+::::
+
 
 Now let\'s install MySQL. CollectiveAccess works with version 5.7 or
 newer of MySQL, or equivalent versions of MariaDB. To install the most
