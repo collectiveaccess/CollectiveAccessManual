@@ -1,0 +1,10 @@
+{
+    "position": 11,
+    "collapsible": true,
+    "collapsed": false,
+    "label": "Upgrades",
+    "link": {
+      "type": "generated-index",
+      "title": "Upgrading CA"
+    }
+  }
