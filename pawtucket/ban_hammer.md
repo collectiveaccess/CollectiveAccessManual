@@ -106,6 +106,15 @@ Its best to whitelist static IPs rather than dynamic, and be aware that user age
 exchange discussion](https://webmasters.stackexchange.com/questions/137914/spike-in-traffic-from-facebot-twitterbot-user-agent). Basically assume (and
 you already knew this) that all user agent strings are lies.
 
+# Removing a single ban
+
+This has to be done within the database.
+
+```
+MariaDB [collectiveaccess]> DELETE FROM ca_ip_bans WHERE ip_addr='192.168.100.4';
+Query OK, 1 row affected (0.001 sec)
+```
+
 
 # Removing all bans
 
