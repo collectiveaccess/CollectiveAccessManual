@@ -1,5 +1,6 @@
-Collectiveaccess provides a tool, available in Providence and Pawtucket, called the 'Ban Hammer' to automatically block IPs based on provided settings.
+Collectiveaccess provides a tool, available in Pawtucket, called the 'Ban Hammer' to automatically block IPs based on provided settings.
 
+Note that while only Pawtucket implements automatic blocking, `caUtils` in Providence can be used to clear bans as they share the database.
 
 # In built commands
 
