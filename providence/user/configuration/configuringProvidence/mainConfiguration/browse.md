@@ -47,7 +47,7 @@ the facet.
 
 By default results returned include only records specifically matching the specified 
 criteria. Results may be expanded hierarchically to include all sub-records by setting
-the expandResultsHierarchically setting for the specified table to a non-zero value.
+the expandResultsHierarchically setting for the specified table to a non-zero value. (Available from version 2.0).
 
 Each facet has a type and some (but not all) of the facet definition
 keys are dependent upon this type. The follow types of facets are
