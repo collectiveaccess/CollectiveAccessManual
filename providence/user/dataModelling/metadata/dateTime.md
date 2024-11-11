@@ -36,11 +36,11 @@ using the datetime.conf configuration file
 
 # Valid input formats
 
-  ---------------- --------------------------------------------- -----------------------------------------------------------------------------------------------------------------------
-  Year             2016, 1950 ad; 450 b.c.; 40 mya               simple years as well as AD and BC dates and geologic time (mya aka \"millions of years ago\") are supported
-  Month and year   June 2016, 6/2016                             
-  Specific date    June 6 2016; June 7, 2016; 6/7/2016; 6/7/16   Support for European style dates (eg. day first rather than month first) is based upon users\' current locale setting
-  ---------------- --------------------------------------------- -----------------------------------------------------------------------------------------------------------------------
+|Input Format| Example| Notes|
+|----|----|----|
+|Year|2016, 1950 ad; 450 b.c.; 40 mya|simple years as well as AD and BC dates and geologic time (mya aka “millions of years ago”) are supported|
+|Month and year|June 2016, 6/2016||
+|Specific date|June 6 2016; June 7, 2016; 6/7/2016; 6/7/16|Support for European style dates (eg. day first rather than month first) is based upon users’ current locale setting|
 
 For numeric dates (eg. 6/7/2007) multiple delimiters are supported. For
 example, in the US localization the following dates are all valid and
@@ -66,10 +66,10 @@ localization allowable separators are:
 
 > at, @
 
-  ------------------------ ------------------------------------------------------------ ---------------------------------
-  Date with 24 hour time   June 7, 2007 16:43; 6/7/2007 @ 16:43; June 7 2007 at 16:43   Specified to the minute: 4:43pm
-  Date with 12 hour time   June 7, 2007 4:43:03pm; 6/7/2007 @ 4:43:03p.m.               Time specified to the second
-  ------------------------ ------------------------------------------------------------ ---------------------------------
+|Input Format| Example| Notes|
+|----|----|----|
+|Date with 24 hour time|June 7, 2007 16:43; 6/7/2007 @ 16:43; June 7 2007 at 16:43|Specified to the minute: 4:43pm|
+|Date with 12 hour time|June 7, 2007 4:43:03pm; 6/7/2007 @ 4:43:03p.m.|Time specified to the second|
 
 If you omit the time then a time is assumed depending upon whether the
 date is the beginning, end or both of a date range. For dates at the

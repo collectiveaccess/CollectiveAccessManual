@@ -2,6 +2,8 @@
 title: Primary Tables and Intrinsic Fields
 ---
 
+# Primary Tables and Intrinsic Fields
+
 CollectiveAccess is structured around several primary tables, with
 editors that can be enabled (or disabled) depending on project
 requirements. Each primary table has intrinsic bundles and its own set
@@ -40,181 +42,40 @@ physical or born-digital items being managed. Every object record has a
 types available in your system can be customized to match your specific
 cataloging requirements.
 
-## Object intrinsics (ca_objects)
+### Object intrinsics (ca_objects)
 
-  --------------------------------------------------------------------------------------------------------------
-  Name             Code                        Description                                Mandatory?   Default
-  ---------------- --------------------------- ------------------------------------------ ------------ ---------
-  Identifier       idno                        The object identifier. Must follow policy  Depends upon 
-                                               defined in configured numbering policy if  numbering    
-                                               app.conf setting                           policy       
-                                               require_valid_id_number_for_ca_objects is               
-                                               set. Must be unique if app.conf setting                 
-                                               allow_duplicate_id_number_for_ca_objects                
-                                               is not set.                                             
+| Name |Code | Description | Mandatory? |Default|
+|----|----|----|----|----|
+|Identifier|idno|The object identifier. Must follow policy defined in configured numbering policy if app.conf setting require_valid_id_number_for_ca_objects is set. Must be unique if app.conf setting allow_duplicate_id_number_for_ca_objects is not set.|Depends upon numbering policy||
+|Type|type_id|A value from the object_types list indicating the type of the record. Stored as an internally generated numeric item_id. When setting this value in a data import or via an API call the item identifier may be used.|||
+|Parent|parent_id|Reference to parent record. Will be null if no parent is defined. When setting this value in a data import or via an API call the identifier of the parent object may be used.|No|null|
+|Access|access|Determines visibility of record in public-facing applications such as Pawtucket. Values are defined in the access_statuses list. Typically the list includes values for “public” and “private” visibility. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. By convention “0” is interpreted as private and “1” as public access, although this can be modified or expanded in app.conf if required.|Yes|0|
+|Status|status|Records the general cataloguing workflow status of the record. Values are defined in the workflow_statuses list. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. Unlike access values, statuses have no functional impact on a record. They are merely informations and intended to provide a simple, straightforward way to track the cataloguing process.|Yes|0|
+|Lot|lot_id|A reference to the lot record (ca_object_lots) of which the object is a part. May be null if the object is not part of a lot. Note that an object may be part of only one lot. The raw database value contained lot_id is an internally generated numeric lot_id. However, when setting this intrinsic via an import mapping or API call you may also use the lot’s identifier.|No||
+|Source|source_id|A value from the object_sources list indicating the original source of the object. This value is sometimes used to broadly distinguish different classes of objects. When setting this value in a data import or via an API call the item identifier may be used.|No||
+|Deaccessioned?|is_deaccessioned|A flag indicating whether the object is deaccessioned. Will be 1 when deaccessioned or 0 (the default) when not deaccessioned.|Yes|0|
+|Date of deaccession|deaccession_date|The date of deaccession. If unknown the value will be null. The date is stored as an historic daterange and may be any valid historic date (Eg. it is not limited to post-1970 dates).|No||
+|Date of disposal|deaccession_disposal_date|The date of disposal of the object. This is typically a date after deaccession. If unknown the value will be null. The date is stored as an historic daterange and may be any valid historic date (Eg. it is not limited to post-1970 dates).|No||
+|Deaccession notes|deaccession_notes|Any notes regarding the deaccession process. Limited to 65535 characters maximum length.|No||
+|Deaccession type|deaccession_type_id|A value from the object_deaccession_types list indicated type of deaccession. Examples of deaccession types might include “Sold”, “Destroyed” and “Transferred”. When setting this value in a data import or via an API call the item identifier may be used.|No||
+|Acquisition type|acquisition_type_id|A value from the object_acq_types list indicating how the object was acquired. When setting this value in a data import or via an API call the item identifier may be used.|No||
+|Accession status|item_status_id|A value from the object_statuses list indicating the accession status of the object. Accession status values might include “accessioned”, “pending accession”, “non-accessioned item”, etc. When setting this value in a data import or via an API call the item identifier may be used.|No||
+|Extent|extent|The numeric extent. Must a be a whole, positive number. Default is 0.|Yes|0|
+|Units of extent|extent_units|Units of extent value, as text.|Yes||
+|Library circulation status|circulation_status_id|A value from the object_circulation_statuses list indicating the circulation status of the object, as set by the library check-in/out system. When setting this value in a data import or via an API call the item identifier may be used.|No||
+|Submitted by user|submission_user_id|For records submitted via the Pawtucket “contribute” form interface. The user who submitted the record.|No||
+|Submission group|submission_group_id|For records submitted via the Pawtucket “contribute” form interface. The group of the user that submitted the record.|No||
+|Submission status|submission_status_id|For records submitted via the Pawtucket “contribute” form interface. A value from the submission_statuses list indicating the review status of the submitted record. When setting this value in a data import or via an API call the item identifier may be used.|No||
+|Submission form|submission_via_form|For records submitted via the Pawtucket “contribute” form interface. The identifying code of the form used to submit the record.|No||
+|View count|view_count|Number of times record has been viewed in Pawtucket front-end|No|0|
+|Home location|home_location_value|The home location of the object, formatted using the display template defined by the app.conf “home_location_display_template” directive an evaluated relative to the home ca_storage_locations record. If no template is defined in app.conf, the full hierarchical path of the home location is returned. The template may be overriden by passing a “display_template” tag option.|No||
 
-  Type             type_id                     A value from the object_types list                      
-                                               indicating the type of the record. Stored               
-                                               as an internally generated numeric                      
-                                               item_id. When setting this value in a data              
-                                               import or via an API call the item                      
-                                               identifier may be used.                                 
-
-  Parent           parent_id                   Reference to parent record. Will be null   No           null
-                                               if no parent is defined. When setting this              
-                                               value in a data import or via an API call               
-                                               the identifier of the parent object may be              
-                                               used.                                                   
-
-  Access           access                      Determines visibility of record in         Yes          0
-                                               public-facing applications such as                      
-                                               Pawtucket. Values are defined in the                    
-                                               access_statuses list. Typically the list                
-                                               includes values for \"public\" and                      
-                                               \"private\" visibility. For historical                  
-                                               reasons the value stored in the intrinsic               
-                                               is the list item\'s [value]                 
-                                               field, not its identifer or label. By                   
-                                               convention \"0\" is interpreted as private              
-                                               and \"1\" as public access, although this               
-                                               can be modified or expanded in app.conf if              
-                                               required.                                               
-
-  Status           status                      Records the general cataloguing workflow   Yes          0
-                                               status of the record. Values are defined                
-                                               in the workflow_statuses list. For                      
-                                               historical reasons the value stored in the              
-                                               intrinsic is the list item\'s                           
-                                               [value] field, not its                      
-                                               identifer or label. Unlike access values,               
-                                               statuses have no functional impact on a                 
-                                               record. They are merely informations and                
-                                               intended to provide a simple,                           
-                                               straightforward way to track the                        
-                                               cataloguing process.                                    
-
-  Lot              lot_id                      A reference to the lot record              No           
-                                               (ca_object_lots) of which the object is a               
-                                               part. May be null if the object is not                  
-                                               part of a lot. Note that an object may be               
-                                               part of only one lot. The raw database                  
-                                               value contained lot_id is an internally                 
-                                               generated numeric lot_id. However, when                 
-                                               setting this intrinsic via an import                    
-                                               mapping or API call you may also use the                
-                                               lot\'s identifier.                                      
-
-  Source           source_id                   A value from the object_sources list       No           
-                                               indicating the original source of the                   
-                                               object. This value is sometimes used to                 
-                                               broadly distinguish different classes of                
-                                               objects. When setting this value in a data              
-                                               import or via an API call the item                      
-                                               identifier may be used.                                 
-
-  Deaccessioned?   is_deaccessioned            A flag indicating whether the object is    Yes          0
-                                               deaccessioned. Will be 1 when                           
-                                               deaccessioned or 0 (the default) when not               
-                                               deaccessioned.                                          
-
-  Date of          deaccession_date            The date of deaccession. If unknown the    No           
-  deaccession                                  value will be null. The date is stored as               
-                                               an historic daterange and may be any valid              
-                                               historic date (Eg. it is not limited to                 
-                                               post-1970 dates).                                       
-
-  Date of disposal deaccession_disposal_date   The date of disposal of the object. This   No           
-                                               is typically a date after deaccession. If               
-                                               unknown the value will be null. The date                
-                                               is stored as an historic daterange and may              
-                                               be any valid historic date (Eg. it is not               
-                                               limited to post-1970 dates).                            
-
-  Deaccession      deaccession_notes           Any notes regarding the deaccession        No           
-  notes                                        process. Limited to 65535 characters                    
-                                               maximum length.                                         
-
-  Deaccession type deaccession_type_id         A value from the object_deaccession_types  No           
-                                               list indicated type of deaccession.                     
-                                               Examples of deaccession types might                     
-                                               include \"Sold\", \"Destroyed\" and                     
-                                               \"Transferred\". When setting this value                
-                                               in a data import or via an API call the                 
-                                               item identifier may be used.                            
-
-  Acquisition type acquisition_type_id         A value from the object_acq_types list     No           
-                                               indicating how the object was acquired.                 
-                                               When setting this value in a data import                
-                                               or via an API call the item identifier may              
-                                               be used.                                                
-
-  Accession status item_status_id              A value from the object_statuses list      No           
-                                               indicating the accession status of the                  
-                                               object. Accession status values might                   
-                                               include \"accessioned\", \"pending                      
-                                               accession\", \"non-accessioned item\",                  
-                                               etc. When setting this value in a data                  
-                                               import or via an API call the item                      
-                                               identifier may be used.                                 
-
-  Extent           extent                      The numeric extent. Must a be a whole,     Yes          0
-                                               positive number. Default is 0.                          
-
-  Units of extent  extent_units                Units of extent value, as text.            Yes          
-
-  Library          circulation_status_id       A value from the                           No           
-  circulation                                  object_circulation_statuses list                        
-  status                                       indicating the circulation status of the                
-                                               object, as set by the library check-in/out              
-                                               system. When setting this value in a data               
-                                               import or via an API call the item                      
-                                               identifier may be used.                                 
-
-  Submitted by     submission_user_id          For records submitted via the Pawtucket    No           
-  user                                         \"contribute\" form interface. The user                 
-                                               who submitted the record.                               
-
-  Submission group submission_group_id         For records submitted via the Pawtucket    No           
-                                               \"contribute\" form interface. The group                
-                                               of the user that submitted the record.                  
-
-  Submission       submission_status_id        For records submitted via the Pawtucket    No           
-  status                                       \"contribute\" form interface. A value                  
-                                               from the submission_statuses list                       
-                                               indicating the review status of the                     
-                                               submitted record. When setting this value               
-                                               in a data import or via an API call the                 
-                                               item identifier may be used.                            
-
-  Submission form  submission_via_form         For records submitted via the Pawtucket    No           
-                                               \"contribute\" form interface. The                      
-                                               identifying code of the form used to                    
-                                               submit the record.                                      
-
-  View count       view_count                  Number of times record has been viewed in  No           0
-                                               Pawtucket front-end                                     
-
-  Home location    home_location_value         The home location of the object, formatted No           
-                                               using the display template defined by the               
-                                               app.conf                                                
-                                               \"home_location_display_template\"                      
-                                               directive an evaluated relative to the                  
-                                               home ca_storage_locations record. If no                 
-                                               template is defined in app.conf, the full               
-                                               hierarchical path of the home location is               
-                                               returned. The template may be overriden by              
-                                               passing a \"display_template\" tag option.              
-  --------------------------------------------------------------------------------------------------------------
-
-:::: note
-::: title
-Note
+:::note
+**ca_entities.preferred_labels.displayname** is used by data mappings
+and display templates to reference the intrinsic displayname field in
+the **ca_entity_labels table**. See below
+`ca_entity_labels name fields <ca_entity_labels-name-fields>` for all **ca_entity_labels** name fields.
 :::
-
-**ca_objects.preferred_labels.name** is used by data mappings and
-display templates to reference the intrinsic name field in the
-**ca_object_labels table**
-::::
 
 # Object Lots (ca_object_lots)
 
@@ -224,105 +85,31 @@ one unique item per accession. Registrarial information, such as the
 Deed of Gift, may be recorded in a lot record while cataloging for each
 accessioned object remains at the object level.
 
-## Object lot intrinsics (ca_object_lots)
+### Object lot intrinsics (ca_object_lots)
 
-  -----------------------------------------------------------------------------------------------------------
-  Name           Code                   Description                                    Mandatory?   Default
-  -------------- ---------------------- ---------------------------------------------- ------------ ---------
-  Identifier     idno_stub              The lot identifier. Must follow policy defined Depends upon 
-                                        in configured numbering policy if app.conf     numbering    
-                                        setting                                        policy       
-                                        require_valid_id_number_for_ca_object_lots is               
-                                        set. Must be unique if app.conf setting                     
-                                        allow_duplicate_id_number_for_ca_object_lots                
-                                        is not set.                                                 
+| Name |Code | Description | Mandatory? |Default|
+|----|----|----|----|----|
+|Identifier|idno_stub|The lot identifier. Must follow policy defined in configured numbering policy if app.conf setting require_valid_id_number_for_ca_object_lots is set. Must be unique if app.conf setting allow_duplicate_id_number_for_ca_object_lots is not set.|Depends upon numbering policy||
+|Type|type_id|A value from the object_lot_types list indicating the type of the record. Stored as an internally generated numeric item_id. When setting this value in a data import or via an API call the item identifier may be used.|Yes|null|
+|Parent|parent_id|Reference to parent record. Will be null if no parent is defined. When setting this value in a data import or via an API call the identifier of the parent lot may be used.|No|null|
+|Access|access|Determines visibility of record in public-facing applications such as Pawtucket. Values are defined in the access_statuses list. Typically the list includes values for “public” and “private” visibility. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. By convention “0” is interpreted as private and “1” as public access, although this can be modified or expanded in app.conf if required.|Yes|0|
+|Status|status|Records the general cataloguing workflow status of the record. Values are defined in the workflow_statuses list. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. Unlike access values, statuses have no functional impact on a record. They are merely informations and intended to provide a simple, straightforward way to track the cataloguing process.|Yes|0|
+|Source|source_id|A value from the object_lot_sources list indicating the original source of the lot. This value is sometimes used to broadly distinguish different classes of lots. When setting this value in a data import or via an API call the item identifier may be used.|No||
+|Accession status|lot_status_id|A value from the object_lot_statuses list indicating the accession status of the lot. Accession status values might include “accessioned”, “pending accession”, “non-accessioned item”, etc. When setting this value in a data import or via an API call the item identifier may be used.|No||
+|Extent|extent|The numeric extent. Must a be a whole, positive number. Default is 0.|Yes|0|
+|Units of extent|extent_units|Units of extent value, as text.|Yes||
+|Submitted by user|submission_user_id|For records submitted via the Pawtucket “contribute” form interface. The user who submitted the record.|No||
+|Submission group|submission_group_id|For records submitted via the Pawtucket “contribute” form interface. The group of the user that submitted the record.|No||
+|Submission status|submission_status_id|For records submitted via the Pawtucket “contribute” form interface. A value from the submission_statuses list indicating the review status of the submitted record.|No||
+|Submission form|submission_via_form|For records submitted via the Pawtucket “contribute” form interface. The identifying code of the form used to submit the record.|No||
+|View count|view_count|Number of times record has been viewed in Pawtucket front-end|No|0|
 
-  Type           type_id                A value from the object_lot_types list         Yes          null
-                                        indicating the type of the record. Stored as                
-                                        an internally generated numeric item_id. When               
-                                        setting this value in a data import or via an               
-                                        API call the item identifier may be used.                   
 
-  Parent         parent_id              Reference to parent record. Will be null if no No           null
-                                        parent is defined. When setting this value in               
-                                        a data import or via an API call the                        
-                                        identifier of the parent lot may be used.                   
-
-  Access         access                 Determines visibility of record in             Yes          0
-                                        public-facing applications such as Pawtucket.               
-                                        Values are defined in the access_statuses                   
-                                        list. Typically the list includes values for                
-                                        \"public\" and \"private\" visibility. For                  
-                                        historical reasons the value stored in the                  
-                                        intrinsic is the list item\'s                               
-                                        [value] field, not its identifer                
-                                        or label. By convention \"0\" is interpreted                
-                                        as private and \"1\" as public access,                      
-                                        although this can be modified or expanded in                
-                                        app.conf if required.                                       
-
-  Status         status                 Records the general cataloguing workflow       Yes          0
-                                        status of the record. Values are defined in                 
-                                        the workflow_statuses list. For historical                  
-                                        reasons the value stored in the intrinsic is                
-                                        the list item\'s [value] field,                 
-                                        not its identifer or label. Unlike access                   
-                                        values, statuses have no functional impact on               
-                                        a record. They are merely informations and                  
-                                        intended to provide a simple, straightforward               
-                                        way to track the cataloguing process.                       
-
-  Source         source_id              A value from the object_lot_sources list       No           
-                                        indicating the original source of the lot.                  
-                                        This value is sometimes used to broadly                     
-                                        distinguish different classes of lots. When                 
-                                        setting this value in a data import or via an               
-                                        API call the item identifier may be used.                   
-
-  Accession      lot_status_id          A value from the object_lot_statuses list      No           
-  status                                indicating the accession status of the lot.                 
-                                        Accession status values might include                       
-                                        \"accessioned\", \"pending accession\",                     
-                                        \"non-accessioned item\", etc. When setting                 
-                                        this value in a data import or via an API call              
-                                        the item identifier may be used.                            
-
-  Extent         extent                 The numeric extent. Must a be a whole,         Yes          0
-                                        positive number. Default is 0.                              
-
-  Units of       extent_units           Units of extent value, as text.                Yes          
-  extent                                                                                            
-
-  Submitted by   submission_user_id     For records submitted via the Pawtucket        No           
-  user                                  \"contribute\" form interface. The user who                 
-                                        submitted the record.                                       
-
-  Submission     submission_group_id    For records submitted via the Pawtucket        No           
-  group                                 \"contribute\" form interface. The group of                 
-                                        the user that submitted the record.                         
-
-  Submission     submission_status_id   For records submitted via the Pawtucket        No           
-  status                                \"contribute\" form interface. A value from                 
-                                        the submission_statuses list indicating the                 
-                                        review status of the submitted record.                      
-
-  Submission     submission_via_form    For records submitted via the Pawtucket        No           
-  form                                  \"contribute\" form interface. The identifying              
-                                        code of the form used to submit the record.                 
-
-  View count     view_count             Number of times record has been viewed in      No           0
-                                        Pawtucket front-end                                         
-  -----------------------------------------------------------------------------------------------------------
-
-:::: note
-::: title
-Note
-:::
-
+:::note
 **ca_objects.preferred_labels.name** is used by data mappings and
 display templates to reference the intrinsic name field in the
 **ca_object_labels table**
-::::
+:::
 
 # Entities (ca_entities)
 
@@ -333,101 +120,29 @@ types. For example, an entity record for an individual could be related
 to an object record as the creator of the object, or the photographer,
 donor, publisher, performer, etc.
 
-## Entity intrinsics (ca_entities)
+### Entity intrinsics (ca_entities)
 
-  --------------------------------------------------------------------------------------------------------
-  Name           Code                   Description                                 Mandatory?   Default
-  -------------- ---------------------- ------------------------------------------- ------------ ---------
-  Identifier     idno                   The entity identifier. Must follow policy   Depends upon 
-                                        defined in configured numbering policy if   numbering    
-                                        app.conf setting                            policy       
-                                        require_valid_id_number_for_ca_entities is               
-                                        set. Must be unique if app.conf setting                  
-                                        allow_duplicate_id_number_for_ca_entities                
-                                        is not set.                                              
+| Name |Code | Description | Mandatory? |Default|
+|----|----|----|----|----|
+|Identifier|idno|The entity identifier. Must follow policy defined in configured numbering policy if app.conf setting require_valid_id_number_for_ca_entities is set. Must be unique if app.conf setting allow_duplicate_id_number_for_ca_entities is not set.|Depends upon numbering policy||
+|Type|type_id|A value from the entity_types list indicating the type of the record. Stored as an internally generated numeric item_id. When setting this value in a data import or via an API call the item identifier may be used.|Yes|null|
+|Parent|parent_id|Reference to parent record. Will be null if no parent is defined. When setting this value in a data import or via an API call the identifier of the parent entity may be used.|No|null|
+|Access|access|Determines visibility of record in public-facing applications such as Pawtucket. Values are defined in the access_statuses list. Typically the list includes values for “public” and “private” visibility. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. By convention “0” is interpreted as private and “1” as public access, although this can be modified or expanded in app.conf if required.|Yes|0|
+|Status|status|Records the general cataloguing workflow status of the record. Values are defined in the workflow_statuses list. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. Unlike access values, statuses have no functional impact on a record. They are merely informations and intended to provide a simple, straightforward way to track the cataloguing process.|Yes|0|
+|Lifespan|lifespan|The life dates of the entity expressed as an historic daterange.|No||
+|Source|source_id|A value from the entity_sources list indicating the original source of the entity. This value is sometimes used to broadly distinguish different classes of entities. When setting this value in a data import or via an API call the item identifier may be used.|No||
+|Submitted by user|submission_user_id|For records submitted via the Pawtucket “contribute” form interface. The user who submitted the record.|No||
+|Submission group|submission_group_id|For records submitted via the Pawtucket “contribute” form interface. The group of the user that submitted the record.|No||
+|Submission status|submission_status_id|For records submitted via the Pawtucket “contribute” form interface. A value from the submission_statuses list indicating the review status of the submitted record.|No||
+|Submission form|submission_via_form|For records submitted via the Pawtucket “contribute” form interface. The identifying code of the form used to submit the record.|No||
+|View count|view_count|Number of times record has been viewed in Pawtucket front-end|No|0|
 
-  Type           type_id                A value from the entity_types list          Yes          null
-                                        indicating the type of the record. Stored                
-                                        as an internally generated numeric item_id.              
-                                        When setting this value in a data import or              
-                                        via an API call the item identifier may be               
-                                        used.                                                    
 
-  Parent         parent_id              Reference to parent record. Will be null if No           null
-                                        no parent is defined. When setting this                  
-                                        value in a data import or via an API call                
-                                        the identifier of the parent entity may be               
-                                        used.                                                    
-
-  Access         access                 Determines visibility of record in          Yes          0
-                                        public-facing applications such as                       
-                                        Pawtucket. Values are defined in the                     
-                                        access_statuses list. Typically the list                 
-                                        includes values for \"public\" and                       
-                                        \"private\" visibility. For historical                   
-                                        reasons the value stored in the intrinsic                
-                                        is the list item\'s [value]                  
-                                        field, not its identifer or label. By                    
-                                        convention \"0\" is interpreted as private               
-                                        and \"1\" as public access, although this                
-                                        can be modified or expanded in app.conf if               
-                                        required.                                                
-
-  Status         status                 Records the general cataloguing workflow    Yes          0
-                                        status of the record. Values are defined in              
-                                        the workflow_statuses list. For historical               
-                                        reasons the value stored in the intrinsic                
-                                        is the list item\'s [value]                  
-                                        field, not its identifer or label. Unlike                
-                                        access values, statuses have no functional               
-                                        impact on a record. They are merely                      
-                                        informations and intended to provide a                   
-                                        simple, straightforward way to track the                 
-                                        cataloguing process.                                     
-
-  Lifespan       lifespan               The life dates of the entity expressed as   No           
-                                        an historic daterange.                                   
-
-  Source         source_id              A value from the entity_sources list        No           
-                                        indicating the original source of the                    
-                                        entity. This value is sometimes used to                  
-                                        broadly distinguish different classes of                 
-                                        entities. When setting this value in a data              
-                                        import or via an API call the item                       
-                                        identifier may be used.                                  
-
-  Submitted by   submission_user_id     For records submitted via the Pawtucket     No           
-  user                                  \"contribute\" form interface. The user who              
-                                        submitted the record.                                    
-
-  Submission     submission_group_id    For records submitted via the Pawtucket     No           
-  group                                 \"contribute\" form interface. The group of              
-                                        the user that submitted the record.                      
-
-  Submission     submission_status_id   For records submitted via the Pawtucket     No           
-  status                                \"contribute\" form interface. A value from              
-                                        the submission_statuses list indicating the              
-                                        review status of the submitted record.                   
-
-  Submission     submission_via_form    For records submitted via the Pawtucket     No           
-  form                                  \"contribute\" form interface. The                       
-                                        identifying code of the form used to submit              
-                                        the record.                                              
-
-  View count     view_count             Number of times record has been viewed in   No           0
-                                        Pawtucket front-end                                      
-  --------------------------------------------------------------------------------------------------------
-
-:::: note
-::: title
-Note
+:::note
+**ca_entities.preferred_labels.displayname** is used by data mappings and display templates to reference the intrinsic displayname field in the **ca_entity_labels** table. See below ca_entity_labels name fields for all **ca_entity_labels name fields.**
 :::
 
-**ca_entities.preferred_labels.displayname** is used by data mappings
-and display templates to reference the intrinsic displayname field in
-the **ca_entity_labels table**. See below
-`ca_entity_labels name fields <ca_entity_labels-name-fields>` for all **ca_entity_labels** name fields.
-::::
+ 
 
 # Places (ca_places)
 
@@ -440,9 +155,39 @@ geographical place names consider using CollectiveAccess\' built-in
 support for GoogleMaps, OpenStreetMap, GeoNames and/or the Getty
 Thesaurus of Geographic Names (TGN).
 
-## Place intrinsics (ca_places)
+### Place intrinsics (ca_places)
 
-  ------------------------------------------------------------------------------------------------------
+| Name |Code | Description | Mandatory? |Default|
+|----|----|----|----|----|
+|Identifier|idno|The place identifier. Must follow policy defined in configured numbering policy if app.conf setting require_valid_id_number_for_ca_places is set. Must be unique if app.conf setting allow_duplicate_id_number_for_ca_places is not set.|Depends upon numbering policy||
+|Type|type_id|A value from the place_types list indicating the type of the record. Stored as an internally generated numeric item_id. When setting this value in a data import or via an API call the item identifier may be used.|Yes|Null|
+|Parent|parent_id|Reference to parent record. Will be null if no parent is defined. When setting this value in a data import or via an API call the identifier of the parent place may be used.|----|----|
+|Access|access|Determines visibility of record in public-facing applications such as Pawtucket. Values are defined in the access_statuses list. Typically the list includes values for “public” and “private” visibility. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. By convention “0” is interpreted as private and “1” as public access, although this can be modified or expanded in app.conf if required.|----|----|
+|Status|status|Records the general cataloguing workflow status of the record. Values are defined in the workflow_statuses list. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. Unlike access values, statuses have no functional impact on a record. They are merely informations and intended to provide a simple, straightforward way to track the cataloguing process.|----|----|
+|Lifespan|lifespan|The life dates of the place expressed as an historic daterange.|----|----|
+|Source|source_id|A value from the places_sources list indicating the original source of the place. This value is sometimes used to broadly distinguish different classes of places. When setting this value in a data import or via an API call the item identifier may be used.|----|----|
+|Floorplan|floorplan|Uploaded image depicting floor plan of place. Used as the base layer in the object-place floorplan user interface.|----|----|
+|Submitted by user|submission_user_id|For records submitted via the Pawtucket “contribute” form interface. The user who submitted the record.|----|----|
+|Submission group|submission_group_id|For records submitted via the Pawtucket “contribute” form interface. The group of the user that submitted the record.|----|----|
+|Submission status|submission_status_id|For records submitted via the Pawtucket “contribute” form interface. A value from the submission_statuses list indicating the review status of the submitted record.|----|----|
+|Submission form|submission_via_form|For records submitted via the Pawtucket “contribute” form interface. The identifying code of the form used to submit the record.|----|----|
+|View count|view_count|Number of times record has been viewed in Pawtucket front-end|----|----|
+
+:::note
+**ca_places.preferred_labels.name** is used by data mappings and display
+templates to reference the intrinsic name field in the
+**ca_place_labels** table
+:::
+
+# Occurrences (ca_occurrences)
+
+Occurrences are used to represent temporal concepts such as events,
+exhibition, productions or citations.
+
+### Occurrence intrinsics (ca_occurrences)
+
+
+ ------------------------------------------------------------------------------------------------------
   Name           Code                   Description                               Mandatory?   Default
   -------------- ---------------------- ----------------------------------------- ------------ ---------
   Identifier     idno                   The place identifier. Must follow policy  Depends upon 
@@ -531,24 +276,19 @@ Thesaurus of Geographic Names (TGN).
                                         Pawtucket front-end                                    
   ------------------------------------------------------------------------------------------------------
 
-:::: note
-::: title
-Note
-:::
 
-**ca_places.preferred_labels.name** is used by data mappings and display
-templates to reference the intrinsic name field in the
-**ca_place_labels** table
-::::
 
 # Occurrences (ca_occurrences)
 
 Occurrences are used to represent temporal concepts such as events,
 exhibition, productions or citations.
 
-## Occurrence intrinsics (ca_occurrences)
+### Occurrence intrinsics (ca_occurrences)
 
-  -----------------------------------------------------------------------------------------------------------
+| Name |Code | Description | Mandatory? |Default|
+|----|----|----|----|----|
+
+-----------------------------------------------------------------------------------------------------------
   Name           Code                   Description                                    Mandatory?   Default
   -------------- ---------------------- ---------------------------------------------- ------------ ---------
   Identifier     idno                   The occurrence identifier. Must follow policy  Depends upon 
@@ -653,9 +393,11 @@ display templates to reference the intrinsic name field in the
 **ca_collection_labels table**
 ::::
 
-## Collection intrinsics (ca_collections)
+### Collection intrinsics (ca_collections)
 
-  -----------------------------------------------------------------------------------------------------------
+| Name |Code | Description | Mandatory? |Default|
+|----|----|----|----|----|
+ -----------------------------------------------------------------------------------------------------------
   Name           Code                   Description                                    Mandatory?   Default
   -------------- ---------------------- ---------------------------------------------- ------------ ---------
   Identifier     idno                   The collection identifier. Must follow policy  Depends upon 
@@ -741,8 +483,10 @@ the other primary tables, each storage location may have arbitrarily
 rich cataloguing, including access restrictions, geographical
 coordinates, keywords and other information.
 
-## Storage location intrinsics (ca_storage_locations)
+### Storage location intrinsics (ca_storage_locations)
 
+| Name |Code | Description | Mandatory? |Default|
+|----|----|----|----|----|
   -----------------------------------------------------------------------------------------------------------------
   Name           Code                   Description                                          Mandatory?   Default
   -------------- ---------------------- ---------------------------------------------------- ------------ ---------
@@ -840,8 +584,10 @@ objects. Loan records, like those in all other tables, is fully
 customizable and can be used to track alls aspects of a loan, including
 dates, shipping, and insurance information.
 
-## Loan intrinsics (ca_loans)
+### Loan intrinsics (ca_loans)
 
+| Name |Code | Description | Mandatory? |Default|
+|----|----|----|----|----|
   -----------------------------------------------------------------------------------------------------
   Name           Code                   Description                              Mandatory?   Default
   -------------- ---------------------- ---------------------------------------- ------------ ---------
@@ -945,8 +691,10 @@ locations, while on loan or while on exhibition. Used as part of a
 location tracking or use history policy, movements can provide a robust
 record of every movement event in an object\'s history.
 
-## Movements intrinsics (ca_movements)
+### Movements intrinsics (ca_movements)
 
+| Name |Code | Description | Mandatory? |Default|
+|----|----|----|----|----|
   ---------------------------------------------------------------------------------------------------------
   Name           Code                   Description                                  Mandatory?   Default
   -------------- ---------------------- -------------------------------------------- ------------ ---------
@@ -1040,9 +788,12 @@ represents) if desired. When used. representation metadata often
 includes captions, credits, access information, rights and reproduction
 restrictions.
 
-## Object representation intrinsics (ca_object_representations)
+### Object representation intrinsics (ca_object_representations)
 
-  ----------------------------------------------------------------------------------------------------------------------
+| Name |Code | Description | Mandatory? |Default|
+|----|----|----|----|----|
+
+ ----------------------------------------------------------------------------------------------------------------------
   Name           Code                   Description                                               Mandatory?   Default
   -------------- ---------------------- --------------------------------------------------------- ------------ ---------
   Identifier     idno                   The representation identifier. Must follow policy defined Depends upon 
@@ -1139,7 +890,10 @@ the **ca_object_representation_labels** table
 Tour records capture information about on-site or online tours of
 objects, locations, collections or any other record in the database.
 
-## Tour intrinsics (ca_tours)
+### Tour intrinsics (ca_tours)
+
+| Name |Code | Description | Mandatory? |Default|
+|----|----|----|----|----|
 
   --------------------------------------------------------------------------------
   Name           Code         Description                   Mandatory?   Default
@@ -1240,7 +994,10 @@ contains metadata about the stop (descriptive text, geographic
 coordinates, etc.) as well as relationships to relevant objects,
 entities and more.
 
-## Tour stop intrinsics (ca_tour_stops)
+### Tour stop intrinsics (ca_tour_stops)
+
+| Name |Code | Description | Mandatory? |Default|
+|----|----|----|----|----|
 
   -----------------------------------------------------------------------------------------------
   Name           Code        Description                                   Mandatory?   Default

@@ -2,6 +2,8 @@
 title: Lists and Vocabularies
 ---
 
+# Lists and Vocabularies 
+
 -   [Creating a New List](#creating-a-new-list)
 -   [Adding Items to a List](#adding-items-to-a-list)
 

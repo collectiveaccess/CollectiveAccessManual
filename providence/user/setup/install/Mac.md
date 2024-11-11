@@ -6,14 +6,10 @@ sidebar_label: MacOS
 ---
 # Installing on MacOS
 
-:::: note
-::: title
-Note
-:::
-
-Note: these instructions have been tested on MacOS 10.14 (Mojave). They
+:::note
+These instructions have been tested on MacOS 10.14 (Mojave). They
 may or may not work on earlier versions of MacOS.
-::::
+:::
 
 CollectiveAccess relies on a number of open-source software packages to
 run, such as MySQL (database server), PHP (programming lanaguage) and
@@ -59,18 +55,14 @@ default when installing with Brew) by going to the URL
 [http://localhost:8080] in a web browser running on the Mac.
 The message \"It works!\" should display.
 
-:::: tip
-::: title
-Tip
-:::
-
+:::tip
 If you want to run Apache on the standard port 80 you\'ll need to open
 the Apache configuration file located at
 [/usr/local/etc/httpd/httpd.conf], find the line [Listen
 8080] and change it to [Listen 80]. Then restart
 the server with the Terminal command [sudo apachectl -k
 restart]
-::::
+:::
 
 Next install PHP version 7.4 running in the Terminal:
 
@@ -88,15 +80,11 @@ LoadModule php7_module /opt/homebrew/opt/php@7.4/lib/httpd/modules/libphp7.so
 where [/opt/homebrew] is the path to your Homebrew
 directory.
 
-:::: tip
-::: title
-Tip
-:::
-
+:::tip
 You can find your Homebrew directory path by running the command [echo
 \$(brew \--prefix)]. It is often [/opt/homebrew]
 but may be different on some systems.
-::::
+:::
 
 Next, look for this configuration in the Apache configuration file:
 
@@ -202,26 +190,18 @@ http://localhost:8080/ca (assuming that you\'re still running on port
 8080). If you\'re running on port 80, the URL will be
 http://localhost/ca.
 
-:::: tip
-::: title
-Tip
-:::
-
+:::tip
 Some systems may use a directory other than [/opt/homebrew].
 You can verify the Homebrew directory path on your system by running the
 command [echo \$(brew \--prefix)].
-::::
-
-:::: tip
-::: title
-Tip
 :::
 
+:::tip
 You can use a different directory for the application by editing
 [/usr/local/etc/httpd/httpd.conf]. Edit the line
 [DocumentRoot \"/usr/local/var/www\"] to point to your
 chosen directory.
-::::
+:::
 
 You can download a release from
 (https://github.com/collectiveaccess/providence/releases), or install is

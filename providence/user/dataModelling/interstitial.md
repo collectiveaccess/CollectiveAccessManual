@@ -2,6 +2,8 @@
 title: Interstitial Data
 ---
 
+# Interstitial Data
+
 As of version 1.4, CollectiveAccess supports relationship records also
 known as **interstitial** records. This feature allows cataloguers to
 describe a relationship beyond simply selecting a relationship type;
