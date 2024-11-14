@@ -43,7 +43,11 @@ browse facet for the item type. The keys of the facets array are
 arbitrary code name for the facets, it doesn\'t matter what they are so
 long as they are unique within the facet list. The values are yet
 another associative array which actually defines the characteristics of
-the facet.
+the facet. 
+
+By default results returned include only records specifically matching the specified 
+criteria. Results may be expanded hierarchically to include all sub-records by setting
+the expandResultsHierarchically setting for the specified table to a non-zero value. (Available from version 2.0).
 
 Each facet has a type and some (but not all) of the facet definition
 keys are dependent upon this type. The follow types of facets are

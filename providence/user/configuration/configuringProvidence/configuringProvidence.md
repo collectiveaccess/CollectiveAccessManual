@@ -8,14 +8,10 @@ in the **app/conf** directory of your Providence installation. You will
 also find a **/local** folder, where you should create blank copies of
 files to customize options.
 
-:::: attention
-::: title
-Attention
-:::
-
+:::warning
 ALWAYS create a blank local version of your .conf file in app/conf/local
 and make edits there. Otherwise your changes can be overwritten.
-::::
+:::
 
 ## Main Configuration
 - App.conf (mainConfiguration/app)

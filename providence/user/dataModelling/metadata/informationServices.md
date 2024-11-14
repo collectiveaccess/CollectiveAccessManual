@@ -2,6 +2,8 @@
 title: Information Services
 ---
 
+# Information Services 
+
 CollectiveAccess supports several external information services to
 attached metadata to CollectiveAccess records. It does this by
 performing a lookup operation at the remote service and then allowing
@@ -88,15 +90,18 @@ locally differs from plugin to plugin.
 > This plugin allows you to reference records in remote CollectiveAccess
 > instances. Available settings are as follows:
 
-  ---------------------------------------------------------------------------------
-  Setting Name                        Description                         Example
-  ----------------------------------- ----------------------------------- ---------
+| Setting Name | Description | Example |
+|----|----|----|
+|service|Set service setting to ‘CollectiveAccess’ to use this plugin|CollectiveAccess|
+|baseURL|URL used to query the information service|http://localhost/admin/|
+|table|Valid CollectiveAccess table name|ca_entities|
+|user_name|User name to authenticate with on remote system|webservice|
+|password|Password to authenticate with on remote system|\|
+|labelFormat|Display template to format query result labels|^ca_entities.preferred_labels|
+|detailFormat|Display template to format detailed information blocks|^ca_objects.preferred_labels (^ca_objects.idno)|
 
-  ---------------------------------------------------------------------------------
 
-  : CollectiveAccess Information Service
-
-## [Encyclopedia of Life (EOL)](https://eol.org/docs/what-is-eol/data-services/classic-apis)
+## [Encyclopedia of Life (EOL)](https://www.eol.org/docs/what-is-eol/data-services)
 
 > \"Global acccess to knowledge about life on Earth\"
 
@@ -120,13 +125,10 @@ locally differs from plugin to plugin.
 > This service allows referencing Wikipedia articles. Available settings
 > are:
 
-  ---------------------------------------------------------------------------------
-  Setting Name                        Description                         Example
-  ----------------------------------- ----------------------------------- ---------
-
-  ---------------------------------------------------------------------------------
-
-  : Wikipedia Information Service Installation Profile Settings
+| Setting Name | Description | Example |
+|----|----|----|
+|service|Set service setting to ‘Wikipedia’ to use this plugin|Wikipedia|
+|lang|2- or 3-letter language code for Wikipedia to use. Defaults to en|en|
 
 ### Wikipedia Display Template Options
 
@@ -141,13 +143,18 @@ ca_objects.wikipedia.<property>
 
 Where property is one of the following:
 
-  -------------------------------------------------------------------------------------
-  Setting Name                                                            Description
-  ----------------------------------------------------------------------- -------------
-
-  -------------------------------------------------------------------------------------
-
-  : Wikipedia Information Service Installation Profile Settings
+| Setting Name | Description | 
+|----|----|
+|image_thumbnail|Image thumbnail URL|
+|image_thumbnail_width|Width of image thumbnail. Box is capped at 200px by 200px|
+|image_thumbnail_height|Height of image thumbnail. Box is capped at 200px by 200px|
+|image_viewer_url|(Valid for v1.5.1) URL for Wikipedia’s full screen image viewer|
+|title|Title of the Wikipedia article|
+|pageid|Numeric page identifier|
+|fullurl|URL for the article|
+|canonicalurl|Canonical URL for the article|
+|extract|Extract of the article, usually a HTML representation of the full article|
+|abstract|CollectiveAccess tries to extract the first paragraph from the article to provide a shorter abstract. This is usually the part shown above the table of contents but extraction might fail for poorly formatted articles|
 
 ## [WorldCat](https://www.oclc.org/developer/develop/web-services/worldcat-search-api.en.html)
 

@@ -137,18 +137,14 @@ to the CA media directory.
 
 ## What to do if something goes wrong?
 
-:::: tip
-::: title
-Tip
-:::
-
+:::tip
 If your CollectiveAccess installation fails, the first thing to do is
 examine error messages on screen or in the log (written to the app/log
 directory). If you receive a blank white screen odds are error messages
 are being suppressed in your PHP php.ini configuration file. Try
 changing the **display_errors** option to \"On\" and then attempt to
 reinstall.
-::::
+:::
 
 If you are totally stumped after reviewing the error messages and logs
 you can find help on the online support
