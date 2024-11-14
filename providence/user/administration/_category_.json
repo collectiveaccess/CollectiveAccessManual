@@ -1,7 +1,7 @@
 {
-    "position": 9,
+    "position": 11,
     "collapsible": true,
-    "collapsed": false,
+    "collapsed": true,
     "label": "Administration",
     "link": {
       "type": "generated-index",

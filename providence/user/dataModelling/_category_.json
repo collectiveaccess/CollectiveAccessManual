@@ -1,7 +1,7 @@
 {
-    "position": 9,
+    "position": 2,
     "collapsible": true,
-    "collapsed": false,
+    "collapsed": true,
     "label": "Data Modelling",
     "link": {
       "type": "generated-index",

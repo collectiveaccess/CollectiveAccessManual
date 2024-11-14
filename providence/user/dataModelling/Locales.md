@@ -2,6 +2,8 @@
 title: Locales
 ---
 
+# Locales
+
 -   [Locale-specific Information in
     CollectiveAccess](#locale-specific-information-in-collectiveaccess)
 -   [How Locales are Selected](#how-locales-are-selected)

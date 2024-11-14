@@ -1,7 +1,7 @@
 {
-    "position": 9,
+    "position": 7,
     "collapsible": true,
-    "collapsed": false,
+    "collapsed": true,
     "label": "Reporting",
     "link": {
       "type": "generated-index",

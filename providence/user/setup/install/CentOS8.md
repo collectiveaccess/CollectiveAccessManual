@@ -8,16 +8,12 @@ sidebar_label: CentOS
 # Installing on CentOS 8 and Red Hat Enterprise Linux 8
 
 :::note
-::: title
-Note
-:::
-
 CentOS is a free, community-supported Linux distribution that is
 functionally compatible with its upstream source, Red Hat Enterprise
 Linux. For purposes of CollectiveAccess installation they are identical.
 The instructions provided here should work for either CentOS or Red Hat
 Enterprise Linux.
-::::
+:::
 
 CollectiveAccess relies on a number of open-source software packages to
 run such as MySQL (database server), PHP (programming lanaguage) and
@@ -107,17 +103,13 @@ With the [php.ini] file open search for
 planning to upload very large media files (Eg. JPEGs \> 10mb or TIFFs \>
 100mb) you may wish to set this value to \"384m\" or even \"512m\".
 
-:::: note
-::: title
-Note
-:::
-
+:::note
 The [memory_limit] setting caps the amount of memory
 CollectiveAccess can use. It does not actually allocate memory to PHP or
 CollectiveAccess. Usually CollectiveAccess will use much less memory
 than these limits, but media processing may require larger memory
 allocations for short periods.
-::::
+:::
 
 Next search for [upload_max_filesize] and change it to a
 value larger than the largest file you expect to upload. If you\'re
@@ -125,14 +117,10 @@ planning to upload 500mb video files consider setting it to \"750m\" to
 provide a margin of safety. If you\'re planning to upload multiple 40mb
 TIFF files consider setting it to some multiple of 40.
 
-:::: note
-::: title
-Note
-:::
-
+:::note
 As with [memory_limit] this setting is a maximum. It does
 not actually allocate resources.
-::::
+:::
 
 Finally, search for [post_max_size] and set it to a slightly
 larger value than [upload_max_filesize]. If
@@ -153,30 +141,21 @@ allowing your edits to take effect:
 sudo systemctl restart httpd
 ```
 
-
-:::: tip
-::: title
-Tip
-:::
-
+:::tip
 You can also change the [display_errors] setting by adding
 the following PHP code to your [setup.php] file:
 [ini_set(\'display_errors\', \'On\');]. Setting
 [display_errors] in [setup.php] does not require
 a web server restart, making it very convenient when debugging.
-::::
-
-:::: tip
-::: title
-Tip
 :::
 
+:::tip
 If http/https ports are not accessible open the firewall with these commands
 
 firewall-cmd --zone=public --add-service=http  --permanent
 firewall-cmd --zone=public --add-service=https  --permanent
 firewall-cmd --reload
-::::
+:::
 
 
 Now let\'s install MySQL. CollectiveAccess works with version 5.7 or
@@ -219,16 +198,12 @@ to place CollectiveAccess here, in a subdirectory named
 [ca]. The URL for this directory will be https://>\<your
 server ip\>/ca.
 
-:::: tip
-::: title
-Tip
-:::
-
+:::tip
 You can use a different web server root directory for the application by
 editing [/etc/httpd/conf/httpd.conf]. Modify the line
 [DocumentRoot /var/www/html] to point to your chosen
 directory.
-::::
+:::
 
 You may download a release from
 (https://github.com/collectiveaccess/providence/releases), or install is
@@ -304,11 +279,7 @@ you haven\'t set a password for the root account):
 mysql -uroot
 ```
 
-:::: tip
-::: title
-Tip
-:::
-
+:::tip
 For ephemeral systems intended for testing or evaluation, leaving the
 root login password-less and using that login for the CollectiveAccess
 application may be acceptable. For any other use you should secure your
@@ -319,7 +290,7 @@ you\'ve secured your MySQL installation using
 [mysql_secure_installation] be sure you include the password
 you set for root in your [mysql] command: [mysql -uroot
 -p\<your password\>].
-::::
+:::
 
 One you\'re logged in, at the [mysql\>] prompt enter:
 
@@ -344,15 +315,11 @@ where [my_user] is your preferred MySQL user name and
 [my_password] is your preferred password for the MySQL
 login.
 
-:::: note
-::: title
-Note
-:::
-
+:::note
 MySQL logins are specific to MySQL and have nothing to do with your
 server login. You can set the user name and password to whatever you
 want, independent of all other login credentials.
-::::
+:::
 
 Go back to [setup.php] and enter your newly created MySQL
 login credentials into the [\_\_CA_DB_USER\_\_],

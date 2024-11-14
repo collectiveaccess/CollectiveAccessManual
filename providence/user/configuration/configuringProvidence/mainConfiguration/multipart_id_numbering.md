@@ -369,7 +369,7 @@ format. The following keys may be placed in the list:
 |           | sources that don\'t conform to |           |           |
 |           | current standards. For these   |           |           |
 |           | numbers CollectiveAccess can   |           |           |
-|           | either (a) ignore the          |           |           |
+|           | either (A) ignore the          |           |           |
 |           | additional parts, truncating   |           |           |
 |           | the number at the configured   |           |           |
 |           | number of parts or (b) add     |           |           |
@@ -454,6 +454,9 @@ and user interface behaviors. The plug-in supports the following types:
                       the element list for a format type. Unexpected
                       behaviors may occur if placed in other locations in
                       the element list.
+                      
+  INHERIT             Set the element value to that of the parent record.
+  					  (Available in version 2.0)
   -----------------------------------------------------------------------
 
 Beyond type, there are a number of other settings that can be set for an
@@ -480,6 +483,9 @@ Settings applicable to all types of elements are:
 
   width               Display width, in characters, of entry field in
                       user interface.
+                      
+  prefix              Text to be prepended to element value. Valid for
+                      elements of type SERIAL and FREE.
   -----------------------------------------------------------------------
 
 Type-specific settings are:
@@ -553,15 +559,20 @@ Type-specific settings are:
 |              |              | option. If set, only types explicitly  |
 |              |              | referenced in the setting value will   |
 |              |              | be included. Default is to expand the  |
-|              |              | list to include sub types. (avaialble  |
+|              |              | list to include sub types. (Avaialble  |
 |              |              | from v1.8)                             |
 +--------------+--------------+----------------------------------------+
 |              | m            | A non-zero number to use as the        |
 |              | inimum_value | initial value for the sequence. Ex. if |
 |              |              | set to 20000 then the first record     |
 |              |              | created with be numbered 20000, the    |
-|              |              | second 20001 and so on. (available     |
+|              |              | second 20001 and so on. (Available     |
 |              |              | from v1.7)                             |
++--------------+--------------+----------------------------------------+
+|              | allowSuffix  | Allow user-entered suffix on serial    | 
+|              |              | value. Suffix my include letters,      |
+|			   |			  |	underscores and dashes.                |
+|			   |			  | (Available from 2.0)                   |
 +--------------+--------------+----------------------------------------+
 | CONSTANT     | value        | Value of constant. This must be        |
 |              |              | specified.                             |
