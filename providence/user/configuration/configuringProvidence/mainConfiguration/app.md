@@ -276,17 +276,13 @@ types, and sub-records may only be created with types that are direct
 sub-types of the parent\'s type. This ensures conformance with the type
 hierarchy. So if you have an object type hierarchy like this:
 
-Book
-
-:   
-
-    Page
-
-    :   
-
-        Figure
-
-        :   Frontspiece
+> Book
+>
+>> Page
+>
+>>>Figure
+>
+>>>>Frontispiece
 
 \... then top-level records can only be of type \"Book.\" Sub-records of
 books may only be \"Page\" or \"Frontspiece\"; and sub-records of
@@ -396,9 +392,9 @@ Normally all results, regardless of their position in a hierarchy are
 displayed in search/browse results. Set this option for alternative
 policies. Possible settings are:
 
-  Setting                                       Description                                                                                                                                                                                                                                                                          Allowed values                                                                                                                                                                                                                                                                                                                                                Required?   Default      Synonyms
-  --------------------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ----------- ------------ ----------
-  \<table\>\_children_display_mode_in_results   Normally all results, regardless of their position in a hierarchy are displayed in search/browse results. This option enables alternative policies, including permanent suppression and user-controlled filtering of child record. This option can be used with any primary table.   show = show all results by default; allow user to filter children if they wish hide = hide all child records (those that are not at the top of their hierarchy) by default; allow user to remove filtering if desired alwaysShow = show all results; do not allow filtering alwaysHide = hide all child records; do not allow the user to disable filtering   No          alwaysShow   
+| Setting | Description | Allowed values| Required? |Default|Synonyms
+|----|----|----|----|----|----|
+| \<table\>\_children_display_mode_in_results|Normally all results, regardless of their position in a hierarchy are displayed in search/browse results. This option enables alternative policies, including permanent suppression and user-controlled filtering of child record. This option can be used with any primary table.|show = show all results by default; allow user to filter children if they wish hide = hide all child records (those that are not at the top of their hierarchy) by default; allow user to remove filtering if desired alwaysShow = show all results; do not allow filtering alwaysHide = hide all child records; do not allow the user to disable filtering|No|alwaysShow||
 
 \"alwaysShow\" is the default.
 

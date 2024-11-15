@@ -2,6 +2,8 @@
 title: Media_processing.conf
 ---
 
+# Mediaprocessing.conf
+
 The file defines the media processing rules to transform media
 representations to different media transformations.
 
@@ -24,85 +26,10 @@ transformations, using rules.
 
 # Common configuration
 
-+----------------------------+----------------------------+---------+
-| Top level key              | Description                | Default |
-+============================+============================+=========+
-| use_e                      | If you want original media | 0       |
-| xternal_url_when_available | fetched from URLs to *NOT* |         |
-|                            | be stored in CA, but       |         |
-|                            | rather for CA to directly  |         |
-|                            | reference the media via    |         |
-|                            | the URL used to fetch it   |         |
-|                            | set                        |         |
-|                            | use_e                      |         |
-|                            | xternal_url_when_available |         |
-|                            | to 1. If you have no idea  |         |
-|                            | what this means then leave |         |
-|                            | this set to zero.          |         |
-+----------------------------+----------------------------+---------+
-| queue_threshold_in_bytes   | Filesize (in bytes) above  | 1000    |
-|                            | which media should be      |         |
-|                            | queued for background      |         |
-|                            | processing Files smaller   |         |
-|                            | than the threshold will be |         |
-|                            | processed at the time of   |         |
-|                            | upload, so you should set  |         |
-|                            | this to a small enough     |         |
-|                            | value that your server has |         |
-|                            | a shot at processing the   |         |
-|                            | media in near-realtime. A  |         |
-|                            | safe bet is 500,000 bytes  |         |
-|                            | (eg. 0.5 megabytes), but   |         |
-|                            | you may need to go lower   |         |
-|                            | (or higher).               |         |
-|                            |                            |         |
-|                            | Note that you can override |         |
-|                            | this setting for specific  |         |
-|                            | media types and versions   |         |
-|                            | below if you wish. Also    |         |
-|                            | keep in mind a few other   |         |
-|                            | fun facts:                 |         |
-|                            |                            |         |
-|                            | 1.  If the queue_enabled   |         |
-|                            |     setting in global.conf |         |
-|                            |     is set to zero then no |         |
-|                            |     background processing  |         |
-|                            |     will take place, no    |         |
-|                            |     matter what you set    |         |
-|                            |     here.                  |         |
-|                            | 2.  The default setting    |         |
-|                            |     for queue_enabled is   |         |
-|                            |     zero, so make sure you |         |
-|                            |     change it if you want  |         |
-|                            |     background processing  |         |
-|                            |     to happen.             |         |
-|                            | 3.  Versions that have no  |         |
-|                            |     Q                      |         |
-|                            | UEUE_WHEN_FILE_LARGER_THAN |         |
-|                            |     are never queued for   |         |
-|                            |     background processing; |         |
-|                            |     versions with a        |         |
-|                            |     Q                      |         |
-|                            | UEUE_WHEN_FILE_LARGER_THAN |         |
-|                            |     settings of zero are   |         |
-|                            |     similarly never queued |         |
-|                            |     (absence and zero are  |         |
-|                            |     one and the same,      |         |
-|                            |     config-wise).          |         |
-|                            | 4.  Some types of media    |         |
-|                            |     are setup by default   |         |
-|                            |     to never queue no      |         |
-|                            |     matter the             |         |
-|                            |     \"                     |         |
-|                            | queue_threshold_in_bytes\" |         |
-|                            |     and \"queue_enabled\"  |         |
-|                            |     settings. This         |         |
-|                            |     includes media types   |         |
-|                            |     for much little or no  |         |
-|                            |     processing is done,    |         |
-|                            |     including SWF, XML and |         |
-|                            |     MSWord.                |         |
-+----------------------------+----------------------------+---------+
+| Top level key | Description | Default
+|----|----|----|
+|use_external_url_when_available|If you want original media fetched from URLs to NOT be stored in CA, but rather for CA to directly reference the media via the URL used to fetch it set use_external_url_when_available to 1. If you have no idea what this means then leave this set to zero.|0|
+|queue_threshold_in_bytes|Filesize (in bytes) above which media should be queued for background processing Files smaller than the threshold will be processed at the time of upload, so you should set this to a small enough value that your server has a shot at processing the media in near-realtime. A safe bet is 500,000 bytes (eg. 0.5 megabytes), but you may need to go lower (or higher). Note that you can override this setting for specific media types and versions below if you wish. Also keep in mind a few other fun facts: **1.** If the queue_enabled setting in global.conf is set to zero then no background processing will take place, no matter what you set here **2.** The default setting for queue_enabled is zero, so make sure you change it if you want background processing to happen. **3.** Versions that have no QUEUE_WHEN_FILE_LARGER_THAN are never queued for background processing; versions with a QUEUE_WHEN_FILE_LARGER_THAN settings of zero are similarly never queued (absence and zero are one and the same, config-wise). **4.** Some types of media are setup by default to never queue no matter the “queue_threshold_in_bytes” and “queue_enabled” settings. This includes media types for much little or no processing is done, including SWF, XML and MSWord.|1000|
 
 # Organization
 
@@ -234,202 +161,51 @@ mimetype = media_type
 Each key is a media type descriptor, containing an associative array
 with queueing and representation version descriptions.
 
-+----------------------+----------------------+----------------------+
-| Key                  | Description          | Example              |
-+======================+======================+======================+
-| QUEUE                | Queue to deliver the | `QUEUE = mediaproc`  |
-|                      | media type to. Only  |                      |
-|                      | `mediaproc` is       |                      |
-|                      | supported currently. |                      |
-+----------------------+----------------------+----------------------+
-| QUEUED_MESSAGE       | Message to show on   | `QUEUED_             |
-|                      | queue listing        | MESSAGE = _('Image i |
-|                      |                      | s being processed')` |
-+----------------------+----------------------+----------------------+
-| QUEUE_USING_VERSION  | Version to use when  | `QUEUE_USING         |
-|                      | queueing. Note here  | _VERSION = original` |
-|                      | that you have to     |                      |
-|                      | specify a version    |                      |
-|                      | here that is not set |                      |
-|                      | to QUEUE, and that   |                      |
-|                      | you\'d almost always |                      |
-|                      | want to be using     |                      |
-|                      | `original` (a.k.a.   |                      |
-|                      | the uploaded file).  |                      |
-+----------------------+----------------------+----------------------+
-| MEDIA_               | Name of the media    | `MEDIA_VIEW_DEFAUL   |
-| VIEW_DEFAULT_VERSION | version that should  | T_VERSION = tilepic` |
-|                      | be used as the       |                      |
-|                      | default for display  |                      |
-|                      | for the specified    |                      |
-|                      | mimetype.            |                      |
-|                      |                      |                      |
-|                      | -   This is only a   |                      |
-|                      |     suggestion -     |                      |
-|                      |     it\'s the        |                      |
-|                      |     version to       |                      |
-|                      |     display in the   |                      |
-|                      |     absence of any   |                      |
-|                      |     overriding value |                      |
-|                      |     provided by the  |                      |
-|                      |     user.            |                      |
-+----------------------+----------------------+----------------------+
-| MEDIA_PRE            | Default version to   | `MEDIA_PREVIEW_DEFA  |
-| VIEW_DEFAULT_VERSION | display as a preview | ULT_VERSION = small` |
-|                      | for the given field  |                      |
-|                      | based upon the       |                      |
-|                      | currently loaded row |                      |
-+----------------------+----------------------+----------------------+
-| VERSIONS             | Versions describe    | ``` none             |
-|                      | different            | VERSIONS = {         |
-|                      | representation       |   thumbnail = {      |
-|                      | versions. See        |       RULE = r       |
-|                      | `providenceC         | ule_thumbnail_image, |
-|                      | onfiguration/mainCon |                      |
-|                      | figuration/media_pro |     VOLUME = images, |
-|                      | cessing.conf:VERSION |                      |
-|                      | S`{.interpreted-text |    QUEUE_WHEN_FILE_L |
-|                      | role="ref"} for      | ARGER_THAN = 1000000 |
-|                      | further details      |   },                 |
-|                      |                      |   preview = {        |
-|                      |                      |       RULE =         |
-|                      |                      |  rule_preview_image, |
-|                      |                      |                      |
-|                      |                      |     VOLUME = images, |
-|                      |                      |                      |
-|                      |                      |    QUEUE_WHEN_FILE_L |
-|                      |                      | ARGER_THAN = 1000000 |
-|                      |                      |   },                 |
-|                      |                      |   original 	= {       |
-|                      |                      |       RULE =         |
-|                      |                      | rule_original_image, |
-|                      |                      |                      |
-|                      |                      |     VOLUME = images, |
-|                      |                      |                      |
-|                      |                      |    QUEUE_WHEN_FILE_L |
-|                      |                      | ARGER_THAN = 1000000 |
-|                      |                      |   },                 |
-|                      |                      |   tilepic 	= {        |
-|                      |                      |       RULE =         |
-|                      |                      |  rule_tilepic_image, |
-|                      |                      |                      |
-|                      |                      |   VOLUME = tilepics, |
-|                      |                      |                      |
-|                      |                      |    QUEUE_WHEN_FILE_L |
-|                      |                      | ARGER_THAN = 1000000 |
-|                      |                      |   }                  |
-|                      |                      | }                    |
-|                      |                      | ```                  |
-+----------------------+----------------------+----------------------+
+| Key | Description | Example
+|----|----|----|
+|QUEUE|Queue to deliver the media type to. Only  `mediaproc` is supported currently.|`QUEUE = mediaproc` |
+|QUEUED_MESSAGE|Message to show on queue listing|`QUEUED_MESSAGE = _('Image is being processed')`|
+|QUEUE_USING_VERSION|Version to use when queueing. Note here that you have to specify a version here that is not set to QUEUE, and that you’d almost always want to be using `original` (a.k.a. the uploaded file).|`QUEUE_USING_VERSION = original`|
+|MEDIA_VIEW_DEFAULT_VERSION|Name of the media version that should be used as the default for display for the specified mimetype. 	This is only a suggestion - it’s the version to display in the absence of any overriding value provided by the user.|`MEDIA_VIEW_DEFAULT_VERSION = tilepic`|
+|MEDIA_PREVIEW_DEFAULT_VERSION|Default version to display as a preview for the given field based upon the currently loaded row|`MEDIA_PREVIEW_DEFAULT_VERSION = small`|
+|VERSIONS|Versions describe different representation versions. See providenceConfiguration/mainConfiguration/media_processing.conf:VERSIONS for further details|
+
+```VERSIONS = {
+  thumbnail = {
+      RULE = rule_thumbnail_image,
+      VOLUME = images,
+      QUEUE_WHEN_FILE_LARGER_THAN = 1000000
+  },
+  preview = {
+      RULE = rule_preview_image,
+      VOLUME = images,
+      QUEUE_WHEN_FILE_LARGER_THAN = 1000000
+  },
+  original 	= {
+      RULE = rule_original_image,
+      VOLUME = images,
+      QUEUE_WHEN_FILE_LARGER_THAN = 1000000
+  },
+  tilepic 	= {
+      RULE = rule_tilepic_image,
+      VOLUME = tilepics,
+      QUEUE_WHEN_FILE_LARGER_THAN = 1000000
+  }
+}
+```
+
 
 ## VERSIONS
 
 Each key is a version descriptor, containing an associative array, with
-a pointer to media transformation
-`rules <providenceConfiguration/mainConfiguration/media_processing.conf:MEDIA_TRANSFORMATION_RULES>` that help building a new derivative version of a media file.
+a pointer to media transformation rules 	`<providenceConfiguration/mainConfiguration/media_processing.conf:MEDIA_TRANSFORMATION_RULES>` that help building a new derivative version of a media file.
 
-+----------------------+----------------------+----------------------+
-| Key                  | Description          | Example              |
-+======================+======================+======================+
-| RULE                 | Rule name            | `RULE = r            |
-|                      |                      | ule_thumbnail_image` |
-+----------------------+----------------------+----------------------+
-| VOLUME               | A volume label from  | `VOLUME = images`    |
-|                      | `providence          |                      |
-|                      | Configuration/develo |                      |
-|                      | per/media_volumes.co |                      |
-|                      | nf:Media_volumes.con |                      |
-|                      | f`                   |                      |
-|                      |  file.               |                      |
-|                      | Files will be stored |                      |
-|                      | in/retrieved from    |                      |
-|                      | this volume.         |                      |
-+----------------------+----------------------+----------------------+
-| QUEUE_W              | Filesize (in bytes)  | `QUEUE_WHEN_FILE     |
-| HEN_FILE_LARGER_THAN | above which media    | _LARGER_THAN = 1000` |
-|                      | should be queued for |                      |
-|                      | background           |                      |
-|                      | processing. Files    |                      |
-|                      | smaller than the     |                      |
-|                      | threshold will be    |                      |
-|                      | processed at the     |                      |
-|                      | time of upload, so   |                      |
-|                      | you should set this  |                      |
-|                      | to a small enough    |                      |
-|                      | value that your      |                      |
-|                      | server has a shot at |                      |
-|                      | processing the media |                      |
-|                      | in near-realtime. A  |                      |
-|                      | safe bet is 500,000  |                      |
-|                      | bytes (eg. 0.5       |                      |
-|                      | megabytes), but you  |                      |
-|                      | may need to go lower |                      |
-|                      | (or higher).         |                      |
-|                      |                      |                      |
-|                      | Note that you can    |                      |
-|                      | override this        |                      |
-|                      | setting for specific |                      |
-|                      | media types and      |                      |
-|                      | versions below if    |                      |
-|                      | you wish. Also keep  |                      |
-|                      | in mind a few other  |                      |
-|                      | fun facts:           |                      |
-|                      |                      |                      |
-|                      | 1.  If the           |                      |
-|                      |     queue_enabled    |                      |
-|                      |     setting in       |                      |
-|                      |     global.conf is   |                      |
-|                      |     set to zero then |                      |
-|                      |     no background    |                      |
-|                      |     processing will  |                      |
-|                      |     take place, no   |                      |
-|                      |     matter what you  |                      |
-|                      |     set here.        |                      |
-|                      | 2.  The default      |                      |
-|                      |     setting for      |                      |
-|                      |     queue_enabled is |                      |
-|                      |     zero, so make    |                      |
-|                      |     sure you change  |                      |
-|                      |     it if you want   |                      |
-|                      |     background       |                      |
-|                      |     processing to    |                      |
-|                      |     happen.          |                      |
-|                      | 3.  Versions that    |                      |
-|                      |     have no          |                      |
-|                      |     QUEUE_W          |                      |
-|                      | HEN_FILE_LARGER_THAN |                      |
-|                      |     are never queued |                      |
-|                      |     for background   |                      |
-|                      |     processing;      |                      |
-|                      |     versions with a  |                      |
-|                      |     QUEUE_W          |                      |
-|                      | HEN_FILE_LARGER_THAN |                      |
-|                      |     settings of zero |                      |
-|                      |     are similarly    |                      |
-|                      |     never queued     |                      |
-|                      |     (absence and     |                      |
-|                      |     zero are one and |                      |
-|                      |     the same,        |                      |
-|                      |     config-wise).    |                      |
-|                      | 4.  Some types of    |                      |
-|                      |     media are setup  |                      |
-|                      |     by default to    |                      |
-|                      |     never queue no   |                      |
-|                      |     matter the       |                      |
-|                      |     \"queue_         |                      |
-|                      | threshold_in_bytes\" |                      |
-|                      |     and              |                      |
-|                      |                      |                      |
-|                      |    \"queue_enabled\" |                      |
-|                      |     settings. This   |                      |
-|                      |     includes media   |                      |
-|                      |     types for much   |                      |
-|                      |     little or no     |                      |
-|                      |     processing is    |                      |
-|                      |     done, including  |                      |
-|                      |     SWF, XML and     |                      |
-|                      |     MSWord.          |                      |
-+----------------------+----------------------+----------------------+
+| Key | Description | Example
+|----|----|----|
+|RULE|Rule name|`RULE = rule_thumbnail_image`|
+|VOLUME|A volume label from `providenceConfiguration/developer/media_volumes.conf:Media_volumes.conf file`. Files will be stored in/retrieved from this volume.|`VOLUME = images`|
+|QUEUE_WHEN_FILE_LARGER_THAN|Filesize (in bytes) above which media should be queued for background processing. Files smaller than the threshold will be processed at the time of upload, so you should set this to a small enough value that your server has a shot at processing the media in near-realtime. A safe bet is 500,000 bytes (eg. 0.5 megabytes), but you may need to go lower (or higher). Note that you can override this setting for specific media types and versions below if you wish. Also keep in mind a few other fun facts: 1. If the queue_enabled setting in global.conf is set to zero then no background processing will take place, no matter what you set here. 2. The default setting for queue_enabled is zero, so make sure you change it if you want background processing to happen. 3. Versions that have no QUEUE_WHEN_FILE_LARGER_THAN are never queued for background processing; versions with a QUEUE_WHEN_FILE_LARGER_THAN settings of zero are similarly never queued (absence and zero are one and the same, config-wise). 4. Some types of media are setup by default to never queue no matter the “queue_threshold_in_bytes” and “queue_enabled” settings. This includes media types for much little or no processing is done, including SWF, XML and MSWord.|`QUEUE_WHEN_FILE_LARGER_THAN = 1000`|
+
 
 ## MEDIA_TRANSFORMATION_RULES
 
@@ -440,6 +216,16 @@ There are `operations <media_rules_operations>` on the image and also
 It is an associative array of operation keys.
 
 Here it is a listing of available **operations**:
+
+| Operation| Description | Example
+|----|----|----|
+|ANNOTATE|Add annotations to a media file. Note that annotation requires an alpha channel. If none is available, an all opaque alpha channel is implicitedly created. Not available for GD image plugin. Parameters are: position: |----|
+|CROP|Crop the file. Params:|----|
+|FLIP|Reflect the scanlines in the vertical or horizontal direction. The image will be mirrored upside-down or left-right. Set direction to `vertical` or `horizontal`|``FLIP { direction = vertical }``|
+|ROTATE|Rotate the file. Parameters:``angle``: angle in degrees.|```ROTATE { angle = 30 }```|
+|SCALE|Scale the file. Configure the following params:|----|
+|SET|Set properties on the media processing handler. Available values are:|```SET = {quality = 75, format = image/jpeg}```|
+|WATERMARK|Add a watermark to a media file. Parameters are: |```WATERMARK= {image =<ca_app_dir>/watermark.png, width = 72, height = 85, position = south_east, opacity = 0.4},```|
 
 +-----------+---------------------------+---------------------------+
 | Operation | Description               | Example                   |
@@ -697,102 +483,10 @@ Here it is a listing of available **operations**:
 
 Here it is a listing of available **filters**.
 
-+----------------+-------------------------+-----------------------+
-| Filter         | Description             | Example               |
-+================+=========================+=======================+
-| DESPECKLE      | Reduce the speckles     | ``` text              |
-|                | within an image. No     | DESPECKLE { }         |
-|                | parameters.             | ```                   |
-+----------------+-------------------------+-----------------------+
-| MEDIAN         | Apply a median filter   | ``` text              |
-|                | to the image, of the    | MEDIAN { radius = 2 } |
-|                | given radius.           | ```                   |
-+----------------+-------------------------+-----------------------+
-| SHARPEN        | Use a Gaussian operator | ``` text              |
-|                | of the given radius and | SHARPEN {             |
-|                | standard deviation      |   radius = 0,         |
-|                | (sigma). For reasonable |   sigma = 0.63        |
-|                | results, radius should  | }                     |
-|                | be larger than sigma.   | ```                   |
-|                | Use a radius of 0 to    |                       |
-|                | have the method select  |                       |
-|                | a suitable radius.      |                       |
-|                |                         |                       |
-|                | The parameters are:     |                       |
-|                |                         |                       |
-|                | -   **radius**: The     |                       |
-|                |     radius of the       |                       |
-|                |     Gaussian, in        |                       |
-|                |     pixels, not         |                       |
-|                |     counting the center |                       |
-|                |     pixel (default 0).  |                       |
-|                |                         |                       |
-|                | \* **sigm               |                       |
-|                | a**: The standard devia |                       |
-|                | tion of the Gaussian, i |                       |
-|                | n pixels (default 1.0). |                       |
-|                |                         |                       |
-|                | :   It can be any       |                       |
-|                |     floating point      |                       |
-|                |     value from 0.1, for |                       |
-|                |     practically no      |                       |
-|                |     sharpening, to      |                       |
-|                |                         |                       |
-|                | 3 or more for sever     |                       |
-|                | sharpening. 0.5 to 1.0  |                       |
-|                | is rather good.         |                       |
-|                |                         |                       |
-|                | The larger the sigma    |                       |
-|                | the more it sharpens.   |                       |
-|                |                         |                       |
-|                | -   `sharpen 0x.4`:     |                       |
-|                |     very small          |                       |
-|                | -   `sharpen 0x1.0`:    |                       |
-|                |     about one pixel     |                       |
-|                |     size sharpen        |                       |
-|                | -   `sharpen 0x3.0`:    |                       |
-|                |     probably getting    |                       |
-|                |     too large           |                       |
-+----------------+-------------------------+-----------------------+
-| UNSHARPEN_MASK | This filter sharpens an | ``` text              |
-|                | image. The image is     | UNSHARPEN_MASK {      |
-|                | convolved with a        |   radius = 0,         |
-|                | Gaussian operator of    |   sigma = 0.45,       |
-|                | the given radius and    |   amount = 1.5,       |
-|                | standard deviation      |   threshold = 0       |
-|                | (sigma). For reasonable | }                     |
-|                | results, radius should  | ```                   |
-|                | be larger than sigma.   |                       |
-|                | Use a radius of 0 to    |                       |
-|                | have the method select  |                       |
-|                | a suitable radius.      |                       |
-|                |                         |                       |
-|                | The parameters are:     |                       |
-|                |                         |                       |
-|                | -   **radius**: The     |                       |
-|                |     radius of the       |                       |
-|                |     Gaussian, in        |                       |
-|                |     pixels, not         |                       |
-|                |     counting the center |                       |
-|                |     pixel (default 0).  |                       |
-|                | -   **sigma**: The      |                       |
-|                |     standard deviation  |                       |
-|                |     of the Gaussian, in |                       |
-|                |     pixels (default     |                       |
-|                |     1.0).               |                       |
-|                | -   **amount**: The     |                       |
-|                |     fraction of the     |                       |
-|                |     difference between  |                       |
-|                |     the original and    |                       |
-|                |     the blur image that |                       |
-|                |     is added back into  |                       |
-|                |     the original        |                       |
-|                |     (default 1.0).      |                       |
-|                | -   **threshold**: The  |                       |
-|                |     threshold, as a     |                       |
-|                |     fraction of         |                       |
-|                |     QuantumRange,       |                       |
-|                |     needed to apply the |                       |
-|                |     difference amount   |                       |
-|                |     (default 0.05).     |                       |
-+----------------+-------------------------+-----------------------+
+
+| Operation| Description | Example
+|----|----|----|
+|DESPECKLE|Reduce the speckles within an image. No parameters.|```DESPECKLE { }```|
+|MEDIAN|Apply a median filter to the image, of the given radius.|```MEDIAN { radius = 2 }```|
+|SHARPEN|Use a Gaussian operator of the given radius and standard deviation (sigma). For reasonable results, radius should be larger than sigma. Use a radius of 0 to have the method select a suitable radius. The parameters are: **radius**: The radius of the Gaussian, in pixels, not counting the center pixel (default 0). **sigma**: The standard deviation of the Gaussian, in pixels (default 1.0). It can be any floating point value from 0.1, for practically no sharpening, to 3 or more for sever sharpening. 0.5 to 1.0 is rather good. The larger the sigma the more it sharpens. ``sharpen 0x.4``: very small; ``sharpen 0x1.0``: about one pixel size sharpen; ``sharpen 0x3.0``: probably getting too large.|```SHARPEN {radius = 0, sigma = 0.63}```|
+|UNSHARPEN_MASK|This filter sharpens an image. The image is convolved with a Gaussian operator of the given radius and standard deviation (sigma). For reasonable results, radius should be larger than sigma. Use a radius of 0 to have the method select a suitable radius. The parameters are: **radius**: The radius of the Gaussian, in pixels, not counting the center pixel (default 0). **sigma**: The standard deviation of the Gaussian, in pixels (default 1.0). **amount**: The fraction of the difference between the original and the blur image that is added back into the original (default 1.0). **threshold**: The threshold, as a fraction of QuantumRange, needed to apply the difference amount (default 0.05).|```UNSHARPEN_MASK {radius = 0, sigma = 0.45, amount = 1.5, threshold = 0}```|

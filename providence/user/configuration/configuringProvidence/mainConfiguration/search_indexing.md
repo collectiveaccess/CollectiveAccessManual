@@ -2,6 +2,8 @@
 title: Search_indexing.conf
 ---
 
+# Search_indexing.conf
+
 The search_indexing.conf file controls which data in your
 CollectiveAccess database is searchable, and how. Only data elements
 configured in search_indexing.conf are searchable. Note that
@@ -201,140 +203,36 @@ metadata element \"description\" would be listed as
 Only data elements listed in this block, or inferred by the \_metadata
 special field, will be indexed.
 
-**Special fields** There are two \"special fields\" that may be used in
+## Special Field Options
+
+There are two **\"special fields\"** that may be used in
 the field list. Special fields always start with underscore character.
 
-  -----------------------------------------------------------------------
-  Option              Description
-  ------------------- ---------------------------------------------------
-  \_metadata          Forces indexing of all metadata elements configured
-                      for the item. When indexing of all fields is
-                      desired (the typical case) use of the \_metadata
-                      special field obviates the need to explicitly list
-                      all available fields, and to update indexing
-                      configuration every time a new metadata element is
-                      added.
+| Option | Description 
+|----|----|
+|_metadata|Forces indexing of all metadata elements configured for the item. When indexing of all fields is desired (the typical case) use of the _metadata special field obviates the need to explicitly list all available fields, and to update indexing configuration every time a new metadata element is added.|
+|_count|Embeds the number of related rows for a given table in the index. You can specify this for both relationship (ex. ca_objects_x_entities) and primary (ex. ca_entities) tables. The field is named ``<table_name>.count`` - for example: object_representations.count for table ‘object_representations’. This can be used to find rows that have, or don’t have, related rows in a given table.When specified on a primary table (eg. ca_entities, ca_occurrences), counts are indexed in aggregate as well as for each type. For relationship tables (eg. ca_objects_x_entities) counts are indexed in aggregate as well as for each relationship type. For example querying on a specific type or types: ca_entities.count/individual:3 (finds records with exactly three related entities of type “individual”) ``ca_objects_x_entities.count/artist:[2 to 4]`` (finds objects with between two and four entities related as artist)|
 
-  \_count             Embeds the number of related rows for a given table
-                      in the index. You can specify this for both
-                      relationship (ex. ca_objects_x_entities) and
-                      primary (ex. ca_entities) tables. The field is
-                      named \<table_name\>.count - for example:
-                      object_representations.count for table
-                      \'object_representations\'. This can be used to
-                      find rows that have, or don\'t have, related rows
-                      in a given table.When specified on a primary table
-                      (eg. ca_entities, ca_occurrences), counts are
-                      indexed in aggregate as well as for each type. For
-                      relationship tables (eg. ca_objects_x_entities)
-                      counts are indexed in aggregate as well as for each
-                      relationship type. For example querying on a
-                      specific type or types:
-                      ca_entities.count/individual:3 (finds records with
-                      exactly three related entities of type
-                      \"individual\")
-                      ca_objects_x_entities.count/artist:\[2 to 4\]
-                      (finds objects with between two and four entities
-                      related as artist)
-  -----------------------------------------------------------------------
-
-**Field-level options**
+## Field-level options 
 
 A variety of options are available to control how data elements are
 indexed:
 
-  --------------------------------------------------------------------------------------------------------------------------
-  Option                                   Description                              Example syntax
-  ---------------------------------------- ---------------------------------------- ----------------------------------------
-  STORE                                    Forces the value to be stored in the     not applicable
-                                           index, if possible; this can speed       
-                                           display of the content in a search but   
-                                           may slow down indexing and increases     
-                                           index size                               
-
-  TOKENIZE                                 Breaks content into separate values on   not applicable
-                                           whitespace characters, such as a spaces  
-                                           or line breaks, or by punctuation        
-                                           characters prior to indexing. This is    
-                                           the default and in general need not be   
-                                           specified. It may be combined with the   
-                                           DONT_TOKENIZE option to index values     
-                                           both as tokenized fragments and as a     
-                                           single \"as-is\" value. This can be      
-                                           useful when indexing accession numbers   
-                                           and other identifiers.                   
-
-  DONT_TOKENIZE                            Indexes the value as-is, rather than     not applicable
-                                           breaking into separate values on         
-                                           whitespace characters, such as a spaces  
-                                           or line breaks, or by punctuation        
-                                           characters. This is useful for values    
-                                           that should not be indexed as text, such 
-                                           as numeric values and accession          
-                                           numbers/identifiers.                     
-
-  DONT_INCLUDE_IN_SEARCH_FORM              Indicates that the data element should   not applicable
-                                           not be includable in user-defined search 
-                                           forms.                                   
-
-  BOOST                                    A numeric \"boost\" value for the index  BOOST = 100
-                                           field. Higher values will cause search   
-                                           hits on the boosted field to count for   
-                                           more when sorting by relevance.          
-
-  INDEX_AS_IDNO                            Causes the value to be indexed with      not applicable
-                                           various permutations for flexible        
-                                           retrieval as a record identifier. For    
-                                           example, if this option is used then a   
-                                           search for KA1 would return KA.0001.     
-
-  INDEX_AS_MIMETYPE                        Causes the value to be indexed as a mime not applicable
-                                           type variations to support flexible      
-                                           retrieval. For example, if this option   
-                                           is used then mime type values of         
-                                           \"image/wav\" would be index under both  
-                                           the literal mime type and \"WAVE         
-                                           Audio\". (Available from version 1.7.1)  
-
-  INDEX_ANCESTORS                          Enables hierarchical indexing for field, not applicable
-                                           assuming it is in an hierarchical table, 
-                                           resulting in all values for this field   
-                                           in records above the subject in the      
-                                           hierarchy being indexing against the     
-                                           subject                                  
-
-  INDEX_ANCESTORS_START_AT_LEVEL           Forces hierarchical indexing to start X  INDEX_ANCESTORS_START_AT_LEVEL = 2
-                                           levels down from the root. This allows   
-                                           you to omit the very highest, and least  
-                                           selective, levels of the hierarchy when  
-                                           indexing. If omitted indexing starts     
-                                           from the hierarchy root                  
-
-  INDEX_ANCESTORS_MAX_NUMBER_OF_LEVELS     Sets the maximum number of levels above  INDEX_ANCESTORS_MAX_NUMBER_OF_LEVELS = 3
-                                           the subject to be indexed. If omitted    
-                                           all levels of the hierarchy above the    
-                                           subject are indexed                      
-
-  INDEX_ANCESTORS_AS_PATH_WITH_DELIMITER   Sets a delimiter to place between each   INDEX_ANCESTORS_AS_PATH_WITH_DELIMITER =
-                                           level of the hierarchy prior to indexing .
-                                           the entire hierarchy path above the      
-                                           subject. This is useful when you want to 
-                                           treat the hierarchy path as an           
-                                           identifier                               
-
-  PRIVATE                                  Flags indexing for the data element as   not applicable
-                                           being only for use by authenticated      
-                                           users and not for public use. Typically  
-                                           Pawtucket front-ends will ignore         
-                                           indexing so flagged.                     
-
-  COUNT                                    For metadata elements only. Causes the   not applicable
-                                           number of values set for the element in  
-                                           a record to be indexed. This enables     
-                                           searching on records by the number of    
-                                           values in a given field. (Available from 
-                                           version 1.7)                             
-  --------------------------------------------------------------------------------------------------------------------------
+| Option | Description|Example Syntax
+|----|----|----|
+|STORE|Forces the value to be stored in the index, if possible; this can speed display of the content in a search but may slow down indexing and increases index size|not applicable|
+|TOKENIZE|Breaks content into separate values on whitespace characters, such as a spaces or line breaks, or by punctuation characters prior to indexing. This is the default and in general need not be specified. It may be combined with the DONT_TOKENIZE option to index values both as tokenized fragments and as a single “as-is” value. This can be useful when indexing accession numbers and other identifiers.|not applicable|
+|DONT_TOKENIZE|Indexes the value as-is, rather than breaking into separate values on whitespace characters, such as a spaces or line breaks, or by punctuation characters. This is useful for values that should not be indexed as text, such as numeric values and accession numbers/identifiers.|not applicable|
+|DONT_INCLUDE_IN_SEARCH_FORM|Indicates that the data element should not be includable in user-defined search forms.|not applicable|
+|BOOST|A numeric “boost” value for the index field. Higher values will cause search hits on the boosted field to count for more when sorting by relevance.|BOOST = 100|
+|INDEX_AS_IDNO|Causes the value to be indexed with various permutations for flexible retrieval as a record identifier. For example, if this option is used then a search for KA1 would return KA.0001.|not applicable|
+|INDEX_AS_MIMETYPE|Causes the value to be indexed as a mime type variations to support flexible retrieval. For example, if this option is used then mime type values of “image/wav” would be index under both the literal mime type and “WAVE Audio”. (Available from version 1.7.1)|not applicable|
+|INDEX_ANCESTORS |Enables hierarchical indexing for field, assuming it is in an hierarchical table, resulting in all values for this field in records above the subject in the hierarchy being indexing against the subject|not applicable|
+|INDEX_ANCESTORS_START_AT_LEVEL|Forces hierarchical indexing to start X levels down from the root. This allows you to omit the very highest, and least selective, levels of the hierarchy when indexing. If omitted indexing starts from the hierarchy root|INDEX_ANCESTORS_START_AT_LEVEL = 2|
+|INDEX_ANCESTORS_MAX_NUMBER_OF_LEVELS|Sets the maximum number of levels above the subject to be indexed. If omitted all levels of the hierarchy above the subject are indexed|INDEX_ANCESTORS_MAX_NUMBER_OF_LEVELS = 3|
+|INDEX_ANCESTORS_AS_PATH_WITH_DELIMITER |Sets a delimiter to place between each level of the hierarchy prior to indexing the entire hierarchy path above the subject. This is useful when you want to treat the hierarchy path as an identifier|INDEX_ANCESTORS_AS_PATH_WITH_DELIMITER = .|
+|PRIVATE|Flags indexing for the data element as being only for use by authenticated users and not for public use. Typically Pawtucket front-ends will ignore indexing so flagged.|not applicable|
+|COUNT|For metadata elements only. Causes the number of values set for the element in a record to be indexed. This enables searching on records by the number of values in a given field. (Available from version 1.7)|not applicable|
 
 You can set multiple options by separating them with commas. Options
 taking values should be separated from the value by an equals sign. For
