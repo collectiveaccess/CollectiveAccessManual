@@ -21,7 +21,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'CollectiveAccess', // Usually your GitHub org/user name.
-  projectName: 'Providence2Docs', // Usually your repo name.
+  projectName: 'CollectiveAccessManual', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -103,7 +103,7 @@ const config = {
             label: 'Pawtucket',
           },
           {
-            href: 'https://github.com/collectiveaccess/Providence2Docs',
+            href: 'https://github.com/collectiveaccess/CollectiveAccessManaual',
             label: 'GitHub',
             position: 'right',
           },
