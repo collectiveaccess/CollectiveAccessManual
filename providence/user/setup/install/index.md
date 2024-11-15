@@ -6,12 +6,15 @@ sidebar_label: Installation
 ---
 
 # Installation
-CollectiveAccess can be run in any environment that supports PHP 7.x and MySQL 5.7 or better. (Note that PHP 8 is not yet supported, but will be soon). This includes any recent version of Linux, Mac OS or Windows. User-contributed `installation instructions for Linux <install_linux>` are available, as are more detailed installation guides for:                                                                 
+CollectiveAccess can be run in any environment that supports PHP 7.x and MySQL 5.7 or better. (Note that PHP 8 is not yet supported, but will be soon). This includes any recent version of Linux, Mac OS or Windows. User-contributed `installation instructions for Linux <install_linux>` are available, as are more detailed installation guides for:
 
-`Ubuntu Linux 20.04 LTS <install_ubuntu_20_04>`
-`CentOS/Red Hat Enterprise Linux 8 <install_centos8>`                                                  
-`Mac OS 10.14 <install_macos>` 
-`Windows <install_windows>` (Note:this remains for the time-being rough, user-contributed notes)
+- `Ubuntu 20.04 LTS <install_ubuntu_20_04>`
+- `CentOS/Red Hat Enterprise Linux 8 <install_centos8>`
+- `Mac OS 10.14 <install_macos>` 
+- `Windows <install_windows>` (Note:this remains for the time-being rough, user-contributed notes)
+
+Please post improvements to these notes on the [Support Forum](https://support.collectiveaccess.org) or [update the
+repository](https://github.com/collectiveaccess/CollectiveAccessManual)!
 
 
 # General Instructions                                                 

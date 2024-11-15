@@ -1,7 +1,7 @@
 {
     "position": 9,
     "collapsible": true,
-    "collapsed": false,
+    "collapsed": true,
     "label": "Import",
     "link": {
       "type": "generated-index",
