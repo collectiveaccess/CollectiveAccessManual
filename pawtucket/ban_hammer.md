@@ -109,7 +109,7 @@ you already knew this) that all user agent strings are lies.
 
 # Removing a single ban
 
-This has to be done within the database.
+This has to be done within the database, there is no CLI option yet.
 
 ```
 MariaDB [collectiveaccess]> DELETE FROM ca_ip_bans WHERE ip_addr='192.168.100.4';
@@ -118,6 +118,8 @@ Query OK, 1 row affected (0.001 sec)
 
 
 # Removing all bans
+
+This can be done from the CLI.
 
 ```
 providence# ./support/bin/caUtils clear-bans
