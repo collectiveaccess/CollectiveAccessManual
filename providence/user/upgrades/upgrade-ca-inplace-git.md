@@ -1,3 +1,7 @@
+---
+title: Upgrade in place using git
+---
+
 Work in progress instructions to upgrade CA between versions using an in place, git based update.
 
 # Before you start
