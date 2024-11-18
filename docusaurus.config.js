@@ -89,6 +89,7 @@ const config = {
         },
         items: [
           {to: '/quickstart', label: 'Quickstart', position: 'left'},
+          {to: '/contributing', label: 'Contributing', position: 'left'},
           {
             type: 'docSidebar',
             sidebarId: 'docSidebar',
