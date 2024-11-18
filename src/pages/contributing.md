@@ -14,6 +14,16 @@ More technical documentation contributors can directly edit CollectiveAccess' [d
 repository](https://github.com/collectiveaccess/CollectiveAccessManual/blob/main/README.md) - see the `README.md` which describes the technical
 aspects.
 
+
+## Localisation / Translation
+
+Translations of CollectiveAccess Providence and Pawtucket are done with
+[Transifex](https://www.transifex.com/collectiveaccess/collectiveaccess-providence/app-locale-messages-pot--develop/). See [the translation
+page](/providence/developer/translating) for more information on the process.
+
+CollectiveAccess documentation is not currently localisable but may be in future.
+
+
 ## Reporting problems
 
 If you've found a problem or have an enhancement suggestion post an issue on [Providence](https://github.com/collectiveaccess/providence/issues) or
