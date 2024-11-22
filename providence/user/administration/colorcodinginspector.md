@@ -2,6 +2,8 @@
 title: "Color Coding the Inspector"
 ---
 
+# Color Coding the Inspector
+
 -   [Inspector Window Features](#inspector-window-features)
 -   [Customizing the Editor
     Inspector](#customizing-the-editor-inspector)

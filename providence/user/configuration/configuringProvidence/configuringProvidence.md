@@ -14,43 +14,46 @@ and make edits there. Otherwise your changes can be overwritten.
 :::
 
 ## Main Configuration
-- App.conf (mainConfiguration/app)
-- Browse.conf (mainConfiguration/browse)
-- Global.conf (mainConfiguration/global.conf)
-- Media_Processing.conf (mainConfiguration/media_processing.conf)
-- Multipart_id_numbering.conf (mainConfiguration/multipart_id_numbering)
-- Search_indexing.conf (mainConfiguration/search_indexing)
+- [App.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/mainConfiguration/app) 
+- [Browse.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/mainConfiguration/browse) 
+- [Global.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/mainConfiguration/global.conf) 
+- [Media_Processing.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/mainConfiguration/media_processing.conf) 
+- [Multipart_id_numbering.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/mainConfiguration/multipart_id_numbering) 
+- [Search_indexing.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/mainConfiguration/search_indexing) 
 
 ## Other Common Configurations
-Authentication.conf \<otherCommon/authentication\> DateTime.conf
-\<otherCommon/datetime\> Dimensions.conf \<otherCommon/dimensions.conf\>
-External_Applications.conf \<otherCommon/external_applications\>
-Library_Services.conf \<otherCommon/library_services.conf\>
-OAI_Harvester.conf \<otherCommon/oai_harvester.conf\> OAI_Provider.conf
-\<otherCommon/oai_provider.conf\> Prepopulate.conf
-\<otherCommon/prepopulate\> Search.conf \<otherCommon/search\>
-Visualization.conf \<otherCommon/visualization.conf\>
+- [Authentication.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/otherCommon/authentication) 
+- [DateTime.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/otherCommon/datetime) 
+- [Dimensions.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/otherCommon/dimensions.conf) 
+- [External_Applications.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/otherCommon/external_applications) 
+- [Library_Services.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/otherCommon/library_services.conf) 
+- [OAI_Harvester.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/otherCommon/oai_harvester.conf) 
+- [OAI_Provider.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/otherCommon/oai_provider.conf) 
+- [Prepopulate.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/otherCommon/prepopulate)  
+- [Search.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/otherCommon/search) 
+- [Visualization.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/otherCommon/visualization.conf) 
 
 ## Rarely Edited Configuration Files
-Attribute_Presets.conf \<rarelyEdited/attribute_presets.conf\>
-Default_Media_Icons.conf \<rarelyEdited/default_media_icons.conf\>
-External_Exports.conf \<rarelyEdited/external_exports.conf\>
-Linked_Data.conf \<rarelyEdited/linked_data.conf\> Media_Display.conf
-\<rarelyEdited/media_display\> Media_Metadata.conf
-\<rarelyEdited/media_metadata.conf\> Navigation.conf
-\<rarelyEdited/navigation.conf\> Replication.conf
-\<rarelyEdited/replication.conf\> Services.conf
-\<rarelyEdited/services.conf\> Statistics.conf
-\<rarelyEdited/statistics.conf\> Translations.conf
-\<rarelyEdited/translations.conf\>
+- [Attribute_Presets.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/rarelyEdited/attribute_presets.conf) 
+- [Default_Media_Icons.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/rarelyEdited/default_media_icons.conf) 
+- [External_Exports.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/rarelyEdited/external_exports.conf) 
+- [Linked_Data.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/rarelyEdited/linked_data.conf) 
+- [Media_Display.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/rarelyEdited/external_exports.conf)  
+- [Media_Metadata.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/rarelyEdited/media_metadata.conf) 
+- [Navigation.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/rarelyEdited/external_exports.conf) 
+- [Replication.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/rarelyEdited/replication.conf) 
+- [Services.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/rarelyEdited/services.conf) 
+- [Statistics.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/rarelyEdited/statistics.conf) 
+- [Translations.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/rarelyEdited/translations.conf)
 
 ## Developer Reference Only
-Annotation_types.conf \<developer/annotation_types.conf\> Assets.conf
-\<developer/assets.conf\> Attribute_Types.conf
-\<developer/attribute_types.conf\> Datamodel.conf
-\<developer/datamodel.conf\> File_Volumes.conf
-\<developer/file_volumes.conf\> Find_Navigation.conf
-\<developer/find_navigation.conf\> Media_Volumes.conf
-\<developer/media_volumes.conf\> Monitor.conf \<developer/monitor.conf\>
-User_Actions.conf \<developer/user_actions.conf\> User_Pref_Defs.conf
-\<developer/user_pref_defs.conf\>
+- [Annotation_types.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/developer/annotation_types.conf)
+- [Assets.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/developer/assets.conf)  
+- [Attribute_Types.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/developer/attribute_types.conf) 
+- [Datamodel.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/developer/datamodel.conf) 
+- [Find_Volumes.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/developer/file_volumes.conf)
+- [Find_Navigation.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/developer/find_navigation.conf) 
+- [Media_Volumes.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/developer/media_volumes.conf) 
+- [Monitor.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/developer/monitor.conf)
+- [User_Actions.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/developer/user_actions.conf) 
+- [User_Pref_Defs.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/developer/user_pref_defs.conf)

@@ -56,16 +56,12 @@ editing and use a validating XML editor such as OxygenXML. The editor
 will highlight mistakes as you type and point you to the location of the
 errors.
 
-:::: tip
-::: title
-Tip
-:::
-
+:::tip
 The CollectiveAccess installer will validate your profile against the
 schema before proceeding with installation, so if a profile doesn\'t
 validate during editing it won\'t be accepted by the installer. The
 bottom line: always make sure your profile validates!
-::::
+:::
 
 # Changing the installation profile of an existing system
 

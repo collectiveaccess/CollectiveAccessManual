@@ -2,6 +2,8 @@
 title: Configuring Relationship Types
 ---
 
+# Configuring Relationship Types
+
 -   [Viewing Available Relationship
     Types](#viewing-available-relationship-types)
 -   [Creating Relationship Types](#creating-relationship-types)

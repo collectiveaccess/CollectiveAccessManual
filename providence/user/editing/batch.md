@@ -2,6 +2,8 @@
 title: Batch Editing
 ---
 
+# Batch Editing
+
 -   [Batch Editing Using Sets](#batch-editing-using-sets)
 -   [Batch Editing Sets Using Search
     Results](#batch-editing-sets-using-search-results)

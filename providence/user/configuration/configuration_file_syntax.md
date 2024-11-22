@@ -2,6 +2,8 @@
 title: Configuration File Syntax
 ---
 
+# Configuration File Syntax
+
 A configuration file can contain any number of key-value pairs. Keys are
 simple alphanumeric text expressions. Values may be one of three types:
 

@@ -2,6 +2,8 @@
 title: OAI-PMH Provider
 ---
 
+# OAI-PMH Provider
+
 -   [oai_provider.conf Configuration](#oai_provider.conf-configuration)
 -   [Format Definition](#format-definition)
 -   [Testing Your Setup](#testing-your-setup)
@@ -50,73 +52,22 @@ http://www.mydomain.org/service.php/OAI/dc
 Within each provider configuration you have a number of available
 settings. They are described in the table below.
 
-  --------------------------------------------------------------------------------------------------
-  Setting                        Description                                Example value
-  ------------------------------ ------------------------------------------ ------------------------
-  name                           Used as repositoryName for the response to My repository
-                                 the Identify verb. By default it is        
-                                 imported from your setup.php.              
+|Setting| Description | Example value |
+|----|----|----|
+|name|Used as repositoryName for the response to the Identify verb. By default it is imported from your setup.php.|My repository|
+|admin_email|Used as adminEmail for the response to the Identify verb. By default it is imported from your setup.php|me@mydomain.org|
+|setFacet|A browse.conf facet code used to divide the data set you’re providing into so called ‘sets’ (OAI terminology, not necessarily equivalent to CollectiveAccess sets) and build the response to the ListSets verb. By default associated collections are used.|collection_facet|
+|query|Search query that allows you to impose arbitrary restrictions on the record set that is being provided. By default all records (‘*’) are served.|ca_objects.idno:0001*|
+|formats|List of the metadata formats that are available for this provider. Further information on the format definition is below.|see below|
+|default_format|Code of the format to use if the metadataPrefix argument is omitted, i.e. if the harvester doesn’t specify which format he wants. You should almost always serve basic Dublin Core in those cases.|oai_dc|
+|identiferNamespace|Namespace to use to build globally unique identifiers from your local CollectiveAccess record ids. The identifiers look like this: `oai:<namespace>:<localID>`|whirl-i-gig.com|
+|dont_enforce_access_settings|if set, no access checks are performed|0|
+|public_access_settings|list of values for ‘access’ field in objects, entities, places, etc. that allow public (unrestricted) viewing|[1]|
+|privileged_access_settings|list of values for ‘access’ field in objects, entities, places, etc. that allow privileged viewing (ie. user in on a privileged network as defined below)|[1,2]|
+|privileged_networks|List of IP address to consider “privileged” (can see items where access = 1 or 2) It is ok to use wildcards (“*”) for portions of the address to create class C or B addresses, e.g. 192.168.1.5, 192.168.1.* and 192.168.*.* are all valid and increasingly broad|[192.168.6.*]|
+|dont_cache|Determines if search or browse results used to built responses are cached or not|1|
+|show_deleted|Determines if deleted records are included in list responses|0|
 
-  admin_email                    Used as adminEmail for the response to the me@mydomain.org
-                                 Identify verb. By default it is imported   
-                                 from your setup.php                        
-
-  setFacet                       A browse.conf facet code used to divide    collection_facet
-                                 the data set you\'re providing into so     
-                                 called \'sets\' (OAI terminology, not      
-                                 necessarily equivalent to CollectiveAccess 
-                                 sets) and build the response to the        
-                                 ListSets verb. By default associated       
-                                 collections are used.                      
-
-  query                          Search query that allows you to impose     ca_objects.idno:0001\*
-                                 arbitrary restrictions on the record set   
-                                 that is being provided. By default all     
-                                 records (\'\*\') are served.               
-
-  formats                        List of the metadata formats that are      see below
-                                 available for this provider. Further       
-                                 information on the format definition is    
-                                 below.                                     
-
-  default_format                 Code of the format to use if the           oai_dc
-                                 metadataPrefix argument is omitted, i.e.   
-                                 if the harvester doesn\'t specify which    
-                                 format he wants. You should almost always  
-                                 serve basic Dublin Core in those cases.    
-
-  identiferNamespace             Namespace to use to build globally unique  whirl-i-gig.com
-                                 identifiers from your local                
-                                 CollectiveAccess record ids. The           
-                                 identifiers look like this:                
-                                 oai:\<namespace\>:\<localID\>              
-
-  dont_enforce_access_settings   if set, no access checks are performed     0
-
-  public_access_settings         list of values for \'access\' field in     \[1\]
-                                 objects, entities, places, etc. that allow 
-                                 public (unrestricted) viewing              
-
-  privileged_access_settings     list of values for \'access\' field in     \[1,2\]
-                                 objects, entities, places, etc. that allow 
-                                 privileged viewing (ie. user in on a       
-                                 privileged network as defined below)       
-
-  privileged_networks            List of IP address to consider             \[192.168.6.\*\]
-                                 \'privileged\' (can see items where access 
-                                 = 1 or 2) It is ok to use wildcards        
-                                 (\'\*\') for portions of the address to    
-                                 create class C or B addresses, e.g.        
-                                 192.168.1.5, 192.168.1.\* and              
-                                 192.168.\*.\* are all valid and            
-                                 increasingly broad                         
-
-  dont_cache                     Determines if search or browse results     1
-                                 used to built responses are cached or not  
-
-  show_deleted                   Determines if deleted records are included 0
-                                 in list responses                          
-  --------------------------------------------------------------------------------------------------
 
 # Format Definition
 
@@ -134,12 +85,14 @@ The key of the format definition is the so called
 It is used to address these formats in OAI-PMH requests (and also for
 the \'default_format\' setting).
 
-  ------------------------------------------------------------------------
-  Setting        Description                                Example
-                                                            valuemapping
-  -------------- ------------------------------------------ --------------
+|Setting| Description | Example value |
+|----|----|----|
+|mapping|Code of the exporter mapping to use for this provided format|oai_dc|
+|schema|Used only to describe this format for the ListMetadataFormats verb. If you want schema definitions to appear in the protocol responses, they should be part of your export mapping.|http://www.openarchives.org/OAI/2.0/oai_dc.xsd|
+|metadataNamespace|Used only to describe this format for the ListMetadataFormats verb. If you want namespace definitions to appear in the responses, they should be part of your export mapping.|http://www.openarchives.org/OAI/2.0/oai_dc/|
 
-  ------------------------------------------------------------------------
+
+
 
 An example configuration with only one format (metadataPrefix: oai_dc)
 served by the provider could look like this:

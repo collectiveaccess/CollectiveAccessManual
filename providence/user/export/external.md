@@ -2,17 +2,16 @@
 title: External Export Framework
 ---
 
+# External Export Framework
+
 -   [Configuration](#configuration)
 -   [Running an Export](#running-an-export)
 -   [Extending the Framework](#extending-the-framework)
 
-:::: note
-::: title
-Note
-:::
 
+:::note
 This feature is available from CollectiveAccess version 1.8.
-::::
+:::
 
 CollectiveAccess can interact with other external systems, including
 digital preservation and data backup platforms, using the external
@@ -48,39 +47,18 @@ trigger creation of a package and where packages are ultimately sent.
 You can configure as many targets as required, each with its own
 packaging, destinations and other characteristics.
 
-Targets are defined in the [external_exports.conf]
+Targets are defined in the **external_exports.conf**
 configuration file. Each target has a unique code and a dictionary of
 configuration values. Within the dictionary, a few top-level settings
 define basic parameters:
 
-  -----------------------------------------------------------------------
-  Setting               Description                     Example value
-  --------------------- ------------------------------- -----------------
-  label                 The name of the target, for     CTDA MODS export
-                        display.                        
-
-  enabled               Indicates if the target should  1
-                        be processed or not. Set to 0   
-                        to disable the target or 1 to   
-                        enable.                         
-
-  table                 Defines the table this target   ca_objects
-                        exports records from.           
-
-  restrictToTypes       An optional list of one or more \[books,
-                        types for the export            documents\]
-                        [table]. If set,    
-                        only records with the specified 
-                        types will be exported.         
-
-  checkAccess           An optional list of one or more \[1\] (export
-                        access values to filter record  only records with
-                        on. If set, only records with   an access status
-                        the specified access values     of \"1\", which
-                        will be exported                is typically used
-                                                        to indicate the
-                                                        record is public)
-  -----------------------------------------------------------------------
+| Setting | Description | Example Value
+|----|----|----|
+| label|The name of the target, for display.|CTDA MODS export|
+|enabled|Indicates if the target should be processed or not. Set to 0 to disable the target or 1 to enable.|1|
+|table|Defines the table this target exports records from.|ca_objects|
+|restrictToTypes|An optional list of one or more types for the export table. If set, only records with the specified types will be exported.|[books, documents]|
+|checkAccess|An optional list of one or more access values to filter record on. If set, only records with the specified access values will be exported|[1] (export only records with an access status of “1”, which is typically used to indicate the record is public)|
 
 Detailed configuration is contained in three blocks:
 

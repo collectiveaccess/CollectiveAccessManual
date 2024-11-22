@@ -2,6 +2,8 @@
 title: PDF Output
 ---
 
+# PDF Output
+
 -   [How PDF Templates are Evaluated](#how-pdf-templates-are-evaluated)
 -   [Creating PDF Formats](#creating-pdf-formats)
 -   [For all results (Browse or

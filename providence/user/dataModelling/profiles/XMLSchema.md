@@ -9,14 +9,14 @@ XML-based schema, or modify an existing one. Each profile defines a
 number of aspects required in a working cataloguing system, including:
 
 > -   [Metadata Elements and
->     Attributes](file:///Users/charlotteposever/Documents/ca_manual/providence/user/dataModelling/metadata.html).
+>     Attributes](https://camanual.whirl-i-gig.com/providence/user/dataModelling/metadata/).
 >     Each element definition may include the types of data an element
 >     can accept, constraints on input, how and if it repeats, where it
 >     may be used, descriptive \"help\" text and more. With a few
 >     exceptions there are no hardcoded fields in CollectiveAccess: you
 >     define what you need.
 > -   [Relationship
->     types](file:///Users/charlotteposever/Documents/ca_manual/providence/user/dataModelling/relationships.html).
+>     types](https://camanual.whirl-i-gig.com/providence/user/dataModelling/relationships).
 >     Various types of catalogued items (objects, people, places, etc.)
 >     can be linked to each other with qualified relationships. The
 >     range of valid qualifiers for a given use-case is defined in the
@@ -24,7 +24,7 @@ number of aspects required in a working cataloguing system, including:
 >     for your project. You don\'t have to keep irrelevant options
 >     around just because the developers thought they were a good idea.
 > -   [User
->     interfaces](file:///Users/charlotteposever/Documents/ca_manual/providence/user/editing/interfaces.html).
+>     interfaces](https://camanual.whirl-i-gig.com/providence/user/editing/interfaces).
 >     There are no hardcoded editing user interfaces in
 >     CollectiveAccess. You can create as many editing interfaces as you
 >     need, each with its own unique arrangement of screen and field
@@ -35,7 +35,7 @@ number of aspects required in a working cataloguing system, including:
 >     (and highly recommended) to define at least a basic set of
 >     interfaces in a profile.
 > -   [List and Vocabulary
->     Management](file:///Users/charlotteposever/Documents/ca_manual/providence/user/editing/lists_and_vocab.html).
+>     Management](https://camanual.whirl-i-gig.com/providence/user/editing/lists_and_vocab).
 >     Lists are used extensively in CollectiveAccess as controlled
 >     vocabularies for cataloguing, as value sets for metadata elements,
 >     and as system lists defining the allowed values for certain
@@ -46,7 +46,7 @@ number of aspects required in a working cataloguing system, including:
 >     which are required for proper application function, and lists used
 >     by metadata elements defined in the profile, must be defined in
 >     the profile.
-> -   [Locales](file:///Users/charlotteposever/Documents/ca_manual/providence/user/dataModelling/Locales.html).
+> -   [Locales](https://camanual.whirl-i-gig.com/providence/user/dataModelling/Locales).
 >     The list of languages and cultures available for cataloguing
 >     purposes (e.g., the languages you\'ll be cataloguing in - not the
 >     languages or cultures used for descriptive metadata) can be
@@ -492,26 +492,22 @@ type-specific cataloging interfaces.
 >         </restriction>
 >     </typeRestrictions>
 
-:::: note
-::: title
-Note
-:::
-
+:::note
 Note that the item type specification - what type of item the
 restriction is bound to - is called \"table\" in the profile code. This
 is because the item types are specified using the names for their tables
 in the CollectiveAccess database. Specific table names are used for
 these Primary Types.
-::::
+:::
 
 Each type restriction can take settings. Currently defined settings
 values are:
 
-  Setting                            Value
-  ---------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  minAttributesPerRow                Minimum number of attributes of this kind that must be associated with an item; set to zero to make the attribute optional; valid value must be a positive integer.
-  maxAttributesPerRow                Maximum number of attributes of this kind that can be associated with an item; set to zero or do not set to enforce no limit; valid value must be a positive integer. Setting value to 1 will disable the repeat attribute option in the editor screen, set to 0 or greater than one will enable the attribute repeat feature and display the \"Add\" link (eg. \[+\]Add \<attr_name\> ) immediately below the attribute data entry.
-  minimumAttributeBundlesToDisplay   The minimum number of attribute bundles to show in an editing form. If the number of actual attributes is less than this number then the user interface will show empty form bundles to reach this number. This number should be less than or equal to the maximum number of attributes per row; valid values are positive integers.
+| Setting| Value
+|----|----|
+| minAttributesPerRow|Minimum number of attributes of this kind that must be associated with an item; set to zero to make the attribute optional; valid value must be a positive integer.|
+|maxAttributesPerRow|Maximum number of attributes of this kind that can be associated with an item; set to zero or do not set to enforce no limit; valid value must be a positive integer. Setting value to 1 will disable the repeat attribute option in the editor screen, set to 0 or greater than one will enable the attribute repeat feature and display the “Add” link (eg. [+]Add `<attr_name>` ) immediately below the attribute data entry.|
+|minimumAttributeBundlesToDisplay|The minimum number of attribute bundles to show in an editing form. If the number of actual attributes is less than this number then the user interface will show empty form bundles to reach this number. This number should be less than or equal to the maximum number of attributes per row; valid values are positive integers.|
 
 ## User Interface Definitions
 
@@ -590,17 +586,13 @@ screens.
 >               </bundlePlacements>
 >             </screen>
 ```
-:::: note
-::: title
-Note
-:::
-
+:::note
 Note that each entry in the bundle list is actually comprised of several
 parts: a unique code as key and an associative array as value. At a
 minimum, the value array must define a bundle using the \'bundle\' key
 and a valid bundle name as the value. Depending upon the bundle being
 listed, other settings can be passed as well.
-::::
+:::
 
 The list of valid bundles varies according to the type of item being
 edited. The object editor supports certain bundles that the entities

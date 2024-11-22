@@ -2,6 +2,8 @@
 title: User Access Control
 ---
 
+# User Access Control
+
 There are many ways to grant and restrict access in CollectiveAccess
 using settings that can be enabled in the installation profile,
 including:

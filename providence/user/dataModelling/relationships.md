@@ -2,6 +2,8 @@
 title: Relationships
 ---
 
+# Relationships
+
 -   [Relationships and Relationship
     Types](#relationships-and-relationship-types)
 -   [Incorporating Relationships in a Data
@@ -43,7 +45,7 @@ places; or entities to entities. For more on interstitial relationships
 and examples, see [Interstitial
 Data](https://manual.collectiveaccess.org/dataModelling/interstitial.html).
 
-# Relationships and Relationship Types
+## Relationships and Relationship Types
 
 An example of a Relationship, with the Relationship Types defined in
 parentheses, is shown below:
@@ -71,7 +73,7 @@ types available within a given system. To view the relationship types
 (on the left in bold), simply select the releationship listed in the
 right-hand column.
 
-# **Incorporating Relationships in a Data Import**
+## **Incorporating Relationships in a Data Import**
 
 Relationships can be incorporated and defined within a data import
 mapping prior to a data import.
@@ -89,7 +91,7 @@ Column](/providence/user/import/c_creating_mapping.html#column-6-refinery)
 and in the [Refinery Parameters
 column](/providence/user/import/c_creating_mapping.html#column-7-refinery-parameters).
 
-# **Relationships in the User Interface**
+## **Relationships in the User Interface**
 
 To view what relationship types are available in a system, navigate in
 CollectiveAccess to **Manage \> Administration \> Relationship Types**.
@@ -107,11 +109,7 @@ relationship types that are available within that specific relationship
 A variety of types are available to help best describe the data in any
 given database.
 
-:::: note
-::: title
-Note
-:::
-
+:::note
 If a data import requires related records, then refineries must be used
 to create relationships between data. For more, see the [Creating an
 Import Mapping:
@@ -120,9 +118,9 @@ Overview](/providence/user/import/c_creating_mapping.html),
 Spreadsheet](/providence/user/import/c_import_tutorial.html),
 and [Refineries and Refinery
 Parameters](/providence/user/import/mappings/refineries.html#import-mappings-refineries).
-::::
+:::
 
-# **Adding or Editing Relationships after Import**
+## **Adding or Editing Relationships after Import**
 
 Choose \"Relationships\" from the side navigation in any type of record
 in the database. This will display a page of all the possible

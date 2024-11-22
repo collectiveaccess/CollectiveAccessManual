@@ -2,6 +2,8 @@
 title: Configuring Metadata Elements
 ---
 
+# Configuring Metadata Elements
+
 -   [Creating a New Metadata Element](#creating-a-new-metadata-element)
 -   [Datatype-Specific Options for Metadata
     Elements](#datatype-specific-options-for-metadata-elements)
@@ -9,11 +11,7 @@ title: Configuring Metadata Elements
 Metadata elements can be created and edited through the CollectiveAccess
 interface.
 
-:::: note
-::: title
-Note
-:::
-
+:::note
 If you have not installed CollectiveAccess yet, or if you would like to
 install one of the available Metadata Standards, it may be preferable to
 configure Providence using
@@ -22,7 +20,7 @@ You can then make changes to your system by configuring Metadata
 Elements individually. For more detailed information about what Metadata
 Elements are and how they work, please visit API: Metadata Elements and
 Attributes.
-::::
+:::
 
 # Creating a New Metadata Element
 

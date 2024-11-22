@@ -2,6 +2,8 @@
 title: Preferences
 ---
 
+# Preferences
+
 -   [General](#general)
 -   [Editing](#editing)
 -   [Batch Editing](#batch-editing)

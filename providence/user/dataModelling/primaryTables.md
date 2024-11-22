@@ -407,89 +407,21 @@ entities and more.
 
 | Name |Code | Description | Mandatory? |Default|
 |----|----|----|----|----|
-|----|----|----|----|----|
-|----|----|----|----|----|
-|----|----|----|----|----|
-|----|----|----|----|----|
-|----|----|----|----|----|
-|----|----|----|----|----|
-|----|----|----|----|----|
-|----|----|----|----|----|
-|----|----|----|----|----|
+|Identifier|idno|The tour stop identifier. Must follow policy defined in configured numbering policy if app.conf setting require_valid_id_number_for_ca_tour_stops is set. Must be unique if app.conf setting allow_duplicate_id_number_for_ca_tour_stops is not set.|Depends upon numbering policy||
+|Type|type_id|A value from the tour_stop_types list indicating the type of the record. Stored as an internally generated numeric item_id. When setting this value in a data import or via an API call the item identifier may be used.|Yes|null|
+|Parent|parent_id|Reference to parent record. Will be null if no parent is defined. When setting this value in a data import or via an API call the identifier of the parent place may be used.|No|null|
+|Tour|tour_id|A reference to the tour record (ca_tours) of which the stop is a part. Note that a stop is always part of a tour. It cannot exist outside of a tour. The raw database value contained tour_id is an internally generated numeric tour_id. However, when setting this intrinsic via an import mapping or API call you may also use the list’s code.|No||
+|Access|access|Determines visibility of record in public-facing applications such as Pawtucket. Values are defined in the access_statuses list. Typically the list includes values for “public” and “private” visibility. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. By convention “0” is interpreted as private and “1” as public access, although this can be modified or expanded in app.conf if required.|Yes|0|
+|Status| status|Records the general cataloguing workflow status of the record. Values are defined in the workflow_statuses list. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. Unlike access values, statuses have no functional impact on a record. They are merely informations and intended to provide a simple, straightforward way to track the cataloguing process.|Yes|0|
+|Icon|icon|Icon image to display for tour stop.|No||
+|Color|color|Highlight color for tour stop in hex format.|No||
+|Rank|rank|The sort order position of the tour stop. Must be a whole number; lower numbers indicate higher ranking in sort.|Yes|0|
 
-  -----------------------------------------------------------------------------------------------
-  Name           Code        Description                                   Mandatory?   Default
-  -------------- ----------- --------------------------------------------- ------------ ---------
-  Identifier     idno        The tour stop identifier. Must follow policy  Depends upon 
-                             defined in configured numbering policy if     numbering    
-                             app.conf setting                              policy       
-                             require_valid_id_number_for_ca_tour_stops is               
-                             set. Must be unique if app.conf setting                    
-                             allow_duplicate_id_number_for_ca_tour_stops                
-                             is not set.                                                
-
-  Type           type_id     A value from the tour_stop_types list         Yes          null
-                             indicating the type of the record. Stored as               
-                             an internally generated numeric item_id. When              
-                             setting this value in a data import or via an              
-                             API call the item identifier may be used.                  
-
-  Parent         parent_id   Reference to parent record. Will be null if   No           null
-                             no parent is defined. When setting this value              
-                             in a data import or via an API call the                    
-                             identifier of the parent place may be used.                
-
-  Tour           tour_id     A reference to the tour record (ca_tours) of  No           
-                             which the stop is a part. Note that a stop is              
-                             always part of a tour. It cannot exist                     
-                             outside of a tour. The raw database value                  
-                             contained tour_id is an internally generated               
-                             numeric tour_id. However, when setting this                
-                             intrinsic via an import mapping or API call                
-                             you may also use the list\'s code.                         
-
-  Access         access      Determines visibility of record in            Yes          0
-                             public-facing applications such as Pawtucket.              
-                             Values are defined in the access_statuses                  
-                             list. Typically the list includes values for               
-                             \"public\" and \"private\" visibility. For                 
-                             historical reasons the value stored in the                 
-                             intrinsic is the list item\'s                              
-                             [value] field, not its identifer               
-                             or label. By convention \"0\" is interpreted               
-                             as private and \"1\" as public access,                     
-                             although this can be modified or expanded in               
-                             app.conf if required.                                      
-
-  Status         status      Records the general cataloguing workflow      Yes          0
-                             status of the record. Values are defined in                
-                             the workflow_statuses list. For historical                 
-                             reasons the value stored in the intrinsic is               
-                             the list item\'s [value] field,                
-                             not its identifer or label. Unlike access                  
-                             values, statuses have no functional impact on              
-                             a record. They are merely informations and                 
-                             intended to provide a simple, straightforward              
-                             way to track the cataloguing process.                      
-
-  Icon           icon        Icon image to display for tour stop.          No           
-
-  Color          color       Highlight color for tour stop in hex format.  No           
-
-  Rank           rank        The sort order position of the tour stop.     Yes          0
-                             Must be a whole number; lower numbers                      
-                             indicate higher ranking in sort.                           
-  -----------------------------------------------------------------------------------------------
-
-:::: note
-::: title
-Note
-:::
-
+:::note
 **ca_tour_stops.preferred_labels.name** is used by data mappings and
 display templates to reference the intrinsic name field in the
 **ca_tour_stop_labels** table
-::::
+:::
 
 # Label Tables
 
@@ -518,11 +450,7 @@ referenced directly, for example while configuring searching indexing.
 Search indexing in
 [Search_indexing.conf](file:///Users/charlotteposever/Documents/ca_manual/providence/user/configuration/mainConfiguration/search_indexing.html).
 
-:::: note
-::: title
-Note
-:::
-
+:::note
 \<table name\>.preferred_labels.\<name of intrinsic\> is used by data
 mappings and display templates to reference the intrinsic _name_
 field for preferred labels. The _\<table name\>.preferred_labels_
@@ -538,130 +466,74 @@ Whether you use _ca_objects.preferred_labels.\<name of intrinsic\>_,
 _ca_objects.nonpreferred_labels.\<name of intrinsic\>\_ or
 _ca_object_labels.\<name of intrinsic\>_, the intrinsic names used are
 the same ones listed below.
-::::
+:::
 
 ## Label tables for primary table
 
-  -----------------------------------------------------------------------
-  Primary table                       Label table
-  ----------------------------------- -----------------------------------
-  ca_objects                          ca_object_labels
-
-  ca_object_lots                      ca_object_lot_labels
-
-  ca_entities                         ca_entity_labels
-
-  ca_places                           ca_place_labels
-
-  ca_occurrences                      ca_occurrence_labels
-
-  ca_collections                      ca_collection_labels
-
-  ca_storage_locations                ca_storage_location_labels
-
-  ca_loans                            ca_loan_labels
-
-  ca_movements                        ca_movement_labels
-
-  ca_object_representations           ca_object_representation_labels
-
-  ca_tours                            ca_tour_labels
-
-  ca_tour_stops                       ca_tour_stop_labels
-  -----------------------------------------------------------------------
+| Primary table |Label table | 
+|----|----|
+|ca_objects|ca_object_labels|
+|ca_object_lots|ca_object_lot_labels|
+|ca_entities|ca_entity_labels|
+|ca_places|ca_place_labels|
+|ca_occurrences|ca_occurrence_labels|
+|ca_collections|ca_collection_labels|
+|ca_storage_locations|ca_storage_location_labels|
+|ca_loans|ca_loan_labels|
+|ca_movements|ca_movement_labels|
+|ca_object_representations|ca_object_representation_labels|
+|ca_tours|ca_tour_labels|
+|ca_tour_stops|ca_tour_stop_labels|
 
 ## Available for all label tables
 
-  ------------------------------------------------------------------------
-  Name                  Code                  Description
-  --------------------- --------------------- ----------------------------
-  Preferred?            is_preferred          A preferred label is the one
-                                              \'true\' title or name of an
-                                              item -- the one you should
-                                              use when referring to the
-                                              item -- used for display.
-                                              There can only be one
-                                              preferred label per item per
-                                              locale. That is, if you are
-                                              cataloguing in three
-                                              languages you can have up to
-                                              three preferred labels, one
-                                              in each language.
-                                              Non-preferred labels are
-                                              alternative names that can
-                                              be used to enhance searching
-                                              or preserve identity.
-                                              Non-preferred labels can
-                                              repeat without limit, take
-                                              locales and optionally take
-                                              type values which may be
-                                              employed distinguish valid
-                                              \'alternate\' labels from
-                                              simple search enhancing
-                                              non-preferred labels.
+| Name |Code | Description 
+|----|----|----|
+|Preferred?|is_preferred|A preferred label is the one ‘true’ title or name of an item – the one you should use when referring to the item – used for display. There can only be one preferred label per item per locale. That is, if you are cataloguing in three languages you can have up to three preferred labels, one in each language. Non-preferred labels are alternative names that can be used to enhance searching or preserve identity. Non-preferred labels can repeat without limit, take locales and optionally take type values which may be employed distinguish valid ‘alternate’ labels from simple search enhancing non-preferred labels.|
+|Name sort|name_sort|Automatically generated version of label used for sorting.|
+|Type|type_id||
+|Source|source_info||
+|Locale|locale_id|Locale of the label.|
 
-  Name sort             name_sort             Automatically generated
-                                              version of label used for
-                                              sorting.
-
-  Type                  type_id               
-
-  Source                source_info           
-
-  Locale                locale_id             Locale of the label.
-  ------------------------------------------------------------------------
-
-:::: note
-::: title
-Note
-:::
-
-**ca_tour_labels** and **ca_tour_stop_labels** do not contain type,
+:::note
+ca_tour_labels** and **ca_tour_stop_labels** do not contain type,
 source_info and is_preferred
-::::
+:::
 
 ## Label name fields
 
 Name fields within label tables can differ for different tables.
 
-The following applies to: Object labels (ca_object_labels), Object Lot
-labels (ca_object_lot_labels), Place labels (ca_place_labels),
-Occurrence labels (ca_occurrence_labels), Collection labels
-(ca_collection_labels), Storage location labels
-(ca_storage_location_labels), Loan labels (ca_loan_labels), Movement
-labels (ca_movement_labels), Object representation labels
-(ca_object_representation_labels), Tour labels (ca_tour_labels), Tour
-stop labels (ca_tour_stop_labels)
+The following applies to: 
 
-  ------------------------------------------------------------------------
-  Name                  Code                  Description
-  --------------------- --------------------- ----------------------------
-  Name                  name                  Name of record, used for
-                                              display.
+* Object labels (ca_object_labels), 
+* Object Lot labels (ca_object_lot_labels)
+* Place labels (ca_place_labels)
+* Occurrence labels (ca_occurrence_labels)
+* Collection labels (ca_collection_labels)
+* Storage location labels (ca_storage_location_labels)
+* Loan labels (ca_loan_labels)
+* Movement labels (ca_movement_labels)
+* Object representation labels (ca_object_representation_labels)
+* Tour labels (ca_tour_labels)
+* Tour stop labels (ca_tour_stop_labels)
 
-  ------------------------------------------------------------------------
+| Name |Code | Description 
+|----|----|----|
+|Name|name|Name of record, used for display.|
+
 
 ### The following applies to: Entity labels (ca_entity_labels) {#ca_entity_labels-name-fields}
 
-  ------------------------------------------------------------------------
-  Name                  Code                  Description
-  --------------------- --------------------- ----------------------------
-  Displayname           displayname           Full name of entity, used
-                                              for display.
-
-  Forename/First name   forename              Forename of the entity
-
-  Additional forenames/ other_forename        Alternate forenames
-  first names                                 
-
-  Middle name           middlename            Middle name of the entity
-
-  Surname/Last name     surname               Surname of the entity
-
-  Prefix                prefix                Prefix for the entity
-
-  Suffix                suffix                Suffix for the entity
-  ------------------------------------------------------------------------
+| Name |Code | Description 
+|----|----|----|
+|Displayname|displayname |Full name of entity, used for display|
+|Forename/First name|forename|Forename of the entity|
+|Additional forenames/ first names|other_forename| Alternate forenames|
+| Middle name |middlename|Middle name of the entity|
+|Surname/Last name|surname|Surname of the entity|
+|Prefix|prefix|Prefix for the entity|
+|Suffix|suffix|Suffix for the entity|
 
 # Special Intrinsics
 
@@ -669,163 +541,13 @@ Additional intrinsics provide access to change log information,
 origination and history tracking information. They are potentially
 available many or all primary tables, as noted below.
 
-+---------+------------------------+-----------------+-----------------+
-| Code    | Description            | Applies to      | Examples        |
-+=========+========================+=================+=================+
-| created | Date/time record was   | Any record      | ca_             |
-|         | created. Returns       |                 | objects.created |
-|         | date/time formatted    |                 | (returns        |
-|         | using system defaults  |                 | date/time as    |
-|         | for display. Optional  |                 | display text)   |
-|         | subfields may be       |                 | ca_objects.cr   |
-|         | specified to obtain    |                 | eated.timestamp |
-|         | the date/time in       |                 | (returns        |
-|         | different formats, and |                 | date/time as    |
-|         | information about the  |                 | Unix timestamp) |
-|         | user that created the  |                 | ca_object       |
-|         | record. Subfields      |                 | s.created.email |
-|         | include:               |                 | (returns the    |
-|         |                        |                 | email of the    |
-|         | user = the creator\'s  |                 | user who        |
-|         | user name fname = the  |                 | created the     |
-|         | creator\'s first name  |                 | record)         |
-|         | lname = the creator\'s |                 |                 |
-|         | last name email = the  |                 |                 |
-|         | creator\'s email       |                 |                 |
-|         | address timestamp =    |                 |                 |
-|         | the creation date/time |                 |                 |
-|         | as a Unix timestamp    |                 |                 |
-+---------+------------------------+-----------------+-----------------+
-| lastM   | Date/time record was   | Any record      | ca_objec        |
-| odified | last modified. Returns |                 | ts.lastModified |
-|         | date/time formatted    |                 | (returns        |
-|         | using system defaults  |                 | date/time of    |
-|         | for display. Optional  |                 | last            |
-|         | subfields may be       |                 | modification as |
-|         | specified to obtain    |                 | display text)   |
-|         | the date/time in       |                 | ca_             |
-|         | different formats, and |                 | objects.lastMod |
-|         | information about the  |                 | ified.timestamp |
-|         | user that last         |                 | (returns        |
-|         | modified the record.   |                 | date/time of    |
-|         | Subfields include:     |                 | last            |
-|         |                        |                 | modification as |
-|         | user = the user name   |                 | Unix timestamp) |
-|         | of the user who last   |                 | ca_objects.las  |
-|         | modified the record    |                 | tModified.email |
-|         | fname = the last       |                 | (returns the    |
-|         | modifier\'s first name |                 | email of the    |
-|         | lname = the last       |                 | user who last   |
-|         | modifier\'s last name  |                 | modified the    |
-|         | email = the last       |                 | record)         |
-|         | modifier\'s email      |                 |                 |
-|         | address timestamp =    |                 |                 |
-|         | the last modification  |                 |                 |
-|         | date/time as a Unix    |                 |                 |
-|         | timestamp              |                 |                 |
-+---------+------------------------+-----------------+-----------------+
-| \_guid  | A globally unique      | Any ford        | ca_objects.guid |
-|         | identifier (GUID) for  |                 |                 |
-|         | the record. This is    |                 |                 |
-|         | the same GUID value    |                 |                 |
-|         | used to track records  |                 |                 |
-|         | across replicated      |                 |                 |
-|         | systems. (Available    |                 |                 |
-|         | from version 1.8)      |                 |                 |
-+---------+------------------------+-----------------+-----------------+
-| hi      | Current value for      | Any record for  | ca_objects.     |
-| story_t | history tracking       | which a current | history_trackin |
-| racking | policy. Policy used is | value tracking  | g_current_value |
-| _curren | the default policy     | policy is       | (current value  |
-| t_value | unless overridden by   | defined         | for object      |
-|         | passing the a policy   |                 | default policy) |
-|         | option value on the    |                 | ca_objects.his  |
-|         | tag.                   |                 | tory_tracking_c |
-|         |                        |                 | urrent_value%po |
-|         |                        |                 | licy=provenance |
-|         |                        |                 | (current value  |
-|         |                        |                 | for object      |
-|         |                        |                 | record using    |
-|         |                        |                 | \"provenance\"  |
-|         |                        |                 | policy)         |
-+---------+------------------------+-----------------+-----------------+
-| h       | Date of current value  | Any record for  | ca_objects      |
-| istory_ | for history tracking   | which a current | .history_tracki |
-| trackin | policy. Policy used is | value tracking  | ng_current_date |
-| g_curre | the default policy     | policy is       | (current value  |
-| nt_date | unless overridden by   | defined         | cate for object |
-|         | passing the a policy   |                 | default policy) |
-|         | option value on the    |                 | ca_objects.hi   |
-|         | tag.                   |                 | story_tracking_ |
-|         |                        |                 | current_date%po |
-|         |                        |                 | licy=provenance |
-|         |                        |                 | (current value  |
-|         |                        |                 | date for object |
-|         |                        |                 | record using    |
-|         |                        |                 | \"provenance\"  |
-|         |                        |                 | policy)         |
-+---------+------------------------+-----------------+-----------------+
-| histo   | Values of all records  | Any record      | ca_storag       |
-| ry_trac | that use this record   | which is used   | e_locations.his |
-| king_cu | as their current       | by at least one | tory_tracking_c |
-| rrent_c | value. Policy used is  | current value   | urrent_contents |
-| ontents | the default policy     | tracking policy | (all values     |
-|         | unless overridden by   |                 | that use this   |
-|         | passing the a policy   |                 | location record |
-|         | option value on the    |                 | as their        |
-|         | tag.                   |                 | current value   |
-|         |                        |                 | for any default |
-|         |                        |                 | policy)         |
-|         |                        |                 | ca_             |
-|         |                        |                 | storage_locatio |
-|         |                        |                 | ns.history_trac |
-|         |                        |                 | king_current_co |
-|         |                        |                 | ntents%policy=c |
-|         |                        |                 | urrent_location |
-|         |                        |                 | (all records    |
-|         |                        |                 | using this      |
-|         |                        |                 | location record |
-|         |                        |                 | as their curent |
-|         |                        |                 | value using the |
-|         |                        |                 | \"cur           |
-|         |                        |                 | rent_location\" |
-|         |                        |                 | policy)         |
-+---------+------------------------+-----------------+-----------------+
-| sub     | Name and email of user | ca_objects,     | ca_objects.su   |
-| mitted_ | who submitted the      | ca_entities,    | bmitted_by_user |
-| by_user | record using the       | ca_places,      | (Returns        |
-|         | Pawtucket              | ca_occurrences, | \<first name\>  |
-|         | \"contribute\" form    | ca_collections, | \<last name\>   |
-|         | feature. By default    | ca_object_lots, | (\<email\>))    |
-|         | the user\'s first and  | ca_loans,       | ca              |
-|         | last name, followed by | ca_movements,   | _objects.submit |
-|         | email address are      | ca_sto          | ted_by_user%dis |
-|         | returned. The return   | rage_locations, | play_template=\ |
-|         | value may be           | ca_object_      | ^ca_users.email |
-|         | controlled by passing  | representations | (Returns email  |
-|         | a \"display_template\" |                 | address alone)  |
-|         | tag option. The        |                 |                 |
-|         | display template is    |                 |                 |
-|         | evaluated relative to  |                 |                 |
-|         | the ca_users record.   |                 |                 |
-+---------+------------------------+-----------------+-----------------+
-| su      | The group the user was | ca_objects,     | ca_objects.s    |
-| bmissio | in when the record was | ca_entities,    | ubmission_group |
-| n_group | submitted using the    | ca_places,      | (Returns        |
-|         | Pawtucket              | ca_occurrences, | \<group name\>  |
-|         | \"contribute\" form    | ca_collections, | (\<group        |
-|         | feature. By default    | ca_object_lots, | code\>))        |
-|         | the group name         | ca_loans,       | ca_obje         |
-|         | followed by group code | ca_movements,   | cts.submission_ |
-|         | is returned. The       | ca_sto          | group%display_t |
-|         | return value may be    | rage_locations, | emplate=\^ca_us |
-|         | controlled by passing  | ca_object_      | er_groups.codel |
-|         | a \"display_template\" | representations | (Returns group  |
-|         | tag option. The        |                 | code alone)     |
-|         | display template is    |                 |                 |
-|         | evaluated relative to  |                 |                 |
-|         | the ca_user_groups     |                 |                 |
-|         | record.                |                 |                 |
-+---------+------------------------+-----------------+-----------------+
-|         |                        |                 |                 |
-+---------+------------------------+-----------------+-----------------+
+|Code | Description |Applies to|Examples
+|----|----|----|----|
+|created|Date/time record was created. Returns date/time formatted using system defaults for display. Optional subfields may be specified to obtain the date/time in different formats, and information about the user that created the record. Subfields include:<ul><li>user = the creator’s user name</li><li>fname = the creator’s first name</li><li>lname = the creator’s last name</li><li>email = the creator’s email address</li><li>timestamp = the creation date/time as a Unix timestamp</li></ul>|Any record|<ul><li>ca_objects.created (returns date/time as display text)</li><li>ca_objects.created.timestamp (returns date/time as Unix timestamp)</li><li>ca_objects.created.email (returns the email of the user who created the record)</li></ul>|
+ |lastModified|Date/time record was last modified. Returns date/time formatted using system defaults for display. Optional subfields may be specified to obtain the date/time in different formats, and information about the user that last modified the record. Subfields include:<ul><li>user = the user name of the user who last modified the record</li><li>fname = the last modifier’s first name</li><li>lname = the last modifier’s last name</li><li>email = the last modifier’s email address</li><li>timestamp = the last modification date/time as a Unix timestamp</li></ul>|Any record|<ul><li>ca_objects.lastModified (returns date/time of last modification as display text)</li><li>ca_objects.lastModified.timestamp (returns date/time of last modification as Unix timestamp)</li><li>ca_objects.lastModified.email (returns the email of the user who last modified the record)</li></ul>|
+|_guid|A globally unique identifier (GUID) for the record. This is the same GUID value used to track records across replicated systems. (Available from version 1.8)|Any record|ca_objects.guid|
+|history_tracking_current_value|Current value for history tracking policy. Policy used is the default policy unless overridden by passing the a policy option value on the tag.|Any record for which a current value tracking policy is defined|<ul><li>ca_objects.history_tracking_current_value (current value for object default policy)</li><li>ca_objects.history_tracking_current_value%policy=provenance (current value for object record using “provenance” policy)</li></ul>|
+|history_tracking_current_date|Date of current value for history tracking policy. Policy used is the default policy unless overridden by passing the a policy option value on the tag.|Any record for which a current value tracking policy is defined|<ul><li>ca_objects.history_tracking_current_date (current value cate for object default policy)</li><li>ca_objects.history_tracking_current_date%policy=provenance (current value date for object record using “provenance” policy)</li></ul>|
+|history_tracking_current_contents|Values of all records that use this record as their current value. Policy used is the default policy unless overridden by passing the a policy option value on the tag.|Any record which is used by at least one current value tracking policy|ca_storage_locations.history_tracking_current_contents (all values that use this location record as their current value for any default policy) ca_storage_locations.history_tracking_current_contents%policy=current_location (all records using this location record as their curent value using the “current_location” policy)|
+|submitted_by_user|Name and email of user who submitted the record using the Pawtucket “contribute” form feature. By default the user’s first and last name, followed by email address are returned. The return value may be controlled by passing a “display_template” tag option. The display template is evaluated relative to the ca_users record.|<ul><li>ca_objects</li><li>ca_entities</li><li>ca_places</li><li>ca_occurrences</li><li>ca_collections</li><li>ca_object_lots</li><li>ca_loans</li><li>ca_movements</li><li>ca_storage_locations</li><li>ca_object_representations</li></ul>|<ul><li>ca_objects.submitted_by_user (Returns `<first name> <last name>(<email>)`)</li><li>ca_objects.submitted_by_user%display_template=^ca_users.email (Returns email address alone)</li></ul>|
+|submission_group|The group the user was in when the record was submitted using the Pawtucket “contribute” form feature. By default the group name followed by group code is returned. The return value may be controlled by passing a “display_template” tag option. The display template is evaluated relative to the ca_user_groups record.|<ul><li>ca_objects</li><li>ca_entities</li><li>ca_places</li><li>ca_occurrences</li><li>ca_collections</li><li>ca_object_lots</li><li>ca_loans</li><li>ca_movements</li><li>ca_storage_locations</li><li>ca_object_representations</li></ul>|<ul><li>ca_objects.submission_group (Returns ``<group name> (<group code>)`` </li><li>ca_objects.submission_group%display_template=^ca_user_groups.codel (Returns group code alone)</li></ul>|

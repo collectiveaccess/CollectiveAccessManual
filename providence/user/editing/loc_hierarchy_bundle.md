@@ -2,6 +2,8 @@
 title: Location in a Hierarchy Bundle
 ---
 
+# Location in a Hierarchy Bundle
+
 The Location in Hierarchy Bundle appears within the editor screen for a
 number of Hierarchical records (such as Collections, Objects, Places,
 List Items, Entities, and so on). This bundle is different from the

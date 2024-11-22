@@ -2,6 +2,8 @@
 title: Deaccessions
 ---
 
+# Deaccessions
+
 -   [Deaccessioning a Record](#deaccessioning-a-record)
 -   [Filter Results by Deaccession
     Status](#filter-results-by-deaccession-status)
@@ -10,15 +12,11 @@ CollectiveAccess can track the deaccessioning process at the item-level,
 using the **Deaccession Status bundle**. The Deaccession Status bundle
 can be placed anywhere in the object editor screen.
 
-:::: note
-::: title
-Note
-:::
-
+:::note
 If you are writing a profile configuration in XML, the bundle code is
 **ca_objects_deaccession**. Items can only be deaccessioned if this
 bundle code is included in the installation profile.
-::::
+:::
 
 # Deaccessioning a Record
 

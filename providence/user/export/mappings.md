@@ -2,6 +2,8 @@
 title: Export Mappings
 ---
 
+# Export Mappings 
+
 -   [Supported Output Formats](#supported-output-formats)
 -   [Creating an Export Mapping](#creating-an-export-mapping)
 -   [Rule Types](#rule-types)
@@ -60,31 +62,14 @@ mapping](/providence/user/import/c_import_tutorial.html#column-1-rule-types),
 in an export mapping, what you set here qualifies what this row does.
 There are several options available:
 
-  -----------------------------------------------------------------------
-  Rule type         Description
-  ----------------- -----------------------------------------------------
-  Mapping           Maps a CollectiveAccess data source to a target
-                    column number, XML element/attribute or MARC field.
 
-  Constant          Allows you to set an element in the target format (a
-                    CSV column or an XML element/attribute to a
-                    static/constant value. If this is set, the value is
-                    taken from the 6th column in the mapping sheet
-                    (\"Source\").
-
-  RepeatMappings    Allows repeating a list of existing mappings in a
-                    different context. If this is set, the
-                    comma-delimited list of mappings is taken from the
-                    6th column (\"Source\"). See Data_Exporter#Mapping
-                    repitition.
-
-  Setting           Sets preferences for the mapping (see below).
-
-  Variable          (Available for v1.5) Allows you, using all the
-                    available features of the exporter, to assign a value
-                    to a user-defined name for later usage. See
-                    Data_Exporter#Variables.
-  -----------------------------------------------------------------------
+| Rule Type | Description 
+|----|----|
+|Mapping|Maps a CollectiveAccess data source to a target column number, XML element/attribute or MARC field.|
+|Constant|Allows you to set an element in the target format (a CSV column or an XML element/attribute to a static/constant value. If this is set, the value is taken from the 6th column in the mapping sheet (“Source”).|
+|RepeatMappings|Allows repeating a list of existing mappings in a different context. If this is set, the comma-delimited list of mappings is taken from the 6th column (“Source”). See Data_Exporter#Mapping repitition.|
+|Setting|Sets preferences for the mapping (see below).|
+|Variable|(Available for v1.5) Allows you, using all the available features of the exporter, to assign a value to a user-defined name for later usage. See Data_Exporter#Variables.|
 
 # Hierarchical Mappings
 
@@ -133,17 +118,12 @@ from it.
 Say you have the following very simple part of a mapping sheet and you
 export a single object.
 
-  ----------------------------------------------------------------------------------------------
-  Rule type    ID     Parent   Element   Source                        Options
-                      ID                                               
-  ------------ ------ -------- --------- ----------------------------- -------------------------
-  Mapping      1               object                                  
-
-  Mapping      2      1        \@idno    ca_objects.idno               
-
-  Mapping      3      1        title     ca_objects.preferred_labels   
-  ----------------------------------------------------------------------------------------------
-
+| Rule Type | ID | Parent ID  | Element  |Source  | Options
+|----|----|----|----|----|----|
+|Mapping|1||object|||
+|Mapping|2|1|\@idno|ca_objects.idno||
+|Mapping|3|1|title|ca_objects.preferred_labels||
+  
 What you end up with as export for a given objects is something like the
 following:
 
@@ -181,16 +161,11 @@ data field. Here\'s an example in table form (which may not make sense
 from a MARC standpoint but we\'re only trying to explain the format
 here, not the semantics of MARC fields):
 
-  ----------------------------------------------------------------------------------------------
-  Rule type    ID     Parent   Element   Source                        Options
-                      ID                                               
-  ------------ ------ -------- --------- ----------------------------- -------------------------
-  Mapping      1               1         ca_objects.idno               
-
-  Mapping      2               300/##                                  
-
-  Mapping      3      2        b         ca_objects.preferred_labels   
-  ----------------------------------------------------------------------------------------------
+|Rule Type |ID |Parent ID  |Element  |Source  |Options
+|----|----|----|----|----|----|
+|Mapping|1||1|ca_objects.idno||
+|Mapping|2||300/##|||
+|Mapping|3|2|b|ca_objects.preferred_labels||
 
 An example export for a single object looks like this then. Note that we
 selected the \'readable\' format for the MARC exporter, more info on
@@ -227,19 +202,12 @@ A good way to think of variables is that they are mappings that don\'t
 end up in the actual export. They respect the current context, the
 current place in the hierarchy, everything.
 
-  ----------------------------------------------------------------------------------------
-  Rule type    ID     Parent   Element   Source                  Options
-                      ID                                         
-  ------------ ------ -------- --------- ----------------------- -------------------------
-  Variable                     type      ca_objects.type_id      
-
-  Mapping      1               object                            
-
-  Mapping      2      1        \@idno    ca_objects.idno         
-
-  Mapping      3      1        secret    ca_objects.top_secret   \{ \"skipIfExpression\" :
-                                                                 \"\^type!\~/49/\" \}
-  ----------------------------------------------------------------------------------------
+|Rule Type |ID |Parent ID  |Element  |Source  |Options
+|----|----|----|----|----|----|
+|Variable|||type |ca_objects.type_id||
+|Mapping|1 ||object|||
+|Mapping|2|1|\@idno|ca_objects.idno||
+|Mapping|3|1|secret|ca_objects.top_secret|`{“skipIfExpression” : “^type!~/49/” }`|
 
 We use the \"type\" variable in the skipIfExpression setting for the
 top_secret mapping. For more info on this setting, see the setting
@@ -250,122 +218,19 @@ description below.
 These are configuration options that apply to the whole exporter
 mapping.
 
-  ---------------------------------------------------------------------------------------------------------------------
-  Setting              Description       Parameter notes              Example
-  -------------------- ----------------- ---------------------------- -------------------------------------------------
-  exporter_format      Sets the format   Restricted list, at the      XML
-                       used for this     moment \'XML\', \'MARC\' and 
-                       mapping.          \'CSV\' are supported.       
+|Setting |Description |Parameter notes  |Example 
+|----|----|----|----|
+|exporter_format|Sets the format used for this mapping.|Restricted list, at the moment ‘XML’, ‘MARC’ and ‘CSV’ are supported.|XML|
+|code|Alphanumeric code of the mapping|Arbitrary, no special characters or spaces|my_mapping|
+|name|Human readable name of the mapping|Arbitrary text|My mapping|
+|table|Sets the table for the exported data|Corresponds to CollectiveAccess Basic Tables|ca_objects|
+|wrap_before|If this exporter is used for an item set export (as opposed to a single item), the text set here will be inserted before the first item. This can for instance be used to wrap a repeating set of XML elements in a single global element. The text should be valid for the current exporter format.|Arbitrary string value|`<rdf:RDF xmlns:dc=”http://purl.org/dc/elements/1.1/” …>`|
+|wrap_after|If this exporter is used for an item set export (as opposed to a single item), the text set here will be inserted after the last item. This can for instance be used to wrap a repeating set of XML elements in a single global element. The text has to be valid for the current exporter format.|Arbitrary string value|`</rdf:RDF>`|
+|wrap_before_record|Same as wrap_before but only applies to single item/record exports.|Arbitrary string value|`<mySingleRecordWrap xml:id=”fooBar”>`|
+|wrap_after_record|Same as wrap_after but only applies to single item/record exports.|Arbitrary string value|`</mySingleRecordWrap>`|
+|typeRestrictions|If set, this mapping will only be available for these types. Multiple types are separated by commas or semicolons. Note that this doesn’t work very well for batch exports because search results or sets typically consist of records of multiple types. The exporter select dropdown always shows all exporters for that table, but when you actually run the export in batch mode, it will filter according to the restriction, which can get a little confusing when you look at the result.|comma- or semi-colon separated list of valid type codes for this table|image, document|
+|MARC_outputFormat|MARC supports a couple of different output formats for the same kinds of mapping. Set the format you want to use here. Default is ‘readable’. See [2] for more details|readable’, ‘raw’ or ‘xml’. readable refers to the typical more or less human-readable table-like format used for MARC records. raw is used to write MARC binary files for data exchange. The 3rd option uses MARCXML as output format.|xml|
 
-  code                 Alphanumeric code Arbitrary, no special        my_mapping
-                       of the mapping    characters or spaces         
-
-  name                 Human readable    Arbitrary text               My mapping
-                       name of the                                    
-                       mapping                                        
-
-  table                Sets the table    Corresponds to               ca_objects
-                       for the exported  CollectiveAccess Basic       
-                       data              Tables                       
-
-  wrap_before          If this exporter  Arbitrary string value       \<rdf:RDF
-                       is used for an                                 xmlns:dc=\"\<http://purl.org/dc/elements/1.1/\>\"
-                       item set export                                \...\>
-                       (as opposed to a                               
-                       single item), the                              
-                       text set here                                  
-                       will be inserted                               
-                       before the first                               
-                       item. This can                                 
-                       for instance be                                
-                       used to wrap a                                 
-                       repeating set of                               
-                       XML elements in a                              
-                       single global                                  
-                       element. The text                              
-                       should be valid                                
-                       for the current                                
-                       exporter format.                               
-
-  wrap_after           If this exporter  Arbitrary string value       \</rdf:RDF\>
-                       is used for an                                 
-                       item set export                                
-                       (as opposed to a                               
-                       single item), the                              
-                       text set here                                  
-                       will be inserted                               
-                       after the last                                 
-                       item. This can                                 
-                       for instance be                                
-                       used to wrap a                                 
-                       repeating set of                               
-                       XML elements in a                              
-                       single global                                  
-                       element. The text                              
-                       has to be valid                                
-                       for the current                                
-                       exporter format.                               
-
-  wrap_before_record   Same as           Arbitrary string value       \<mySingleRecordWrap xml:id=\"fooBar\"\>
-                       wrap_before but                                
-                       only applies to                                
-                       single                                         
-                       item/record                                    
-                       exports.                                       
-
-  wrap_after_record    Same as           Arbitrary string value       \</mySingleRecordWrap\>
-                       wrap_after but                                 
-                       only applies to                                
-                       single                                         
-                       item/record                                    
-                       exports.                                       
-
-  typeRestrictions     If set, this      comma- or semi-colon         image,document
-                       mapping will only separated list of valid type 
-                       be available for  codes for this table         
-                       these types.                                   
-                       Multiple types                                 
-                       are separated by                               
-                       commas or                                      
-                       semicolons. Note                               
-                       that this                                      
-                       doesn\'t work                                  
-                       very well for                                  
-                       batch exports                                  
-                       because search                                 
-                       results or sets                                
-                       typically consist                              
-                       of records of                                  
-                       multiple types.                                
-                       The exporter                                   
-                       select dropdown                                
-                       always shows all                               
-                       exporters for                                  
-                       that table, but                                
-                       when you actually                              
-                       run the export in                              
-                       batch mode, it                                 
-                       will filter                                    
-                       according to the                               
-                       restriction,                                   
-                       which can get a                                
-                       little confusing                               
-                       when you look at                               
-                       the result.                                    
-
-  MARC_outputFormat    MARC supports a   readable\', \'raw\' or       xml
-                       couple of         \'xml\'. readable refers to  
-                       different output  the typical more or less     
-                       formats for the   human-readable table-like    
-                       same kinds of     format used for MARC         
-                       mapping. Set the  records. raw is used to      
-                       format you want   write MARC binary files for  
-                       to use here.      data exchange. The 3rd       
-                       Default is        option uses MARCXML as       
-                       \'readable\'. See output format.               
-                       \[2\] for more                                 
-                       details                                        
-  ---------------------------------------------------------------------------------------------------------------------
 
 # Options
 
@@ -374,556 +239,43 @@ own settings as well. To set these settings, you can fill out the 6th
 column of the mapping sheet, called **Options**. The options must be
 filled in in JavaScript Object Notation. If you set this value and it\'s
 not formatted properly, the mapping loading tool will throw an error.
-Here\'s a description of the available options:
+Here's a description of the available options:
 
-+---------+-----------------+---------------------------+-------------+
-| Options | Description     | Parameter notes           | Example     |
-+=========+=================+===========================+=============+
-| default | Value to use if | Arbitrary text            | \"No        |
-|         | data source     |                           | value\"     |
-|         | value is blank  |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| de      | Delimiter to    | Usually a single          |             |
-| limiter | used to         | character like a comma or |             |
-|         | concatenate     | semi-colon                |             |
-|         | repeating       |                           |             |
-|         | values          |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| prefix  | Text to prepend | Arbitrary text            | Dimensions  |
-|         | to value prior  |                           | are:        |
-|         | to export       |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| suffix  | Text to append  | Arbitrary text            | feet        |
-|         | to value prior  |                           |             |
-|         | to export       |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| t       | Format exported | See the                   | \^height    |
-| emplate | value with      | \[B                       |             |
-|         | provided        | undle_Display_Templates\] |             |
-|         | template.       | article for details on    |             |
-|         | Template may    | the syntax                |             |
-|         | include caret   |                           |             |
-|         | (\^) prefixed   |                           |             |
-|         | placeholders    |                           |             |
-|         | that refer to   |                           |             |
-|         | data source     |                           |             |
-|         | values.         |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| ma      | Truncate to     | Integer                   | 80          |
-| xLength | specified       |                           |             |
-|         | length if value |                           |             |
-|         | exceeds that    |                           |             |
-|         | length          |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| repeat  | Some source     | 1 or 0. defaults to 0     | 1           |
-| _elemen | values may      |                           |             |
-| t_for_m | select multiple |                           |             |
-| ultiple | values, for     |                           |             |
-| _values | instance for    |                           |             |
-|         | repeatable      |                           |             |
-|         | metadata        |                           |             |
-|         | elements. If    |                           |             |
-|         | this is the     |                           |             |
-|         | case and this   |                           |             |
-|         | option is set,  |                           |             |
-|         | the current     |                           |             |
-|         | mapping item is |                           |             |
-|         | repeated for    |                           |             |
-|         | each value      |                           |             |
-|         | instead of them |                           |             |
-|         | being put into  |                           |             |
-|         | a single string |                           |             |
-|         | using the       |                           |             |
-|         | delimiter       |                           |             |
-|         | option          |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| filterB | Allows          | Insert expression without | \[A         |
-| yRegExp | filtering       | delimiters. Has to be     | -Za-z0-9\]+ |
-|         | values by       | valid expression.         |             |
-|         | regular         |                           |             |
-|         | expression. Any |                           |             |
-|         | value that      |                           |             |
-|         | matches this    |                           |             |
-|         | PCRE regular    |                           |             |
-|         | expression is   |                           |             |
-|         | filtered and    |                           |             |
-|         | not exported    |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| locale  | Locale code to  | Valid locale code         | de_DE       |
-|         | use to get the  |                           |             |
-|         | field values    |                           |             |
-|         | from the        |                           |             |
-|         | database. If    |                           |             |
-|         | not set, the    |                           |             |
-|         | system/user     |                           |             |
-|         | default is      |                           |             |
-|         | used.           |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| ex      | Include all     | Available from version    |             |
-| portAll | defined values, | 1.8                       |             |
-| Locales | regardless of   |                           |             |
-|         | locale, in      |                           |             |
-|         | export. By      |                           |             |
-|         | default only    |                           |             |
-|         | values for the  |                           |             |
-|         | current locale  |                           |             |
-|         | (user locale or |                           |             |
-|         | specified in    |                           |             |
-|         | the `locale`    |                           |             |
-|         | option) are     |                           |             |
-|         | returned        |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| context | Used to switch  | Either a related table    | ca_entities |
-|         | the context for | name like                 |             |
-|         | this mapping    | \'ca_entities\', a        |             |
-|         | item (and all   | metadata element bundle   |             |
-|         | hierarchy       | specifier                 |             |
-|         | children) to a  | (ca_entities.address) or  |             |
-|         | different       | one of the literals       |             |
-|         | record (usually | \'children\' or           |             |
-|         | a set of        | \'parent\' for hierarchy  |             |
-|         | records). A     | traversal.                |             |
-|         | basic           |                           |             |
-|         | application of  |                           |             |
-|         | this feature is |                           |             |
-|         | to create a     |                           |             |
-|         | kind of         |                           |             |
-|         | sub-export      |                           |             |
-|         | inside the      |                           |             |
-|         | mapping where   |                           |             |
-|         | you can pull in |                           |             |
-|         | data from       |                           |             |
-|         | related items   |                           |             |
-|         | or hierarchical |                           |             |
-|         | descendants.    |                           |             |
-|         | Once the        |                           |             |
-|         | context is      |                           |             |
-|         | switched, the   |                           |             |
-|         | \'source\'      |                           |             |
-|         | values for this |                           |             |
-|         | row and all     |                           |             |
-|         | children are    |                           |             |
-|         | relative to the |                           |             |
-|         | new context,    |                           |             |
-|         | unless of       |                           |             |
-|         | course it is    |                           |             |
-|         | switched again  |                           |             |
-|         | (you can build  |                           |             |
-|         | cascades). This |                           |             |
-|         | allows you, for |                           |             |
-|         | instance, to    |                           |             |
-|         | list all works  |                           |             |
-|         | of the creator  |                           |             |
-|         | of a painting   |                           |             |
-|         | which you\'re   |                           |             |
-|         | exporting. The  |                           |             |
-|         | c               |                           |             |
-|         | ontext-switched |                           |             |
-|         | mapping item is |                           |             |
-|         | always repeated |                           |             |
-|         | for each record |                           |             |
-|         | selected by the |                           |             |
-|         | context switch! |                           |             |
-|         | See also the    |                           |             |
-|         | \'res           |                           |             |
-|         | trictToTypes\', |                           |             |
-|         | \               |                           |             |
-|         | 'restrictToRela |                           |             |
-|         | tionshipTypes\' |                           |             |
-|         | and             |                           |             |
-|         | \'checkAccess\' |                           |             |
-|         | settings to     |                           |             |
-|         | further specify |                           |             |
-|         | the Note that   |                           |             |
-|         | if the context  |                           |             |
-|         | is switched to  |                           |             |
-|         | a related       |                           |             |
-|         | table, there    |                           |             |
-|         | are a couple of |                           |             |
-|         | special keys    |                           |             |
-|         | available for   |                           |             |
-|         | the             |                           |             |
-|         | \'\             |                           |             |
-|         | '\'source\'\'\' |                           |             |
-|         | column to fetch |                           |             |
-|         | the type of the |                           |             |
-|         | relationship    |                           |             |
-|         | between the     |                           |             |
-|         | item in the     |                           |             |
-|         | current context |                           |             |
-|         | and the item    |                           |             |
-|         | where the       |                           |             |
-|         | context was     |                           |             |
-|         | last switched.  |                           |             |
-|         | These keys are: |                           |             |
-|         | \'\             |                           |             |
-|         | '\'relationship |                           |             |
-|         | _type_id\'\'\', |                           |             |
-|         | \'\'            |                           |             |
-|         | \'relationship_ |                           |             |
-|         | type_code\'\'\' |                           |             |
-|         | and             |                           |             |
-|         | \'\'            |                           |             |
-|         | \'relationship_ |                           |             |
-|         | typename\'\'\'. |                           |             |
-|         |                 |                           |             |
-|         | It is also      |                           |             |
-|         | possible to     |                           |             |
-|         | switch context  |                           |             |
-|         | to an attribute |                           |             |
-|         | of the current  |                           |             |
-|         | record. This    |                           |             |
-|         | helps properly  |                           |             |
-|         | process         |                           |             |
-|         | repeatable      |                           |             |
-|         | containers as   |                           |             |
-|         | encapsuled      |                           |             |
-|         | sub-exports. If |                           |             |
-|         | the context is  |                           |             |
-|         | switched to a   |                           |             |
-|         | container like  |                           |             |
-|         | ca_en           |                           |             |
-|         | tities.address, |                           |             |
-|         | all elements of |                           |             |
-|         | the container   |                           |             |
-|         | are available   |                           |             |
-|         | in the source   |                           |             |
-|         | column for all  |                           |             |
-|         | child mappings. |                           |             |
-|         | They are        |                           |             |
-|         | addressed by    |                           |             |
-|         | only their      |                           |             |
-|         | code(e.g.       |                           |             |
-|         | \"city\"). No   |                           |             |
-|         | table prefix is |                           |             |
-|         | required.       |                           |             |
-|         |                 |                           |             |
-|         | As of version   |                           |             |
-|         | 1.8 you may     |                           |             |
-|         | pass context as |                           |             |
-|         | a list of       |                           |             |
-|         | tables to shift |                           |             |
-|         | context         |                           |             |
-|         | through,        |                           |             |
-|         | instead of a    |                           |             |
-|         | single table.   |                           |             |
-|         | This makes      |                           |             |
-|         | possible        |                           |             |
-|         | content         |                           |             |
-|         | multi-level     |                           |             |
-|         | context shifts. |                           |             |
-|         | For example, to |                           |             |
-|         | when exporting  |                           |             |
-|         | objects, to     |                           |             |
-|         | shift context   |                           |             |
-|         | to places       |                           |             |
-|         | related to      |                           |             |
-|         | entities        |                           |             |
-|         | related to the  |                           |             |
-|         | current object  |                           |             |
-|         | with            |                           |             |
-|         | relationship    |                           |             |
-|         | type =          |                           |             |
-|         | \"artist\" use  |                           |             |
-|         | \[\             |                           |             |
-|         | "ca_entities\", |                           |             |
-|         | \{\"             |                           |             |
-|         | restrictToRelat |                           |             |
-|         | ionshipTypes\": |                           |             |
-|         | \               |                           |             |
-|         | [\"artist\"\]}, |                           |             |
-|         | \"ca_places\",  |                           |             |
-|         | \{\}\]. Note that |                           |             |
-|         | the list        |                           |             |
-|         | includes two    |                           |             |
-|         | sequential      |                           |             |
-|         | entries for the |                           |             |
-|         | context switch: |                           |             |
-|         | the context     |                           |             |
-|         | target and a    |                           |             |
-|         | associative     |                           |             |
-|         | array of        |                           |             |
-|         | settings for    |                           |             |
-|         | the context     |                           |             |
-|         | switch.         |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| r       | Restricts the   | list of valid type codes  | \"re        |
-| estrict | context of the  |                           | strictToTyp |
-| ToTypes | mapping to only |                           | es\":\[\"ph |
-|         | records of the  |                           | otograph\", |
-|         | designated      |                           | \"other\",  |
-|         | type. Only      |                           | \"mixed\",  |
-|         | valid when      |                           | \"text\"\]  |
-|         | context setting |                           |             |
-|         | is set          |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| restri  | Restricts the   | list of valid             | \"          |
-| ctToRel | context of the  | relationship type codes   | restrictToR |
-| ationsh | mapping to only |                           | elationship |
-| ipTypes | records related |                           | Types\":\[\ |
-|         | with the        |                           | "creator\", |
-|         | designated      |                           | \"          |
-|         | relationship    |                           | depicts\"\] |
-|         | type. Only      |                           |             |
-|         | valid when      |                           |             |
-|         | context is set. |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| restric | When exporting  | list of valid type codes  | \"          |
-| tToList | related list    |                           | restrictToL |
-|         | items, this     |                           | ist\":\[\"k |
-|         | option          |                           | eywords\"\] |
-|         | restricts the   |                           |             |
-|         | context of the  |                           |             |
-|         | mapping to only |                           |             |
-|         | list items of   |                           |             |
-|         | the designated  |                           |             |
-|         | list.           |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| list    | An alias for    | list of valid type codes  | \"l         |
-|         | the option      |                           | ist\":\[\"k |
-|         | \"r             |                           | eywords\"\] |
-|         | estrictToList\" |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| chec    | Restricts the   | List of valid \'access\'  | \"che       |
-| kAccess | context of the  | values                    | ckAccess\": |
-|         | mapping to only |                           | \[1, 2\]    |
-|         | records with    |                           |             |
-|         | one of the      |                           |             |
-|         | designated      |                           |             |
-|         | access values.  |                           |             |
-|         | Only valid when |                           |             |
-|         | context is set. |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| omit    | Completely      | Valid bundle specifier    | \"omi       |
-| IfEmpty | ignores this    |                           | tIfEmpty\": |
-|         | mapping if the  |                           | \"ca        |
-|         | selector        |                           | _objects.de |
-|         | doesn\'t return |                           | scription\" |
-|         | any value. This |                           |             |
-|         | is primarily    |                           |             |
-|         | meant for XML   |                           |             |
-|         | exports where   |                           |             |
-|         | you don\'t want |                           |             |
-|         | to end up with  |                           |             |
-|         | ugly empty XML  |                           |             |
-|         | elements like   |                           |             |
-|         | \<relate        |                           |             |
-|         | dObjects\>\</re |                           |             |
-|         | latedObjects\>. |                           |             |
-|         | Note: This      |                           |             |
-|         | works           |                           |             |
-|         | differently     |                           |             |
-|         | from the Data   |                           |             |
-|         | Importer Option |                           |             |
-|         | \               |                           |             |
-|         | "skipIfEmpty\"! |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| omitIfN | Omit this item  | Valid bundle specifier    | \"omitIf    |
-| otEmpty | and all its     |                           | NotEmpty\": |
-|         | children if     |                           | \"ca        |
-|         | this            |                           | _objects.de |
-|         | C               |                           | scription\" |
-|         | ollectiveAccess |                           |             |
-|         | bundle          |                           |             |
-|         | specifier       |                           |             |
-|         | returns a       |                           |             |
-|         | non-empty       |                           |             |
-|         | result. This is |                           |             |
-|         | useful if you   |                           |             |
-|         | want to specify |                           |             |
-|         | fa              |                           |             |
-|         | llback-sections |                           |             |
-|         | in your export  |                           |             |
-|         | mapping that    |                           |             |
-|         | are only used   |                           |             |
-|         | if certain data |                           |             |
-|         | is not          |                           |             |
-|         | available.      |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| om      | Omit this item  | 0 or 1                    | \"omitIfNo  |
-| itIfNoC | if no child     |                           | Children\": |
-| hildren | items will be   |                           | \"1\"       |
-|         | contained       |                           |             |
-|         | within it. This |                           |             |
-|         | option allows   |                           |             |
-|         | you to make the |                           |             |
-|         | appearance of a |                           |             |
-|         | container item  |                           |             |
-|         | contingent upon |                           |             |
-|         | the existance   |                           |             |
-|         | of content      |                           |             |
-|         | within the      |                           |             |
-|         | container.      |                           |             |
-|         | NOTE: This      |                           |             |
-|         | option is       |                           |             |
-|         | available from  |                           |             |
-|         | version 1.8.    |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| conv    | If set, id      | 0 or 1                    | \"conver    |
-| ertCode | values refering |                           | tCodesToDis |
-| sToDisp | to foreign keys |                           | playText\": |
-| layText | are returned as |                           | 1           |
-|         | preferred label |                           |             |
-|         | text in the     |                           |             |
-|         | current locale. |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| conv    | If set, id      | 0 or 1                    | \           |
-| ertCode | values refering |                           | "convertCod |
-| sToIdno | to foreign keys |                           | esToIdno\": |
-|         | are returned as |                           | 1           |
-|         | idno.           |                           |             |
-|         | (Available from |                           |             |
-|         | version 1.6.1)  |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| ret     | If set, idnos   | 0 or 1                    | \"re        |
-| urnIdno | are returned    |                           | turnIdno\": |
-|         | for List        |                           | 1           |
-|         | attribute       |                           |             |
-|         | values instead  |                           |             |
-|         | of primary key  |                           |             |
-|         | values. Should  |                           |             |
-|         | not be combined |                           |             |
-|         | with            |                           |             |
-|         | convertCode     |                           |             |
-|         | sToDisplayText, |                           |             |
-|         | as it overrides |                           |             |
-|         | it and can      |                           |             |
-|         | produce         |                           |             |
-|         | unwanted        |                           |             |
-|         | results. Only   |                           |             |
-|         | applies to List |                           |             |
-|         | attribute       |                           |             |
-|         | values!         |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| sk      | If the          | arbitrary text            | \{           |
-| ipIfExp | expression      |                           | \"skipIfE   |
-| ression | yields true,    |                           | xpression\" |
-|         | skip the        |                           | :           |
-|         | mapping for the |                           | \"\^f       |
-|         | data. Note that |                           | oo!\~/49/\" |
-|         | all user-set    |                           | \}           |
-|         | variables are   |                           |             |
-|         | available under |                           |             |
-|         | their           |                           |             |
-|         | identifiers.    |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| st      | If you          | 0 or 1                    | \{           |
-| art_as_ | exporting a     |                           | \"start_a   |
-| iso8601 | range of dates, |                           | s_iso8601\" |
-|         | and wish for    |                           | : 1 \}       |
-|         | the start and   |                           |             |
-|         | end dates to be |                           |             |
-|         | split and       |                           |             |
-|         | exported to     |                           |             |
-|         | separate        |                           |             |
-|         | elements, use   |                           |             |
-|         | this setting to |                           |             |
-|         | grab the        |                           |             |
-|         | \"start\" date. |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| end_as_ | If you          | 0 or 1                    | \{           |
-| iso8601 | exporting a     |                           | \"end_a     |
-|         | range of dates, |                           | s_iso8601\" |
-|         | and wish for    |                           | : 1 \}       |
-|         | the start and   |                           |             |
-|         | end dates to be |                           |             |
-|         | split and       |                           |             |
-|         | exported to     |                           |             |
-|         | separate        |                           |             |
-|         | elements, use   |                           |             |
-|         | this setting to |                           |             |
-|         | grab the        |                           |             |
-|         | \"end\" date.   |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| t       | By default,     | 0 or 1                    | \{           |
-| imeOmit | s               |                           | \"          |
-|         | tart_as_iso8601 |                           | timeOmit\": |
-|         | and             |                           | 1 \}         |
-|         | end_as_iso8601  |                           |             |
-|         | will produced   |                           |             |
-|         | the timestamp   |                           |             |
-|         | as well as the  |                           |             |
-|         | date. To omit   |                           |             |
-|         | the time, use   |                           |             |
-|         | timeOmit.       |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| dontR   | This setting    | 0 or 1                    | \{           |
-| eturnVa | will ensure     |                           | \"do        |
-| lueIfOn | that the        |                           | ntReturnVal |
-| SameDay | end_as_iso8601  |                           | ueIfOnSameD |
-| AsStart | will be skipped |                           | ayAsStart\" |
-|         | on single dates |                           | : 1 \}       |
-|         | (where there is |                           |             |
-|         | no end date).   |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| sort    | Sorts the       | List of valid field names | \"sort\" :  |
-|         | values returned | for related table         | \[          |
-|         | for a context   |                           | \"ca_en     |
-|         | switch on these |                           | tities.pref |
-|         | fields. Only    |                           | erred_label |
-|         | valid when      |                           | s.surname\" |
-|         | context is set  |                           | \]          |
-|         | to a related    |                           |             |
-|         | table. Must     |                           |             |
-|         | always be a     |                           |             |
-|         | list.           |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| st      | Removes HTML    | 0 or 1                    | \{\"str      |
-| ripTags | and XML tags    |                           | ipTags\":1\} |
-|         | from output.    |                           |             |
-|         | (Available from |                           |             |
-|         | version 1.8)    |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| dedu    | Remove          |                           | \{           |
-| plicate | duplicate       |                           | \"ded       |
-|         | values for an   |                           | uplicate\": |
-|         | exported list   |                           | 1 \}         |
-|         | with multiple   |                           |             |
-|         | values.         |                           |             |
-|         | (Available from |                           |             |
-|         | version 1.8)    |                           |             |
-+---------+-----------------+---------------------------+-------------+
-| appiyT  | Transform       |                           | \{           |
-| ransfor | values prior to |                           |             |
-| mations | export. A list  |                           | :   >       |
-|         | of              |                           |     >       |
-|         | transformations |                           |             |
-|         | may be          |                           |    > \"appl |
-|         | specified, and  |                           | yTransforma |
-|         | each will be    |                           | tions\": \[ |
-|         | applied in      |                           |     >       |
-|         | order to the    |                           |     >       |
-|         | output of its   |                           |  :   > \{\"t |
-|         | predecessor.    |                           | ransform\": |
-|         | Each list entry |                           |             |
-|         | is an object    |                           |  >     > \" |
-|         | with a          |                           | filesize\", |
-|         | \"transform\"   |                           |             |
-|         | name and the    |                           |  >     > \" |
-|         | options         |                           | decimals\": |
-|         | required by the |                           |             |
-|         | transform.      |                           |   >     > 4 |
-|         |                 |                           |             |
-|         | Available       |                           |   >     > \} |
-|         | transforms:     |                           |     >       |
-|         | filesize =      |                           |     > \]    |
-|         | convert numeric |                           |             |
-|         | filesizes (in   |                           | \}           |
-|         | bytes) to a     |                           |             |
-|         | scaled file     |                           |             |
-|         | size for        |                           |             |
-|         | display.        |                           |             |
-|         | Parameters are: |                           |             |
-|         | \"decimals\" =  |                           |             |
-|         | number of       |                           |             |
-|         | decimal places  |                           |             |
-|         | to include in   |                           |             |
-|         | display value.  |                           |             |
-|         |                 |                           |             |
-|         | > (Available    |                           |             |
-|         | > from version  |                           |             |
-|         | > 1.8)          |                           |             |
-+---------+-----------------+---------------------------+-------------+
+|Setting |Description |Parameter notes  |Example 
+|----|----|----|----|
+|default|Value to use if data source value is blank|Arbitrary text|“No value”|
+|delimiter|Delimiter to used to concatenate repeating values|Usually a single character like a comma or semi-colon||
+|prefix|Text to prepend to value prior to export|Arbitrary text|Dimensions are:|
+|suffix|Text to append to value prior to export|Arbitrary text|feet|
+|template|Format exported value with provided template. Template may include caret (^) prefixed placeholders that refer to data source values.|See the [Bundle_Display_Templates] article for details on the syntax|^height|
+|maxLength|Truncate to specified length if value exceeds that length|Integer|80|
+|repeat_element_for_multiple_values|Some source values may select multiple values, for instance for repeatable metadata elements. If this is the case and this option is set, the current mapping item is repeated for each value instead of them being put into a single string using the delimiter option|1 or 0. defaults to 0|1|
+|filterByRegExp|Allows filtering values by regular expression. Any value that matches this PCRE regular expression is filtered and not exported|Insert expression without delimiters. Has to be valid expression.|[A-Za-z0-9]+|
+|locale|Locale code to use to get the field values from the database. If not set, the system/user default is used.|Valid locale code|de_DE|
+|exportAllLocales|Include all defined values, regardless of locale, in export. By default only values for the current locale (user locale or specified in the `locale` option) are returned|Available from version 1.8||
+|context|Used to switch the context for this mapping item (and all hierarchy children) to a different record (usually a set of records). A basic application of this feature is to create a kind of sub-export inside the mapping where you can pull in data from related items or hierarchical descendants. Once the context is switched, the ‘source’ values for this row and all children are relative to the new context, unless of course it is switched again (you can build cascades). This allows you, for instance, to list all works of the creator of a painting which you’re exporting. The context-switched mapping item is always repeated for each record selected by the context switch! See also the ‘restrictToTypes’, ‘restrictToRelationshipTypes’ and ‘checkAccess’ settings to further specify the Note that if the context is switched to a related table, there are a couple of special keys available for the ‘’’source’’’ column to fetch the type of the relationship between the item in the current context and the item where the context was last switched. These keys are: ‘’’relationship_type_id’’’, ‘’’relationship_type_code’’’ and ‘’’relationship_typename’’’.<br></br><br></br>It is also possible to switch context to an attribute of the current record. This helps properly process repeatable containers as encapsuled sub-exports. If the context is switched to a container like ca_entities.address, all elements of the container are available in the source column for all child mappings. They are addressed by only their code(e.g. “city”). No table prefix is required<br></br><br></br>As of version 1.8 you may pass context as a list of tables to shift context through, instead of a single table. This makes possible content multi-level context shifts. For example, to when exporting objects, to shift context to places related to entities related to the current object with relationship type = “artist” use `[“ca_entities”, {“restrictToRelationshipTypes”: [“artist”]}, “ca_places”, {}]`. Note that the list includes two sequential entries for the context switch: the context target and a associative array of settings for the context switch.|Either a related table name like ‘ca_entities’, a metadata element bundle specifier (ca_entities.address) or one of the literals ‘children’ or ‘parent’ for hierarchy traversal.|ca_entities|
+|restrictToTypes|Restricts the context of the mapping to only records of the designated type. Only valid when context setting is set|list of valid type codes|“restrictToTypes”:[“photograph”, “other”, “mixed”, “text”]|
+|restrictToRelationshipTypes|Restricts the context of the mapping to only records related with the designated relationship type. Only valid when context is set.|list of valid relationship type codes|“restrictToRelationshipTypes”:[“creator”, “depicts”]|
+|restrictToList|When exporting related list items, this option restricts the context of the mapping to only list items of the designated list.|list of valid type codes|“restrictToList”:[“keywords”]|
+|list|An alias for the option “restrictToList”|list of valid type codes|“list”:[“keywords”]|
+|checkAccess|Restricts the context of the mapping to only records with one of the designated access values. Only valid when context is set.|List of valid ‘access’ values|“checkAccess”: [1, 2]|
+|omitIfEmpty|Completely ignores this mapping if the selector doesn’t return any value. This is primarily meant for XML exports where you don’t want to end up with ugly empty XML elements like <relatedObjects></relatedObjects>. Note: This works differently from the Data Importer Option “skipIfEmpty”!|Valid bundle specifier|“omitIfEmpty”: “ca_objects.description”|
+|omitIfNotEmpty|Omit this item and all its children if this CollectiveAccess bundle specifier returns a non-empty result. This is useful if you want to specify fallback-sections in your export mapping that are only used if certain data is not available.|Valid bundle specifier|“omitIfNotEmpty”: “ca_objects.description”|
+|omitIfNoChildren|Omit this item if no child items will be contained within it. This option allows you to make the appearance of a container item contingent upon the existance of content within the container. NOTE: This option is available from version 1.8.|0 or 1|“omitIfNoChildren”: “1”|
+|convertCodesToDisplayText|If set, id values refering to foreign keys are returned as preferred label text in the current locale.|0 or 1|“convertCodesToDisplayText”: 1|
+|convertCodesToIdno|If set, id values refering to foreign keys are returned as idno. (Available from version 1.6.1)|0 or 1|“convertCodesToIdno”: 1|
+|returnIdno|If set, idnos are returned for List attribute values instead of primary key values. Should not be combined with convertCodesToDisplayText, as it overrides it and can produce unwanted results. Only applies to List attribute values!|0 or 1|“returnIdno”: 1|
+|skipIfExpression|If the expression yields true, skip the mapping for the data. Note that all user-set variables are available under their identifiers.|arbitrary text|`{“skipIfExpression” : “^foo!~/49/” }`|
+|start_as_iso8601|start_as_iso8601|If you exporting a range of dates, and wish for the start and end dates to be split and exported to separate elements, use this setting to grab the “start” date.|`{ “start_as_iso8601” : 1 }`|
+|end_as_iso8601|If you exporting a range of dates, and wish for the start and end dates to be split and exported to separate elements, use this setting to grab the “end” date.|0 or 1|`{“end_as_iso8601” : 1}`|
+|timeOmit|By default, start_as_iso8601 and end_as_iso8601 will produced the timestamp as well as the date. To omit the time, use timeOmit.|0 or 1|`{“timeOmit”: 1}`|
+|dontReturnValueIfOnSameDayAsStart|This setting will ensure that the end_as_iso8601 will be skipped on single dates (where there is no end date).|0 or 1|`{“dontReturnValueIfOnSameDayAsStart” : 1}`|
+|sort|Sorts the values returned for a context switch on these fields. Only valid when context is set to a related table. Must always be a list.|List of valid field names for related table|“sort” : [ “ca_entities.preferred_labels.surname” ]|
+|stripTags|Removes HTML and XML tags from output. (Available from version 1.8)|0 or 1|`{“stripTags”:1}`|
+|deduplicate|Remove duplicate values for an exported list with multiple values. (Available from version 1.8)||`{“deduplicate”: 1}`|
+|applyTransformations|Transform values prior to export. A list of transformations may be specified, and each will be applied in order to the output of its predecessor. Each list entry is an object with a “transform” name and the options required by the transform.<br></br><br></br>Available transforms: filesize = convert numeric filesizes (in bytes) to a scaled file size for display. Parameters are: “decimals” = number of decimal places to include in display value.<br></br><br></br>(Available from version 1.8)||`{“applyTransformations”: [ {“transform”: “filesize”, “decimals”: 4 } ] }`|
+
+
 
 Below is a properly formatted example in JSON that uses some of these
 options:
@@ -937,7 +289,7 @@ options:
 }
 ```
 
-# Processing Order
+## Processing Order
 
 In some cases the order in which the options and replacements (see next
 sub-section) are applied to each value can make a significant difference
@@ -950,7 +302,7 @@ so it\'s important to note it here:
     b)  If value is not empty, use prefix and suffix
 4)  Truncate if result is longer than maxLength
 
-# Replacements
+## Replacements
 
 A second sheet called **Replacements** exists in the exporter mapping
 template. This can be used to assign replacements to each mapping item.
@@ -964,16 +316,12 @@ for the same mapping item, the incoming value is first passed through
 the first replacement, the result of this action is then passed in to
 the second replacement, and so on \...
 
-:::: note
-::: title
-Note
-:::
-
+:::note
 **For advanced users and PHP programmers**: the values are passed
 through preg_replace, the \'pattern\' being the 2nd column value (plus
 delimiters) and the \'replacement\' being the value from the 3rd column.
 This allows you to do pretty nifty stuff, for instance rewriting dates:
-::::
+:::
 
 Search column: (w+) (d+), (d+) Replace column: \$2 \$1 \$3 value: April
 15, 2003 result: 15 April 2003
@@ -994,27 +342,20 @@ sheet. It also really only makes sense to create this type of rule if
 you change the context in the same step. A simple example could look
 like this:
 
-  ---------------------------------------------------------------------------------------------------
-  Rule type        ID     Parent   Element    Source                        Options
-                          ID                                                
-  ---------------- ------ -------- ---------- ----------------------------- -------------------------
-  Mapping          1               root                                     
+|Rule Type |ID |Parent ID  |Element  |Source  |Options
+|----|----|----|----|----|----|
+|Mapping|1|	     | root|	|	|
+|Mapping|2 |1	|label	|ca_objects.preferred_labels	|	|
+|Mapping|3|1|idno|ca_objects.idno||
+|Mapping|4|1|children|||
+|RepeatMappings|----|4|child|2, 3|`{“context” : “children”}`|
 
-  Mapping          2      1        label      ca_objects.preferred_labels   
-
-  Mapping          3      1        idno       ca_objects.idno               
-
-  Mapping          4      1        children                                 
-
-  RepeatMappings          4        child      2,3                           \{ \"context\" :
-                                                                            \"children\" \}
-  ---------------------------------------------------------------------------------------------------
 
 In this case, the \'child\' element would be repeated for each hierarchy
 child of the exported item because of the context switch and for each of
 those children, the exporter would add the label and idno elements.
 
-# Running an Export
+## Running an Export
 
 The export can be executed through caUtils. To see all utilities ask for
 help after cd-ing into support.
@@ -1074,13 +415,9 @@ bin/caUtils export-data -m my_mapping -s "access:1" -f ~/export.xml
 
 ## 3) Export a Diverse Set of Records (\"RDF mode\")
 
-:::: note
-::: title
-Note
-:::
-
+:::note
 For advanced users only
-::::
+:::
 
 The error handling in this portion of the code is very poor so you\'re
 pretty much left on an island if something goes wrong.
@@ -1131,56 +468,34 @@ Here is an example of how to run an RDF mode export:
 
 `bin/caUtils export-data --rdf -c ~/rdf_mode.conf ~/export.xml`
 
-# RDF Mode Configuration File Options
+## RDF Mode Configuration File Options
 
-  -----------------------------------------------------------------------
-  Setting           Description
-  ----------------- -----------------------------------------------------
-  wrap_before       Text to prepend before the export.
+| Setting | Description 
+|----|----|
+|wrap_before|Text to prepend before the export.|
+|wrap_after|Text to append after the export.|
+|nodes|List of primary node type definitions to be used for this export|
 
-  wrap_after        Text to append after the export.
+## Node Type Definition Options
 
-  nodes             List of primary node type definitions to be used for
-                    this export
-  -----------------------------------------------------------------------
+| Setting | Description 
+|----|----|
+|mapping|Mapping to be used for this type of related item. Has to be an existing mapping code.|
+|restrictbySearch|Restrict exported records using a search expression|
+|related|List of related records also to be included in the global node set. You can use this for example to make sure you only export list_items that are actually actively used as vocabulary terms for objects, meaning you don’t have to create an extra node type (which would potentially export all list items in your database) for this.|
 
-# Node Type Definition Options
-
-  ------------------------------------------------------------------------
-  Setting            Description
-  ------------------ -----------------------------------------------------
-  mapping            Mapping to be used for this type of node. Has to be
-                     an existing mapping code.
-
-  restrictbySearch   Restrict exported records using a search expression
-
-  related            List of related records also to be included in the
-                     global node set. You can use this for example to make
-                     sure you only export list_items that are actually
-                     actively used as vocabulary terms for objects,
-                     meaning you don\'t have to create an extra node type
-                     (which would potentially export all list items in
-                     your database) for this.
-  ------------------------------------------------------------------------
 
 # \'Related\' Options
 
-  -----------------------------------------------------------------------------------
-  Setting                       Description
-  ----------------------------- -----------------------------------------------------
-  mapping                       Mapping to be used for this type of related item. Has
-                                to be an existing mapping code.
+| Setting | Description
+|----|----| 
+|mapping|Mapping to be used for this type of related item. Has to be an existing mapping code.|
+|restrictToRelationshipTypes|Restrict selected related records by relationship types. Has to be a list or empty.|
+|restrictToTypes|Restrict selected related records by record types (e.g. entity type). Has to be a list or empty.|
 
-  restrictToRelationshipTypes   Restrict selected related records by relationship
-                                types. Has to be a list or empty.
+## Miscellaneous Settings and Options
 
-  restrictToTypes               Restrict selected related records by record types
-                                (e.g. entity type). Has to be a list or empty.
-  -----------------------------------------------------------------------------------
-
-# Miscellaneous Settings and Options
-
-## Exporting values from Information Services (e.g Library of Congress, Getty)
+### Exporting values from Information Services (e.g Library of Congress, Getty)
 
 If your CollectiveAccess configuration includes information services,
 such as Library Of Congress Subject Headings or Getty\'s Art and

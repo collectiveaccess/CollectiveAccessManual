@@ -2,6 +2,8 @@
 title: Dashboard Configuration
 ---
 
+# Dashboard Configuration
+
 -   [Adding Widgets to the Dashboard](#adding-widgets-to-the-dashboard)
 -   [Editing the Dashboard](#editing-the-dashboard)
 -   [Widget Settings](#widget-settings)
