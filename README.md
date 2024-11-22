@@ -6,6 +6,11 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 - nodejs
 - yarn
 
+Note that if using a Debian derivative, 'yarn' is packaged as `yarnpkg` and the installed binary name is also `yarnpkg`. To make it available under
+the usual `yarn` name, create a symlink like so:
+```
+sudo ln -s /usr/bin/yarnpkg /usr/bin/yarn
+```
 
 ### Installation
 
