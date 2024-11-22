@@ -31,7 +31,7 @@ basic requirements for running Providence:
 
 ## Core software requirements
 
-Providence requires three core open-source software packages be
+Providence requires three open-source software packages be
 installed prior to installation. Without these packages Providence
 cannot run:
 
@@ -69,18 +69,9 @@ distributions and as installer packages for Windows. For Mac OS X,
 [Brew](https://brew.sh/) is a highly recommended way to get all of CollectiveAccess\'s
 prerequisites quickly up and running.
 
+## Caching
 
-## Suggested Software Packages
-
--   GraphicsMagick \[Image processing\]
--   ffmpeg \[Audio and video processing\]
--   Ghostscript \[PDF processing\]
--   Libreoffice \[Microsoft Office file processing\]
--   dcraw \[RAW image format support\]
--   mediainfo \[Media metadata extraction\]
--   poppler \[Media metadata extraction\]
--   ExifTool \[Media metadata extraction\]
--	OpenAI Whisper \[Audio/video transcription] (https://github.com/openai/whisper)
+CollectiveAccess makes heavy use of caching. By default cached data is written to disk, which requires no additional configuration or software but can be slow and may cause spikes in server load when the cache fills and must be purged. Use of an in-memory cache such as REDIS (https://redis.io/) can provide significantly improved performance. To use REDIS you must connect a working REDIS instance to CollectiveAccess by setting the relevant configuration entries in the installation's ``setup.php`` file. You must also have the php-redis extension installed.
 
 
 ## Software requirements for media processing
@@ -93,18 +84,18 @@ below).
 
 | Software Package | Media Types | Notes |
 | --- | --- | --- |
-| GraphicsMagick | Images |Version 1.3.40 or better is suggested. GraphicsMagick is the preferred option for processing image files on all platforms and is better performing than any other option. Be sure to compile or obtain a version of GraphicsMagick with support for the formats you need. Support for some image formats is contingent upon other libraries being present on your server (eg. libtiff must be present for TIFF support\]). Some less common formats, such as PSD, may require special configuration and/or compilation. Note that HEIC support is not possible with GraphicsMagick alone. See below for more information on HEIC support.|
-| ImageMagick | Images | Version 7.0 or better is suggested. ImageMagick can handle more image formats than any other option but is significantly slower than GraphicsMagick in most situations. Be sure to compile or obtain a version of ImageMagick with support for the formats you need. Support for some image formats is contingent upon other libraries being present on your server (eg. libtiff must be present for TIFF support\]).|
+| GraphicsMagick | Images |Version 1.3.40 or better is suggested. GraphicsMagick is the preferred option for processing image files on all platforms and is better performing than any other option. Be sure to compile or obtain a version of GraphicsMagick with support for the formats you need. Support for some image formats is contingent upon other libraries being present on your server (eg. libtiff must be present for TIFF support\]). Some less common formats, such as PSD, may require special configuration and/or compilation. Note that HEIC support is not possible with GraphicsMagick alone. See below for more information on HEIC support. See https://graphicsmagick.org for more information on GraphicsMagick.|
+| ImageMagick | Images | Version 7.0 or better is suggested. ImageMagick can handle more image formats than any other option but is significantly slower than GraphicsMagick in most situations. Be sure to compile or obtain a version of ImageMagick with support for the formats you need. Support for some image formats is contingent upon other libraries being present on your server (eg. libtiff must be present for TIFF support\]). See http://imagemagick.org for more information.|
 | libGD | Images | A simple library for processing JPEG, GIF and PNG format images, GD is a fall-back for image processing when ImageMagick or GraphicsMagick are not available. This library is typically bundled with PHP so you should not need to install it separately. In some cases you may need to perform a manual install or use a package provided by your operating system provider. In addition to supporting a limited set of image formats, GD is typically slower than ImageMagick or GraphicsMagick for many operations. If at all possible install GraphicsMagick on your server. |
-| ffmpeg | Audio, Video | Required if you want to handle video or audio media. Be sure to compile to support the file formats and codecs you require. |
-| OpenAI Whisper | Audio/video transcription | Whisper is freely available general-purpose speech recognition software, capable of generating high-quality transcripts from audio and video files. It be obtained from https://github.com/openai/whisper. If installed, CollectiveAccess can be configured to use it to create VTT-format subtitles for uploaded audio/video media. |
-| Ghostscript | PDF Documents |  Ghostscript 9.5 or better is suggested to generate preview images of uploaded PDF documents. PDF uploads will still work, but without preview images, if Ghostscript is not installed. |
+| ffmpeg | Audio, Video | Required if you want to handle video or audio media. Be sure to compile to support the file formats and codecs you require. See https://ffmpeg.org for more information.|
+| OpenAI Whisper | Audio/video transcription | Whisper is freely available general-purpose speech recognition software, capable of generating high-quality transcripts from audio and video files. It can be obtained from https://github.com/openai/whisper. If installed, CollectiveAccess can be configured to use it to create VTT-format subtitles for uploaded audio/video media. |
+| Ghostscript | PDF Documents |  Ghostscript 9.5 or better is suggested to generate preview images of uploaded PDF documents. PDF uploads will still work, but without preview images, if Ghostscript is not installed. For more information see http://ghostscript.com. |
 | dcraw | Images | Required to support upload of proprietary CameraRAW formats produced by various higher-end digital cameras. Note that that AdobeDNG format, a newer RAW format, is supported by GraphicsMagick and ImageMagick. |
-| poppler | PDF Documents |  A PDF rendering library and associated utilities. If present CollectiveAccess will use the included pdfToText utility to extract text from PDF files for indexing. If pdfToText is not installed on your server CollectiveAccess will not be able to search the content of uploaded PDF documents. |
-| MediaInfo | Images, Audio, Video, PDF Documents | A library for extraction of technical metadata from various audio and video file formats. If present CollectiveAccess can use MediaInfo to extract technical metadata, otherwise it will fall back to using a less capable built-in extraction method. |
-| ExifTool | Images |  A library for extraction of embedded metadata from many image file formats. If present CollectiveAccess can use it to extract metadata for display and import, otherwise it will fall back to using a less capable built-in extraction method. |
-| wkhtmltopdf | PDF Output | wkhtmltopdf is an application that can perform high quality conversion of HTML code to PDF files. If present CollectiveAccess can use wkhtmltopdf to generate PDF-format labels and reports. Version 0.12.6 (with patched QT) is required. Do not use earlier versions, which have issues that prevent valid formatting of output. If wkhtmltopdf is not installed CollectiveAccess will fall back to a slower built-in alternative. |
-| LibreOffice | Office Documents |  LibreOffice is an open-source alternative to Microsoft Office. CollectiveAccess can use it to index and create previews for Microsoft Word, Excel and Powerpoint document. LibreOffice 6.4 or better is suggested. |
+| poppler | PDF Documents |  A PDF rendering library and associated utilities. If present CollectiveAccess will use the included pdfToText utility to extract text from PDF files for indexing. If pdfToText is not installed on your server CollectiveAccess will not be able to search the content of uploaded PDF documents. See https://poppler.freedesktop.org for additional information. |
+| MediaInfo | Images, Audio, Video, PDF Documents | A library for extraction of technical metadata from various audio and video file formats. If present CollectiveAccess can use MediaInfo to extract technical metadata, otherwise it will fall back to using a less capable built-in extraction method. See https://mediaarea.net/en/MediaInfo for details. |
+| ExifTool | Images |  A library for extraction of embedded metadata from many image file formats. If present CollectiveAccess can use it to extract metadata for display and import, otherwise it will fall back to using a less capable built-in extraction method. See https://exiftool.org for more information. |
+| wkhtmltopdf | PDF Output | wkhtmltopdf (https://wkhtmltopdf.org) is an application that can perform high quality conversion of HTML code to PDF files. If present CollectiveAccess can use wkhtmltopdf to generate PDF-format labels and reports. Version 0.12.6 (with patched QT) is required. Do not use earlier versions, which have issues that prevent valid formatting of output. If wkhtmltopdf is not installed CollectiveAccess will fall back to a slower built-in alternative. |
+| LibreOffice | Office Documents |  LibreOffice (https://www.libreoffice.org) is an open-source alternative to Microsoft Office. CollectiveAccess can use it to index and create previews for Microsoft Word, Excel and Powerpoint document. LibreOffice 6.4 or better is suggested. |
 
 Most users will want at a minimum GraphicsMagick installed on their
 server, and should install other packages as needed. 
