@@ -1,4 +1,4 @@
-Welcome to the CollectiveAccess documentation!
+# Welcome to the CollectiveAccess documentation!
 
 See our [Quickstart](/quickstart) page for information on installing CollectiveAccess or the componenet specific [Providence](/providence) and
 [Pawtucket](/pawtucket) pages for detailed information about using the frontend and backend of the application respectively.
@@ -11,7 +11,7 @@ CollectiveAccess is a relational database that enables powerful searching and br
 
 Whirl-i-Gig, CollectiveAccess’s primary developer, freely distributes everything it develops under the GNU General Public License as part of CollectiveAccess, and offers consulting and development services to clients to ensure they get the most out of the software. Whirl-i-Gig works directly with end-users who require assistance in realizing their projects.
 
-CollectiveAccess is supported by providing various development services to partner institutions. Explore projects [here](https://www.collectiveaccess.org/projects/.).
+CollectiveAccess is supported by providing various development services to partner institutions. Explore current and past projects [here](https://www.collectiveaccess.org/projects/.).
 
 ## Why Use *CollectiveAccess*?
 
