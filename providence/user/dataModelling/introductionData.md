@@ -98,4 +98,4 @@ and set up your database. Every CollectiveAccess instance must have an
 installation profile. Many options are pre-loaded, but typically you
 need to customize one for your needs.
 
-Read more: `Installation Profiles <Profiles>`
+Read more: [Installation Profiles](https://camanual.whirl-i-gig.com/providence/user/dataModelling/profiles/)
