@@ -16,8 +16,8 @@ Providence can be customized to suit a variety of cataloging needs, and provides
 - Support for audio, video, film, digital media, photographic imagery, and documents
 - Management of administrative data relating to use, condition and conservation of materials
 - Robust location tracking pertaining to specific materials
-- Support for several library and archival standards including DACS, PBCore, Dublin Core, VRA Core, and more
-- Integration with Library of Congress subject headings, Getty vocabularies, GeoNames, and other external information services
+- Support for several library and archival standards including [DACS](https://www2.archivists.org/groups/technical-subcommittee-on-describing-archives-a-content-standard-dacs/describing-archives-a-content-standard-dacs-second-), [PBCore](https://pbcore.org/), [Dublin Core](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/), [VRA Core](https://www.loc.gov/standards/vracore/), and more
+- Integration with [Library of Congress subject headings](https://www.loc.gov/aba/cataloging/subject/), [Getty vocabularies](https://www.getty.edu/research/tools/vocabularies/), [GeoNames](https://www.geonames.org/), and other external information services
 
 Providence is a web-based application that runs on a server. As with any web-based application, Providence is designed to be accessed via the internet, enabling collaborative cataloging of collections by widely dispersed teams. However, Providence will function just as well on a local network with no internet connectivity, or even on a single machine with no network connectivity at all. 
 
