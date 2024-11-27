@@ -176,12 +176,15 @@ must come before Logins.
 Every profile begins with its declaration that sets its name,
 description, and other important information. The profile declaration
 for DublinCore looks like this:
+
 ```
 > <profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="profile.xsd" useForConfiguration="1"
 >     base="base" infoUrl="http://providence.collectiveaccess.org/wiki/DublinCoreInstallationProfile">
 >     <profileName>[Standard] DublinCore</profileName>
 >     <profileDescription>Use this profile if you want a system that is compliant with simple DublinCore</profileDescription>
+
 ```
+
 The \"profile.xsd\" link allows a profile to inherit settings from
 another profile. This makes it possible to define settings shared across
 several profiles in a single, more easily maintainable, file. To have a
@@ -205,16 +208,23 @@ for a current list of application translations.
 
 Coded for English:
 
+```
 > <locales>
 >        <locale lang="en" country="US">English</locale>
 >     </locales>
 
+```
+
 Coded for English and German:
+
+```
 
 > <locales>
 >        <locale lang="en" country="US">English</locale>
 >        <locale lang="de" country="DE">Deutsch</locale>
 >     </locales>
+
+```
 
 Let\'s take a closer look at the above code. The parent tag states the
 part of the profile and the child elements define the system attributes
@@ -257,6 +267,8 @@ button, checklists and more. For additional information see the
 Attribute settings: List page. Let\'s look closely at a control list for
 formats in Dublin Core:
 
+```
+
 > <list code="dc_format" hierarchical="0" system="0" vocabulary="0">
 >           <labels>
 >             <label locale="en_US">
@@ -290,6 +302,8 @@ formats in Dublin Core:
 >             </item>
 >           </items>
 >         </list>
+
+```
 
 Dublin Core actually has eight format types, but for the sake of this
 example, we\'ve limited the code to just three. Now let\'s break it
@@ -367,6 +381,8 @@ comprise an element set definition.
 
 A basic element set looks like this:
 
+```
+
 > <metadataElement code="description" datatype="Text">
 >           <labels>
 >             <label locale="en_US">
@@ -402,6 +418,8 @@ A basic element set looks like this:
 >           </typeRestrictions>
 >         </metadataElement>
 
+```
+
 ### DataTypes (AttributeTypes)
 
 Each element in an element set must be declared with a specific datatype
@@ -412,6 +430,8 @@ chose from.
 
 Lists are unique because they require reference code names defined in
 your list definitions. For example:
+
+
 ```
 > <metadataElement code="dcFormat" datatype="List" list="dc_format">
 >           <labels>
@@ -421,6 +441,8 @@ your list definitions. For example:
 >             </label>
 >           </labels>
 >           <documentationUrl>http://dublincore.org/documents/dcmi-terms/#terms-format</documentationUrl>
+
+
 ```
 In this element set the code name is dcFormat, its datatype is List, the
 preferred labels are in English it is \"Format\". A description has been
@@ -480,6 +502,8 @@ By defining these object types in the list definitions and then linking
 them to \"type\" under type restrictions, you can create object
 type-specific cataloging interfaces.
 
+```
+
 > <typeRestrictions>
 >         <restriction code="r1">
 >             <table>ca_objects</table>
@@ -491,6 +515,8 @@ type-specific cataloging interfaces.
 >             </settings>
 >         </restriction>
 >     </typeRestrictions>
+
+```
 
 :::note
 Note that the item type specification - what type of item the
@@ -548,6 +574,8 @@ To organize the data fields on each screen, you must first declare which
 interface you are working within with a unique code and table type.
 After the editor is defined, you can begin to create and fill up
 screens.
+
+
 ```
 > <userInterface code="standard_object_ui" type="ca_objects">
 >           <labels>
@@ -585,6 +613,8 @@ screens.
 >                 </placement>
 >               </bundlePlacements>
 >             </screen>
+
+
 ```
 :::note
 Note that each entry in the bundle list is actually comprised of several
@@ -604,7 +634,7 @@ creation_date would have a bundle name of
 intrinsic database fields are the field names themselves. These
 Intrinsic Bundles names for other user interface elements are unique to
 the [Primary
-Types](file:///Users/charlotteposever/Documents/ca_manual/providence/user/dataModelling/primaryTables.html?highlight=primary+table).
+Types](https://camanual.whirl-i-gig.com/providence/user/dataModelling/primaryTables).
 
 Each bundle you add to a user interface can take optional settings
 depending on the bundle type. A full list of these settings is defined
@@ -618,15 +648,18 @@ respectively. Each of these settings is an associative array with locale
 codes as keys and the label text to use as values. Including both
 English and German display text translations would look like this:
 
-> <placement code="ca_attribute_description">
->        <bundle>ca_attribute_description</bundle>
->             <settings>
->               <setting name="label" locale="en_US">Narrative description</setting>
->               <setting name="label" locale="de_DE">Beschriebung</setting>
->               <setting name="add_label" locale="en_US">Add another description</setting>
->               <setting name="add_label" locale="de_DE">Addieren einen Beschriebung</setting>
->             </settings>
->     </placement>
+```
+<placement code="ca_attribute_description">
+        <bundle>ca_attribute_description</bundle>
+             <settings>
+               <setting name="label" locale="en_US">Narrative description</setting>
+               <setting name="label" locale="de_DE">Beschriebung</setting>
+              <setting name="add_label" locale="en_US">Add another description</setting>
+              <setting name="add_label" locale="de_DE">Addieren einen Beschriebung</setting>
+             </settings>
+     </placement>
+
+```
 
 The restrict_to_type setting applies only to bundles that create
 relationships between items - bundles like ca_objects and ca_entities.
@@ -641,17 +674,20 @@ For example, if you have an entity type of individual with its list item
 idno set to ind, then the bundle specification for a ca_entities linking
 control that only allows linking to individuals would look like this:
 
-> <bundle>ca_entities</bundle>
->             <settings>
->             <setting name="restrict_to_types">ind</setting>
->             </settings>
+```
+ <bundle>ca_entities</bundle>
+             <settings>
+             <setting name="restrict_to_types">ind</setting>
+             </settings>
+
+```
 
 Additionally, the restrtict_to_relationship_types setting applies only
 to bundles that create relationships between items - bundles like
 ca_objects and ca_entities, but need to be linked to a specific
 relationship type. By default, when you create a relationship between
 any two records, that relationship can be defined through [Relationship
-Types](file:///Users/charlotteposever/Documents/ca_manual/providence/user/dataModelling/relationships.html).
+Types](https://camanual.whirl-i-gig.com/providence/user/dataModelling/relationships).
 Furthermore, those relationship types can have hierarchical subtypes and
 so on. This is where being able to restrict to a relationship type is
 useful.
@@ -665,14 +701,17 @@ can use restrict_to_relationship_type to create a relationship field
 limited only to that type. To create a relationship field that would
 only be limited to creator types, it would look like this:
 
-> <placement code="ca_creator">
->            <bundle>ca_entities</bundle>
->            <settings>
->            <setting name="restrict_to_relationship_types">creator</setting>
->            <setting name="label" locale="en_US">Creators & contributors</setting>
->            <setting name="add_label" locale="en_US">Add creator & contributor</setting>
->            </settings>
->          </placement>
+```
+ <placement code="ca_creator">
+            <bundle>ca_entities</bundle>
+            <settings>
+            <setting name="restrict_to_relationship_types">creator</setting>
+            <setting name="label" locale="en_US">Creators & contributors</setting>
+            <setting name="add_label" locale="en_US">Add creator & contributor</setting>
+            </settings>
+          </placement>
+
+```
 
 As of version 1.7 you can restrict display of bundle placements on a
 screen depending upon the type of the record being edited. For example,
@@ -681,7 +720,10 @@ you can set up a bundle that appears when editing objects of type
 all types. To restrict it, set the typeRestrictions attribute in the
 \<placement\> tag to a comma-separated list of type codes. For example:
 
-> <placement code="ca_creator" typeRestrictions="book,document">...</placement>
+```
+ <placement code="ca_creator" typeRestrictions="book,document">...</placement>
+
+```
 
 ## Relationship Types
 
@@ -723,6 +765,7 @@ repeating bundles that consist of:
 Note that the date range qualifier, optional attributes and reification
 are not implemented in the user interface yet. Relationship types
 bundles are typically expressed like this.
+
 ```
 > <relationshipTable name="ca_objects_x_entities">
 >          <types>
@@ -756,6 +799,8 @@ bundles are typically expressed like this.
 >              <subTypeLeft> </subTypeLeft>
 >              <subTypeRight/>
 >            </type>
+
+
 ```
 In this example the relationship types are ordered as follows: creator,
 contributor, publisher. This order is established by the rank setting in
@@ -840,11 +885,15 @@ any other details you think are necessary to note.
 ### Study other Profiles and the Wiki
 
 Another extremely helpful exercise to go through before coding a new
-profile is to closely analyze existing profiles for their layout,
+profile is to closely analyze [existing profiles](https://github.com/collectiveaccess/providence/tree/master/install/profiles/xml) for their layout,
 patterns, and format. The xml files for profiles available in your
 CollectiveAccess installation can be viewed at:
 
-> install/profiles/xml/nameofprofile.xml
+```
+
+install/profiles/xml/nameofprofile.xml
+
+```
 
 This wiki is also a great resource. It may be helpful to review more
 in-depth technical documentation about the topics discussed in this
@@ -863,7 +912,11 @@ later during installation and testing.
 
 Save your file in:
 
-> install/profiles/xml
+```
+
+install/profiles/xml
+
+```
 
 Once saved, your new profile should display in the dropdown menu on the
 installation webpage.

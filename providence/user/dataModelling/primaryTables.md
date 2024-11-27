@@ -74,7 +74,7 @@ cataloging requirements.
 **ca_entities.preferred_labels.displayname** is used by data mappings
 and display templates to reference the intrinsic displayname field in
 the **ca_entity_labels table**. See below
-`ca_entity_labels name fields <ca_entity_labels-name-fields>` for all **ca_entity_labels** name fields.
+[ca_entity_labels name](###the_following_applies_to_entity_labels)The following applies to: Entity labels (ca_entity_labels) for all **ca_entity_labels** name fields.
 :::
 
 # Object Lots (ca_object_lots)
@@ -161,17 +161,17 @@ Thesaurus of Geographic Names (TGN).
 |----|----|----|----|----|
 |Identifier|idno|The place identifier. Must follow policy defined in configured numbering policy if app.conf setting require_valid_id_number_for_ca_places is set. Must be unique if app.conf setting allow_duplicate_id_number_for_ca_places is not set.|Depends upon numbering policy||
 |Type|type_id|A value from the place_types list indicating the type of the record. Stored as an internally generated numeric item_id. When setting this value in a data import or via an API call the item identifier may be used.|Yes|Null|
-|Parent|parent_id|Reference to parent record. Will be null if no parent is defined. When setting this value in a data import or via an API call the identifier of the parent place may be used.|----|----|
-|Access|access|Determines visibility of record in public-facing applications such as Pawtucket. Values are defined in the access_statuses list. Typically the list includes values for “public” and “private” visibility. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. By convention “0” is interpreted as private and “1” as public access, although this can be modified or expanded in app.conf if required.|----|----|
-|Status|status|Records the general cataloguing workflow status of the record. Values are defined in the workflow_statuses list. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. Unlike access values, statuses have no functional impact on a record. They are merely informations and intended to provide a simple, straightforward way to track the cataloguing process.|----|----|
-|Lifespan|lifespan|The life dates of the place expressed as an historic daterange.|----|----|
-|Source|source_id|A value from the places_sources list indicating the original source of the place. This value is sometimes used to broadly distinguish different classes of places. When setting this value in a data import or via an API call the item identifier may be used.|----|----|
-|Floorplan|floorplan|Uploaded image depicting floor plan of place. Used as the base layer in the object-place floorplan user interface.|----|----|
-|Submitted by user|submission_user_id|For records submitted via the Pawtucket “contribute” form interface. The user who submitted the record.|----|----|
-|Submission group|submission_group_id|For records submitted via the Pawtucket “contribute” form interface. The group of the user that submitted the record.|----|----|
-|Submission status|submission_status_id|For records submitted via the Pawtucket “contribute” form interface. A value from the submission_statuses list indicating the review status of the submitted record.|----|----|
-|Submission form|submission_via_form|For records submitted via the Pawtucket “contribute” form interface. The identifying code of the form used to submit the record.|----|----|
-|View count|view_count|Number of times record has been viewed in Pawtucket front-end|----|----|
+|Parent|parent_id|Reference to parent record. Will be null if no parent is defined. When setting this value in a data import or via an API call the identifier of the parent place may be used.|No|null|
+|Access|access|Determines visibility of record in public-facing applications such as Pawtucket. Values are defined in the access_statuses list. Typically the list includes values for “public” and “private” visibility. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. By convention “0” is interpreted as private and “1” as public access, although this can be modified or expanded in app.conf if required.|Yes|0|
+|Status|status|Records the general cataloguing workflow status of the record. Values are defined in the workflow_statuses list. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. Unlike access values, statuses have no functional impact on a record. They are merely informations and intended to provide a simple, straightforward way to track the cataloguing process.|Yes|0|
+|Lifespan|lifespan|The life dates of the place expressed as an historic daterange.|No||
+|Source|source_id|A value from the places_sources list indicating the original source of the place. This value is sometimes used to broadly distinguish different classes of places. When setting this value in a data import or via an API call the item identifier may be used.|No||
+|Floorplan|floorplan|Uploaded image depicting floor plan of place. Used as the base layer in the object-place floorplan user interface.|No||
+|Submitted by user|submission_user_id|For records submitted via the Pawtucket “contribute” form interface. The user who submitted the record.|No||
+|Submission group|submission_group_id|For records submitted via the Pawtucket “contribute” form interface. The group of the user that submitted the record.|No||
+|Submission status|submission_status_id|For records submitted via the Pawtucket “contribute” form interface. A value from the submission_statuses list indicating the review status of the submitted record.|No||
+|Submission form|submission_via_form|For records submitted via the Pawtucket “contribute” form interface. The identifying code of the form used to submit the record.|No||
+|View count|view_count|Number of times record has been viewed in Pawtucket front-end|No|0|
 
 :::note
 **ca_places.preferred_labels.name** is used by data mappings and display
@@ -289,14 +289,14 @@ dates, shipping, and insurance information.
 | Identifier|idno|The loan identifier. Must follow policy defined in configured numbering policy if app.conf setting require_valid_id_number_for_ca_loans is set. Must be unique if app.conf setting allow_duplicate_id_number_for_ca_loans is not set.|Depends upon numbering policy||
 |Type|type_id|A value from the loan_types list indicating the type of the record. Stored as an internally generated numeric item_id. When setting this value in a data import or via an API call the item identifier may be used.|Yes|null|
 |Parent|parent_id|Reference to parent record. Will be null if no parent is defined. When setting this value in a data import or via an API call the identifier of the parent loan may be used.|No|null|
-|Access|access|Determines visibility of record in public-facing applications such as Pawtucket. Values are defined in the access_statuses list. Typically the list includes values for “public” and “private” visibility. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. By convention “0” is interpreted as private and “1” as public access, although this can be modified or expanded in app.conf if required.|----|----|
-|Status|status|Records the general cataloguing workflow status of the record. Values are defined in the workflow_statuses list. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. Unlike access values, statuses have no functional impact on a record. They are merely informations and intended to provide a simple, straightforward way to track the cataloguing process.|----|----|
-|Source|source_id|A value from the loan_sources list indicating the original source of the entity. This value is sometimes used to broadly distinguish different classes of entities. When setting this value in a data import or via an API call the item identifier may be used.|----|----|
-|Submitted by user|submission_user_id|For records submitted via the Pawtucket “contribute” form interface. The user who submitted the record.|----|----|
-|Submission group|submission_group_id|For records submitted via the Pawtucket “contribute” form interface. The group of the user that submitted the record.|----|----|
-|Submission status|submission_status_id|For records submitted via the Pawtucket “contribute” form interface. A value from the submission_statuses list indicating the review status of the submitted record. When setting this value in a data import or via an API call the item identifier may be used.|----|----|
-|Submission form|submission_via_form|For records submitted via the Pawtucket “contribute” form interface. The identifying code of the form used to submit the record.|----|----|
-|View count|view_count|Number of times record has been viewed in Pawtucket front-end|----|----|
+|Access|access|Determines visibility of record in public-facing applications such as Pawtucket. Values are defined in the access_statuses list. Typically the list includes values for “public” and “private” visibility. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. By convention “0” is interpreted as private and “1” as public access, although this can be modified or expanded in app.conf if required.|Yes|0|
+|Status|status|Records the general cataloguing workflow status of the record. Values are defined in the workflow_statuses list. For historical reasons the value stored in the intrinsic is the list item’s value field, not its identifer or label. Unlike access values, statuses have no functional impact on a record. They are merely informations and intended to provide a simple, straightforward way to track the cataloguing process.|Yes|0|
+|Source|source_id|A value from the loan_sources list indicating the original source of the entity. This value is sometimes used to broadly distinguish different classes of entities. When setting this value in a data import or via an API call the item identifier may be used.|No||
+|Submitted by user|submission_user_id|For records submitted via the Pawtucket “contribute” form interface. The user who submitted the record.|No||
+|Submission group|submission_group_id|For records submitted via the Pawtucket “contribute” form interface. The group of the user that submitted the record.|No||
+|Submission status|submission_status_id|For records submitted via the Pawtucket “contribute” form interface. A value from the submission_statuses list indicating the review status of the submitted record. When setting this value in a data import or via an API call the item identifier may be used.|No||
+|Submission form|submission_via_form|For records submitted via the Pawtucket “contribute” form interface. The identifying code of the form used to submit the record.|No||
+|View count|view_count|Number of times record has been viewed in Pawtucket front-end|No|0|
 
 
 :::note
@@ -448,10 +448,10 @@ See label name fields below for table specific name fields.
 Occassionally label table names and intrinsic fields need to be
 referenced directly, for example while configuring searching indexing.
 Search indexing in
-[Search_indexing.conf](file:///Users/charlotteposever/Documents/ca_manual/providence/user/configuration/mainConfiguration/search_indexing.html).
+[Search_indexing.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/mainConfiguration/search_indexing).
 
 :::note
-\<table name\>.preferred_labels.\<name of intrinsic\> is used by data
+`\<table name\>.preferred_labels.\<name of intrinsic\>` is used by data
 mappings and display templates to reference the intrinsic _name_
 field for preferred labels. The _\<table name\>.preferred_labels_
 construct is simply an alias for the label table, filtered to return

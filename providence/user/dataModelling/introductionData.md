@@ -13,12 +13,12 @@ Read more: [Primary Tables](https://camanual.whirl-i-gig.com/providence/user/dat
 
 # Bundles
 
-[Bundle] is a high-level term for the various structures in
+*Bundle* is a high-level term for the various structures in
 CollectiveAccess used to store catalogued content. There are four
 distinct types of bundles, each with their own unique set of
-characteristics and uses: [labels],
-[intrinsics], [metadata elements] and
-[relationships]. Records are simply assemblages of various
+characteristics and uses: *labels*,
+*intrinsics*, *metadata elements* and
+*relationships*. Records are simply assemblages of various
 bundles, chosen to meet specific representational requirements.
 
 Read more:
@@ -38,7 +38,7 @@ be used in searches and optionally displayed.
 Both preferred and non-preferred labels are always available for all
 records in CollectiveAccess. No special configuration is required. Note
 that (with some exceptions) every record in CollectiveAccess is
-[required] to have a preferred label. Configuration options
+**required** to have a preferred label. Configuration options
 may be set to manadate uniqueness of labels with a system, to
 distinguish between different types of non-preferred labels (a
 requirement of some knowledge representation standard) and more.
@@ -54,9 +54,9 @@ typically exist to support specific functionality or, less often, for
 historical reasons. They cannot be removed from CollectiveAccess, but in
 most cases can be hidden if not needed.
 
-Commonly used intrinsics include [idno] (record identifier),
-[type_id] (record type), [access] (public web
-site visibility) and [status] (record workflow status).
+Commonly used intrinsics include *idno* (record identifier),
+*type_id* (record type), *access* (public web
+site visibility) and *status* (record workflow status).
 Descriptions of all available intrinsic fields may be found in the
 [primary table](https://camanual.whirl-i-gig.com/providence/user/dataModelling/primaryTables)
 documentation.
@@ -78,10 +78,10 @@ Read more: [Metadata Elements](https://camanual.whirl-i-gig.com/providence/user/
 Relationships are bi-directional links between pairs of records. They
 may be created between records in any
 [primary table](https://camanual.whirl-i-gig.com/providence/user/dataModelling/primaryTables) without
-restriction. All relationships include references to [relationship
-types] -- configurable specifiers that distinguish different
+restriction. All relationships include references to *relationship
+types* -- configurable specifiers that distinguish different
 kinds of relationships that may occur. Relationship types between object
-and entity records might include, for example, \"creator\", \"donor\"
+and entity records might include, for example, \"creator\," \"donor\,"
 and \"subject\".
 
 Any number of relationships can be created between a pair of records,
