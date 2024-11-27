@@ -21,7 +21,7 @@ stored. Storage locations are just another type of record and may be
 associated with objects using relationships. The location of an object
 may be recorded by creating a relationship between object and location.
 
-`![image]`(images/workflow_storage_loc_hierarchy.png)
+![image](images/workflow_storage_loc_hierarchy.png)
 
 This arrangement has the advantage of simplicity but comes with
 significant limitations:
@@ -92,7 +92,7 @@ in others. Unless you have a policy that clearly defines when
 movement-based tracking is required it is suggested to use
 workflow-based tracking exclusively.
 
-::: note
+:::note
 Movement-based tracking is only intended for object locations. If
 tracking non-location values such as provenance, use workflow-based
 tracking.
@@ -1078,12 +1078,10 @@ default `template` will be used.
 
 :::tip
 When using `additionalTemplates` with policies that include more than
-one element, it is
-:::
-
-advisable to define the same set of named templates for each element.
+one element, it is advisable to define the same set of named templates for each element.
 This will ensure that a value will be displayed regardless of the type
 of current value.
+:::
 
 ## Searching on current values
 
