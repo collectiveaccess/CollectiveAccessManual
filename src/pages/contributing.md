@@ -4,9 +4,9 @@ There are many ways to contribute to CollectiveAccess.
 
 ## Support and documentation
 
-You can help other community members by posting to the [support forum](https://support.collectiveaccess.org/) or responding in the [community Gitter chat](https://app.gitter.im/#/room/#collectiveaccess_support:gitter.im)
+You can help other community members by posting to the [support forum](https://support.collectiveaccess.org/) or responding in the [community Gitter chat](https://app.gitter.im/#/room/#collectiveaccess_support:gitter.im).
 
-Alternatively, expanding or improving [this documentation](/) will help too! If you aren't familiar with markdown (which is used to write
+Alternatively, expanding or improving [this documentation](/) will help too! If you aren't familiar with [markdown](https://www.markdownguide.org/) (which is used to write
 pages) you can still offer suggestions or documentation improvements [via the issue
 tracker](https://github.com/collectiveaccess/CollectiveAccessManual/issues).
 

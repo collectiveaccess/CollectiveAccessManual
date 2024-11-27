@@ -6,6 +6,7 @@ sidebar_label: Installation
 ---
 
 # Installation
+
 CollectiveAccess can be run in any environment that supports PHP 7.x and MySQL 5.7 or better. (Note that PHP 8 is not yet supported, but will be soon). This includes any recent version of Linux, Mac OS or Windows. User-contributed `installation instructions for Linux <install_linux>` are available, as are more detailed installation guides for:
 
 - `Ubuntu 20.04 LTS <install_ubuntu_20_04>`
@@ -24,7 +25,7 @@ repository](https://github.com/collectiveaccess/CollectiveAccessManual)!
 
 CollectiveAccess relies upon a number of software packages to manage
 data and process media. Required software is outlined in the
-`system requirements <system_requirements>` list. Instructions for installing requirements is more fully
+[system requirements](https://camanual.whirl-i-gig.com/providence/user/setup/systemReq) list. Instructions for installing requirements is more fully
 described in the installation guides listed above.
 
 ## Configuring PHP prior to installation
@@ -106,7 +107,7 @@ To install CollectiveAccess Providence perform the following steps:
     suitable for your project you may want to ask on the [support
     forum](https://support.collectiveaccess.org) or look at our [list of
     contributed
-    profiles](http://www.collectiveaccess.org/configuration).
+    profiles](https://github.com/collectiveaccess/InstallationProfiles/tree/main).
 6.  The installer will give you login information for your newly
     installed system when installation is complete. Be sure to note this
     information in a safe place!
