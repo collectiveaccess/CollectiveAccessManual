@@ -7,7 +7,7 @@ title: Media_processing.conf
 The file defines the media processing rules to transform media
 representations to different media transformations.
 
-It is a standard CollectiveAccess configuration file using the [Configuration File Syntax](https://camanual.whirl-i-gig.com/providence/user/configuration/configuration_file_syntax.)
+It is a standard CollectiveAccess configuration file using the [Configuration File Syntax](https://camanual.whirl-i-gig.com/providence/user/configuration/configuration_file_syntax)
 
 
 CollectiveAccess supports media processing configuration for

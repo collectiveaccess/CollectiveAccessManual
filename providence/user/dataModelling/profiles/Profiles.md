@@ -33,9 +33,9 @@ or server. When you first log in after installing CollectiveAccess,
 you\'ll be asked to select one of the saved installation profiles in the
 \"XML\" folder, which will then be used to complete the installation
 process. In Providence, many pre-defined profiles are available, ranging
-from standard schemata (see \_\`Metadata Standards\`) to custom set ups
-created for and by organizations world wide (see \_\`Configuration
-Library\`).
+from standard schemata (see [Metadata Standards](https://camanual.whirl-i-gig.com/providence/user/dataModelling/profiles/MetadataStandards)) to custom set ups
+created for and by organizations world wide (see [Configuration
+Library](https://camanual.whirl-i-gig.com/providence/user/dataModelling/profiles/ConfigurationLibrary)).
 
 # Creating a Profile
 

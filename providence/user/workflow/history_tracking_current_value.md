@@ -53,10 +53,10 @@ any type of record. Tracking of object location is the focus in this
 discussion, but the approaches described here may be applied to other
 types of time-varying information.
 
-## Tracking approaches
+## Tracking Approaches
 
 To support tracking methodologies required by different types of museum
-and archival collections CollectiveAccess offers two approaches to
+and archival collections, CollectiveAccess offers two approaches to
 location tracking:
 
 > -   **Workflow-based location tracking.** Current location is recorded
@@ -116,10 +116,10 @@ are two entries, both mandatory:
 >     configuration by declaring a standard policy to be used in most
 >     cases.
 
-### Workflow-based location tracking
+### Workflow-based Location Tracking
 
 An example `history_tracking_policies` configuration for workflow-based
-location tracking is shown below: :
+location tracking is shown below: 
 
 ```
 history_tracking_policies = {
@@ -197,7 +197,7 @@ configuration specifically for occurrences of type \"exhibition\", and a
 default configuration for all other types.
 
 Each per-type configuration must include entries for `date` and
-`template`. `date` is a ref:\`bundle specifier \<bundle specifiers\>\`
+`template`. `date` is a [bundle specifier](https://camanual.whirl-i-gig.com/providence/user/dataModelling/bundleSpecifiers)
 for a date field in either the related table or the relationship to that
 table. The value in the specified field will be used to determine where
 in the chronology of tracked values each related record is placed. In
@@ -322,7 +322,7 @@ current. For organizations that track simple location information (Eg.
 \"where is it?\") on a per-object basis this arrangement is the simplest
 and most maintainable choice.
 
-### Movement-based location tracking
+### Movement-based Location Tracking
 
 Movement-based location tracking provides a solution for organizations
 with more complex documentation requirements, or that frequently move
@@ -330,8 +330,9 @@ groups of objects. Movement-based tracking extends workflow tracking
 with an intermediate [movement] record between objects and
 their locations. This record enables capture of detailed documentation
 of transitions for any number of objects from one location to another.
+
 Because movements are standalone records with the full range of
-configurable fields they are able to capture rich descriptions of moves,
+configurable fields, they are able to capture rich descriptions of moves,
 including packing, shipping insurance and condition documentation. For
 organizations that frequently move groups of objects, or high-value or
 sensitive objects with stringent documentation requirements, the
@@ -447,7 +448,7 @@ storage locations rather than directly on movements. Display of mixed
 movement and location data is possible using
 `display templates`
 with \<unit\> tags traversing relationships between movement and storage
-location. In the example configuration, the template displays movement
+location (for more on conditional tags, see [Display Template Syntax](https://camanual.whirl-i-gig.com/providence/user/reporting/display_templates)). In the example configuration, the template displays movement
 identifier, label and purpose notes text, before jumping to the related
 storage location record (related with relationship type = \"location\")
 and displaying the full hierarchical location path. To adjust browsing
@@ -458,14 +459,14 @@ can optionally limit the range of movement-related storage locations to
 browse on by setting `useRelatedRelationshipType` to a valid
 movement-storage location relationship type.
 
-### Tracking location movement
+### Tracking Location Movement
 
 Movement of objects may be initiated indirectly if the storage location
 in which they are currently resident is moved. For example, if a cabinet
 storage location is moved from one room to another, it may be desirable
 to log that movement against all objects in the cabinet. The cabinet
 contents have not moved relative to the cabinet, but the absolute
-location of objects in the cabinet *has* changed. By default
+location of objects in the cabinet *has* changed. By default,
 CollectiveAccess will simply update the current location to reflect the
 new position of the storage location without any additional logging. The
 only indication that the storage location itself had moved would be in
@@ -473,7 +474,7 @@ the change log for the location record.
 
 Some organizations require that all movements of objects, direct and
 indirect, be explicitly logged. CollectiveAccess supports this through
-location change movement logging. These [app.conf]
+location change movement logging. These [app.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/mainConfiguration/app)
 configuration directives control creation of movement records when
 moving locations:
 
@@ -524,22 +525,22 @@ moving locations:
 </table>
 
 When
-[record_movement_information_when_moving_storage_location]
-is set in [app.conf], a movement record will be created each
+`record_movement_information_when_moving_storage_location`
+is set in [app.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/mainConfiguration/app), a movement record will be created each
 time a storage location is moved within the location hierarchy. The
 movement will be linked to all objects resident in the location, and in
 addition to a link to the location, the movement will also be linked to
 the old and new parent locations. These relationships can be
 distinguished using relationship types configured in the
-[originalLocationTrackingRelationshipType] and
-[newLocationTrackingRelationshipType] directives within
+`originalLocationTrackingRelationshipType` and
+`newLocationTrackingRelationshipType` directives within
 current location policy [ca_movements] element
 configuration. If the location being moved has sub-locations these may
 be optionally linked to the movement via the relationship type defined
-in [subLocationTrackingRelationshipType]. Omit this setting
+in `subLocationTrackingRelationshipType`. Omit this setting
 to skip linking sub-locations to movements.
 
-Once a location\'s position within the hierarchy is changed the full
+Once a location\'s position within the hierarchy is changed, the full
 hierarchical path to the location will reflect its current value
 wherever it is displayed. While generally desirable, display of the
 current path can be misleading in the chronology, as movements to the
@@ -674,7 +675,7 @@ location to the movement record. </td>
 	</tbody>
 </table>
 
-## The chronology bundle
+## The Chronology Bundle
 
 You can display a chronology of values for a policy in the editing user
 interface using the `history_tracking_chronology` bundle.
@@ -696,9 +697,9 @@ configuration in [app.conf], but can be overriden by values
 specific to placements of the bundle in the user interface.
 
 At a minimum when adding a chronology bundle to the editing user
-interface you must specify a policy. There are many other options which
-can be set in the an
-`installation profile` if desired. Available options include:
+interface, you must specify a policy. There are many other options which
+can be set in the
+[installation profile](https://camanual.whirl-i-gig.com/providence/user/dataModelling/profiles/) if desired. Available options include:
 
 <table>
 	<thead>
@@ -718,7 +719,7 @@ can be set in the an
 		<tr>
 			<td>displayMode</td>
 			<td> Format of display. May be set to either       
-                                          \"chronology\" (chronological view of                   
+                                \"chronology\" (chronological view of                   
                                           history) or \"tabs\" (tabbed display with               
                                           current value and history separated). Most              
                                           history management options are only                     
@@ -904,7 +905,7 @@ When using movement-based location tracking be sure to set
 movement\" controls are available.
 :::
 
-## The current contents bundle
+## The Current Contents Bundle
 
 The current contents bundle (`history_tracking_current_contents`) lists
 all items that currently have the record the bundle is attached to as
@@ -912,7 +913,7 @@ their current value. It is typically used on storage location records to
 display a list of objects currently resident in that location.
 
 The following options are available to set in an
-`installation profile`:
+[installation profile](https://camanual.whirl-i-gig.com/providence/user/dataModelling/profiles/):
 
 <table>
 	<thead>
@@ -960,7 +961,7 @@ The current value of a history tracking policy may be displayed in the
 editor \"inspector\" (the information panel on the upper left-hand
 corner of the editor interface). The policy used may be set on a
 per-table and/or per-type basis using the `inspector_tracking_displays`
-entry in app.conf.
+entry in [app.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/mainConfiguration/app).
 
 ```
 inspector_tracking_displays = {
@@ -984,7 +985,7 @@ types.
 A typical inspector with this configuration would appear as shown in the
 screen image on the right.
 
-## Display in templates
+## Display in Templates
 
 Current value information may be included in
 `display templates` using the following tags:
@@ -1083,7 +1084,7 @@ This will ensure that a value will be displayed regardless of the type
 of current value.
 :::
 
-## Searching on current values
+## Searching on Current Values
 
 Current values can be indexed for search on a per-table, per-policy
 basis. Any value in the related table can be indexed, enabling search,
@@ -1154,7 +1155,7 @@ must be indexed for the search to return results.
 These same access point formats may be used when configuring advanced
 search forms.
 
-## Browsing on current values
+## Browsing on Current Values
 
 To browse on current location add a facet to
 `browse.conf` of type
@@ -1201,7 +1202,7 @@ Selecting "On exhibition" would return all objects where the current
 location is any exhibition. Without the collapse setting, each
 exhibition would be listed individually.
 
-## Home locations
+## Home Locations
 
 From version 1.8 of CollectiveAccess it is possible to set a typical (or
 \"home\") location for an object. Both the chronology
@@ -1239,7 +1240,7 @@ tag `` `^ca_objects.home_location_value ``[. The value returned by this
 tag will be formatted according to the template format in the app.conf
 ][home_location_display_template]\` entry.
 
-## Updating the cache
+## Updating the Cache
 
 For performance reasons, the current locations of objects are cached in
 the database and used when browsing. Since current location values are

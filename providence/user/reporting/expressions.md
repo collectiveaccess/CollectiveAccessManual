@@ -1,5 +1,5 @@
 ---
-title: Expression syntax
+title: Expression Syntax
 ---
 
 Expressions
@@ -251,10 +251,34 @@ Functions are black-boxes that you put a number of values into in order to get a
 			<td>idnoUseCount</td><td>Return number of items a value is used as an identifier (idno) for a given table. </td><td>String &lt;idno value&gt;</td><td>String &lt;table&gt; (optional, if omitted defaults to ""ca_objects"")</td><td></td>
 		</tr>
 		<tr>
-			<td>dateIsRange</td><td>Return true if date is a range rather than a single day, month or year. [available from version 1.8]</td><td>String &lt;date expression&gt;</td><td>boolean</td><td>dateIsRange(1950's)</td>
+			<td>dateIsRange</td><td>Return true if date is a range rather than a single day, month or year. [available from version 2.0]</td><td>String &lt;date expression&gt;</td><td>boolean</td><td>dateIsRange(1950's)</td>
 		</tr>
 		<tr>
-			<td>fromUnixtime</td><td>Convert Unix timestamp to ISO-8601 formatted date. [available from version 1.8]</td><td>Integer &lt;timestamp&gt;</td><td>ISO date</td><td></td>
+			<td>fromUnixtime</td><td>Convert Unix timestamp to ISO-8601 formatted date. [available from version 2.0]</td><td>Integer &lt;timestamp&gt;</td><td>ISO date</td><td></td>
+		</tr>
+		<tr>
+			<td>earliestDate</td>
+			<td> Returns the earliest date in list of date intervals passed as arguments. Any number of arguments may be passed. String arguments with dates separated by semicolons will be considered as a list of dates. This makes it possible to pass in repeating data fields using metadata element placeholders, so long as the delimiter is a semicolon (which is the default, so it should not need to be set explicitly). Parameters controlling the format of the returned date may be passed as a string formatted as URL query parameters. The parameters are those defined in datetime.conf, including dateFormat and timeOmit. Unless set explicitly timeOmit is assumed to be true. An example parameter string: "dateFormat=iso8601&timeOmit=0" (returns earliest date in ISO format with time included) [available from version 2.0]</td>
+			 <td>
+			 	Any number of parameters may be passed, each representing one or more date to be compared. Expressions representing multiple
+			 	dates, as from a repeating metadata element, should be passed as strings with a semicolon delimiter (the default). Options controlling the format of the return value can be passed as the last parameter. Options should be encoded in
+			 	the format of URL query parameters. Supported parameters include options defined in ``datetime.conf``.
+			 </td>
+			 <td>Date expression</td>
+			 <td>
+			 	``earliestDate("^ca_objects.dates", "dateFormat=iso8601")``
+			 </td>
+		</tr>
+		<tr>
+			<td>latestDate</td>
+			<td> Returns the latest date in list of date intervals passed as arguments. [available from version 2.0]</td>
+			 <td>
+			 	Parameters and options follow the same pattern as that used for ``earliestDate()``
+			 </td>
+			 <td>Date expression</td>
+			 <td>
+			 	``latestDate("^ca_objects.dates", "dateFormat=iso8601")``
+			 </td>
 		</tr>
 	</tbody>
 </table>

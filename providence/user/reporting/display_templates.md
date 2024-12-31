@@ -1,17 +1,19 @@
 ---
-title: Display template syntax
+title: Display Template Syntax
 ---
 # Display Template Syntax
 
 Display templates are used to format data from
 bundles (metadata elements stored in CollectiveAccess) for display on screen,
-output into reports and presentation in search results. When no display
+output into reports, and presentation in search results. When no display
 template is defined, CollectiveAccess defaults to displaying bundle data
 in the simplest possible way, typically as a semicolon-delimited list of
-values. For bundles comprised of a single value (Eg. a simple text
+values. For bundles comprised of a single value (E.g. a simple text
 metadata element) this is often enough. For containers – complex bundles consisting
 of several discrete values, such as a mailing address – a template
-is usually required to adequately format the value. Other cases where
+is usually required to adequately format the value. 
+
+Other cases where
 bundle display templates are called for include:
 
 > -   **To define styling**, such as headings, bold and italics around
@@ -25,7 +27,7 @@ bundle display templates are called for include:
 >     output as 3" x 24" x 8" ... or 3"W x 24"L x 8"H ... or 3"W x 8"H
 >     if length happens to be undefined (because displays can
 >     adaptively omit the delimiter and suffix).
-> -   **To display data attached to related items**. For example to
+> -   **To display data attached to related items**. For example, to
 >     display both the name and life dates for related entities a bundle
 >     display template can be used to extract and format the data. Any
 >     data attached to the related entity can be displayed.
@@ -51,7 +53,7 @@ formatting in themes. They are the preferred formatting method in
 Pawtucket2, although mixed HTML/PHP coding is still supported.
 :::
 
-## Defining templates
+## Defining Templates
 
 Default display templates can be defined for metadata elements as part
 of their configuration (Configuring Metadata).
@@ -65,13 +67,13 @@ basis. When a template is defined for a metadata element within a
 display or editor user interface, it will take precedence over templates
 defined in the element's configuration.
 
-## Template syntax
+## Template Syntax
 
 At their most basic, templates are simply text with placeholders to be
 replaced by bundle values. Placeholders always start with a caret (`^`)
 character followed by a bundle specifier, an unambiguous identifier for
 a metadata element. For example, if you have a metadata element in an
-object record with the element code description and wish to preface the
+object record with the element code `description` and wish to preface the
 value of the element with the label "Description:" the template would
 be:
 
@@ -285,7 +287,7 @@ and
 
 In the previous examples, data displayed is always from a particular
 object record at hand – the "primary" record. Templates are always
-processed relative to to the primary record. If you are formatting
+processed relative to the primary record. If you are formatting
 object search results, for example, your template will be repeatedly
 evaluated for each object in the result set, with each object taking its
 turn as primary. It's obvious but still worth stating: placeholders
@@ -352,7 +354,7 @@ well as to display indirectly related data (such as the related entity's
 birthplaces), set custom delimiters and other options a new template
 directive, the `<unit>` tag, is needed.
 
-## Formatting templates with `<unit>`
+## Formatting Templates with `<unit>`
 
 `<unit>` tags allow you to break your templates into sub-templates that
 are evaluated independently and then reassembled for final output. Using
@@ -657,7 +659,7 @@ The `^omitcount` placeholder can be used within the `<unit>` or
 number of values omitted in the `<unit>` before it in the template and
 will be suppressed when no values from the previous `<unit>` are hidden.
 
-## Contextual tags: `<more>` and `<between>`
+## Contextual Tags: `<more>` and `<between>`
 
 Templates using `<ifdef>` and `<ifnotdef>` can get long and unruly when
 they include many elements dependent on the state of multiple
@@ -698,7 +700,7 @@ options using `<ifdef>`:
 The output of this would be the defined dimensions with a single "x"
 delimiter between each pair.
 
-## Conditional tags: `<ifdef>`, `<ifnotdef>`, `<ifcount>`, `<if>`
+## Conditional Tags: `<ifdef>`, `<ifnotdef>`, `<ifcount>`, `<if>`
 
 As mentioned earlier you can make display of portions of your template
 contingent upon specified conditions by surrounding part of the template
@@ -708,12 +710,15 @@ not empty `<ifdef>` will display the portion of the template it
 encloses. Conversely, if the value is empty `<ifnotdef>` will display
 the content it encloses.
 
+### `<ifdef>` and `<ifnotdef>`
+
 For example:
 
 ```
 Title: ^ca_objects.preferred_labels.name <ifdef code="ca_objects.description">Description: ^ca_objects.description</ifdef>
 ```
 
+will display the value for the "title field" followed by the "description" field if not empty. 
 Note that the specifier in the `code` attribute is not a placeholder and
 therefore does not take a `^` prefix.
 
@@ -723,6 +728,8 @@ by listing them in the `code` attribute separated by commas or pipes
 (`<ifdef>`) or not defined (`<ifnotdef>`) for the tag to display
 content. When separated by pipes, any of the bundles defined (`<ifdef>`)
 or not defined (`<ifnotdef>`) will cause the tag to display content.
+
+### `<ifcount>`
 
 The `<ifcount>` tag controls display of content based upon the number of
 values available from the bundle specifier in `code`. It is useful when
@@ -750,6 +757,8 @@ and `max` to the same number:
 <ifcount code="ca_entities.related" min="1" max="1">Related entity: ^ca_entities.preferred_labels.displayname</ifcount>
 ```
 
+### `<if>`
+
 The `<if>` tag provides maximum control by using
 `expressions <expressions>` to determine when content is displayed. For
 example, to output the display only if `current` is selected from the
@@ -772,7 +781,7 @@ bundle has at least one non-blank value. Note that `<if>` does not
 support the `omitBlanks` option. You must filter blank values in the
 expression.
 
-## Even more conditional: the `<case>` tag
+## Even More Conditional: The `<case>` Tag
 
 Sometimes you need to to choose from one of several templates based upon
 varying criteria. For instance, when listing entities related to an
@@ -840,7 +849,7 @@ This one calculates the age of Alan Turing:
 <expression>age("23 June 1912", "7 June 1954")</expression>
 ```
 
-## Formatting hierarchical displays
+## Formatting Hierarchical Displays
 
 Many types of records can be arranged hierarchically. To get some or all
 of the hierarchy for display use a hierarchical bundle specifier. This
@@ -928,7 +937,7 @@ hierarchical data is displayed:
 	</tbody>
 </table>
 
-## Making links to other records
+## Making Links to Other Records
 
 The `<l>` tag may be used to create links within the template. The links
 will always point to the primary record. In Providence the link will
@@ -974,7 +983,7 @@ tags. The correct way to write this template is:
 </b></ifdef> ^ca_occurrences.description
 ```
 
-## Special placeholders
+## Special Placeholders
 
 There are a few placeholders that have special meanings for certain
 kinds of primary records:
@@ -1155,7 +1164,7 @@ representations:
 	</tbody>
 </table>
 
-## Splitting apart a date range into separate data points
+## Splitting Apart a Date Range into Separate Data Points
 
 Single date values that are expressed as ranges (e.g. 2000-2018) can be
 parsed into separate data points for start and end dates. For example,
