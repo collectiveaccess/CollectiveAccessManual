@@ -1,6 +1,6 @@
 ---
 title: Importing Data in CollectiveAccess
-sidebar_label: Introduction
+sidebar_label: Introduction to Import Mappings 
 sidebar_position: 1
 ---
 
@@ -78,7 +78,7 @@ imports), Inmagic, Omeka, TEI, iDigBio, EAD, MARC, PBCoreInst,
 TabDelimited, Excel, MARCXML, PastPerfectXML, and ULAN.
 
 For more, see [Supported File
-Formats](mappings/formats).
+Formats](https://docs.collectiveaccess.org/providence/user/import/file_formats).
 
 The following pages will walk the user through the different parts of an
 import mapping spreadsheet, how to create an import mapping, and

@@ -265,8 +265,14 @@ placeholder:
 			of setting the start option to zero and length option to the truncation
 			length.</td>
 		</tr>
+		
 		<tr>
- 		</tr>
+			<td>stripEnclosingParagraphTags</td>
+			<td>The CKEditor5 and QuillJS rich text editors automatically wrap content with
+ &lt;p&gt; tags. This can introduce unwanted line breaks in display templates that format content on a 
+ single line. This option strips &lt;p&gt; tags at the beginning and end of the content. Note that this will result in incorrect markup if used
+ on text with multiple paragraphs. [Available from version 2.0.4]</td>
+		</tr>
 	</tbody>
 </table>
 
