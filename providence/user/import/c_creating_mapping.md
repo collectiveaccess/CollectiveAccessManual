@@ -31,7 +31,7 @@ Below is a column-by-column explanation of each component of the import mapping 
 
 ### Settings
 
-Every import mapping requires general settings. Settings include the importer name, data format of the source data (for a comprehensive list of supported file formats, please see [Supported File Formats](introduction)), the selected CollectiveAccess table, and more. This section can be placed at the top or bottom of a mapping spreadsheet.
+Every import mapping requires general settings. Settings include the importer name, data format of the source data (for a comprehensive list of supported file formats, please see [Supported File Formats](https://docs.collectiveaccess.org/providence/user/import/file_formats)), the selected CollectiveAccess table, and more. This section can be placed at the top or bottom of a mapping spreadsheet.
 
 Although the Settings are integrated into the spreadsheet, they do function separately from the main column-defined body of the import mapping.
 
