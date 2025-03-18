@@ -1,3 +1,7 @@
+---
+title: Upgrade PHP
+---
+
 Work in progress instructions to upgrade PHP from 7.4 to 8.2, enabling Collective Access upgrades from versions 1.7 and 1.8 to version 2.0.
 
 These instructions are from upgrading an Ubuntu based systems but should work on Debian just as well - they will need to be revised for use on RHEL
