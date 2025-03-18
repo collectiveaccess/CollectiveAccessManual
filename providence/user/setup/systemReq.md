@@ -61,7 +61,7 @@ The following PHP extensions are recommended:
 
 - php-process
 - php-posix
-- php-gmagick (if GraphicsMagick is installed0
+- php-gmagick (if GraphicsMagick is installed)
 - php-redis (if REDIS caching server is installed)
 
 All of these should be available as pre-compiled packages for most Linux
