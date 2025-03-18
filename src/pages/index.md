@@ -1,6 +1,6 @@
 # Welcome to the CollectiveAccess documentation!
 
-See our [Quickstart](/quickstart) page for information on installing CollectiveAccess or the componenet specific [Providence](/providence) and
+See our [Quickstart](/quickstart) page for information on installing CollectiveAccess or the component specific [Providence](/providence) and
 [Pawtucket](/pawtucket) pages for detailed information about using the frontend and backend of the application respectively.
 
 ## About *CollectiveAccess*
