@@ -8,14 +8,15 @@ These instructions show how extra steps required for running tests.
 
 Firstly install required packages, use the version of `pcov` compatible with your system.
 ```
-root@multitest:/srv/providence# apt install php8.2-pcov
+# apt install php8.2-pcov
 ```
 
-Then set up the database and install a profile. These scripts default to using supplied configuration but you can supply your own.
+Change to your providence directory and set up the database and install a profile. These scripts default to using supplied configuration but you can
+supply your own.
 
 ```
-/srv/# cd /srv/providence/
-/srv/providence/tests# ./tests/database_setup.sh
+# cd /var/www/html/ca/
+/var/www/html/ca# ./tests/database_setup.sh
 Creating cache dir at mysql_profile
 Drop existing database
 ERROR 1008 (HY000) at line 1: Can't drop database 'ca_test'; database doesn't exist
@@ -28,7 +29,7 @@ Configuring MySQL server
 Restarting MySQL server
 Show updated MySQL server variables
 ...
-/srv/providence# ./tests/profile_setup.sh
+/var/www/html/ca# ./tests/profile_setup.sh
 Installing profile testing...
 ...
 Exporting database to cache file: ./tests/mysql_profile/testing.sql
@@ -38,7 +39,7 @@ Tip: If doing an upgrade, delete `./tests/mysql_profile/[profile name].sql`.
 
 Running tests can be done with the vendored `phpunit`; use the PHP version appropriate for your environment
 ```
-/srv/providence# php8.2 ./vendor/bin/phpunit --configuration tests/phpunit-coverage.xml --coverage-text --bootstrap tests/setup-tests.php tests/
+/var/www/html/ca# php8.2 ./vendor/bin/phpunit --configuration tests/phpunit-coverage.xml --coverage-text --bootstrap tests/setup-tests.php tests/
 PHPUnit 9.6.21 by Sebastian Bergmann and contributors.
 
 Runtime:       PHP 8.2.27 with PCOV 1.0.12
@@ -62,5 +63,10 @@ Code Coverage Report:
   Methods: 20.03% (1032/5152)
   Lines:   34.69% (41220/118820)
 ...
+```
+
+To get a more refined/specific set of test results test a specific subdirectory of `tests/`
+```
+/var/www/html/ca# php8.2 ./vendor/bin/phpunit --configuration tests/phpunit-coverage.xml --coverage-text --bootstrap tests/setup-tests.php tests/models
 ```
 
