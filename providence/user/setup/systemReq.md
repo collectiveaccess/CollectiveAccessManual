@@ -39,7 +39,7 @@ cannot run:
 | --- | --- |
 | Webserver | [Apache](https://httpd.apache.org/) version 2.4 or [nginx](https://nginx.org) 1.26 or later are recommended.|
 |[MySQL](https://dev.mysql.com/) |  Versions 8.0 and 8.4 are supported. Equivalent versions of [MariaDB](https://mariadb.org/) will also work. MySQL 9.0 is not currently supported.|
-|[PHP](https://php.net/)|    [PHP](https://php.net/) version 8.2 or 8.3 is required. We have not yet fully validated CollectiveAccess for use with PHP 8.4. |            
+|[PHP](https://php.net/)|    [PHP](https://php.net/) version 8.2 or 8.3 is required. We have not yet fully validated CollectiveAccess for use with PHP 8.4. |
 
 The following PHP extensions are required:
 
@@ -68,6 +68,14 @@ All of these should be available as pre-compiled packages for most Linux
 distributions and as installer packages for Windows. For Mac OS X,
 [Brew](https://brew.sh/) is a highly recommended way to get all of CollectiveAccess\'s
 prerequisites quickly up and running.
+
+
+## Software requirements for installing
+
+Collectiveaccess requires the following software in order to be installed, on top of anything listed in the core requirements:
+- `composer` (can be installed via packages or [getcomposer](https://getcomposer.org/)
+- `git` OR one of wget/curl and one of tar/unzip
+
 
 ## Caching
 
@@ -100,7 +108,7 @@ below).
 Most users will want at a minimum GraphicsMagick installed on their
 server, and should install other packages as needed. 
 
-##   PHP extensions for media processing (optional but strongly recommended)
+###  PHP extensions for media processing (optional but strongly recommended)
 
 CollectiveAccess supports two different mechanisms to employ GraphicsMagick or
 ImageMagick for image processing. The preferred option is a PHP extension that provides a fast and efficient way for PHP applications such as CollectiveAccess to access GraphicsMagick or ImageMagick functionality. Alternatively
@@ -125,6 +133,7 @@ repository and often available as packages for various operating
 systems. They should be easy to install on Unix-y operating systems like
 Linux and Mac OS X. Installation on Windows can be challenging.
 
-## HEIC image format support
+### HEIC image format support
 
 High Efficiency Image Container, or HEIC, is an Apple-proprietary image format which may provide higher quality and better compression than open standards such as JPEG. Many open-source tools, including GraphicsMagick, do not support this format due to patent licensing issues. If support for HEIC images in CollectiveAccess is required you must install a version of ImageMagick compiled to support HEIC. This may require installation of additional software libraries, including libde265 and libheif. If both GraphicsMagick and ImageMagick are installed, GraphicsMagick will be used for all image processing, as it is generally the most performant option, with all HEIC support delegated to ImageMagick. 
+
