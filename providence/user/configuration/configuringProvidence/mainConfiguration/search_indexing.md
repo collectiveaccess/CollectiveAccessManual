@@ -572,4 +572,4 @@ reflect the configuration modifications. To update the entire search
 index to reflect the new configuration, rebuild the index using
 \"Rebuild search indices\" web interface under **Manage \> Administrate
 \> Maintenance**; or reindex using the command-line caUtils
-rebuild-search-indices command.
+rebuild-search-index command.
