@@ -183,7 +183,7 @@ Creates an upper hierarchy of occurrences only when the table of the import is s
 Map the CA table.element (Column 3 in an import mapping) to ca_entities.parent_id instead of ca_entities
 :::
 #### entityHierarchyBuilder parameters:
-- parents
+parents; doNotParse
 
 ### collectionHierarchyBuilder
 Creates an upper hierarchy of collections only when the import table is set to ca_collections
@@ -192,6 +192,11 @@ Map the CA table.element (Column 3 in an import mapping) to ca_collectionss.pare
 :::
 #### collectionHierarchyBuilder parameters:
 parents; relationships
+
+### collectionIndentedHierarchyBuilder
+
+#### collectionIndentedHierarchyBuilder parameters:
+levels; levelTypes; mode
 
 ### placeHierarchyBuilder
 Creates an upper hierarchy of places only when the import table is set to ca_places
@@ -240,8 +245,6 @@ Map the CA table.element (Column 3 in an import mapping) to ca_storage_locations
 :::
 #### storageLocationHierarchyBuilder parameters:
 parents; relationships
-
-### ATRelatedGetter?
 
 ## Refinery Parameters
 
@@ -294,7 +297,7 @@ the tables below.
 ### attributes
 Sets or maps metadata for the entity record by referencing the metadataElement code and the location in the data source where the data values can be found
 
-```json title="example"
+```json title="example one"
 {
   "attributes": {
     "idno": "OBJ.2017.1",
@@ -309,7 +312,24 @@ Sets or maps metadata for the entity record by referencing the metadataElement c
   }
 }
 ```
-:::note
+```json title="example two (objectRepresentation)"
+{ 
+  "attributes": {
+    "media": "^1", 
+    "internal_notes": "^2", 
+    "idno": "^1"
+  }
+}
+```
+:::warning
+**measurementSplitter usage**
+
+When using attribute in a measurementSplitter refinery, this maps to other non-measurement elements that may be in the same container. Values here are set for all measurements being split.
+:::
+
+:::tip
+**auto-generated idno**
+
 To map source data to idnos in a *Splitter, see the ‘attributes’ parameter above. An exception exists for when idnos are set to be auto-generated. To create auto-generated idnos within an *Splitter, use the following syntax.
 ```json title="idno example"
 { "attributes":{"idno": "%"}}
@@ -319,44 +339,175 @@ To map source data to idnos in a *Splitter, see the ‘attributes’ parameter a
 **Can be used with:**
 [entitySplitter](#entitysplitter), [entityJoiner](#entityjoiner), [collectionSplitter](#collectionsplitter), [placeSplitter](#placesplitter), [movementSplitter](#movementsplitter), [objectLotSplitter](#objectlotsplitter), [objectSplitter](#objectsplitter), [objectRepresentationSplitter](#objectrepresentationsplitter), [occurrenceSplitter](#occurrencesplitter), [listItemSplitter](#listitemsplitter), [storageLocationSplitter](#storagelocationsplitter), [loanSplitter](#loansplitter), [measurementSplitter](#measurementssplitter), [tourStopSplitter](#tourstopsplitter), [tourMarker](#tourmaker).
 
+
+___
 ### collectionType
 Accepts a constant list item idno from the list collection_types or a reference to the location in the data source where the type can be found
 ```json title="example"
 {"collectionType": "box"}
 ```
+**Can be used with:** [collectionSplitter](#collectionsplitter)
 
+___
 ### collectionTypeDefault
 Sets the default collection type that will be used if none are defined or if the data source values do not match any values in the CollectiveAccess list collection_types
 ```json title="example"
 {"collectionTypeDefault":"series"}
 ```
+**Can be used with:** [collectionSplitter](#collectionsplitter)
+
+___
 ### dateAccuracyJoiner specific parameters
-#### accuracyField
+These parameters are only used on the [dateAccuracyJoiner](#dateaccuracyjoiner) refinery
+#### accuracyField (required)
+The field in which the date accuracy is stored (case-insensitive values are defined by accuracyValueDay, accuracyValueMonth and accuracyValueYear settings).
+:::tip
+When referencing a source data column, you don't use prefix this with the usual `'^'` caret.
+:::
+```json title="example"
+{ "accuracyField": "14" }
+```
+
 #### dateFormat
+The format in which the input dates are expected. Defaults to ‘Y-m-d’ (2014-04-01). Values come from phpDateTime::createFromFormat()
+```json title="example"
+// Would parse 15-Feb-2009
+{ "dateFormat": "j-M-Y"} 
+```
+
 #### accuracyValueDay
+The case-insensitive value in the accuracy field that indicates that the date is accurate to the day. Default value is ‘day’.
+```json title="example"
+{ "accuracyValueDay": "d" }
+```
+
 #### accuracyValueMonth
+The case-insensitive value in the accuracy field that indicates that the date is accurate to the month. Default value is ‘month’.
+```json title="example"
+{ "accuracyValueMonth": "m" }
+```
+
 #### accuracyValueYear
+The case-insensitive value in the accuracy field that indicates that the date is accurate to the year. Default value is ‘year’.
+```json title="example"
+{ "accuracyValueYear": "y" }
+```
+
 #### dateParseFailureReturnMode
+Defines what should be returned if the input date cannot be parsed, available values are "null" (the default) and "original"
+```json title="example"
+{ "dateParseFailureReturnMode": "original" }
+```
+
 #### unknownAccuracyValueReturnMode
+Defines what should be returned if the value of the accuracy column is unknown, available values are "null", "original" and "normalised" (the default)
+```json title="example"
+{ "unknownAccuracyValueReturnMode": "null" }
+```
 
+___
 ### dateJoiner specific parameters
-#### month
-#### day
-#### year
-#### startDay
-#### startMonth
-#### startYear
-#### endDay
-#### endMonth
-#### endYear
-#### expression
-#### start
-#### end
-#### skipStartIfExpression
-#### skipStartIfExpressionReplacementValue
-#### skipEndIfExpression
-#### skipEndIfExpressionReplacementValue
+These parameters are only used on the [dateJoiner](#datejoiner) refinery
+#### mode {#dateJoiner-mode}
+Determines how dateJoiner joins date values together. Two-column range (aka "range") is the default if mode is not specified. Options are: multiColumnDate, multiColumnRange, range.
 
+```json
+{"mode": "multiColumnDate"}
+```
+
+:::note
+for mode parameter in collectionHierarchyBuilder and listItemHierarchyBuilder see [other mode definition](#mode)
+:::
+
+#### month
+Maps the month value for the date from the data source. (For Multi-column date)
+```json
+{"month": "^4"}
+```
+
+#### day
+Maps the day value for the date from the data source. (For Multi-column date)
+```json
+{"day": "^5"}
+```
+
+#### year
+Maps the year value for the date from the data source. (For Multi-column date)
+```json
+{"year": "^6"}
+```
+
+#### startDay
+Maps the day value for the start date from the data source. (For Multi-column range)
+```json
+{"startDay": "^4"}
+```
+
+#### startMonth
+Maps the month value for the start date from the data source. (For Multi-column range)
+```json
+{"startMonth": "^5"}
+```
+
+#### startYear
+Maps the year value for the start date from the data source. (For Multi-column range)
+```json
+{"startYear": "^6"}
+```
+
+#### endDay
+Maps the day value for the end date from the data source. (For Multi-column range)
+```json
+{"endDay": "^7"}
+```
+
+#### endMonth
+Maps the month value for the end date from the data source. (For Multi-column range)
+```json
+{"endMonth": "^8"}
+```
+#### endYear
+Maps the year value for the end date from the data source. (For Multi-column range)
+```json
+{"endYear": "^9"}
+```
+#### expression
+Date expression (For Two-column range)
+```json
+{"expression" : "^dateExpression"}
+```
+#### start
+Maps the date from the data source that is the beginning of the conjoined date range. (For Two-column range)
+```json
+{"start" : "^dateBegin"}
+```
+#### end
+Maps the date from the data source that is the end of the conjoined date range. (For Two-column range)
+```json
+{"end": "^dateEnd"}
+```
+#### skipStartIfExpression
+Expression that if evaluating to true "start" date is omitted from joined range. Note "date" function – see above.
+```json
+{"skipEndIfExpression": "date(^end) < 1800"}
+```
+#### skipStartIfExpressionReplacementValue
+Optional replacement value for start date when it is skipped by expression. Allows you to force start date to something if skip expression is true.
+```json
+{"skipStartIfExpressionReplacementValue": "unknown"}
+```
+#### skipEndIfExpression
+Expression that if evaluating to true "end" date is omitted from joined range. Note "date" function – see above.
+```json
+{"skipEndIfExpression": "date(^end) > 2020"}
+```
+#### skipEndIfExpressionReplacementValue
+Optional replacement value for end date when it is skipped by expression. This exists to allow you to force the end date to something specific like "present" for living artist’s life dates.
+```json
+{"skipEndIfExpressionReplacementValue": "present"}
+```
+
+____
 ### delimiter
 Sets the value of the delimiter to break on, separating data source values
 
@@ -366,64 +517,164 @@ Sets the value of the delimiter to break on, separating data source values
 ```json title="measurementSplitter example"
 {"delimiter": "x"}
 ```
+**Can be used with:**
+[entitySplitter](#entitysplitter), [collectionSplitter](#collectionsplitter), [placeSplitter](#placesplitter), [movementSplitter](#movementsplitter), [objectLotSplitter](#objectlotsplitter), [objectSplitter](#objectsplitter), [objectRepresentationSplitter](#objectrepresentationsplitter), [occurrenceSplitter](#occurrencesplitter), [listItemSplitter](#listitemsplitter), [storageLocationSplitter](#storagelocationsplitter), [loanSplitter](#loansplitter), [measurementSplitter](#measurementssplitter), [tourStopSplitter](#tourstopsplitter).
 
+___
 ### displayNameFormat
 From version 1.5. Allows you to format the output of the displayName. Options are: "surnameCommaForename" (forces display name to be surname, forename); "forenameCommaSurname" (forces display name to be forename, surname); "forenameSurname" (forces display name to be forename surname); "original" (is the same as leaving it blank; you just get display name set to the imported text). This option also supports an arbitrary format by using the sub-element codes in a template, i.e. "^surname, ^forename ^middlename". Doesn’t support full format templating with `<unit>` and `<ifdef>` tags, though.
 
 ```json title="example"
 { "displayNameFormat": "surnameCommaForename" }
 ```
+**Can be used with:**
+[entitySplitter](#entitysplitter).
 
+___
 ### doNotParse
 From version 1.7. This setting will force the import to migrate an organization’s name as is when using the "entity_class" = ORG setting. Otherwise parts of the name get lost in the parse.
 
 ```json title="example"
 { "doNotParse" "1" }
 ```
+**Can be used with:**
+[entitySplitter](#entitysplitter).
 
+___
 ### dontCreate
 From version 1.5. If set to true (or any non-zero value) the splitter will only do matching and will not create new records when matches are not found.
 ```json title="example"
 { "dontCreate" "1" }
 ```
+**Can be used with:**
+[entitySplitter](#entitysplitter), [collectionSplitter](#collectionsplitter), [placeSplitter](#placesplitter), [movementSplitter](#movementsplitter), [objectLotSplitter](#objectlotsplitter), [objectSplitter](#objectsplitter), [objectRepresentationSplitter](#objectrepresentationsplitter), [occurrenceSplitter](#occurrencesplitter), [listItemSplitter](#listitemsplitter), [storageLocationSplitter](#storagelocationsplitter), [loanSplitter](#loansplitter), [tourStopSplitter](#tourstopsplitter). 
 
+___
 ### dontMatchOnLabel
+Setting `dontMatchOnLabel` to 1 will cause the the objectHierarchyBuilder to match on object idno, rather than preferred labels. Set this when unique objects may have duplicate titles  with other unique objects.
+```json title=example
+{ "dontMatchOnLabel": "1" }
+```
+**Can be used with:** [objectHierarchyBuilder](#objecthierarchybuilder).
 
+___
 ### elements
+Maps the components of the dimensions to specific metadata elements
 
+```json
+{
+  "elements": [
+  {
+    "quantityElement": "measurementWidth", 
+    "typeElement": "measurementsType", 
+    "type": "width"
+  }, 
+  {
+    "quantityElement": "measurementHeight", 
+    "typeElement": "measurementsType2", 
+    "type": "height"
+  }
+  ]
+} 
+```
+:::info
+Note: the typeElement and type sub-components are optional and should only be used in measurement containers that include a type drop-down.
+:::
+**Can be used with:** [measurementsSplitter](#measurementssplitter)
+
+___
 ### entityType
 Accepts a constant list item idno from the list entity_types or a reference to the location in the data source where the type can be found
 
 ```json title="example"
 { "entityType": "individual"}
 ```
-
+**Can be used with**
+[entitySplitter](#entitysplitter), [entityJoiner](#entityjoiners)
+___
 ### entityTypeDefault
 Sets the default entity type that will be used if none are defined or if the data source values do not match any values in the CollectiveAccess list entity_types
 
 ```json title="example"
 { "entityTypeDefault": "individual"}
 ```
-
+**Can be used with**
+[entitySplitter](#entitysplitter), [entityJoiner](#entityjoiners)
+___
 ### entityJoiner specific parameters
+These parameters are for use in [entityJoiner](#entityjoiner) refinery.
+
 #### forename
+Accepts a constant value for the forename or a reference to the location in the data source where the forename can be found.
+```json
+{ "forename": "^3"}
+```
 #### surname
+Accepts a constant value for the surname or a reference to the location in the data source where the surname can be found.
+```json
+{ "surname": "^2"}
+```
 #### other_forenames
+Accepts a constant value for the entity’s other forenames or a reference to the location in the data source where the other forenames can be found.
+```json
+{ "other_forenames": "^4"}
+```
 #### middlename
+Accepts a constant value for the middlename or a reference to the location in the data source where the middlename can be found.
+```json
+{ "middlename": "^5"}
+```
 #### displayname
+Accepts a constant value for the displayname or a reference to the location in the data source where the displayname can be found.
+```json
+{ "displayname": "^1"}
+```
 #### prefix
+Accepts a constant value for the prefix or a reference to the location in the data source where the prefix can be found.
+```json
+{ "prefix": "^6"}
+```
 #### suffix
-
+Accepts a constant value for the suffix or a reference to the location in the data source where the suffix can be found.
+```json
+{ "suffix": "^7"}
+```
+#### nonpreferred_labels
+List of non-preferred label values or references to locations in the data source where nonpreferred label values can be found. Use the split value for a label to indicate a value that should be split into entity label components before import.
+```json title="example one"
+{ 
+  "nonpreferred_labels": [{
+    "forename": "^5", 
+    "surname": "^6"
+  }]
+}
+```
+OR 
+```json title="example two (with split)"
+{
+  "nonpreferred_labels": [{"split": "^4"}]
+}
+```
+___
 ### hierarchicalDelimiter
+**Can be used with**
+[storageLocationSplitter](#storagelocationsplitter)
 
+___
 ### hierarchicalStorageLocationTypes
+**Can be used with**
+[storageLocationSplitter](#storagelocationsplitter)
 
+___
 ### ignoreParent
 From version 1.5. For use with entity hierarchies. When set to true this parameter allows global match across the entire hierarchy, regardless of parent_id. Use this parameter with datasets that include values to be merged into existing hierarchies but that do not include parent information. Paired with matchOn it’s possible to merge the values using only name or idno, without any need for hierarchy info. Not ideal for situations where multiple matches can not be disambiguated with the information available.
 ```json title="example"
 { "ignoreParent" "1" }
 ```
+**Can be used with**
+[entitySplitter](#entitysplitter), [collectionSplitter](#collectionsplitter), [placeSplitter](#placesplitter), [movementSplitter](#movementsplitter), [objectLotSplitter](#objectlotsplitter), [objectSplitter](#objectsplitter), [occurrenceSplitter](#occurrencesplitter), [listItemSplitter](#listitemsplitter), [storageLocationSplitter](#storagelocationsplitter), [loanSplitter](#loanSplitter), [tourStopSplitter](#tourstopsplitter)
 
+___
 ### interstitial
 Sets or maps metadata for the interstitial movement Relationship record by referencing the metadataElement code and the location in the data source where the data values can be found.
 ```json title="example"
@@ -433,21 +684,87 @@ Sets or maps metadata for the interstitial movement Relationship record by refer
   } 
 }
 ```
+**Can be used with**
+[entitySplitter](#entitysplitter), [entityJoiner](#entityjoiner), [collectionSplitter](#collectionsplitter), [placeSplitter](#placesplitter), [objectLotSplitter](#objectLotSplitter), [objectSplitter](#objectsplitter), [occurrenceSplitter](#occurrencesplitter), [listItemSplitter](#listitemsplitter), [storageLocationSplitter](#storagelocationsplitter), [loanSplitter](#loansplitter), [tourStopSplitter](#tourstopsplitter)
 
+___
 ### levels
+List of sources for hierarchy levels
+```json title='example'
+{
+  "levels":["^1", "^2", "^3"]
+}
+```
+**Can be used with**
+[collectionIndentedHierarchyBuilder](#collectionindentedhierarchybuilder), [listItemIndentedHierarchyBuilder](#listitemindentedhierarchybuilder)
 
+___
 ### levelTypes
+List of types for hierarchy levels
+```json title='example'
+{
+  "levelTypes":["collection", "series", "item"]
+}
+```
+**Can be used with**
+[collectionIndentedHierarchyBuilder](#collectionindentedhierarchybuilder), [listItemIndentedHierarchyBuilder](#listitemindentedhierarchybuilder)
 
+___
 ### list
+Code of list to import items into 
+```json title='example'
+{
+  "list":"object_classification"
+}
+```
+**Can be used with**
+[listItemIndentedHierarchyBuilder](#listitemindentedhierarchybuilder), [listItemHierarchyBuilder](#listitemhierarchybuilder)
 
+___
 ### listItemType
+Accepts a constant list item idno from the list or a reference to the location in the data source where the type can be found.
+```json title='example'
+{
+  "listItemType": "concept"
+}
+```
+**Can be used with**
+[listItemSplitter](#listitemsplitter)
 
+___
 ### listItemTypeDefault
-
+Sets the default list item type that will be used if none are defined or if the data source values do not match any values in the CollectiveAccess list list_item_types
+```json title='example'
+{
+  "listItemTypeDefault":"concept"
+}
+```
+**Can be used with**
+[listItemSplitter](#listitemsplitter)
+___
 ### loanType
+Accepts a constant list item from the list loan_types
+```json title='example'
+{
+  "loanType":"out"
+}
+```
+**Can be used with**
+[loanSplitter](#loansplitter)
 
+___
 ### loanTypeDefault
+Sets the default loan type that will be used if none are defined or if the data source values do not match any values in the CollectiveAccess list loan_types.
 
+```json title='example'
+{
+  "loanTypeDefault":"in"
+}
+```
+**Can be used with**
+[loanSplitter](#loansplitter)
+
+___
 ### matchOn
 From version 1.5. Defines exactly how the splitter will establish matches with pre-existing records. For example, you might be importing a data set in which entities are only listed by last name, but you want to make sure those entities merge with pre-existing records that include the full name. In that case, you could set "matchOn" to "surname." Or perhaps the data set includes multiple individuals with identical names. Here you might want to match on "idno" instead. You can also list multiple fields in the matchOn parameter, and it will try multiple matches in the order specified.
 
@@ -468,14 +785,25 @@ Or match on a custom metadata element in the record using the syntax `^ca_entiti
 ```json title="will match on a custom metadata element in the entity record"
 { "matchOn": ["^ca_entities.your_custom_code"]}
 ```
+**Can be used with**
+entitySplitter, collectionSplitter, placeSplitter, movementSplitter, objectLotSplitter, objectSplitter, objectRepresentationSplitter, objectHierarchyBuilder, occurrenceSplitter, listItemSplitter, storageLocationSplitter, loanSplitter
+___
 ### mediaPrefix
+**Can be used with**
 
+___
 ### mode
+**Can be used with**
 
+___
 ### movementType
+**Can be used with**
 
+___
 ### movementTypeDefault
+**Can be used with**
 
+___
 ### nonPreferredLabels
 Maps source data cells to \<table\>.nonpreferred_labels of the record being generated or matched by the *Splitter. Created as a list, can define more than one nonPreferredLabel.
 ```json title="example"
@@ -501,25 +829,46 @@ Maps source data cells to \<table\>.nonpreferred_labels of the record being gene
   ]
 }
 ```
+**Can be used with**
+entitySplitter, collectionSplitter, placeSplitter, movementSplitter, objectLotSplitter, objectSplitter, occurrenceSplitter, storageLocationSplitter, tourStopSplitter
 
+___
 ### objectType
+**Can be used with**
 
+___
 ### objectTypeDefault
+**Can be used with**
 
+___
 ### objectLotStatus
+**Can be used with**
 
+___
 ### objectLotStatusDefault
+**Can be used with**
 
+___
 ### objectLotType
+**Can be used with**
 
+___
 ### objectLotTypeDefault
+**Can be used with**
 
+___
 ### objectRepresentationType
+**Can be used with**
 
+___
 ### occurrenceType
+**Can be used with**
 
+___
 ### occurrenceTypeDefault
+**Can be used with**
 
+___
 ### parents
 Maps or builds the hierarchical records above the record being generated or matched by the *Splitter. The parent parameter has several sub-parameters including:
 - idno: maps the level-specific idno
@@ -566,13 +915,25 @@ Maps or builds the hierarchical records above the record being generated or matc
   ]
 }
 ```
+**Can be used with**
 
+___
 ### placeType
+**Can be used with**
 
+___
 ### placeTypeDefault
+**Can be used with**
 
+___
 ### placeHierarchy
+**Can be used with**
 
+___
+### preferredLabel
+**Can be used with:**
+
+___
 ### relatedEntities
 This allows you to create and/or relate additional entities to the entity being mapped. For example, if you are running an Object mapping and using an entitySplitter to generate related Individuals, but you also want to create entity records for each individual’s affiliation, use this setting. "Name" is the name of the entity, which will be automatically split into pieces and imported. If you want to explicitly map pieces of a name (surname, forename) you can omit "name" and use "forename", "middlename", "surname", etc. "type", "attributes," and "relationshipType" operate just as they would in a regular splitter.From version 1.5 this is now deprecated in favor of the ‘relationships’ setting.
 
@@ -586,7 +947,9 @@ This allows you to create and/or relate additional entities to the entity being 
   }]
 }
 ```
+**Can be used with**
 
+___
 ### relationships
 From version 1.5. A list of relationships using the relevant splitter refineries. The settings for this item reflect the settings used for the relevant splitter refinery. The only additional setting here is relatedTable which is a required value.
 
@@ -615,7 +978,9 @@ From version 1.5. A list of relationships using the relevant splitter refineries
   ]
 }
 ```
+**Can be used with**
 
+___
 ### relationshipType
 Accepts a constant type code for the relationship type (read more about [relationships](../../dataModelling/relationships.md)) or a reference to the location in the data source where the type can be found
 
@@ -631,33 +996,54 @@ Accepts a constant type code for the relationship type (read more about [relatio
 :::note[Note (for object data)]
 if the relationship type matches that set as the hierarchy control, the object will be pulled in as a \"child\" element in the collection hierarchy
 :::
+**Can be used with**
 
+___
 ### relationshipTypeDefault
 Sets the default relationship type that will be used if none are defined or if the data source values don’t match any values in the CollectiveAccess system
 
 ```json title="example"
 {"relationshipTypeDefault":"creator"} 
 ```
+**Can be used with**
 
+___
 ### skipIfValue
 Skip if imported value is in the specified list of values.
 
 ```json title="example"
 { "skipIfValue": "unknown"}
 ```
+**Can be used with**
 
+___
 ### storageLocationType
+**Can be used with**
 
+___
 ### storageLocationTypeDefault
+**Can be used with**
 
+___
 ### tour
+**Can be used with**
 
+___
 ### tourType
+**Can be used with**
 
+___
 ### tourTypeDefault
+**Can be used with**
 
+___
 ### tourStopType
+**Can be used with**
 
+___
 ### tourStopTypeDefault
+**Can be used with**
 
+___
 ### units
+**Can be used with**

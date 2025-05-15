@@ -37,9 +37,33 @@ cannot run:
 
 | Software Package | Notes |
 | --- | --- |
-| Webserver | [Apache](https://httpd.apache.org/) version 2.4 or [nginx](https://nginx.org) 1.14 or later are recommended.|
-|[MySQL](https://dev.mysql.com/) |  Versions 5.7 and 8.0 are supported. Equivalent versions of [MariaDB](https://mariadb.org/) will also work.|
-|[PHP](https://php.net/)|    [PHP](https://php.net/) version 8.2 or better is required. |             
+| Webserver | [Apache](https://httpd.apache.org/) version 2.4 or [nginx](https://nginx.org) 1.26 or later are recommended.|
+|[MySQL](https://dev.mysql.com/) |  Versions 8.0 and 8.4 are supported. Equivalent versions of [MariaDB](https://mariadb.org/) (10.5+) will also work. MySQL 9.0 is not currently supported.|
+|[PHP](https://php.net/)|    [PHP](https://php.net/) version 8.2 or 8.3 is required. We have not yet fully validated CollectiveAccess for use with PHP 8.4. |            
+
+The following PHP packages containing extensions are required:
+
+- php-cli
+- php-gd
+- php-curl
+- php-mysql (if available, prefer `mysqli`)
+- php-zip
+- php-xml
+- php-mbstring
+- php-intl
+- php-bcmath
+- php-gmp
+- php-opcache
+
+These extensions are often (but not always) installed by default.
+
+The following PHP extensions are recommended:
+
+- php-process
+- php-posix
+- php-gmagick (if GraphicsMagick is installed)
+- php-redis (if REDIS caching server is installed)
+>>>>>>> 7b70e8847980810fc053683526492b4cd88e819b
 
 All of these should be available as pre-compiled packages for most Linux
 distributions and as installer packages for Windows. For Macs,
@@ -176,6 +200,24 @@ installation will usually be located in **/var/www/html.**
 ## Software Requirements for Media Processing
 
 Depending upon the types of media you intend to handle with CA you will
+=======
+
+## Software requirements for installing
+
+Collectiveaccess requires the following software in order to be installed, on top of anything listed in the core requirements:
+- `composer` (can be installed via packages or [getcomposer](https://getcomposer.org/)
+- `git` OR one of wget/curl and one of tar/unzip
+
+
+## Caching
+
+CollectiveAccess makes heavy use of caching. By default cached data is written to disk, which requires no additional configuration or software but can be slow and may cause spikes in server load when the cache fills and must be purged. Use of an in-memory cache such as REDIS (https://redis.io/) can provide significantly improved performance. To use REDIS you must connect a working REDIS instance to CollectiveAccess by setting the relevant configuration entries in the installation's ``setup.php`` file. You must also have the php-redis extension installed.
+
+
+## Software requirements for media processing
+
+Depending upon the types of media you intend to use with CollectiveAccess you will
+>>>>>>> 7b70e8847980810fc053683526492b4cd88e819b
 also need to install various supporting software libraries and tools.
 None of these is absolutely required for CA to install and operate but
 without them specific types of media may not be supported (as noted
@@ -201,7 +243,7 @@ server, and should install other packages as needed. For image
 processing you need only one of the following: GraphicsMagick,
 ImageMagick, libGD.
 
-##   PHP Extensions for Media Processing (Optional)
+###  PHP extensions for media processing (optional but strongly recommended)
 
 CA supports two different mechanisms to employ GraphicsMagick or
 ImageMagick. The preferred option is a PHP extensions that, when
@@ -235,3 +277,8 @@ Both [Gmagick](http://pecl.php.net/gmagick) and
 repository and often available as packages for various operating
 systems. They should be easy to install on Unix-y operating systems like
 Linux and Mac OS X. Installation on Windows can be challenging.
+
+### HEIC image format support
+
+High Efficiency Image Container, or HEIC, is an Apple-proprietary image format which may provide higher quality and better compression than open standards such as JPEG. Many open-source tools, including GraphicsMagick, do not support this format due to patent licensing issues. If support for HEIC images in CollectiveAccess is required you must install a version of ImageMagick compiled to support HEIC. This may require installation of additional software libraries, including libde265 and libheif. If both GraphicsMagick and ImageMagick are installed, GraphicsMagick will be used for all image processing, as it is generally the most performant option, with all HEIC support delegated to ImageMagick. 
+

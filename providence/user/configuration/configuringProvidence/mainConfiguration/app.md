@@ -777,17 +777,6 @@ Use this to define any icons used in the
 worlcat_isbn_exists_key = <div class="caWorldCatExistingObjectKey"><i class="fa fa-external-link" aria-hidden="true"></i> = Previously imported</div>
 ```
 
-### Taxonomy web services
-
-To access the uBio taxonomic name service (http://www.ubio.org) via a
-\'Taxonomy\' attribute you must enter your uBio API keycode here If you
-don\'t care about taxonomy (or even know what is it) then leave this
-as-is
-
-``` none
-ubio_keycode = enter_your_keycode_here
-```
-
 ### Flickr API
 
 ``` none

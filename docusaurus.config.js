@@ -104,7 +104,7 @@ const config = {
             label: 'Pawtucket',
           },
           {
-            href: 'https://github.com/collectiveaccess/CollectiveAccessManaual',
+            href: 'https://github.com/collectiveaccess/CollectiveAccessManual',
             label: 'GitHub',
             position: 'right',
           },
