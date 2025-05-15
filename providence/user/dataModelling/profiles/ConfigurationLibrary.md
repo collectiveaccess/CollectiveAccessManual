@@ -41,7 +41,7 @@ the profiles drop-down menu.
 |VRACore|[vracore.xml](https://github.com/collectiveaccess/InstallationProfiles/blob/main/xml/standards/vracore.xml)| VRA Core 4.0 is a data standard for the cultural heritage community developed by the Visual Resources Association\'s Data Standards Committee. The element set provides a categorical organization for the description of works of visual culture as well as the images that document them. This profile implements VRA Core 4.0 for item-level (object) and collection-level cataloguing.|
 
 See [Metadata
-Standards](user/dataModelling/profiles/MetadataStandards.html) for more
+Standards](/providence/user/dataModelling/profiles/MetadataStandards) for more
 information on standards-compliant profiles.
 
 ## User Profiles

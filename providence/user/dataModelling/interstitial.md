@@ -17,11 +17,11 @@ This screen represents the \"small space\" between any relationship
 where relevant data can be added.
 
 Interstitial data is represented in CollectiveAccess by a paperclip icon
-![paperclip](/providence/img/paperclip.png) that appears next to a given relationship.
+that appears next to a given relationship:
 
 ![image](/providence/img/interstitial7.png)
 
-# When is Interstitial Data Used?
+## When is Interstitial Data Used?
 
 Not every relationship in CollectiveAccess needs an interstitial
 feature. However, this function works well for relationships that change
@@ -49,7 +49,7 @@ metadata include objects to entities; entities to places, and so on.
 Note that Relationship records are entirely optional, and in fact won\'t
 be accessible unless a user interface is defined for the them.
 
-# Setting up relationship records in the installation profile
+## Setting up Relationship Records in the Installation Profile
 
 To create a metadata element with an interstitial type restriction in
 the profile requires adopting some of the syntax used for
@@ -108,19 +108,19 @@ Note that these interstitial records are meant to be small and
 manageable, so only one screen per user interface is supported. If other
 screens are defined, they simply won\'t appear.
 
-# Setting up Interstitial Relationship Records through the User Interface
+## Setting up Interstitial Relationship Records through the User Interface
 
 Setting up an interstitial relationship record through the user
 interface is essentially just like creating a user interface for any
 other type of record (see [User Interface
-Administration](https://manual.collectiveaccess.org/providence/user/editing/interfaces.html)).
+Administration](https://docs.collectiveaccess.org/providence/user/editing/interfaces)).
 It follows the same steps wherein a metadata element is created, and
 then added, to the user interface.
 
 The key difference is what **Type restrictions** are chosen for the
 elements, and what **type** is used to create the user interface.
 
-## Steps
+### Steps
 
 1.  Navigate to **Manage \> Administration \> User Interfaces**, where
     user interfaces can be added and edited.
@@ -154,13 +154,11 @@ Remember to save the new UI in order to add screens to it.
     Navigate to **Screen content** to move the metadata elements onto
     the new screen.
 
-<figure class="align-center">
-<img src="interstitial6.png" alt="interstitial6.png" />
-<figcaption>Move the elements from left to right to display them on the
-interstitial data screen.</figcaption>
-</figure>
+![image](/providence/img/interstitial6.png)
+*Move the elements from left to right to display them on the
+interstitial data screen.*
 
-# Editing Relationship Records
+## Editing Relationship Records
 
 Once your metadata elements and user interface editors have been
 configured, you will notice a small paperclip icon on relevant
@@ -171,17 +169,15 @@ relationships after they\'ve been saved, or added, the first time:
 Selecting the paperclip icon will open the interstitial data screen. It
 will appear as an overlay:
 
-<figure class="align-center">
-<img src="interst8.png" alt="interst8.png" />
-<figcaption>The interstitial data screen for an entity-entity
-relationship in the CollectiveAccess Demonstration system.</figcaption>
-</figure>
+![image](/providence/img/interst8.png)
+*The interstitial data screen for an entity-entity
+relationship in the CollectiveAccess Demonstration system.*
 
 Where interstitial data can be added, and saved. What fields appear on
 the interstitial screen will depend on what metadata elements were
 chosen.
 
-# Adding Interstitial Relationships to non-Entity Records
+## Adding Interstitial Relationships to non-Entity Records
 
 As mentioned above, interstital data can be configured for any
 relationship in CollectiveAccess; it does not apply only to
@@ -197,7 +193,7 @@ interface will be created from a drop-down list.
 Scroll through this drop-down. Once the element is selected, follow the
 same steps outlined above.
 
-# Including Interstitial Data in an Import Mapping Spreadsheet
+## Including Interstitial Data in an Import Mapping Spreadsheet
 
 As noted above, interstitial data screens can be added by configuring
 the installation profile (see [Installation
@@ -207,7 +203,7 @@ the user interface. However, it is useful to know how to include
 interstitial data in an import mapping.
 
 In [Refineries and Refinery
-Parameters](/providence/user/import/mappings/refineries.html?highlight=refineries),
+Parameters](/https://docs.collectiveaccess.org/providence/user/import/references/refineries),
 Splitters, Joiners, and Builders can all use the **interstitial**
 refinery parameter.
 
@@ -227,4 +223,4 @@ pulled from the source data column 4.
 
 Examples for all types of Refineries with Refinery Parameters are
 available to view
-[here](/providence/user/import/mappings/refineries.html?highlight=refineries).
+[here](/https://docs.collectiveaccess.org/providence/user/import/references/refineries).

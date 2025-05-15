@@ -4,11 +4,6 @@ title: OAI-PMH Provider
 
 # OAI-PMH Provider
 
--   [oai_provider.conf Configuration](#oai_provider.conf-configuration)
--   [Format Definition](#format-definition)
--   [Testing Your Setup](#testing-your-setup)
--   [DPLA](#dpla)
-
 CollectiveAccess features an implementation of the [OAI Protocol for
 Metadata Harvesting](http://www.openarchives.org/pmh/) that serves
 database records using virtually arbitrary XML-based formats. It
@@ -26,9 +21,9 @@ you create the corresponding export mappings in CollectiveAccess.
 For now we assume that you created a mapping with the code \'oai_dc\'
 that describes how your data is mapped to Dublin Core XML.
 
-# oai_provider.conf Configuration
+## oai_provider.conf Configuration
 
-This is the core configuration file for this feature. If you want to
+This is the [core configuration](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/otherCommon/oai_provider.conf) file for this feature. If you want to
 provide only one the Dublin Core mapping you just created, you\'re
 pretty much good to go with the stock configuration. Just fill in the
 mapping code. The interesting part of the configuration is under the
@@ -69,7 +64,7 @@ settings. They are described in the table below.
 |show_deleted|Determines if deleted records are included in list responses|0|
 
 
-# Format Definition
+## Format Definition
 
 The definition of a single format used by a provider configures the
 exporter mapping that should be used for this format as well as some
@@ -107,7 +102,7 @@ oai_dc = {
 },
 ```
 
-# Testing Your Setup
+## Testing Your Setup
 
 To explore your collection using the OAI-PMH provider you just set up,
 you can for instance use the [OAI Repository
@@ -123,7 +118,7 @@ https://mydomain.com/service.php/OAI/dc?verb=ListRecords&metadataPrefix=oai_dc
 Be sure to change out the metadataPrefix if it something other than
 oai_dc.
 
-# DPLA
+## DPLA
 
 Partner hubs of the [Digital Public Library of America](https://dp.la/)
 can provide metadata to the DPLA by setting up an OAI-PMH provider

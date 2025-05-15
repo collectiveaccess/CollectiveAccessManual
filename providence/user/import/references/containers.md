@@ -3,7 +3,8 @@ title: Containers
 ---
 # Containers
 
-## What is a Container?
+## What is a Container
+
 
 A **Container** is a metadata element, or field, in CollectiveAccess
 that contains sub-elements *within it*. Unlike all other attribute
@@ -42,12 +43,12 @@ measurement used, and can also include weight and the type of dimension
 in a dropdown list. Within this Container are the sub-elements: Height,
 Width, Depth, Diameter, Weight, and Dimensions Type.
 
-<figure class="align-center">
-<img src="containers2.png" alt="containers2.png" />
-<figcaption>A Dimensions field from an Object Record in the
+
+![image](/providence/img/containers2.png)
+
+A Dimensions field from an Object Record in the
 CollectiveAccess Demonstration System. Here, "Dimensions" is the
-Container.</figcaption>
-</figure>
+Container.
 
 :::info[note]
 Containers may contain different sub-elements depending on the
@@ -76,10 +77,5 @@ sub-element.
 For more on the function of Groups, how to use Groups in an import
 mapping, and how to map source data into specific Containers in
 CollectiveAccess, please see [Creating an Import Mapping:
-Overview](c_creating_mapping)
-and [Tutorial: Import Mapping
-Spreadsheet](c_import_column_overview).
+Overview](https://docs.collectiveaccess.org/providence/user/import/c_creating_mapping).
 
-For more on the use of the Rule Type Constant, shown above, see [Using
-the Constant Rule Type in an Import Mapping
-Spreadsheet](/providence/user/import/import_ref_constant_rule.html#import-import-ref-constant-rule).

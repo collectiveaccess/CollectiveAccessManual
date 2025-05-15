@@ -2,7 +2,7 @@
 title: Prepopulate.conf
 ---
 
-# Prepopulate.conf
+## Prepopulate.conf
 
 The Prepopulate plugin provides a system for automatically setting data
 in records during editing using
@@ -34,7 +34,7 @@ between records. As of version 1.8, Prepopulate may be configured to
 replicate between records container metadata elements in whole or in
 part.
 
-# Basic Setup
+## Basic Setup
 
 All configuration is made in the `prepopulate.conf` configuration file.
 The `enabled` directive governs whether Prepopulate is active or not. It
@@ -101,7 +101,7 @@ label and identifier, formatted with the identifier in parens (see
 the word \"test\" (see `skipIfExpression`) or of there is already a
 value in the \"title_notes\" field for the object (see `mode`).
 
-# Replicating relationships and containers
+## Replicating Relationships and Containers
 
 Most rules generate a text value using `template` and copy it to the
 `target`, subject to optional restrictions (`mode`, `skipIfExpression`,
@@ -203,7 +203,7 @@ element codes to skip. In the example above, `edition_dimension_types`
 is not checked when determining if the target container has existing
 values.
 
-# Settings
+## Settings
 
 The following settings are available when configuring Prepopulate rules:
 
@@ -225,7 +225,7 @@ The following settings are available when configuring Prepopulate rules:
 |excludeRelatedTypes|When `context` directive is set this setting can be employed to constrain the replication to exclude related records with the specified types.|A list of valid types|[ephemera, books]|
 |currentOnly|When the `context` directive is set, only consider “current” relationships for replication. Eg. current storage locations|1 or 0|0|
 
-# Flowchart
+## Flowchart
 
 Typical Prepopulate processes are diagrammed below. Note that the mode
 \"overwriteifset\" (which is not shown in the diagram) is identical to

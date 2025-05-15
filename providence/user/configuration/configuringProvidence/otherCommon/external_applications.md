@@ -2,7 +2,7 @@
 title: External_applications.conf
 ---
 
-# External_applications.conf
+## External_applications.conf
 
 Several components of CollectiveAccess employ external applications to
 perform various tasks. Typically these tasks relate to conversion and
@@ -19,7 +19,7 @@ The locations you set should be absolute paths to the directory or
 executable (as specified below) in the standard format for your OS (Unix
 paths or Windows paths).
 
-# Directives
+## Directives
 
 The following entries may be defined in this configuration file. Note
 that there are no default values for entries in

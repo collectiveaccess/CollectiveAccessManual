@@ -20,6 +20,7 @@ Target release date: June 2025
 * Full-system "exit" data export
 	* CSV format
 	* XML format
+* Inventory management tools
 * ElasticSearch reimplementation
 
 Version 2.2

@@ -9,28 +9,16 @@ Displays, also known as bundle displays, specify exactly which fields from a rec
 
 Once custom displays are created and configured, several workflow options are available to output the data as displays are essentially synonymous with reports. Users can batch-edit data in spreadsheet format, export the data to tab or comma delimited files, or generate a PDF.
 
-**Creating a New Display**
---------------------------
+## Creating a New Display
+
 
 1. Navigate to **Manage > My Displays**.
 2. **Select a record type** from the "New Display for" drop-down menu in the upper right corner of the screen. 
-
-.. image:: displays1.jpg
-   :width: 1533px
-   :align: center
-
 3. **Select** the plus sign + icon |plus| to create a new Display. 
-
-.. |plus| image:: displays2.png
-          :scale: 50%
-
 4. **Input** the basic information about the new Display. This information will look different depending on the selected record type: 
 
-.. figure:: displays3.png
-   :scale: 50%
-   :align: center
-
-   Creating a new display. 
+![image](displays3.png)
+*Creating a new display.*
 
 * **Display list name**: The display name for the display. 
 * **Display code**: The unique identifier for the display to be used throughout the system.
@@ -42,8 +30,8 @@ Once custom displays are created and configured, several workflow options are av
 
 5. **Save** the options set for the new Display. 
 
-**Add Contents to a Display**
------------------------------
+## Add Contents to a Display
+
 
 Once the Display has been created and saved, contents can be added to the Display. To add contents:
 
@@ -51,22 +39,16 @@ Once the Display has been created and saved, contents can be added to the Displa
 
 2. Display list contents will be displayed in the form of two columns. The left column contains all available display items (elements that can potentially be shown in search results and summaries). The right column contains specific elements chosen for the Display:
 
-.. image:: displays5.jpg
-   :width: 1968px
-   :height: 1334px
-   :scale: 50%
-   :align: center
+![image](displays5.jpg)
 
 3. **Drag elements** from the left column to the right, into Information to Display. 
 4. **Save** the elements that were dragged from the left column to the right. A new Display with dragged elements has been created. 
 
-Advanced Displays
-=====================
+## Advanced Displays
  
 New features for displays allow users to control what data is shown and analyzed in reports, results, and summaries. In addition to the tools listed below, there is also a powerful syntax used in CollectiveAccess to control how data is output in displays. This covers cases such as formatting repeating containers, conditionally hiding and showing data, and many more use cases.
 
-**Filter Using Expression**
----------------------------
+## Filter Using Expression
 
 It's possible to use expressions to control viewing displayed data. To do so, use the if rule. 
 
@@ -80,8 +62,8 @@ To only output the display if "current" is selected from the type drop-down in a
 ```
 
 
-**Bottom Line Format**
-----------------------
+## Bottom Line Format
+
 
 The "Bottom line format" essentially allows users to display functions at the bottom of list views for search and browse results. Only certain metadata elements accept functions.  The following support bottom line formats: DateRange, Currency, Length, Weight, TimeCode, Integer, and Numeric.
 
@@ -111,8 +93,8 @@ To include a bottom line function in a display, navigate to **Manage > My Displa
 
 in the Bottom line format box.
 
-**Functions Within Containers**
--------------------------------
+## Functions Within Containers
+
 
 To include bottom line formatting when a to-be-functioned value is within a metadata element container, include the specific subfield within your bottom-line function.
 
@@ -128,8 +110,8 @@ For a dimensions container that includes Length, Width and Height subfields, det
 There is no need to specify the full container path (i.e. ca_objects.dimensions.height) because it's implied by the bundle.
 :::
 
-**Currency Conversion**
------------------------
+## Currency Conversion
+
 
 Under **Preferences > Units of Measurement**, a user can set a default currency for displays. Using daily data from the European Central Bank, CollectiveAccess auto-converts values between currencies. With this tool, it is possible to include in a single function values entered with different currency units, resulting in a single value in the desired target currency. Note that the Attribute Type Currency must be used for relevant metadata elements in order for this feature to function.
 
@@ -141,8 +123,8 @@ If the "Display currency conversion" checkbox is unchecked, the parenthetical co
 The auto-conversion feature is currently supported for displays but not UI editor screens.
 :::
 
-**Using Bottom Line Functions with Multiple Metadata Elements**
----------------------------------------------------------------
+## Using Bottom Line Functions with Multiple Metadata Elements
+
 
 From CollectiveAccess version 1.7, bottom line values can be displayed, calculated using more than one metadata element in a display. This is useful when to display the total value of several currency fields in a display, or display the maximum value from any numeric field in a display.
 

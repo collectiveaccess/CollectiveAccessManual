@@ -4,13 +4,11 @@ title: Deaccessions
 
 # Deaccessions
 
--   [Deaccessioning a Record](#deaccessioning-a-record)
--   [Filter Results by Deaccession
-    Status](#filter-results-by-deaccession-status)
-
 CollectiveAccess can track the deaccessioning process at the item-level,
 using the **Deaccession Status bundle**. The Deaccession Status bundle
 can be placed anywhere in the object editor screen.
+
+Records can be imported into CollectiveAccess as deaccessioned. Records can also be deaccessioned in the User Interface. 
 
 :::note
 If you are writing a profile configuration in XML, the bundle code is
@@ -18,7 +16,7 @@ If you are writing a profile configuration in XML, the bundle code is
 bundle code is included in the installation profile.
 :::
 
-# Deaccessioning a Record
+## Deaccessioning a Record in the User Interface
 
 To deaccession an item:
 
@@ -26,10 +24,9 @@ To deaccession an item:
 2.  Select the **Administrative Metadata** screen.
 3.  Navigate to the **Deaccession Status** field:
 
-<figure class="align-center">
-<img src="deaccession1.png" alt="deaccession1.png" />
-<figcaption>The deaccession status bundle in a record.</figcaption>
-</figure>
+![image](/providence/img/deaccession1.png)
+*The deaccession status bundle in a record.*
+
 
 4.  **Select the deaccession checkbox** located within the bundle. This
     will flag the object record as **deaccessioned**, and will also
@@ -38,7 +35,7 @@ To deaccession an item:
     Deaccessioned items will be marked in the object editor screen in
     the Inspector in red.
 
-# Filter Results by Deaccession Status
+## Filter Results by Deaccession Status
 
 Once deaccessions are created, the **Deaccessioned facet** can also be
 included to filter search results. To do so:
@@ -48,7 +45,5 @@ included to filter search results. To do so:
 3.  **Filter** the results according to whether records have, or have
     not, been deaccessioned.
 
-<figure class="align-center">
-<img src="deaccession2.png" alt="deaccession2.png" />
-<figcaption>Browsing by deaccession status.</figcaption>
-</figure>
+![image](/providence/img/deaccession2.png)
+*Browsing by deaccession status.*

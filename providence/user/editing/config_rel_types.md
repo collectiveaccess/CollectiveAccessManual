@@ -4,10 +4,6 @@ title: Configuring Relationship Types
 
 # Configuring Relationship Types
 
--   [Viewing Available Relationship
-    Types](#viewing-available-relationship-types)
--   [Creating Relationship Types](#creating-relationship-types)
-
 All Relationships in CollectiveAccess are reciprocal and are defined by
 Relationship Types. Relationship Types are configurable to suit a
 multitude of data needs.
@@ -16,7 +12,7 @@ Relationship Types can be managed via the CollectiveAccess user
 interface. Relationship Types can be created, and also viewed and
 edited, in the user interface.
 
-# Viewing Available Relationship Types
+## Viewing Available Relationship Types
 
 To view all possible Relationship Types in a CollectiveAccess system:
 
@@ -25,11 +21,8 @@ To view all possible Relationship Types in a CollectiveAccess system:
 2.  Select **Relationship Types** from the left sidebar to open the
     Relationship Types viewer.
 
-<figure class="align-center">
-<img src="hierarchy_relationships.png"
-alt="hierarchy_relationships.png" />
-<figcaption>The relationship types hierarchy viewer.</figcaption>
-</figure>
+![config](/providence/img/hierarchy_relationships.png)
+*The relationship types hierarchy viewer.*
 
 The left-most column displays all of the possible relationships
 available between records in the system. These are not editable, but
@@ -44,7 +37,7 @@ column:
 
 ![image](/providence/img/relationship_hierarchy_types.png)
 
-# Creating Relationship Types
+## Creating Relationship Types
 
 To create a new Relationship Type in the user interface:
 
@@ -72,10 +65,8 @@ To create a new Relationship Type in the user interface:
     relevant information for the new Relationship Type can be entered
     and saved:
 
-<figure class="align-center">
-<img src="conrel3.png" alt="conrel3.png" />
-<figcaption>Creating a new relationship type.</figcaption>
-</figure>
+![image](/providence/img/conrel3.png)
+*Creating a new relationship type.*
 
 The Relationship Type Editor screen contains the following information
 to add to the newly defined relationship type:
@@ -108,12 +99,8 @@ to add to the newly defined relationship type:
 -   **Location in Hierarchy**: The location of the relationship type in
     the Relationship Hierarchy.
 
-:::: note
-::: title
-Note
-:::
-
+:::note
 If you have not yet installed CollectiveAccess, you can configure
 Relationships using the [installation
 profile](/providence/user/dataModelling/Profiles.html).
-::::
+:::

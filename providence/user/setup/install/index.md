@@ -112,9 +112,9 @@ To install CollectiveAccess Providence perform the following steps:
     installed system when installation is complete. Be sure to note this
     information in a safe place!
 
-## Optional post installation tasks
+## Optional Post Installation Tasks
 
-### Set up for background encoding of media
+### Set Up for Background Encoding of Media
 
 By default, CollectiveAccess will process all uploaded media immediately
 at time of upload. For large media files this can make the user\'s
@@ -139,7 +139,7 @@ simultaneously and depleting server resources. Note that the queue
 processing script should *always* be run under a user with write-access
 to the CA media directory.
 
-## What to do if something goes wrong?
+## What to do if Something Goes Wrong?
 
 :::tip
 If your CollectiveAccess installation fails, the first thing to do is

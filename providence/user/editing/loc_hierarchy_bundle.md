@@ -19,19 +19,17 @@ The Hierarchy bundle will display relevant records in a **parent-child
 format**, moving from general to more specific, with records (children)
 located below other records (parent).
 
-<figure class="align-center">
-<img src="loc1.png" alt="loc1.png" />
-<figcaption>Example of the Hierarchy Bundle from a record in the
+![image](/providence/img/loc1.png)
+*Example of the Hierarchy Bundle from a record in the
 Demonstration System. Note that the Artwork is composed of components,
 which are further displayed in the hierarchy as being underneath the
-artwork itself.</figcaption>
-</figure>
+artwork itself.*
 
 The laundry-list style hierarchy path is still displayed at the top of
 the bundle, while there are a few options within the bundle:
 **Explore**, **Move**, and **Add**.
 
-# Explore
+## Explore
 
 The Explore function in the bundle displays the entire hierarchical
 structure of a collection, even the paths that do not lead directly to
@@ -45,7 +43,7 @@ record:
 
 ![image](/providence/img/loc2.png)
 
-# Move
+## Move
 
 The Move function chooses a new location for a specific record within
 the hierarchy. The \"Find\" field appears here as well to help locate
@@ -59,7 +57,7 @@ the page, the selected record will be moved to this new location:
 
 ![image](/providence/img/move_2.png)
 
-# Add
+## Add
 
 The Add function is a shortcut that creates a new child or sibling
 record relative to the current record.

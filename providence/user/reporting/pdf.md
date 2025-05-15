@@ -4,21 +4,6 @@ title: PDF Output
 
 # PDF Output
 
--   [How PDF Templates are Evaluated](#how-pdf-templates-are-evaluated)
--   [Creating PDF Formats](#creating-pdf-formats)
--   [For all results (Browse or
-    Search)](#for-all-results-browse-or-search)
--   [For Search Results](#for-search-results)
--   [For Browse Results](#for-browse-results)
--   [For Summaries](#for-summaries)
--   [For Labels](#for-labels)
--   [Using View Variables](#using-view-variables)
--   [Setting the Download File Name](#setting-the-download-file-name)
--   [Displaying Barcodes](#displaying-barcodes)
--   [Supported Bar Code Formats](#supported-bar-code-formats)
--   [Rendering Engines](#rendering-engines)
--   [Testing Labels](#testing-labels)
-
 CollectiveAccess can output data as formatted PDFs in several contexts:
 
 1.  As a **Report** presenting formatted data from the results of a
@@ -45,7 +30,7 @@ display templates directly in your HTML -- no PHP required. The
 variables passed to the template view vary by context and are described
 below.
 
-# How PDF Templates are Evaluated
+## How PDF Templates are Evaluated
 
 When a PDF output is requested, CollectiveAccess loads the specified
 template views and provides them with the data required for display. The
@@ -70,7 +55,7 @@ by the PDF generator in the appropriate location for the selected label
 format. Label templates are passed a model instance for the item for
 which the label is being produced.
 
-# Creating PDF Formats
+## Creating PDF Formats
 
 The *app/printTemplates* directory contains subdirectories for each
 context -- results (aka. report), summary, labels, letter and element.
@@ -160,7 +145,7 @@ Your template view will be provided with a set of variables to work with
 that is dependent upon the context. Below is a list of variables by
 template context:
 
-# For All Results (Browse or Search)
+## For All Results (Browse or Search)
 
 | Variable | Description | Example values|
 |----|----|----|
@@ -177,13 +162,13 @@ template context:
 |t_subject|                An instance of the model representing the current result set, inheriting from BaseModel   
 |bottom_line|              An array with aggregate statistics (if configured)                                        
 
-# For Search Results
+## For Search Results
 
 | Variable | Description | Example values|
 |----|----|----|
 |search |    The search expression  | 
 
-# For Browse Results
+## For Browse Results
 
 | Variable | Description | Example values|
 |----|----|----|
@@ -196,7 +181,7 @@ template context:
 |browse_criteria  |Simplified array of current browse criteria for display, with keys set to facet label and values set to a delimited list of facet values||
 
 
-# For Summaries
+## For Summaries
 
 | Variable | Description | Example values|
 |----|----|----|
@@ -207,7 +192,7 @@ template context:
 |bundle_displays_placements|An array of placements in the currently loaded display. Array indices are display_id\'s, values are array of display configuration data||
  
 
-# For Labels
+## For Labels
 
 | Variable | Description | Example values|
 |----|----|----|
@@ -215,7 +200,7 @@ template context:
 |title|The title of the label set||
                                            
 
-# Using View Variables
+## Using View Variables
 
 The variables provided may be accessed via PHP code within the view by
 calling the view\'s setVar() method with the variable name. This code
@@ -265,7 +250,7 @@ with the variable name (\"filename\") and the desired filename:
 
 If you don\'t set a file name a default name will be used.
 
-# Displaying Barcodes
+## Displaying Barcodes
 
 Bar codes may be output in any view using the PHP caGenerateBarcode()
 helper function. Simply pass it the value to be encoded and an array of
@@ -289,7 +274,7 @@ example:
 {{{barcode:code128:12:^ca_objects.idno}}}
 ```
 
-# Supported Bar Code Formats
+## Supported Bar Code Formats
 
 | Type Code | Description | Example values|Notes|
 |----|----|----|----|
@@ -321,7 +306,7 @@ command-line render application is set properly in
 external_applications.conf. Selection of the renderer is automatic, with
 wkhtmltopdf or PhantomJS if present used in preference to domPDF.
 
-# Testing Labels
+## Testing Labels
 
 When testing your label layouts, setting the add_print_label_borders
 directive in app.conf to a non-zero value will cause outlines to display

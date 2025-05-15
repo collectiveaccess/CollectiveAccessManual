@@ -20,7 +20,7 @@ stringing together the individual elements using a separator. By
 combining various types of elements you can create arbitrarily complex
 numbering systems.
 
-# The multipart_id_numbering.conf configuration file
+## The **multipart_id_numbering.conf** Configuration File
 
 The configuration file defines the formats used by the MultiPartIDNumber plug-in. It
 is a standard CollectiveAccess configuration file using the
@@ -314,7 +314,7 @@ Type-specific settings are:
 |MONTH|force_derived_values_to_current_month|When deriving an identifier from an existing value (typically when duplicating a record, or creating a child record), force the new value to the current month no matter the existing value.|
 |DAY|force_derived_values_to_current_day|When deriving an identifier from an existing value (typically when duplicating a record, or creating a child record), force the new value to the current day no matter the existing value.|
 
-# Problems with SERIAL elements
+## Problems with SERIAL elements
 
 To generate unique values for SERIAL elements the plug-in must query the database for existing values. If the database operation fails you may
 see the word \'ERR\' instead of the expected numeric value. In versions
@@ -343,10 +343,10 @@ values* option in the administrative *Maintenance* menu or run the command
 line `caUtils <ca_utils>` utility using
 the *rebuild-sort-values* option.
 
-# Using UUID\'s as identifiers
+## Using UUIDs as identifiers
 
 The UUidentifiering plug-in offers a simplified unique numbering system
-using universally unique identifiers (UUID\'s). UUID\'s are 128-bit
+using universally unique identifiers (UUIDs). UUIDs are 128-bit
 values expressed as a series of hexadecimal (base-16) numbers. When
 appropriately generated they are for all practical purposes unique.
 

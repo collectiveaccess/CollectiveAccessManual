@@ -1,12 +1,13 @@
 ---
 title: Search.conf
 ---
+# Search.conf
 
-Serching can be enhanced using PCRE - Perl Compatible Regular
+Searching can be enhanced using PCRE - Perl Compatible Regular
 Expressions. On (https://www.php.net/manual/en/regexp.introduction.php)
 you can find more syntax samples.
 
-# Indexing Tokenizer Regex
+## Indexing Tokenizer Regex
 
 This is the Regex character class used when indexing saved text; values
 matched will be used as token delimiters (in other words, the search
@@ -20,7 +21,7 @@ treated a token delimiters.
 indexing_tokenizer_regex = ^\pL\pN\pNd/_#\@\&\.
 ```
 
-# Search Tokenizer Regex
+## Search Tokenizer Regex
 
 This is the Regex character class used when searching; values matched
 will be used as token delimiters (this is the same thing as
@@ -31,7 +32,7 @@ searches into words rather than text to be indexed).
 search_tokenizer_regex = ^\pL\pN\pNd/_#\@\&\.
 ```
 
-# \"As Is\" Regex Matching for Accession Numbers
+## \"As Is\" Regex Matching for Accession Numbers
 
 Here you may enter a list of regular expressions that if matched cause
 search input to be treated \"as-is,\" or searched without being broken
@@ -45,7 +46,7 @@ asis_regexes = [
 ]
 ```
 
-# Changing the layout of quicksearch results
+## Changing the layout of quicksearch results
 
 With the following format:
 
@@ -69,7 +70,7 @@ ca_objects_artwork_quicksearch_result_display_template =
 <em>^ca_objects.preferred_labels.name</em> (<l>^ca_objects.idno</l>) [^ca_objects.type_id]
 ```
 
-# SqlSearch Plugin Configuration
+## SqlSearch Plugin Configuration
 
 Set to 0 if you don\'t want search input stemmed (ie. suffixes removed)
 prior to search
@@ -81,7 +82,7 @@ will probably want to turn this off.
 
 search_sql_search_do_stemming = 1
 
-# ElasticSearch Plugin Configuration
+## ElasticSearch Plugin Configuration
 
 enter the elastic search base url here (without any index names)
 search_elasticsearch_base_url = http://localhost:9200/

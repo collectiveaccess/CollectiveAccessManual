@@ -9,7 +9,7 @@ displayed in both the media overlay and media editor. Display settings
 can be customized for images, video, video H264 original, quicktime
 Viewer, audio, pdf files, documents, postscript, and text.
 
-# Media Overlay and Media Editor
+## Media Overlay and Media Editor
 
 The media overlay is accessed by clicking through the representation
 from the Inspector in Providence. The media editor, on the other hand,

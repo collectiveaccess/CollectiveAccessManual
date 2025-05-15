@@ -15,15 +15,13 @@ number of available user interfaces that are defined in the system, with
 the Name of the user interface, Type, Code, and use in the system, will
 be displayed:
 
-<figure class="align-center">
-<img src="uiadmin1.png" alt="uiadmin1.png" />
-<figcaption>The user interfaces available in a system. Note that each
-user interface has a Name, Type and Code.</figcaption>
-</figure>
+![image](/providence/img/uiadmin1.png)
+*The user interfaces available in a system. Note that each
+user interface has a Name, Type and Code.*
 
 From here, user interfaces can be selected and edited.
 
-# Editing a User Interface
+## Editing a User Interface
 
 To edit a user interface:
 
@@ -53,7 +51,7 @@ alt="entity_editor_screen_ex.png" />
 7.  **Save** the changes at the bottom of the page; the new screen will
     now appear in the Screens element on the Basic Info page.
 
-# Adding a Metadata Element to a Screen
+## Adding a Metadata Element to a Screen
 
 To add a metadata element to a screen within a user interface:
 
@@ -89,7 +87,7 @@ applied to the elements when they are defined; in other words, some
 metadata elements could only be relevant to entities, and are therefore
 restricted to that type, and won't be available for an object interface.
 
-# Creating New Metadata Elements
+## Creating New Metadata Elements
 
 To create a new metadata element, or field, in a user interface:
 
@@ -129,7 +127,7 @@ Options to fill in include:
     will appear in the list. Further refine this restriction by
     specifying subtypes. Select **Add type restrictions** to define.
 
-# Table and Type Restrictions
+## Table and Type Restrictions
 
 When creating a new metadata element, the maximum and minimum number of
 attributes that must be associated with the new element, as well as the
@@ -160,7 +158,7 @@ user interface. The Options include:
     wish the attribute bundle to appear more than once when the screen
     is first opened).
 
-# Screen-Specific Settings
+## Screen-Specific Settings
 
 Several screen-specific settings exist within a metadata element.
 
@@ -212,7 +210,7 @@ Settings include:
 -   **Do not show delete button**: Removes the delete button from the
     cataloging screen, when checked.
 
-# Screen-Specific Settings For Relationships
+## Screen-Specific Settings For Relationships
 
 Relationships have additional screen-specific settings. These can be
 managed in the same place that screen-specific settings are managed.

@@ -25,11 +25,11 @@ While the drop-down lists, when selected, are displayed:
 </figure>
 
 Not all CollectiveAccess systems will have metadata fields that contain
-drop-down values (these can be configured in the `Installation Profile <installation_profiles>`). Examples of fields that may have drop-down lists available include condition, acquisition mode, and other fields that have a set list of values to choose from.
+drop-down values (these can be configured in the [Installation Profile](https://docs.collectiveaccess.org/providence/user/setup/install/). Examples of fields that may have drop-down lists available include condition, acquisition mode, and other fields that have a set list of values to choose from.
 
-Drop-down value lists will have a set number of options to choose from that may describe condition or other variable descriptors about an object or item. These options will be listed in [Lists and Vocabularies](import_lists_and_vocab_in_mapping).
+Drop-down value lists will have a set number of options to choose from that may describe condition or other variable descriptors about an object or item. These options will be listed in [Lists and Vocabularies](https://docs.collectiveaccess.org/providence/user/editing/lists_and_vocab).
 
-The field containing the drop-down values will have its own **CA table.element** code, that will be mapped in Column 3 of the import mapping spreadsheet (see [Creating an Import Mapping: Overview](../c_creating_mapping)).
+The field containing the drop-down values will have its own **CA table.element** code, that will be mapped in Column 3 of the import mapping spreadsheet (see [Creating an Import Mapping: Overview](https://docs.collectiveaccess.org/providence/user/import/c_creating_mapping)).
 
 If all values are the same for the field, set the Rule Type in Column 1 to Constant, and place the value from the drop-down in Column 2 of the import mapping spreadsheet:
 
@@ -47,8 +47,7 @@ Source Data containing condition values might look like:
 
 To find the appropriate **CA table.element** code for the Condition
 field in CollectiveAccess, follow the steps outlined in
-[Creating an Import Mapping: Overview](../c_creating_mapping)) and see
-[Using Bundle Codes](import_ref_bundlecodes).
+[Creating an Import Mapping: Overview](https://docs.collectiveaccess.org/providence/user/import/c_creating_mapping).
 
 Mapping for the condition column would look like:
 
@@ -66,7 +65,7 @@ automatically populate the drop-down list with the appropriate values.
 As noted above, the field for Condition in CollectiveAccess is formatted
 as a **Container**, meaning that each element within the Container has a
 distinct bundle code for which to map source data (see below). For more
-about Containers, see [Containers](containers).
+about Containers, see [Containers](https://docs.collectiveaccess.org/providence/user/import/references/containers).
 
 In the mapping, the bundle code for the Condition Status is used, which
 contains the drop-down list.
@@ -90,6 +89,3 @@ However, if certain values do not match those in CollectiveAccess, using
 Original and Replacement Values should be used in an import mapping
 spreadsheet to create matches between source data values and set
 drop-down list values.
-
-For more, see
-`Use of Original and Replacement Values <import_orig_replace_example>`.

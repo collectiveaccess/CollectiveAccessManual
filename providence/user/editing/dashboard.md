@@ -4,12 +4,6 @@ title: Dashboard Configuration
 
 # Dashboard Configuration
 
--   [Adding Widgets to the Dashboard](#adding-widgets-to-the-dashboard)
--   [Editing the Dashboard](#editing-the-dashboard)
--   [Widget Settings](#widget-settings)
--   [Removing Widgets from the
-    Dashboard](#removing-widgets-from-the-dashboard)
-
 CollectiveAccess provides a customizable **dashboard.** The dashboard is
 the home screen that displays upon login to any back-end system
 (Providence).
@@ -23,28 +17,22 @@ CollectiveAccess system comes with a specific set of widgets; however,
 custom widgets can be created, and widgets can be added or taken away
 from any dashboard.
 
-:::: note
-::: title
-Note
-:::
-
+:::note
 Widgets can be written and created by any developer. For more on writing
 widgets, see [Writing Dashboard
 Widgets](/providence/developer/writing_dash_widgets.html?highlight=widget).
-::::
+:::
 
-# Adding Widgets to the Dashboard
+## Adding Widgets to the Dashboard
 
 The dashboard in a CollectiveAccess system will usually look like:
 
-<figure class="align-center">
-<img src="dashboard1.png" alt="dashboard1.png" />
-<figcaption>The dashboard, or landing page, of a CollectiveAccess
-system. From here users can create new records, search for records,
-manage administrative information, and import data.</figcaption>
-</figure>
+![image](/providence/img/dashboard1.png)
+*The dashboard, or landing page, of the CollectiveAccess
+demonstration system. From here users can create new records, search for records,
+manage administrative information, and import data.*
 
-# Editing the Dashboard
+## Editing the Dashboard
 
 To edit the dashboard:
 
@@ -77,7 +65,7 @@ the desired location.
 Once widgets have been configured, select **Done** in the upper right of
 the screen above the widget instructions.
 
-# Widget Settings
+## Widget Settings
 
 While still editing the Dashboard, specific settings can be viewed and
 configured for each widget. To do so, select the **i** icon
@@ -97,10 +85,10 @@ appear that can be customized:
 Select or de-select these settings to change the contents that appear in
 the widget upon login.
 
-# Removing Widgets from the Dashboard
+## Removing Widgets from the Dashboard
 
 Removing widgets from the Dashboard is simple. While editing the
-Dashboard, simply select the **x** icon ![x](/providence/img/dashboard7.png) located in
+Dashboard, simply select the **x** icon located in
 the to right corner of each widget.
 
 Select **Done,** and the updated Dashboard will be displayed.

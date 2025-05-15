@@ -2,12 +2,14 @@
 title: Translation
 ---
 
+# Translation
+
 Modern versions of CollectiveAccess, version 1.0 and later are designed to be fully localizable. We are working to get CA translated for use in as
 many languages and locales as possible. If you wish to help us translate CA into your language, email us at info@collectiveaccess.org.
 
 To learn more about the mechanics of creating a new translation read on.
 
-# Components of a translation
+## Components of a translation
 
 Translating CollectiveAccess into your own language requires that you translate three distinct sets of text:
 
@@ -30,7 +32,7 @@ The default language used in CollectiveAccess code is English (`en_US`), so all 
 Similarly date/time parser settings are usually translated using the English settings file as a starting point. Pre-made installation profiles are in
 the preferred language of the author. All standards-based profiles created by the CollectiveAccess project use English.
 
-# Editing user interface text
+## Editing User Interface Text
 
 CollectiveAccess uses the [Gnu GetText](http://www.gnu.org/software/gettext/) system for managing translations of user interface text. GetText stores
 both original English-language messages as well as translations in an editable file with the **.po** extenson. Using a special utility one can convert
@@ -45,7 +47,7 @@ For editing translations, we are using online tool
 translations (and later review them). If your language or language variant is not enabled on Transifex, write us to info@collectiveaccess.org and we
 will create it. After translation completion contact us, and we will copy translation to application sources.
 
-## Legacy way
+## Legacy Way
 
 You can also create translation without usin online tools. If you are starting a new translation you need to do the following:
 
@@ -59,20 +61,20 @@ The language codes should adhere to the ISO-639-1 standard.
 5. Open and edit *messages.po* using a GetText-compatible editor such as [Poedit](http://www.poedit.net) and translate each English string into your
 target language. If using POEdit, the *.mo* file will be automatically created or updated every time you save your *.po* file.
 
-# Creating a localization file for the date/time parser
+## Creating a Localization File for the Date/Time Parser
 
 The next step is to localize the date/time parser. To do so copy the English language date/time parser settings file in
 `app/lib/core/Parsers/TimeExpressionParser/en_US.lang` to a file with your locale in the name in `app/lib/core/Parsers/TimeExpressionParser` and edit
 to suit. The file includes comments describing the meaning and format of various settings.
 
-# Localizing an installation profile
+## Localizing an Installation Profile
 
 At this point you have a translated application. You still need a translated configuration, however. If you decide to use an existing
 `installation_profile` as the basis of your system then you will likely need to edit the profile adding localized text as needed. All display
 text in a profile is tagged with a locale string and supports specification of multiple locales. Simply add your translation alongside the existing
 text tagged with your selected locale.
 
-# Installation-specific translations
+## Installation-specific Translations
 
 In some cases the terminology used in the translations in `app/locales` are not quite what you want. Naturally, you can modify the terms used in the
 locale files to suit your purposes. However, this approach comes with a problem: you risk losing your changes when updating your CollectiveAccess
@@ -82,12 +84,12 @@ To avoid this problem, CollectiveAccess supports installation-specific locale fi
 and use it to house your custom *messages.po* and *messages.mo*. CollectiveAccess will always use an installation-specific locale, when present, in
 preference to the standard locale files.
 
-# Translating Pawtucket
+## Translating Pawtucket
 
 Pawtucket uses a similar system for localization. It has locale files in `app/locale` and date/time parser settings in
 `app/lib/core/Parsers/TimeExpressionParser`.
 
-# Sharing your translation
+## Sharing your Translation
 
 We invite you to submit your translations for inclusion in the CollectiveAccess software distribution! If you wish to contribute please contact us
 at support@collectiveaccess.org, or create Pull Request on [github](https://github.com/collectiveaccess/providence).

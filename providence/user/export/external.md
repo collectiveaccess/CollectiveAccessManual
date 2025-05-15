@@ -4,11 +4,6 @@ title: External Export Framework
 
 # External Export Framework
 
--   [Configuration](#configuration)
--   [Running an Export](#running-an-export)
--   [Extending the Framework](#extending-the-framework)
-
-
 :::note
 This feature is available from CollectiveAccess version 1.8.
 :::
@@ -38,7 +33,7 @@ The framework is designed to be extensible. It is possible to add
 support for additional package formats or data transport protocols by
 creating software plugins.
 
-# Configuration
+## Configuration
 
 Behavior of the external export framework is controlled using
 [targets]. A target is a set of configuration defining what
@@ -118,10 +113,9 @@ targets = {
 }
 ```
 
-# Running an Export
+## Running an Export
 
-See [Running an
-Export](file:///Users/charlotteposever/Documents/ca_manual/providence/user/export/mappings.html#running-an-export).
+To Come
 
 # Extending the Framework
 

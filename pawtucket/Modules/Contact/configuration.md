@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Configuration
 
-### Outgoing email settings
+### Outgoing Email Settings
 
 The following settings must be set in the Pawtucket `setup.php` file defining a valid outgoing email service. Value for these settings should be provided by your outgoing email service provider.
 
@@ -22,7 +22,7 @@ Outgoing email settings in `setup.php` are PHP language constants, rather than c
 | **`__CA_SMTP_SSL__`** | The SSL method to use for outgoing mail connection (set to SSL or TLS; leave blank if not authentication is used.) | ```define('__CA_SMTP_AUTH__, 'TLS');``` |
 
 
-### Form settings
+### Form Settings
 
 Options controlling the functionality of the contact form are set in `contact.conf` file in the current theme. If no `contact.conf` file
 is defined in the current theme, settings defined in the default theme will be used.
@@ -34,7 +34,7 @@ is defined in the current theme, settings defined in the default theme will be u
 | **contact_page_title**    | Set a title for the contact page.   | `contact_page_title = "Contact"`      |
 | **contact_form_elements** | An array of elements that will appear in the form. Each key is the name of the form element. For an email address, you can use the `email_address` option to check if a valid email is given. You can set any element as required by passing the `required` option. | ```contact_form_elements = { ``` <br/> ```  itemTitle = { label = _("Item Title")},``` <br/> ```    itemId = { label = _("Item Identifier")}, ``` <br/> ```    itemURL = { label = _("Item URL")}, ``` <br/> ```    email = { label = _("Email address"), email_address = 1, required = 1 }, ``` <br/> ```    name = { label = _("Name"), required = 1}, ``` <br/> ```    message = { label = _("Message"), required = 1} ``` <br/> ```  } ``` |
 
-### Captcha support
+### Captcha Support
 
 Open email forms are routinely pelted with requests from bots sending SPAM. The most reliable means for prevention of nuisance form submissions
 is inclusion of a "Captcha". "Captcha" is an acronym for "Completely Automated 

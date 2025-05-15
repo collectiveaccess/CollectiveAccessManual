@@ -95,15 +95,11 @@ preferences, or using certain plug-ins. Within a CollectiveAccess system
 the number of Access Roles is unlimited, and users can be assigned as
 many roles as are appropriate.
 
-:::: note
-::: title
-Note
-:::
-
+:::note
 To find details about the purposes of the fields in Access Roles as you
 create or edit these preferences, hover your mouse over a field to get a
 definition. This holds true for actions throughout the database.
-::::
+:::
 
 The Access Roles screen contains the name, unique code, and description
 of the roles available within a given system:
@@ -114,17 +110,13 @@ To edit a role currently listed, and view the permissions set to a given
 role, select the **page icon.** To add a new role, select the **plus
 icon** where information about the new role will be defined.
 
-:::: note
-::: title
-Note
-:::
-
+:::note
 When a new user account is created from Pawtucket (front-end), the new
 user is by default given only actions listed under \"Pawtucket
 Actions.\" These are: Can Download Media, Can Share Objects via Email,
 Can Share Objects via Facebook, and Can Initiate Replication of Object
 Media to External Repositories.
-::::
+:::
 
 ## **Record-Level Access**
 

@@ -8,17 +8,11 @@ There are many ways to grant and restrict access in CollectiveAccess
 using settings that can be enabled in the installation profile,
 including:
 
--   [Intrinsic Access Bundle](#intrinsic-access-bundle)
--   [Metadata-level Access Control](#metadata-level-access-control)
--   [Type-level Access Control](#type-level-access-control)
--   [Source-level Access Control](#source-level-access-control)
--   [Item-level Access Control](#item-level-access-control)
-
 Enabling these controls and customizing the controls settings will
 affect which records can be viewed, what information within records can
 be viewed, and by whom, in a given system.
 
-# **Intrinsic Access Bundle**
+## Intrinsic Access Bundle
 
 When the intrinsic bundle \"access\" is included on an editing form, it
 can be used to set which records are viewable/restricted in Pawtucket.
@@ -56,7 +50,7 @@ It\'s also possible to change the default values of the access drop-down
 by copying the list \"access_statuses\" from the base profile into a
 custom profile. Once there any value can be altered to meet local needs.
 
-# **Metadata-level Access Control**
+## Metadata-level Access Control
 
 Use metadata-level access control to set specific metadata elements as
 \"No Access\" \"Read-only access\" or \"Read/edit access\" for different
@@ -97,7 +91,7 @@ In the profile, use the following syntax:
 </role>
 ```
 
-# **Type-level Access Control**
+## Type-level Access Control
 
 To use type-level access control, set the following in Providence\'s
 */app/conf/app.conf*:
@@ -136,7 +130,7 @@ In the profile, use the following syntax:
 </role>
 ```
 
-# **Source-level Access Control**
+## Source-level Access Control
 
 To use source-level access control set the following in Providence\'s
 */app/conf/app.conf*:
@@ -161,11 +155,7 @@ as \"No Access,\" \"Read-only access,\" or \"Read/edit access\" for
 different access roles in Providence. To alter the settings navigate to
 **Manage \> Access Control \> Access Roles**.
 
-:::: note
-::: title
-Note
-:::
-
+:::note
 Each record type must have a source list defined (i.e.
 \"object_sources,\" \"entity_sources,\" etc.) to use this access control
 type. The intrinsic bundle \"source_id\" can be placed on an editor form
@@ -173,7 +163,7 @@ to allow cataloguers to select the relevant source for a record. When a
 default source is set for a specific access role, the source_id bundle
 is optional. The default will automatically set the source for that
 login.
-::::
+:::
 
 In the profile, use the following syntax to set source control:
 
@@ -193,7 +183,7 @@ In the profile, use the following syntax to set source control:
  </role>
 ```
 
-# **Item-level Access Control**
+## Item-level Access Control
 
 Use item-level access control to hide full records from specific users
 or user groups in Providence. Set the following in Providence\'s
@@ -214,4 +204,4 @@ default_item_access_level = __CA_ACL_EDIT_DELETE_ACCESS__
 
 For more about configuring these settings in the user interface and
 item-level control, see [Access Control
-Settings](https://manual.collectiveaccess.org/providence/user/administration/accesscontrolsettings.html).
+Settings](https://docs.collectiveaccess.org/providence/user/administration/accesscontrolsettings).

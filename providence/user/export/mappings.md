@@ -4,30 +4,7 @@ title: Export Mappings
 
 # Export Mappings 
 
--   [Supported Output Formats](#supported-output-formats)
--   [Creating an Export Mapping](#creating-an-export-mapping)
--   [Rule Types](#rule-types)
--   [Hierarchical Mappings](#hierarchical-mappings)
--   [Source](#source)
--   [Element Values and General Notes on Specific
-    Formats](#element-values-and-general-notes-on-specific-formats)
--   [XML Element Values](#xml-element-values)
--   [MARC Element Values](#marc-element-values)
--   [Variables](#variables)
--   [Settings](#settings)
--   [Options](#options)
--   [Processing Order](#processing-order)
--   [Replacements](#replacements)
--   [Mapping Repetition](#mapping-repetition)
--   [Running an Export](#running-an-export)
--   [RDF Mode Configuration File
-    Options](#rdf-mode-configuration-file-options)
--   [Node Type Definition Options](#node-type-definition-options)
--   [\'Related\' Options](#related-options)
--   [Miscellaneous Settings and
-    Options](#miscellaneous-settings-and-options)
-
-# Supported Output Formats
+## Supported Output Formats
 
 Supported output formats currently include:
 
@@ -35,7 +12,7 @@ Supported output formats currently include:
 -   MARC21
 -   CSV
 
-# Creating an Export Mapping
+## Creating an Export Mapping
 
 To create a mapping, first download the Excel-based export mapping
 template available here:
@@ -44,9 +21,7 @@ template available here:
 
 Once all of the mappings and settings have been entered into the
 template it can be [loaded
-directly](https://manual.collectiveaccess.org/providence/user/export/mappings.html#running-an-export)
-into CollectiveAccess. The mapping is automatically checked using
-format-specific rules before it is added, so if your mapping has any
+directly](#running-an-export) into CollectiveAccess. The mapping is automatically checked using format-specific rules before it is added, so if your mapping has any
 errors or ambiguities, the mapping loader will let you know.
 
 Creating the mapping is dependent on the format you want to export.
@@ -54,11 +29,11 @@ Specific notes and examples can be found in [Element Values and General
 Notes on Specific
 Formats](#element-values-and-general-notes-on-specific-formats).
 
-# Rule Types
+## Rule Types
 
 The first column of the main mapping spreadsheet is **Rule Type.**
 Similarly to Rule Types in an [import
-mapping](/providence/user/import/c_import_tutorial.html#column-1-rule-types),
+mapping](https://docs.collectiveaccess.org/providence/user/import/c_creating_mapping),
 in an export mapping, what you set here qualifies what this row does.
 There are several options available:
 
@@ -71,7 +46,7 @@ There are several options available:
 |Setting|Sets preferences for the mapping (see below).|
 |Variable|(Available for v1.5) Allows you, using all the available features of the exporter, to assign a value to a user-defined name for later usage. See Data_Exporter#Variables.|
 
-# Hierarchical Mappings
+## Hierarchical Mappings
 
 Some export formats support hierarchical relationships between mapping
 items. For XML this is a very core concept. To create a hierarchy,
@@ -82,7 +57,7 @@ second item will then become a direct child if the first one. In theory,
 those hierarchies can be nested very deep, but in practice, the format
 implementations may apply restrictions.
 
-# Source
+## Source
 
 The value for the 5th column in the mapping sheet can be any
 CollectiveAccess bundle specifier. See [API: Getting Data and Methods of
@@ -100,13 +75,13 @@ information see the description for the
 [Context](/providence/user/export/mappings.html#options)
 option in the table below.
 
-# Element Values and General Notes on Specific Formats
+## Element Values and General Notes on Specific Formats
 
 The 4th column of the mapping sheet is named \'Element\'. This is a very
 format-specific setting where you enter the name of the element you want
 to put your field data in. See below for a description of the formats.
 
-# XML Element Values
+## XML Element Values
 
 The XML format implementation allows valid XML element names as values
 for the \"Element\" column. If you want to specify an XML attribute,
@@ -133,7 +108,7 @@ following:
 </object>
 ```
 
-# MARC Element Values
+## MARC Element Values
 
 Let\'s start off by saying that MARC is a very old and very specific
 format. Creating MARC mappings can be a bit painful. Make yourself
@@ -232,7 +207,7 @@ mapping.
 |MARC_outputFormat|MARC supports a couple of different output formats for the same kinds of mapping. Set the format you want to use here. Default is ‘readable’. See [2] for more details|readable’, ‘raw’ or ‘xml’. readable refers to the typical more or less human-readable table-like format used for MARC records. raw is used to write MARC binary files for data exchange. The 3rd option uses MARCXML as output format.|xml|
 
 
-# Options
+## Options
 
 Each mapping item (i.e. a line in the mapping spreadsheet) can have its
 own settings as well. To set these settings, you can fill out the 6th
@@ -326,7 +301,7 @@ This allows you to do pretty nifty stuff, for instance rewriting dates:
 Search column: (w+) (d+), (d+) Replace column: \$2 \$1 \$3 value: April
 15, 2003 result: 15 April 2003
 
-# Mapping Repetition
+## Mapping Repetition
 
 The *RepeatMappings* rule type allows you to repeat a set list of
 mappings in a different context without actually defining them again.
@@ -385,7 +360,7 @@ bin/caUtils help export-data
 
 Essentially there are 3 export modes:
 
-## 1) Export a Single Record
+### 1) Export a Single Record
 
 Since the scope of a mapping is usually a single record, it\'s easy to
 use a mapping to export a record by its identifier. Suppose you have a
@@ -397,7 +372,7 @@ custom idno!) 550 to a new file \~/export.xml, you\'d run this command:
 bin/caUtils export-data -m my_mapping -i 550 -f ~/export.xml
 ```
 
-## 2) Export a Set of Records Found by Custom Search Expression
+### 2) Export a Set of Records Found by Custom Search Expression
 
 In most real-world export projects you\'ll need to export a set of
 records or even all your records into a single file. The exporter
@@ -413,7 +388,7 @@ publicly accessible files to a file \~/export.xml:
 bin/caUtils export-data -m my_mapping -s "access:1" -f ~/export.xml
 ```
 
-## 3) Export a Diverse Set of Records (\"RDF mode\")
+### 3) Export a Diverse Set of Records (\"RDF mode\")
 
 :::note
 For advanced users only
@@ -485,7 +460,7 @@ Here is an example of how to run an RDF mode export:
 |related|List of related records also to be included in the global node set. You can use this for example to make sure you only export list_items that are actually actively used as vocabulary terms for objects, meaning you don’t have to create an extra node type (which would potentially export all list items in your database) for this.|
 
 
-# \'Related\' Options
+## \'Related\' Options
 
 | Setting | Description
 |----|----| 

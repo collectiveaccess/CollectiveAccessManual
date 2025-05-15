@@ -4,16 +4,6 @@ title: Preferences
 
 # Preferences
 
--   [General](#general)
--   [Editing](#editing)
--   [Batch Editing](#batch-editing)
--   [Quick Add](#quick-add)
--   [Units of Measurement](#units-of-measurement)
--   [Duplication](#duplication)
--   [Quick Search](#quick-search)
--   [User Profile](#user-profile)
--   [Developer](#developer)
-
 Every CollectiveAccess system has editable preferences to help manage,
 tailor, and streamline the cataloging processes available in a system.
 Preferences are key to any system as they determine how information is
@@ -33,7 +23,7 @@ preferences. Preferences can be accessed any time by selecting
 Preferences at the bottom of any user interface in CollectiveAccess.
 Below, each preference is explained in further detail.
 
-# General
+## General
 
 General preferences determine various aspects about the CollectiveAccess
 system, ranging from languages to search and browse histories. These
@@ -64,16 +54,14 @@ preferences include:
     options to rename the file, and upload it to GitHub or
     ResourceSpace.
 
-# Editing
+## Editing
 
 Preferences set in Editing help determine the user interface editors for
 the different primary tables in a given system (Objects, Object Lots,
 Entities, and so on). These preferences include:
 
-<figure class="align-center">
-<img src="preferences2.png" alt="preferences2.png" />
-<figcaption>Part of the Editing Preferences screen.</figcaption>
-</figure>
+![image](/providence/img/preferences2.png)
+*Part of the Editing Preferences screen.*
 
 -   **Default cataloguing locale**: Select the default language for the
     system if there are multiple locales set for a system.
@@ -106,7 +94,7 @@ Entities, and so on). These preferences include:
 -   **User interfaces for representation annotations**: Selects which
     Editor to use when editing Representation Annotations.
 
-# Batch Editing
+## Batch Editing
 
 ![image](/providence/img/preferences3.png)
 
@@ -134,17 +122,15 @@ Preferences for Batch Editing include:
 -   **Batch user interface for loans**: Selects which Editor to use when
     Batch Editing Loans.
 
-# Quick Add
+## Quick Add
 
 The Quick Add feature enables the set up of a new record when a
 relationship look-up does not generate any results. Quick Add provides
 one editing screen, and with Quick Add preferences the relevant user
 interface can be set. These preferences include:
 
-<figure class="align-center">
-<img src="preferences4.png" alt="preferences4.png" />
-<figcaption>Part of the Quick Add Preferences screen.</figcaption>
-</figure>
+![image](/providence/img/preferences4.png)
+*Part of the Quick Add Preferences screen.*
 
 -   **User interfaces for entities**: Selects which Editor to use when
     Quick Adding user interfaces for relationships via Entity records.
@@ -161,7 +147,7 @@ interface can be set. These preferences include:
     Quick Adding user interfaces for relationships via List Item
     records.
 
-# Units of Measurement
+## Units of Measurement
 
 The preferences for Units of Measurement in a record's editor screen,
 including currency and measurement units, can be specified here. These
@@ -178,7 +164,7 @@ preferences include:
     supported currencies are available to choose from in the drop down
     menu.
 
-# Duplication
+## Duplication
 
 Duplication allows for the creation of a new record that has
 significantly similar metadata to an existing record. In order to avoid
@@ -188,11 +174,9 @@ Duplication preferences can be set for the following primary tables:
 Objects, Entities, Occurrences, Lots, Collections, Storage Locations,
 Loans, Lists, List Items as well as for Sets and Displays.
 
-<figure class="align-center">
-<img src="preferences6.png" alt="preferences6.png" />
-<figcaption>Part of the Duplication Preferences screen, showing settings
-for Objects.</figcaption>
-</figure>
+![image](/providence/img/preferences6.png)
+*Part of the Duplication Preferences screen, showing settings
+for Objects.*
 
 Each Duplication setting adherest to a primary table in
 CollectiveAccess, Sets, List Items, Lists, or Displays. Various options
@@ -204,7 +188,7 @@ Settings are included for Objects, Entities, Occurrences, Lots,
 Collections, Storage Locations, Loans, Lists, List Items, Sets and
 Displays.
 
-# Quick Search
+## Quick Search
 
 QuickSearch preferences enable the editing of the content, and order, of
 search results in the QuickSearch interface in CollectiveAccess. The
@@ -216,13 +200,13 @@ To set these preferences, each primary table can be dragged and dropped
 under the proper column, **Available searches** or **Searches to
 display.**
 
-# User Profile
+## User Profile
 
 Create a simple user profile by entering relevant user information.
 
 ![image](/providence/img/preferences9.png)
 
-# Developer
+## Developer
 
 Developer preferences can be set to show more details about field bundle
 codes, template debuggers, and query details.

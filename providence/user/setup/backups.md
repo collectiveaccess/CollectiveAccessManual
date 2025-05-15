@@ -5,7 +5,7 @@ sidebar_label: Backups
 #sidebar_class_name: first
 ---
 
-# Backing up a CollectiveAccess installation
+# Backing up a CollectiveAccess Installation
 
 Three types of data need to be backed up on a regular basis:
 
@@ -22,7 +22,7 @@ Bacula (http://www.bacula.org/) archiving your files to digital tape
 or a command-line Unix program such as rsync mirroring files from your
 server to another server or an external hard drive.
 
-## Backing up your database
+## Backing Up your Database
 
 To back-up your CollectiveAccess database, you need to have MySQL
 \"dump\" it to a file and then have your back-up tool archive that file.
@@ -46,14 +46,14 @@ more featureful solution is a MySQL backup automation script such as
 AutoMySQLBackup which can take care of naming and compression of
 snapshots, and can easily handle multiple databases.
 
-## Backing up your digital media
+## Backing Up your Digital Media
 
 CollectiveAccess stores all uploaded and derived digital media in a
 series of sub-directories under /media in the root of your installation.
 Simply backing up the entire contents of media is sufficient in most
 cases.
 
-## Backing up your configuration files
+## Backing Up your Configuration Files
 
 CollectiveAccess configuration files are stored in a sub-directory named
 conf under app (aka. **app/conf**). This entire directory should be

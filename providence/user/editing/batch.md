@@ -4,11 +4,6 @@ title: Batch Editing
 
 # Batch Editing
 
--   [Batch Editing Using Sets](#batch-editing-using-sets)
--   [Batch Editing Sets Using Search
-    Results](#batch-editing-sets-using-search-results)
--   [Other Batch Editing Features](#other-batch-editing-features)
-
 CollectiveAccess supports features for making uniform changes to batches
 of data, saving time and effort when editing records of any type. Batch
 Editing in CollectiveAccess organizes records into groups, which can
@@ -33,7 +28,7 @@ In order to batch-edit records, a set must be created and defined. For
 more on creating a Set and options for Sets, see
 [Sets](/providence/user/workflow/sets.html).
 
-# Batch Editing Using Sets
+## Batch Editing Using Sets
 
 Once a Set is established, a batch edit can be executed from the My Sets
 screen. Navigate to **Manage \> My Sets**, and select the icon
@@ -61,7 +56,7 @@ making these sweeping changes.
 
 Select "Execute Batch Edit\" to save changes and make a batch edit.
 
-# Batch Editing Sets Using Search Results
+## Batch Editing Sets Using Search Results
 
 Sets can also be quickly generated (and subsequently edited) based on a
 search term. For more information about searching and browsing, see
@@ -99,7 +94,7 @@ results only. Also choose whether to open the set for batch editing.
 
 # Other Batch Editing Features
 
-## Batch delete
+## Batch Delete
 
 Records can be batch deleted just as they can be batch edited. First,
 follow either of the two approaches outlined above for selecting your
@@ -108,7 +103,7 @@ see some text \"More options \>\" in the inspector on the upper left
 hand corner of the screen. Click to open and you\'ll find controls for
 batch deleting the entire set.
 
-## Batch updating access and status values for representations
+## Batch Updating Access and Status Values for Representations
 
 As of CollectiveAccess version 1.7, a specialized interface bundle is
 available that enables setting of access and status values for related

@@ -8,7 +8,7 @@ Views for the front page are defined in the theme `views/Front` directory. The`f
 is used to generate the front page. Other views may added to support additional home pages accessible using alternative
 URLs.
 
-## View variables
+## View Variables
 
 The following variables are defined for front page views:
 
@@ -21,7 +21,7 @@ The following variables are defined for front page views:
 | **featured_set_item_ids** | The item list for the current set as an array of set item ids | 
 | **featured_set_items_as_search_result** | The item list for the current set as an iterable `SearchResult` object |
 
-## Defining and referencing alternative front pages
+## Defining and Referencing Alternative Front Pages
 
 Any number of "front" pages may be defined. The page defined in `views/Front/front_page_html.php` will always be used
 as the default, loading whenever the site is referenced at its root (Eg. `https://example.com`). Additional front pages may be 

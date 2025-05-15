@@ -11,7 +11,7 @@ configuration of CollectiveAccess\' browse system is completely
 independent from search. It is possible to search on data that are not
 browse-able, and browse on elements that are not indexed for search.
 
-# Organization
+## Organization
 
 At the top level, search_indexing.conf is structured as a series of
 blocks, one for each type of item to be indexed:
@@ -148,7 +148,7 @@ and access point definitions (the \_access_points key at the end of the
 sub-block). These sub-blocks form the core of the configuration, and are
 discussed in detail below.
 
-# Sub-blocks
+## Sub-blocks
 
 To index data elements that are part of the item itself create a
 sub-block whose key is the table name of the item. For example, when
@@ -245,7 +245,7 @@ ca_objects = {
             idno = { STORE, DONT_TOKENIZE, INDEX_AS_IDNO, BOOST = 100 },
 ```
 
-# Indexing related items
+## Indexing related items
 
 Indexing can traverse relationships and include data elements in related
 items. This allows, for example, an object to be found using the names
@@ -291,7 +291,7 @@ against objects. The same special fields and options available when
 indexing fields in the item itself are available when indexing related
 items.
 
-**Indexing preferred and non preferred labels**
+### Indexing preferred and non preferred labels
 
 Labels are stored in the CollectiveAccess database as related records,
 and can be indexed similarly to other related items. One difference:
@@ -320,7 +320,7 @@ ca_object_labels = {
 },
 ```
 
-**Counting related items**
+### Counting related items
 
 The number of related items can be indexed using the \_count special
 field. When placed in the sub-block for the related item (ca_entities in
@@ -342,7 +342,7 @@ ca_objects_x_entities = {
 Indexed counts may be searched using the count field on the appropriate
 table.
 
-**Controlling related indexing**
+### Controlling related indexing
 
 Indexing of related items can be restricted to specific relationship
 types using an alternate syntax for the tables list. Rather than using a
@@ -373,7 +373,7 @@ As of version 1.7.6 it is possible to restrict indexing by related item
 type using a \"types\" key in a sub-block with a list of types to
 restrict to.
 
-**Indexing self-relationships**
+### Indexing self-relationships
 
 \"Self-relationships\" are connections between two items of the same
 kind, such as object-to-object and entity-to-entity relationships.
@@ -431,7 +431,7 @@ related = {
 }
 ```
 
-**Indirect self-relationships**
+### Indirect self-relationships
 
 As of version 1.7.6 it is also possible to index two items of the same
 kind indirectly, through a series of relationships to items of other
@@ -458,14 +458,14 @@ ca_objects.related = {
 This would index objects with the idno field values of any objects with
 the same related entities.
 
-**Access Points**
+### Access Points
 
 The access points sub-block (use key \_access_points) defines aliases
 for specific indexed elements or groups of elements. It also allows a
 user to set attributes to be used in search forms as well as search
 shortcuts.
 
-**Search Shortcuts**
+### Search Shortcuts
 
 With \_access_points you can create shortcuts to be used in any search
 system-wide, including Basic Search, Quick Search, Find in the Hierarchy
@@ -542,7 +542,7 @@ to include the full path of ca_table.elementCode.subElementTarget or:
 fields = [ca_objects.description.description_source],
 ```
 
-**Search forms**
+### Search forms
 
 You may have noticed that in the code examples above an option was used:
 
@@ -564,7 +564,7 @@ tablename.fieldname (ex. objects.title); indexed metadata also have
 access points in the format tablename.md_\<element_id\> (ex.
 objects.md_5)
 
-**Rebuilding the search index**
+### Rebuilding the search index
 
 Changes to search_indexing.conf take effect immediately for all
 subsequent indexing. Any items indexed prior to the change will not

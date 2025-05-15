@@ -9,7 +9,7 @@ elements, such as Objects, Entities, Collections, and more. Each primary
 table has intrinsic bundles and its own set of preferred and
 non-preferred labels bundles.
 
-Read more: [Primary Tables](https://camanual.whirl-i-gig.com/providence/user/dataModelling/primaryTables)
+Read more: [Primary Tables](https://docs.collectiveaccess.org/providence/user/dataModelling/primaryTables)
 
 # Bundles
 
@@ -22,7 +22,7 @@ characteristics and uses: *labels*,
 bundles, chosen to meet specific representational requirements.
 
 Read more:
-[Bundles](https://manual.collectiveaccess.org/providence/user/reference/glossaries/Bundles.html)
+[Bundles](https://docs.collectiveaccess.org/providence/user/dataModelling/metadata/bundles)
 
 ## Labels
 
@@ -43,7 +43,7 @@ may be set to manadate uniqueness of labels with a system, to
 distinguish between different types of non-preferred labels (a
 requirement of some knowledge representation standard) and more.
 
-Read more: [Labels](https://camanual.whirl-i-gig.com/providence/user/dataModelling/labels)
+Read more: [Labels](https://docs.collectiveaccess.org/providence/user/dataModelling/labels)
 
 ## Intrinsics
 
@@ -58,26 +58,25 @@ Commonly used intrinsics include *idno* (record identifier),
 *type_id* (record type), *access* (public web
 site visibility) and *status* (record workflow status).
 Descriptions of all available intrinsic fields may be found in the
-[primary table](https://camanual.whirl-i-gig.com/providence/user/dataModelling/primaryTables)
+[primary table](https://docs.collectiveaccess.org/providence/user/dataModelling/primaryTables)
 documentation.
 
 ## Metadata elements
 
 Metadata elements are configurable data fields bound to the various
-[records](https://camanual.whirl-i-gig.com/providence/user/dataModelling/primaryTables) in your data
-schema. Metadata element are able to accept a rich and varied range of
+records in your data schema. Metadata element are able to accept a rich and varied range of
 data types, can repeat, can support multilingual values, and may be
 composed into complex, multi-value fields using container elements. The
 bulk of the data schema for a typical system will be implemented using
 metadata elements to build installation-specific data structures.
 
-Read more: [Metadata Elements](https://camanual.whirl-i-gig.com/providence/user/dataModelling/metadata/)
+Read more: [Metadata Elements](https://docs.collectiveaccess.org/providence/user/dataModelling/metadata/)
 
 ## Relationships
 
 Relationships are bi-directional links between pairs of records. They
 may be created between records in any
-[primary table](https://camanual.whirl-i-gig.com/providence/user/dataModelling/primaryTables) without
+[primary table](https://docs.collectiveaccess.org/providence/user/dataModelling/primaryTables) without
 restriction. All relationships include references to *relationship
 types* -- configurable specifiers that distinguish different
 kinds of relationships that may occur. Relationship types between object
@@ -89,7 +88,7 @@ and each relationship can optionally incorporate additional metadata
 elements. Relationships also support a handful of intrinsics, but do not
 take labels.
 
-Read more: [Relationships](https://camanual.whirl-i-gig.com/providence/user/dataModelling/relationships)
+Read more: [Relationships](https://docs.collectiveaccess.org/providence/user/dataModelling/relationships)
 
 # Installation Profiles
 
@@ -98,4 +97,4 @@ and set up your database. Every CollectiveAccess instance must have an
 installation profile. Many options are pre-loaded, but typically you
 need to customize one for your needs.
 
-Read more: [Installation Profiles](https://camanual.whirl-i-gig.com/providence/user/dataModelling/profiles/)
+Read more: [Installation Profiles](https://docs.collectiveaccess.org/providence/user/dataModelling/profiles/)

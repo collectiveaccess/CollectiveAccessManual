@@ -4,14 +4,6 @@ title: "Color Coding the Inspector"
 
 # Color Coding the Inspector
 
--   [Inspector Window Features](#inspector-window-features)
--   [Customizing the Editor
-    Inspector](#customizing-the-editor-inspector)
--   [Customizing Screens within the
-    Editor](#customizing-screens-within-the-editor)
--   [Customizing the Inspector for Record
-    Subtypes](#customizing-the-inspector-for-record-subtypes)
-
 CollectiveAccess supports the customization of both the look and feel of
 any cataloging interface. Assigning custom colors and icons to the
 Inspector window of any record type or record subtype can streamline
@@ -31,7 +23,7 @@ default color will automatically be assigned.
 These changes can be made directly in the user interface of any
 CollectiveAccess system.
 
-# Inspector Window Features
+## Inspector Window Features
 
 The Inspector window of a record contains all the key \"at a glance\"
 information about that record. This includes its primary table, current
@@ -63,7 +55,7 @@ are enabled:
     Record. Collapses or expands the information relating to the
     record's edit history, visible in the Inspector panel.
 
-# **Customizing the Editor Inspector**
+## Customizing the Editor Inspector
 
 Editor screen colors can be customized through the user interface. To
 customize the Inspector window in an editor screen:
@@ -95,7 +87,7 @@ customize the Inspector window in an editor screen:
 color.</figcaption>
 </figure>
 
-# Customizing Screens within the Editor
+## Customizing Screens within the Editor
 
 Individual Screens within a record's Editor can also be customized. To
 do so:
@@ -115,7 +107,7 @@ do so:
 7.  Navigate to the Editor screen in the record that was updated to view
     the new color.
 
-# Customizing the Inspector for Record Subtypes
+## Customizing the Inspector for Record Subtypes
 
 Customizing the Inspector for record subtypes allows for further
 differentiation between these subtypes. Although Subtypes are

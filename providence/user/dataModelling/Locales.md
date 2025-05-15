@@ -4,12 +4,6 @@ title: Locales
 
 # Locales
 
--   [Locale-specific Information in
-    CollectiveAccess](#locale-specific-information-in-collectiveaccess)
--   [How Locales are Selected](#how-locales-are-selected)
--   [Translating CollectiveAccess into a New
-    Language](#translating-collectiveaccess-into-a-new-language)
-
 CollectiveAccess supports localizations of its user interface. It also
 supports multi-lingual metadata - you can add information translated
 into many languages to a object or authority record. Whenever a language
@@ -29,7 +23,7 @@ when sub-divisions of languages must be taken into account. (Note: the
 dialect specification may be dropped in the future; if you think this
 should stay let us know.)
 
-# **Locale-specific Information in CollectiveAccess**
+## Locale-specific Information in CollectiveAccess
 
 Locale-related information is stored into three places within
 CollectiveAccess:
@@ -57,7 +51,7 @@ CollectiveAccess:
     data is stored in *app/lib/core/Zend/Locale/Data* in files using
     standard locale codes.
 
-# **How Locales are Selected**
+## How Locales are Selected
 
 Each CollectiveAccess user may select a preferred locale for their user
 interface; the list of locales is limited to those for which a user
@@ -72,8 +66,8 @@ locales will be used in order of listing until catalogue data is found.
 If no catalogue data exists for the default locales, CollectiveAccess
 will display data in whatever locale *does* exist.
 
-# **Translating CollectiveAccess into a New Language**
+## Translating CollectiveAccess into a New Language
 
 For information on how to translate CollectiveAccess into a language for
 which a translation does not yet exist, see the the page on creating
-[Translations](file:///Users/charlotteposever/Documents/ca_manual/providence/developer/translation.html?highlight=translations).
+[Translations](https://docs.collectiveaccess.org/providence/developer/translating).

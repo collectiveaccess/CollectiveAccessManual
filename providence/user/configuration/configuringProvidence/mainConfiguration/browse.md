@@ -202,7 +202,7 @@ For facets of type **checkouts** these additional keys are defined:
 |mode|Determines what checkouts are browsed on. If set to \"user\" checkouts are shown by user (subject to type determined by the \'status\' option). If set to \"all\" all types of checkouts are shown in facet. In this case \'status\' is not used.|Yes|
 |status|Limits facet to a specific type of checkout when mode is set to \"user\". Must be one of \"all\", \"available\", \"out\", \"reserved\", \"overdue\". Default is \"all\" when omitted.|No|
 
-## Browse results when no criteria are defined
+## Browse Results When No Criteria are Defined
 
 By default the browse will not return results if you attempt to execute
 a browse with no criteria defined. In principle, a criteria-less browse

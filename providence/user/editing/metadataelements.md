@@ -4,10 +4,6 @@ title: Configuring Metadata Elements
 
 # Configuring Metadata Elements
 
--   [Creating a New Metadata Element](#creating-a-new-metadata-element)
--   [Datatype-Specific Options for Metadata
-    Elements](#datatype-specific-options-for-metadata-elements)
-
 Metadata elements can be created and edited through the CollectiveAccess
 interface.
 
@@ -22,7 +18,7 @@ Elements are and how they work, please visit API: Metadata Elements and
 Attributes.
 :::
 
-# Creating a New Metadata Element
+## Creating a New Metadata Element
 
 To create a new metadata element in the user interface:
 
@@ -31,20 +27,17 @@ To create a new metadata element in the user interface:
     complete list of all of the metadata elements currently available in
     the system:
 
-<figure class="align-center">
-<img src="metadata_el2.png" alt="metadata_el2.png" />
-<figcaption>Metadata elements in a CollectiveAccess system.</figcaption>
-</figure>
+![image](/providence/img/metadata_el2.png)
+*Metadata elements in a CollectiveAccess system.*
 
-3.  Select the **plus icon** ![plus](/providence/img/metadata1.png) next to **New** in
+3.  Select the **plus icon** next to **New** in
     the upper right corner. This displays the **Metadata Element
     Editor** which contains the following options for adding a new
     metadata element:
 
-<figure class="align-center">
-<img src="metadata3.png" alt="metadata3.png" />
-<figcaption>Creating a new metadata element.</figcaption>
-</figure>
+![image](/providence/img/metadata3.png)
+*Creating a new metadata element.*
+
 
 Fields to fill in for the new metadata element include:
 
@@ -73,7 +66,7 @@ Fields to fill in for the new metadata element include:
     setting Type Restrictions for the new metadata element, the Editor
     will populate a list of subtypes if they exist.
 
-# Datatype-Specific Options for Metadata Elements
+## Datatype-Specific Options for Metadata Elements
 
 When configuring metadata elements in the User Interface, there are a
 few options called **Datatype-specific options** which determine aspects
@@ -85,10 +78,9 @@ To view these options, navigate to **Manage \> Administration \>
 Metadata Elements.** The full list of available metadata elements will
 be displayed:
 
-<figure class="align-center">
-<img src="datatype_options_1.png" alt="datatype_options_1.png" />
-<figcaption>Metadata elements in a CollectiveAccess system.</figcaption>
-</figure>
+![image](/providence/img/datatype_options_1.png)
+*Metadata elements in a CollectiveAccess system.*
+
 
 Note that the options available will differ for each **type** of
 metadata element. In the full list of metadata elements, these types are
@@ -115,14 +107,11 @@ navigate to **Manage \> Administration \> Metadata Elements.** The full
 list of available metadata elements will be displayed.
 
 Select the appropriate text field to be changed. For example, to the
-text options in the Caption field, select the page icon
-![pageicon](/providence/img/textfieldicon.png) to the right of the Caption element in
+text options in the Caption field, select the **page icon** to the right of the Caption element in
 the metadata element list:
 
-<figure class="align-center">
-<img src="caption.png" alt="caption.png" />
-<figcaption>An individual metadata element.</figcaption>
-</figure>
+![image](/providence/img/caption.png)
+*An individual metadata element.*
 
 Selecting the page icon will display the metadata element's editor
 screen, where the name, description, and other details can be viewed,

@@ -7,7 +7,7 @@ For your CollectiveAccess system to work, you MUST add values for your
 administrative e-email**. Other options, such as timezone, may also need
 to be modified.
 
-# Database server host name
+## Database Server Host Name
 
 This is often set to \'localhost\'.
 
@@ -17,7 +17,7 @@ if (!defined("__CA_DB_HOST__")) {
 }
 ```
 
-# Database login user name
+## Database Login User Name
 
 ``` none
 if (!defined("__CA_DB_USER__")) {
@@ -25,7 +25,7 @@ if (!defined("__CA_DB_USER__")) {
 }
 ```
 
-# Database login password
+## Database Login Password
 
 ``` none
 if (!defined("__CA_DB_PASSWORD__")) {
@@ -33,7 +33,7 @@ if (!defined("__CA_DB_PASSWORD__")) {
 }
 ```
 
-# Database name
+## Database Name
 
 ``` none
 if (!defined("__CA_DB_DATABASE__")) {
@@ -41,7 +41,7 @@ if (!defined("__CA_DB_DATABASE__")) {
 }
 ```
 
-# System Name
+## System Name
 
 This value will be used on emails, on the login screen, in browser
 window titles, etc.
@@ -52,7 +52,7 @@ if (!defined("__CA_APP_DISPLAY_NAME__")) {
 }
 ```
 
-# Administrative Email
+## Administrative Email
 
 An e-mail must be set up at this stage to send error reports for system
 configuration issues.
@@ -63,7 +63,14 @@ if (!defined("__CA_ADMIN_EMAIL__")) {
 }
 ```
 
-# Outgoing email
+:::warning
+For your CollectiveAccess system to work, you MUST add values for your
+**database server hostname, user name, password, database, and
+administrative e-email**. Other options, such as timezone, may also need
+to be modified.
+:::
+
+## Outgoing Email
 
 For CollectiveAccess to be able to send email notifications
 \_\_CA_SMTP_SERVER\_\_ and \_\_CA_SMTP_PORT\_\_ must be set. If your
@@ -76,7 +83,7 @@ __CA_SMTP_AUTH__ = authentication method for outgoing mail connection (set to PL
 __CA_SMTP_SSL__ = SSL method to use for outgoing mail connection (set to SSL or TLS; leave blank if not authentication is used.)
 ```
 
-# Timezone Setting
+## Timezone Setting
 
 Set your preferred time zone here. The default is to use US Eastern
 Standard Time. A list of valid time zone settings is available at
@@ -91,7 +98,7 @@ or else dates may import incorrectly.
 date_default_timezone_set('America/New_York');
 ```
 
-# Background Processing
+## Background Processing
 
 The task queue allows users to push potentially long running processes,
 such as processing of large video and image files into the background
@@ -105,7 +112,7 @@ if (!defined("__CA_QUEUE_ENABLED__")) {
 }
 ```
 
-# Default Locale
+## Default Locale
 
 The default locale is used in situations where no locale is specifically
 set by the user, prior to login or prior to setting your preferred
@@ -113,7 +120,6 @@ locale in user preferences for the first time. You should set this to
 the locale in which your users generally work.
 
 :::note
-
 Whatever locale you set here *MUST* be present in your system locale
 list. The default value is US/English, which exists in most
 configurations.
@@ -125,7 +131,7 @@ if (!defined("__CA_DEFAULT_LOCALE__")) {
 }
 ```
 
-# Clean URLs
+## Clean URLs
 
 If the Apache mod_rewrite module is available on your server you may set
 this to have Providence use \"clean\" urls -- urls with the index.php
@@ -136,7 +142,7 @@ and it is enabled using the provided .htaccess file.
 define("__CA_USE_CLEAN_URLS__", 0);
 ```
 
-# App Names for Multiple CollectiveAccess Systems
+## App Names for Multiple CollectiveAccess Systems
 
 If you are running more than one instance of CollectiveAccess on the
 same server make sure each instance has its own unique
@@ -149,7 +155,7 @@ if (!defined("__CA_APP_NAME__")) {
 }
 ```
 
-# Google Maps Key
+## Google Maps Key
 
 Add your Google Maps key to use for mapping and geocoding feature
 (optional).
@@ -160,7 +166,7 @@ if (!defined("__CA_GOOGLE_MAPS_KEY__")) {
 }
 ```
 
-# Caching
+## Caching
 
 The default file-based caching should work acceptably in many setups.
 Alternate schema may be used, including redis, sqlite, memcached or php
@@ -200,7 +206,7 @@ __CA_REDIS_PORT__ = Port of redis server
 __CA_REDIS_DB__ = redis database index (typically a number between 0 and 15)
 ```
 
-# Overwrite Existing Installation
+## Overwrite Existing Installation
 
 Overwriting an existing installation can be useful while a site is in
 development. Overwriting will completely destroy the database and
@@ -216,7 +222,7 @@ if (!defined('__CA_ALLOW_INSTALLER_TO_OVERWRITE_EXISTING_INSTALLS__')) {
 }
 ```
 
-# Application Exception Error Messaging
+## Application Exception Error Messaging
 
 Set to display detailed error information on-screen whenever an
 application exception occurs. This can be helpful for developers in

@@ -1,12 +1,13 @@
 ---
-title: Importing Data in CollectiveAccess
+title: Introduction to Import Mappings  
 sidebar_label: Introduction to Import Mappings 
 sidebar_position: 1
 ---
 
-# Importing Data in CollectiveAccess    
+# Introduction to Import Mappings  
 
-## Basic Concepts: What is an Import Mapping?
+## What is an Import Mapping?
+
 
 In order to import data into CollectiveAccess, it is necessary to define
 exactly *how* and *where* the source data will be imported. This
@@ -25,26 +26,41 @@ described in more detail on the [Creating an Import Mapping:
 Overview](c_creating_mapping)
 page.
 
-## Why Use an Import Mapping?
+## Import Mapping Spreadsheet: Purpose and Function
 
-Data must be imported into CollectiveAccess using an import mapping
-spreadsheet. To import data in CollectiveAccess, it is necessary to
-first have source data available in a supported format (see below), and
-to then create an import mapping spreadsheet.
+An import mapping spreadsheet is a crosswalk that defines where source data will go once imported into  CollectiveAccess. It maps specific elements of source data in a supported file format to CollectiveAccess. An import mapping is in spreadsheet format (XLSX or GoogleSheets), and is organized in columns and rows.
 
-Import mappings operate under two basic assumptions about the data being
-imported:
+In addition to defining where source data will go in CollectiveAccess, an import mapping spreadsheet also uses a multitude of options, expressions, and other data transformations to transform the source data in a variety of ways. 
+
+A mapping spreadsheet uses JavaScript Object Notation (JSON)
+JSON syntax to transform and manipulate source data. A mapping spreadsheet also uses ca_table.element_codes to define the metadata element in CollectiveAccess to which the source data will be mapped.
+
+In addition to defining where source data will go in CollectiveAccess, an import mapping spreadsheet also defines three elements that are key to a data import:
+
+1. The data input format 
+2. The CollectiveAccess table to which the data belongs
+3. The CollectiveAccess record type to which the data belongs
+
+:::note
+For XML input formats only, an import mapping also defines the basepath setting, indicating where new records begin and end. 
+:::
+
+## Import Mapping Spreadsheet: Structure 
+
+An import mapping is a spreadsheet with two main parts: 
+
+1. The crosswalk, where source data fields are mapped to CA fields and various, optional transformations are applied
+2. The settings, where some basic elements are defined like the source data type, the mapping name, the corresponding CollectiveAccess table, existing record policy, and more. 
+
+Import mappings operate under two basic assumptions about the data being imported:
 
 1.  Each **row** in a data set corresponds to a **single record.**
 2.  Each **column** in a data set corresponds to a **single metadata
     element**, or **field.**
 
-A **row** in an import mapping spreadsheet contains all the metadata
-about a single, specific record: title, date, location, and other
-metadata that is present in the source data, and is arbitrary to the
-data set(s). A **column** groups these metadata elements together: all
-titles, all dates, all locations, and so on. This organization through
-rows and columns is a key aspect of creating an import mapping.
+Each row in an import mapping spreadsheet corresponds to a single metadata element (or field) from the source data. 
+
+Each column in an import mapping spreadsheet corresponds to a different function of the crosswalk, some of which are required, and some of which are optional. 
 
 :::info[note]
 

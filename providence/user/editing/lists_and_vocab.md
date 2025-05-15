@@ -4,8 +4,7 @@ title: Lists and Vocabularies
 
 # Lists and Vocabularies 
 
--   [Creating a New List](#creating-a-new-list)
--   [Adding Items to a List](#adding-items-to-a-list)
+## Introduction
 
 [Metadata
 elements](providence/user/dataModelling/metadata.html?highlight=metadata+elements)
@@ -33,7 +32,7 @@ To navigate this hierarchy, select the dark gray arrows to the right of
 each metadata element; this will open sub-categories available within
 each element.
 
-# Creating a New List
+## Creating a New List
 
 In any CollectiveAccess system it is possible to design an entirely new
 list of metadata elements. Any new list will be similarly managed by
@@ -72,7 +71,7 @@ new list in the leftmost column. To edit basic information about the
 newly created list, click on its title in the Lists and Vocabularies
 hierarchy.
 
-# Adding Items to a List
+## Adding Items to a List
 
 CollectiveAccess also supports the addition of new metadata element
 values to an extant list through the user interface. This ensures that

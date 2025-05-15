@@ -2,6 +2,8 @@
 title: Date and Time Formats
 ---
 
+# Date and Time Formats
+
 CollectiveAccess can process dates and times in a variety of formats.
 Internally, CA represents date/times as a range with a beginning and an
 end. This means that your dates can be as precise or imprecise as
@@ -23,18 +25,18 @@ standard display format on dates regardless of their original input
 format and to re-format and translate dates on the fly without requiring
 changes to your underlying data.
 
-# Languages and Localization
+## Languages and Localization
 
 Date/time expressions are output in the users\' current locale language.
 Language specific settings are defined in TimeExpressionParser locale
 configuration files stored in app/lib/core/Parsers/TimeExpressionParser
 
-# Configuration
+## Configuration
 
 It is possible to configure how dates and times are parsed and displayed
 using the datetime.conf configuration file
 
-# Valid input formats
+## Valid Input Formats
 
 |Input Format| Example| Notes|
 |----|----|----|
@@ -56,7 +58,7 @@ equivalent:
 >
 > 7-JUN-07
 
-# Dates with times
+## Dates with Times
 
 You can specify a time for any date by following the date with a time
 expression. Both 24 hour and 12 hour (AM/PM) times are supported, and
@@ -101,7 +103,7 @@ are assumed to be in the same time zone and any time zone information in
 ISO-format dates is currently discarded (this may change in a future
 release).
 
-# Date ranges
+## Date Ranges
 
 You can specify a date range by inputting two dates (with or without
 times) separated by a range separator. For the US localization, the
@@ -129,7 +131,7 @@ Examples of date ranges:
 > 6/5 at 9am - 5pm (Note implicit date in current year with range of
 > times)
 
-# Unbounded dates
+## Unbounded Dates
 
 Date ranges where one end is unspecified can be expressed in various.
 ways. Ranges with a specified start date but no end date are considered
@@ -156,7 +158,7 @@ date. They may be specified using the formats:
 >
 > ? - 6/6/1944
 
-# Special expressions
+## Special Expressions
 
 There are a number of shorthand expressions for common dates. Examples
 below are for the English localization, but all localizations support
@@ -178,7 +180,7 @@ them:
 >
 > 19\-- (AACR2 format century)
 
-# Early/mid/late dates
+## Early/mid/late Dates
 
 As of version 1.7.7 it is possible to qualify decade and century dates
 and date ranges with \"early\", \"mid\" and \"late\" modifiers.
@@ -197,7 +199,7 @@ The rules for mapping early, mid and late ranges to concrete dates are
 current built into the parser and cannot be changed. They may be made
 configurable in future versions.
 
-# Uncertain dates
+## Uncertain Dates
 
 You can express uncertain dates in two ways:
 
@@ -217,7 +219,7 @@ As of version 1.1 you can also use \"circa\" with date ranges:
 
 > circa 1950 - 1956
 
-# Imprecise dates
+## Imprecise Dates
 
 \"Circa\" indicates merely that the date is not precisely known. It does
 not convey an information about the margin of error of the date
@@ -228,7 +230,7 @@ date/time us expressions such as these:
 >
 > 1955 \~ 3y (1955 plus or minus 3 years)
 
-# Eras
+## Eras
 
 All dates are assumed to be in the Common Era (CE) unless otherwise
 specified. In the English localization you can specify a date before the
@@ -240,7 +242,7 @@ You may also append \"CE\" for common era dates if you wish. The English
 localization also supports use of \"AD\" and \"BC\" Other localizations
 may use different modifiers.
 
-# Year-less dates
+## Year-less Dates
 
 It is possible to enter dates that lack years if needed. Year-less dates
 are restricted to delimited date format input and are available at the
@@ -252,7 +254,7 @@ month and month/day level:
 
 Note that any number of question marks will create a valid date/time.
 
-# Seasonal dates
+## Seasonal Dates
 
 As of version 1.1 of CollectiveAccess, seasonal dates are supported.
 Simply enter the name of the season optionally followed by a year (the
@@ -267,7 +269,7 @@ input might include:
 These expressons map to specific dates, June 21 2011 to September 20
 2011 for Summer for example.
 
-# Quarter-century dates
+## Quarter-century Dates
 
 Ranges of years falling on quarter centuries may be input as
 century/quarter pairs. For example:
@@ -278,7 +280,7 @@ is equivalent to 1950 - 1975 (3rd quarter of 20th century). Quarter
 century expressions are always in the Common Era. They cannot be used
 for BC dates.
 
-# Undated
+## Undated
 
 You may indicate a date-less item using \"undated\" or \"unknown\" (in
 the standard English translation, at least). \"Undated\" date

@@ -4,6 +4,8 @@ title: Configuration File Syntax
 
 # Configuration File Syntax
 
+## Introduction
+
 A configuration file can contain any number of key-value pairs. Keys are
 simple alphanumeric text expressions. Values may be one of three types:
 
@@ -84,7 +86,7 @@ Here, we set the URL protocol (HTTP) and the hostname of the URL
 (www.collectiveaccess.org), then substitute the two values into the url
 key to create a valid URL.
 
-# Translating values into the user\'s current language
+## Translating Values into the User\'s Current Language
 
 Any scalar values can be tagged for translation into the user\'s
 preferred language by enclosing them in a translation marker, like so:

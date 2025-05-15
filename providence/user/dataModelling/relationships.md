@@ -4,15 +4,6 @@ title: Relationships
 
 # Relationships
 
--   [Relationships and Relationship
-    Types](#relationships-and-relationship-types)
--   [Incorporating Relationships in a Data
-    Import](#incorporating-relationships-in-a-data-import)
--   [Relationships in the User
-    Interface](#relationships-in-the-user-interface)
--   [Adding or Editing Relationships after
-    Import](#adding-or-editing-relationships-after-import)
-
 As a relational database, a core feature of CollectiveAccess is that it
 can create relationships between records of any type. A relationship's
 most basic function is to link records together, creating a
@@ -43,37 +34,32 @@ Common examples of relationships that could require interstitial
 metadata include: objects to places; objects to entities; entities to
 places; or entities to entities. For more on interstitial relationships
 and examples, see [Interstitial
-Data](https://manual.collectiveaccess.org/dataModelling/interstitial.html).
+Data](https://docs.collectiveaccess.org/providence/user/dataModelling/interstitial).
 
 ## Relationships and Relationship Types
 
 An example of a Relationship, with the Relationship Types defined in
 parentheses, is shown below:
 
-<figure class="align-center">
-<img src="relationships_entities_ex.png"
-alt="relationships_entities_ex.png" />
-<figcaption>Related entities in CollectiveAccess, with the relationship
-types in parentheses.</figcaption>
-</figure>
+![relationship](/providence/img/relationships_entities_ex.png)
+*Related entities in CollectiveAccess, with the relationship
+types in parentheses.*
+
 
 Each CollectiveAccess system has a defined list of relationships and
 Relationship Types. To access and manage Relationships and Relationship
 Types, navigate to **Manage \> Administration \> Relationship Types.**
 The hierarchy viewer will display:
 
-<figure class="align-center">
-<img src="relationship_hierarchy.png"
-alt="relationship_hierarchy.png" />
-<figcaption>The Relationship Type hierarchy viewer.</figcaption>
-</figure>
+![relationship](/providence/img/relationship_hierarchy.png)
+*The Relationship Type hierarchy viewer.*
 
 Within the hierarchy viewer are all the relationships and relationship
 types available within a given system. To view the relationship types
 (on the left in bold), simply select the releationship listed in the
 right-hand column.
 
-## **Incorporating Relationships in a Data Import**
+## Incorporating Relationships in a Data Import
 
 Relationships can be incorporated and defined within a data import
 mapping prior to a data import.
@@ -83,7 +69,7 @@ necessary to define the relationships and their corresponding types
 directly in the import mapping. For instructions on creating an import
 mapping, downloading a starter template, and the necessary steps to
 incorporate related data, see [Creating an Import Mapping:
-Overview](/providence/user/import/c_creating_mapping.html).
+Overview](https://docs.collectiveaccess.org/providence/user/import/c_creating_mapping).
 
 Relationships in a mapping will be defined simultaneously in the
 [Refinery
@@ -91,7 +77,7 @@ Column](/providence/user/import/c_creating_mapping.html#column-6-refinery)
 and in the [Refinery Parameters
 column](/providence/user/import/c_creating_mapping.html#column-7-refinery-parameters).
 
-## **Relationships in the User Interface**
+## Relationships in the User Interface
 
 To view what relationship types are available in a system, navigate in
 CollectiveAccess to **Manage \> Administration \> Relationship Types**.
@@ -113,24 +99,20 @@ given database.
 If a data import requires related records, then refineries must be used
 to create relationships between data. For more, see the [Creating an
 Import Mapping:
-Overview](/providence/user/import/c_creating_mapping.html),
-[Tutorial: Import Mapping
-Spreadsheet](/providence/user/import/c_import_tutorial.html),
+Overview](https://docs.collectiveaccess.org/providence/user/import/c_creating_mapping)
 and [Refineries and Refinery
 Parameters](/providence/user/import/mappings/refineries.html#import-mappings-refineries).
 :::
 
-## **Adding or Editing Relationships after Import**
+## Adding or Editing Relationships after Import
 
 Choose \"Relationships\" from the side navigation in any type of record
 in the database. This will display a page of all the possible
 relationships between record types available to use.
 
-<figure class="align-center">
-<img src="relationships2.png" alt="relationships2.png" />
-<figcaption>The Relationships tab of a record in CollectiveAccess. This
-tab is where relationships can be viewed, added, or edited.</figcaption>
-</figure>
+![relationship](/providence/img/relationships2.png)
+*The Relationships tab of a record in CollectiveAccess. This
+tab is where relationships can be viewed, added, or edited.*
 
 In order to state a relationship, a record or records must already exist
 in the database. For example, when relating an Object record to an
@@ -146,22 +128,18 @@ appear that best matches the typed text, and will display a list to
 choose from. This list will also include an option to *Create* a record
 for the new relationship.
 
-<figure class="align-center">
-<img src="relationships3.png" alt="relationships3.png" />
-<figcaption>Searching for an Entity in the user interface. A dropdown
+![relationship](/providence/img/relationships3.png)
+*Searching for an Entity in the user interface. A dropdown
 menu will appear showing any existing matches, with the option to Create
-a new entity record.</figcaption>
-</figure>
+a new entity record.*
 
 Once the correct record to relate is identified, select it. An optional
 dropdown menu will appear to the right, where the relationship type can
 be clarified, if needed (for example, when relating Entities, shown
 below.)
 
-<figure class="align-center">
-<img src="relationships4.png" alt="relationships4.png" />
-<figcaption>Relating an Entity. Choose a relationship type from the
-dropdown menu.</figcaption>
-</figure>
+![relationship](/providence/img/relationships4.png)
+*Relating an Entity. Choose a relationship type from the
+dropdown menu.*
 
 Save the changes made to the Relationships screen.

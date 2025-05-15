@@ -2,21 +2,23 @@
 title: XML Schema
 ---
 
-# Introduction
+# XML Schema
+
+## Introduction
 
 This manual describes how to build an installation profile using the
 XML-based schema, or modify an existing one. Each profile defines a
 number of aspects required in a working cataloguing system, including:
 
 > -   [Metadata Elements and
->     Attributes](https://camanual.whirl-i-gig.com/providence/user/dataModelling/metadata/).
+>     Attributes](/providence/user/dataModelling/metadata/).
 >     Each element definition may include the types of data an element
 >     can accept, constraints on input, how and if it repeats, where it
 >     may be used, descriptive \"help\" text and more. With a few
 >     exceptions there are no hardcoded fields in CollectiveAccess: you
 >     define what you need.
 > -   [Relationship
->     types](https://camanual.whirl-i-gig.com/providence/user/dataModelling/relationships).
+>     types](/providence/user/dataModelling/relationships).
 >     Various types of catalogued items (objects, people, places, etc.)
 >     can be linked to each other with qualified relationships. The
 >     range of valid qualifiers for a given use-case is defined in the
@@ -24,7 +26,7 @@ number of aspects required in a working cataloguing system, including:
 >     for your project. You don\'t have to keep irrelevant options
 >     around just because the developers thought they were a good idea.
 > -   [User
->     interfaces](https://camanual.whirl-i-gig.com/providence/user/editing/interfaces).
+>     interfaces](/providence/user/editing/interfaces).
 >     There are no hardcoded editing user interfaces in
 >     CollectiveAccess. You can create as many editing interfaces as you
 >     need, each with its own unique arrangement of screen and field
@@ -35,7 +37,7 @@ number of aspects required in a working cataloguing system, including:
 >     (and highly recommended) to define at least a basic set of
 >     interfaces in a profile.
 > -   [List and Vocabulary
->     Management](https://camanual.whirl-i-gig.com/providence/user/editing/lists_and_vocab).
+>     Management](/providence/user/editing/lists_and_vocab).
 >     Lists are used extensively in CollectiveAccess as controlled
 >     vocabularies for cataloguing, as value sets for metadata elements,
 >     and as system lists defining the allowed values for certain
@@ -46,7 +48,7 @@ number of aspects required in a working cataloguing system, including:
 >     which are required for proper application function, and lists used
 >     by metadata elements defined in the profile, must be defined in
 >     the profile.
-> -   [Locales](https://camanual.whirl-i-gig.com/providence/user/dataModelling/Locales).
+> -   [Locales](/providence/user/dataModelling/Locales).
 >     The list of languages and cultures available for cataloguing
 >     purposes (e.g., the languages you\'ll be cataloguing in - not the
 >     languages or cultures used for descriptive metadata) can be
@@ -128,7 +130,7 @@ using visual tools. There are several reasons:
 
 ## Types of Profiles in CollectiveAccess
 
-Installation profiles for CollectiveAccess are developed for specific
+[Installation profiles for CollectiveAccess](https://github.com/collectiveaccess/providence/tree/master/install/profiles) are developed for specific
 projects or for conformance with a metadata standard. Profiles built for
 projects and collections are custom tailored to meet unique requirements
 for that particular institution. These profiles maybe useful if you have
@@ -197,13 +199,13 @@ Locale definitions specify which languages can be used for catalogued
 content. Any language can be coded into a profile by including its
 locale code, which is a combination of an ISO-639 country code and an
 ISO-3166-1 language code (see
-[Locales](file:///Users/charlotteposever/Documents/ca_manual/providence/user/dataModelling/Locales.html?highlight=locale)
+[Locales](/providence/user/dataModelling/Locales)
 for more information). Note that any locale code can be used, without
 restriction, for cataloguing of content. However, user interface
 translations (both in the CollectiveAccess application and within your
 profile) are limited to those locales for which application translation
 files have been produced. See
-[Translations](file:///Users/charlotteposever/Documents/ca_manual/providence/developer/translation.html?highlight=creating+translation)
+[Translations](/providence/developer/translating)
 for a current list of application translations.
 
 Coded for English:
@@ -240,17 +242,10 @@ controlled vocabularies that can be used for descriptive cataloguing.
 
 ### System (Structure) Lists
 
-In CollectiveAccess, you can select a cataloging interface (See
-Figure 1) based on what type of object, entity, collection or other item
+In CollectiveAccess, you can select a cataloging interface based on what type of object, entity, collection or other item
 you are cataloging. Various system lists define these types.
 
-<figure class="align-center">
-<img src="xml_schema_system_lists.png"
-alt="xml_schema_system_lists.png" />
-<figcaption>System lists as shown in the <strong>Lists &amp;
-Vocabularies</strong> hierarchy. Note system lists are identified by
-<img src="xml_schema_system_icon.png" alt="icon" />.</figcaption>
-</figure>
+![image](/providence/img/xml_schema_system_lists.png)
 
 For CollectiveAccess to function properly, 33 types of System Lists need
 to be present and defined for the Primary Types - objects, object
@@ -349,7 +344,7 @@ define something as simple as a text field or as complicated as a
 repeating multiline form with text fields, date fields, measurements,
 drop-down lists and more. Thus the \"sets\" moniker - a single data
 entry unit can be composed of any number of basic attribute types (see
-[Attribute_Types](file:///Users/charlotteposever/Documents/ca_manual/providence/user/configuration/developer/attribute_types.conf.html)
+[Attribute_Types](/providence/user/configuration/configuringProvidence/developer/attribute_types.conf)
 for a full list).
 
 Before we go further, some terminology should be defined. A metadata
@@ -564,11 +559,10 @@ that the Summary and Log tabs seen below are system screens that appear
 automatically. They allow you to display data and change logs associated
 with the record.
 
-<figure class="align-center">
-<img src="xml_schema_tabs.png" alt="xml_schema_tabs.png" />
-<figcaption>Side navigation tabs found under a record's Inspector
-Window.</figcaption>
-</figure>
+![image](/providence/img/xml_schema_tabs.png)
+
+*Side navigation tabs found under a record's Inspector
+Window.*
 
 To organize the data fields on each screen, you must first declare which
 interface you are working within with a unique code and table type.
@@ -634,12 +628,12 @@ creation_date would have a bundle name of
 intrinsic database fields are the field names themselves. These
 Intrinsic Bundles names for other user interface elements are unique to
 the [Primary
-Types](https://camanual.whirl-i-gig.com/providence/user/dataModelling/primaryTables).
+Types](/providence/user/dataModelling/primaryTables).
 
 Each bundle you add to a user interface can take optional settings
 depending on the bundle type. A full list of these settings is defined
 on the
-[Bundles](file:///Users/charlotteposever/Documents/ca_manual/providence/user/reference/glossaries/Bundles.html?highlight=bundles)
+[Bundles](/providence/user/dataModelling/metadata/bundles)
 page.
 
 The label and add_label allow you to override the default text labels in
@@ -687,7 +681,7 @@ to bundles that create relationships between items - bundles like
 ca_objects and ca_entities, but need to be linked to a specific
 relationship type. By default, when you create a relationship between
 any two records, that relationship can be defined through [Relationship
-Types](https://camanual.whirl-i-gig.com/providence/user/dataModelling/relationships).
+Types](/providence/user/dataModelling/relationships).
 Furthermore, those relationship types can have hierarchical subtypes and
 so on. This is where being able to restrict to a relationship type is
 useful.

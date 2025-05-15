@@ -2,6 +2,10 @@
 title: Metadata Standards
 ---
 
+# Metadata Standards
+
+## Standards-compliant Profiles
+
 Standards-compliant profiles available \"out-of-the-box.\" You can
 always configure others yourself if you are willing to create an
 installation profile:

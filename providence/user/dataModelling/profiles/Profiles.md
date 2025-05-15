@@ -2,7 +2,9 @@
 title: Profiles
 ---
 
-# Definition and Purpose of a Profile
+# Installation Profiles
+
+## Definition and Purpose of a Profile
 
 An installation profile is a document that tells CollectiveAccess how to
 set up various aspects of the system at the time of its installation.
@@ -33,18 +35,18 @@ or server. When you first log in after installing CollectiveAccess,
 you\'ll be asked to select one of the saved installation profiles in the
 \"XML\" folder, which will then be used to complete the installation
 process. In Providence, many pre-defined profiles are available, ranging
-from standard schemata (see [Metadata Standards](https://camanual.whirl-i-gig.com/providence/user/dataModelling/profiles/MetadataStandards)) to custom set ups
+from standard schemata (see [Metadata Standards](/providence/user/dataModelling/profiles/MetadataStandards)) to custom set ups
 created for and by organizations world wide (see [Configuration
-Library](https://camanual.whirl-i-gig.com/providence/user/dataModelling/profiles/ConfigurationLibrary)).
+Library](/providence/user/dataModelling/profiles/ConfigurationLibrary)).
 
-# Creating a Profile
+## Creating a Profile
 
 Profiles are written using an XML-based syntax. Typically no profile is
 created from scratch, but rather users modify [existing
 profiles](https://github.com/collectiveaccess/providence/tree/master/install/profiles/xml)
 to meet their needs.
 
-# Troubleshooting Profiles
+## Troubleshooting Profiles
 
 Installation profiles are often long and complex text documents. It\'s
 easy to make mistakes that cause the installation process to fail or
@@ -63,7 +65,7 @@ validate during editing it won\'t be accepted by the installer. The
 bottom line: always make sure your profile validates!
 :::
 
-# Changing the installation profile of an existing system
+## Changing the Installation Profile of an Existing System
 
 An oft-asked question is \"I installed my system using installation
 profile X. How can I now change it to Y?\" The answer is you can\'t.
@@ -72,9 +74,13 @@ you prefer) for the installer to follow when setting up a new system.
 Once the installation process is complete the profile ceases to play a
 role. You can continue to modify the configuration of your system using
 the web-based configuration tools, creating an installation different
-from the profile that originally created it. If you really need to
-change an existing system to conform to a new profile you have two
-choices: (1) modify the existing system by hand using the web-based
-configuration tools to match or (2) reinstall from scratch with the
-desired profile. In the latter case you will lose all existing data, of
-course.
+from the profile that originally created it. 
+
+If you really need to change an existing system to conform to a new profile you have two
+choices: 
+
+1. Modify the existing system by hand using the web-based
+configuration tools to match.
+2. Reinstall from scratch with the desired profile. 
+
+In the latter case you will lose all existing data, of course.
