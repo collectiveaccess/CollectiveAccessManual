@@ -38,15 +38,15 @@ cannot run:
 | Software Package | Notes |
 | --- | --- |
 | Webserver | [Apache](https://httpd.apache.org/) version 2.4 or [nginx](https://nginx.org) 1.26 or later are recommended.|
-|[MySQL](https://dev.mysql.com/) |  Versions 8.0 and 8.4 are supported. Equivalent versions of [MariaDB](https://mariadb.org/) will also work. MySQL 9.0 is not currently supported.|
-|[PHP](https://php.net/)|    [PHP](https://php.net/) version 8.2 or 8.3 is required. We have not yet fully validated CollectiveAccess for use with PHP 8.4. |
+|[MySQL](https://dev.mysql.com/) |  Versions 8.0 and 8.4 are supported. Equivalent versions of [MariaDB](https://mariadb.org/) (10.5+) will also work. MySQL 9.0 is not currently supported.|
+|[PHP](https://php.net/)|    [PHP](https://php.net/) version 8.2 or 8.3 is required. We have not yet fully validated CollectiveAccess for use with PHP 8.4. |            
 
-The following PHP extensions are required:
+The following PHP packages containing extensions are required:
 
 - php-cli
 - php-gd
 - php-curl
-- php-mysql
+- php-mysql (if available, prefer `mysqli`)
 - php-zip
 - php-xml
 - php-mbstring
