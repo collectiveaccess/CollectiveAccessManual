@@ -69,6 +69,14 @@ distributions and as installer packages for Windows. For Mac OS X,
 [Brew](https://brew.sh/) is a highly recommended way to get all of CollectiveAccess\'s
 prerequisites quickly up and running.
 
+
+## Software requirements for installing
+
+Collectiveaccess requires the following software in order to be installed, on top of anything listed in the core requirements:
+- `composer` (can be installed via packages or [getcomposer](https://getcomposer.org/)
+- `git` OR one of wget/curl and one of tar/unzip
+
+
 ## Caching
 
 CollectiveAccess makes heavy use of caching. By default cached data is written to disk, which requires no additional configuration or software but can be slow and may cause spikes in server load when the cache fills and must be purged. Use of an in-memory cache such as REDIS (https://redis.io/) can provide significantly improved performance. To use REDIS you must connect a working REDIS instance to CollectiveAccess by setting the relevant configuration entries in the installation's ``setup.php`` file. You must also have the php-redis extension installed.
@@ -100,7 +108,7 @@ below).
 Most users will want at a minimum GraphicsMagick installed on their
 server, and should install other packages as needed. 
 
-##   PHP extensions for media processing (optional but strongly recommended)
+###  PHP extensions for media processing (optional but strongly recommended)
 
 CollectiveAccess supports two different mechanisms to employ GraphicsMagick or
 ImageMagick for image processing. The preferred option is a PHP extension that provides a fast and efficient way for PHP applications such as CollectiveAccess to access GraphicsMagick or ImageMagick functionality. Alternatively
@@ -125,6 +133,7 @@ repository and often available as packages for various operating
 systems. They should be easy to install on Unix-y operating systems like
 Linux and Mac OS X. Installation on Windows can be challenging.
 
-## HEIC image format support
+### HEIC image format support
 
 High Efficiency Image Container, or HEIC, is an Apple-proprietary image format which may provide higher quality and better compression than open standards such as JPEG. Many open-source tools, including GraphicsMagick, do not support this format due to patent licensing issues. If support for HEIC images in CollectiveAccess is required you must install a version of ImageMagick compiled to support HEIC. This may require installation of additional software libraries, including libde265 and libheif. If both GraphicsMagick and ImageMagick are installed, GraphicsMagick will be used for all image processing, as it is generally the most performant option, with all HEIC support delegated to ImageMagick. 
+
