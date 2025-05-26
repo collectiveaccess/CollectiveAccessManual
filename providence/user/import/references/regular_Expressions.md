@@ -43,7 +43,7 @@ Which skips the field in the mapping spreadsheet if the value in the field match
 
 A common example might be when source data in a Date column contains dates, and where no date was input, a 0 is recorded. To skip all dates that have a 0 value, you would simply use:
 
-{“skipIfValue”: “0”}
+`` {“skipIfValue”: “0”}``
 
 Which would skip all values in that field that match 0 exactly.
 

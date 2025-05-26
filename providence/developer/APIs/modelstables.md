@@ -1,5 +1,5 @@
 ---
-title: API: Models and Tables
+title: API Models and Tables
 ---
 
 # API: Models and Tables

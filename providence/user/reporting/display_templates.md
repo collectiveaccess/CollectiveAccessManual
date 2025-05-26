@@ -267,6 +267,14 @@ placeholder:
 		</tr>
 		
 		<tr>
+			<td>locale</td>
+			<td>Force output in the specified locale. If not specified the user's current locale is used, with fallback to other locales as necessary to ensure content is output.</td>
+		</tr>
+		<tr>
+			<td>noLocaleFallback</td>
+			<td>Disable fallback to alternate locales when content is not available in the specified locale. Default is false. [Available from version 2.0.6]</td>
+		</tr>
+		<tr>
 			<td>stripEnclosingParagraphTags</td>
 			<td>The CKEditor5 and QuillJS rich text editors automatically wrap content with
  &lt;p&gt; tags. This can introduce unwanted line breaks in display templates that format content on a 
@@ -629,6 +637,18 @@ objects are grabbed, and then places related to those entities.
 			expression will be suppressed.</td>
 			<td></td>
 			<td>Version 1.7.9</td>
+		</tr>
+		<tr>
+			<td>locale</td>
+			<td>Force output in the specified locale. If not specified the user's current locale is used, with fallback to other locales as necessary to ensure content is output.</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>noLocaleFallback</td>
+			<td>Disable fallback to alternate locales when content is not available in the specified locale. Default is false.</td>
+			<td></td>
+			<td>Version 2.0.6</td>
 		</tr>
 		<tr>
 			<td>filterNonPrimaryRepresentations</td>
