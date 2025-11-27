@@ -71,6 +71,11 @@ const config = {
         routeBasePath: 'pawtucket',
         sidebarPath: './sidebars.js',
       },
+    ],[
+      "@cmfcmf/docusaurus-search-local",
+      {
+        // Options here
+      },
     ],
   ],
 
