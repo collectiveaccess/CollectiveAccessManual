@@ -11,7 +11,7 @@ Version 2.0 was released on December 30, 2024.
 Version 2.1
 ===========
 
-Target release date: June 2025
+Target release date: January 2026
 
 * Batch editor improvements
 	* Display template-based replacements
@@ -21,12 +21,11 @@ Target release date: June 2025
 	* CSV format
 	* XML format
 * Inventory management tools
-* ElasticSearch reimplementation
 
 Version 2.2
 =============
 
-Target release date: November 2025
+Target release date: June 2026
 
 * Automated cataloguing
 	* Rules-based automation leveraging media embedded metadata
@@ -38,11 +37,12 @@ Target release date: November 2025
 	* Mapping preflight/sanity check
 	* Formalize all importer options using JSON schema
 * Browse engine reimplementation
+* ElasticSearch reimplementation
 	
 
 Version 3.0
 ===========
 
-Target release date: June 2026
+Target release date: December 2026
 
 * UI redesign and reimplementation
