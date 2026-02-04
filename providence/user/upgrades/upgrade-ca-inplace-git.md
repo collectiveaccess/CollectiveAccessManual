@@ -22,6 +22,11 @@ Check what the current version of CA and the database scheme is
 cat app/version.php
 ```
 
+Confirm your current git commit
+```
+git log -n 1
+```
+
 Confirm your php version is supported by the target CA version. If not, you might have to [upgrade php]
 ```
 php --version
@@ -69,17 +74,21 @@ Then update dependencies using composer
 composer update
 ```
 
-Ensure the web server can read all CA's files. On RHEL selinux may also need to be adjusted.
+Ensure the web server can read all CA's files.
 ```
 find ./ -type d -exec chmod 755 {} \;
 find ./ \! -type d -exec chmod 640 {} \;
+chmod 755 support/bin/*
+```
+
+On RHEL selinux may also need to be adjusted.
+```
 chcon -R -t httpd_sys_content_t ./
-chcon -R -t httpd_sys_rw_content_t ./app/log/
+chcon -R -t httpd_sys_rw_content_t ./app/log/ ./app/tmp/ ./media
 ```
 
 Run CA included fix permissions tool
 ```
 ./support/bin/caUtils fix-permissions
 ```
-
 
