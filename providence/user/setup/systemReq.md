@@ -63,7 +63,6 @@ The following PHP extensions are recommended:
 - php-posix
 - php-gmagick (if GraphicsMagick is installed)
 - php-redis (if REDIS caching server is installed)
->>>>>>> 7b70e8847980810fc053683526492b4cd88e819b
 
 All of these should be available as pre-compiled packages for most Linux
 distributions and as installer packages for Windows. For Macs,
@@ -217,7 +216,6 @@ CollectiveAccess makes heavy use of caching. By default cached data is written t
 ## Software requirements for media processing
 
 Depending upon the types of media you intend to use with CollectiveAccess you will
->>>>>>> 7b70e8847980810fc053683526492b4cd88e819b
 also need to install various supporting software libraries and tools.
 None of these is absolutely required for CA to install and operate but
 without them specific types of media may not be supported (as noted
