@@ -75,7 +75,9 @@ To install CollectiveAccess Providence perform the following steps:
     access. Note the login information - you\'ll need it later. You can
     use the MySQL command line or web-based tools like phpMyAdmin to
     create the database and login.
-2.  Copy the contents of the CollectiveAccess software distribution to
+2.  Install a web server. This is typically Apache or Nginx but any http
+    server can be used.
+3.  Copy the contents of the CollectiveAccess software distribution to
     the root of the web server instance in which your installation will
     run. You can obtain the latest release version from our [download
     page](https://collectiveaccess.org/get-started/). If you wish to
@@ -86,18 +88,18 @@ To install CollectiveAccess Providence perform the following steps:
     where the trailing \"providence\" is the name of the directory you
     want your installation to be in. [Git will create the directory for
     you](http://git-scm.com).
-3.  Copy the setup.php-dist file (in the root directory of the CA
+4.  Copy the setup.php-dist file (in the root directory of the CA
     distribution) to a file named setup.php. Edit setup.php, changing
     the various directory paths and database login parameters to reflect
     your server setup.
-4.  Make sure the permissions on the `app/tmp`, `app/log`,
+5.  Make sure the permissions on the `app/tmp`, `app/log`,
     `vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache`
     and `media` directories are such that the web server can write to
     them. In the next step, the web-based installer will need the access
     to create directories for uploaded media, and to generate cached
     files. In most hosted environments these permissions will already be
     set correctly.
-5.  In a web browser navigate to the web-based installer. If the URL for
+6.  In a web browser navigate to the web-based installer. If the URL for
     your installation server is `http://www.myCollectiveaccessSite.org`
     then the URL to the installer is
     `http://www.myCollectiveaccessSite.org/install`. Enter your email
@@ -108,9 +110,16 @@ To install CollectiveAccess Providence perform the following steps:
     forum](https://support.collectiveaccess.org) or look at our [list of
     contributed
     profiles](https://github.com/collectiveaccess/InstallationProfiles/tree/main).
-6.  The installer will give you login information for your newly
+7.  The installer will give you login information for your newly
     installed system when installation is complete. Be sure to note this
     information in a safe place!
+
+Note: The steps above cover installing Providence at the root of your domain.
+
+Note: If installing providence on a sub path instead of at the top level of your
+domain (eg `http://example.com/providence`) the path component ('providence' in
+this example) must match providences install directory name (eg
+/var/www/providence).
 
 ## Optional Post Installation Tasks
 
