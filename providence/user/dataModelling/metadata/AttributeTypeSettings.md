@@ -52,7 +52,7 @@ formatting.
 
 ## Attribute settings: DateRange
 
-Accepts valid date/time expressions as described in [this page](https://camanual.whirl-i-gig.com/providence/user/dataModelling/metadata/dateTime).
+Accepts valid date/time expressions as described in [this page](dateTime.md).
 
 | Settings| Description | Default| Values
 |----|----|----|----|

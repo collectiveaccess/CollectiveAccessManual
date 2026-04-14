@@ -5,7 +5,7 @@ title: Using formatWithTemplate in an Import Mapping Spreadsheet
 # Using formatWithTemplate in an Import Mapping Spreadsheet
 
 **formatWithTemplate** is an
-[Option](https://docs.collectiveaccess.org/providence/user/import/references/mappingOptions)
+[Option](mappingOptions.md)
 available to use when creating an import mapping spreadsheet.
 
 **formatWithTemplate** is, essentially, a display template with which to

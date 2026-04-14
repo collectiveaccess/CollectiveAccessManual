@@ -30,6 +30,6 @@ Media can be imported in CollectiveAccess using the command line.
 
 CollectiveAccess supports the upload of entire directories of media at once, also known as batch importing. This feature is useful for uploading multiple images or other media files without uploading each file by hand.
 
-For more, see [Batch Media Upload](https://docs.collectiveaccess.org/providence/user/import/Importing%20Media/batch_media).
+For more, see [Batch Media Upload](batch_media.md).
 
 ## How Media Files are Processed during a Data Import

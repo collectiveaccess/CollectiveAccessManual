@@ -7,12 +7,12 @@ sidebar_label: Installation
 
 # Installation
 
-CollectiveAccess can be run in any environment that supports [PHP](https://www.php.net/) version 8.2 or 8.3. (Note that we have not yet fully validated CollectiveAccess for use with PHP 8.4). This includes any recent version of Linux, Mac OS or Windows. User-contributed [installation instructions for Linux](https://docs.collectiveaccess.org/providence/user/setup/install/CentOS8) are available, as are more detailed installation guides for:
+CollectiveAccess can be run in any environment that supports [PHP](https://www.php.net/) version 8.2 or 8.3. (Note that we have not yet fully validated CollectiveAccess for use with PHP 8.4). This includes any recent version of Linux, Mac OS or Windows. User-contributed [installation instructions for Linux](CentOS8.md) are available, as are more detailed installation guides for:
 
 - [Ubuntu 20.04 LTS](https://docs.collectiveaccess.org/providence/user/setup/install/Ubuntu_20.02)
-- [CentOS/Red Hat Enterprise Linux 8](https://docs.collectiveaccess.org/providence/user/setup/install/CentOS8)
-- [Mac OS 10.14](https://docs.collectiveaccess.org/providence/user/setup/install/Mac)
-- [Windows](https://docs.collectiveaccess.org/providence/user/setup/install/Windows) (Note: this remains for the time-being rough, user-contributed notes)
+- [CentOS/Red Hat Enterprise Linux 8](CentOS8.md)
+- [Mac OS 10.14](Mac.md)
+- [Windows](Windows.md) (Note: this remains for the time-being rough, user-contributed notes)
 
 Please post improvements to these notes on the [Support Forum](https://support.collectiveaccess.org) or [update the
 repository](https://github.com/collectiveaccess/CollectiveAccessManual)!
@@ -25,7 +25,7 @@ repository](https://github.com/collectiveaccess/CollectiveAccessManual)!
 
 CollectiveAccess relies upon a number of software packages to manage
 data and process media. Required software is outlined in the
-[system requirements](https://camanual.whirl-i-gig.com/providence/user/setup/systemReq) list. Instructions for installing requirements is more fully
+[system requirements](../systemReq.md) list. Instructions for installing requirements is more fully
 described in the installation guides listed above.
 
 ## Configuring PHP prior to installation

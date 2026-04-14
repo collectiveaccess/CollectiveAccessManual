@@ -18,7 +18,7 @@ Regular expressions are used for many reasons in an import mapping, where source
 
 Therefore, if there are repeated values, or a pattern of values in your source data that need replacing or manipulating, an expression can usually solve those occurrences. 
 
-For more information, see [Expressions](https://docs.collectiveaccess.org/providence/user/reporting/expressions).
+For more information, see [Expressions](../../reporting/expressions.md).
 
 ## Tools for Validating Expressions
 
@@ -106,4 +106,4 @@ Which would skip all values in that field that match 0 exactly.
 
 ## For more information
 
-These options are also reviewed in [Mapping Options](https://docs.collectiveaccess.org/providence/user/import/references/mappingOptions).
+These options are also reviewed in [Mapping Options](mappingOptions.md).

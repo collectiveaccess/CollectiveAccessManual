@@ -23,7 +23,7 @@ that describes how your data is mapped to Dublin Core XML.
 
 ## oai_provider.conf Configuration
 
-This is the [core configuration](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/otherCommon/oai_provider.conf) file for this feature. If you want to
+This is the [core configuration](../configuration/configuringProvidence/otherCommon/oai_provider.conf.md) file for this feature. If you want to
 provide only one the Dublin Core mapping you just created, you\'re
 pretty much good to go with the stock configuration. Just fill in the
 mapping code. The interesting part of the configuration is under the

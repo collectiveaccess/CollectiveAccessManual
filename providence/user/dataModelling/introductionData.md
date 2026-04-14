@@ -9,7 +9,7 @@ elements, such as Objects, Entities, Collections, and more. Each primary
 table has intrinsic bundles and its own set of preferred and
 non-preferred labels bundles.
 
-Read more: [Primary Tables](https://docs.collectiveaccess.org/providence/user/dataModelling/primaryTables)
+Read more: [Primary Tables](primaryTables.md)
 
 # Bundles
 
@@ -22,7 +22,7 @@ characteristics and uses: *labels*,
 bundles, chosen to meet specific representational requirements.
 
 Read more:
-[Bundles](https://docs.collectiveaccess.org/providence/user/dataModelling/metadata/bundles)
+[Bundles](metadata/bundles.md)
 
 ## Labels
 
@@ -43,7 +43,7 @@ may be set to manadate uniqueness of labels with a system, to
 distinguish between different types of non-preferred labels (a
 requirement of some knowledge representation standard) and more.
 
-Read more: [Labels](https://docs.collectiveaccess.org/providence/user/dataModelling/labels)
+Read more: [Labels](labels.md)
 
 ## Intrinsics
 
@@ -58,7 +58,7 @@ Commonly used intrinsics include *idno* (record identifier),
 *type_id* (record type), *access* (public web
 site visibility) and *status* (record workflow status).
 Descriptions of all available intrinsic fields may be found in the
-[primary table](https://docs.collectiveaccess.org/providence/user/dataModelling/primaryTables)
+[primary table](primaryTables.md)
 documentation.
 
 ## Metadata elements
@@ -76,7 +76,7 @@ Read more: [Metadata Elements](https://docs.collectiveaccess.org/providence/user
 
 Relationships are bi-directional links between pairs of records. They
 may be created between records in any
-[primary table](https://docs.collectiveaccess.org/providence/user/dataModelling/primaryTables) without
+[primary table](primaryTables.md) without
 restriction. All relationships include references to *relationship
 types* -- configurable specifiers that distinguish different
 kinds of relationships that may occur. Relationship types between object
@@ -88,7 +88,7 @@ and each relationship can optionally incorporate additional metadata
 elements. Relationships also support a handful of intrinsics, but do not
 take labels.
 
-Read more: [Relationships](https://docs.collectiveaccess.org/providence/user/dataModelling/relationships)
+Read more: [Relationships](relationships.md)
 
 # Installation Profiles
 

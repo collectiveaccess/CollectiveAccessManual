@@ -282,7 +282,7 @@ Common EXIF fields and their importer source references:
 
 ## CollectiveAccess Configuration
 
-User interface and logging aspects of the import process can be configured using directives in the [app.conf](https://docs.collectiveaccess.org/providence/user/configuration/configuringProvidence/mainConfiguration/app) configuration file.
+User interface and logging aspects of the import process can be configured using directives in the [app.conf](../configuration/configuringProvidence/mainConfiguration/app.md) configuration file.
 
 Users can select the import mapping they wish to use at the time of upload in the editing and batch media importer interfaces when ``allow_user_selection_of_embedded_metadata_extraction_mapping`` is set to a non-zero value.
 

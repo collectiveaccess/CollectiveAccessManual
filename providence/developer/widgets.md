@@ -8,7 +8,7 @@ Widgets are mini-applications that run within the dashboard in Providence. Users
 
 The functionality that is encapsulated in a widget is only limited by space – they must fit within a single dashboard column (approximately 350 pixels wide). While widgets will typically provide simple, focused functionality, they have full access to the CollectiveAccess database and programming APIs, as well as their own configuration files and views. Widgets can interact with other CollectiveAccess plugins and external systems.
 
-For more on the dashboard and widgets, and how to view the full list of widgets included in a standard installtion of CollectiveAccess, see [Dashboard Configuration](https://docs.collectiveaccess.org/providence/user/editing/dashboard).
+For more on the dashboard and widgets, and how to view the full list of widgets included in a standard installtion of CollectiveAccess, see [Dashboard Configuration](../user/editing/dashboard.md).
 
 ## Layout 
 

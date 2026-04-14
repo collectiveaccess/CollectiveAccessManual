@@ -31,7 +31,7 @@ Some common examples include:
 
 Where ca_objects, ca_entities, and ca_storage_locations are all referencing CollectiveAccess basic tables, and preferred_labels is referencing a specific field in CollectiveAccess. Fields will vary based on system configuration.
 
-There are a few exceptions that require slightly different values to be placed in Column 3. For example, when mapping data from one table (like ca_objects) while also creating and related records of other tables (like ca_entities), only the table is cited in column 3. For more information, see [Creating an Import Mapping: Overview](https://docs.collectiveaccess.org/providence/user/import/c_creating_mapping).
+There are a few exceptions that require slightly different values to be placed in Column 3. For example, when mapping data from one table (like ca_objects) while also creating and related records of other tables (like ca_entities), only the table is cited in column 3. For more information, see [Creating an Import Mapping: Overview](../c_creating_mapping.md).
 
 ## Finding Bundle Codes
 

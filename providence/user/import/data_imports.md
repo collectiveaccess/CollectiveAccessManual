@@ -11,7 +11,7 @@ In progress documentation about CollectiveAccess data imports
 
 A data import is the process by which source data is ingested into a CollectiveAccess system. In order to get data into a CollectiveAccess system, a data import must be performed. 
 
-A data import takes data in [various formats](https://docs.collectiveaccess.org/providence/user/import/file_formats) and ingests it into a CollectiveAccess system via an import mapping spreadsheet. 
+A data import takes data in [various formats](file_formats.md) and ingests it into a CollectiveAccess system via an import mapping spreadsheet. 
 
 There are two components to a data import: 
 
@@ -62,21 +62,21 @@ It’s important to remember that an import mapping spreadsheet is tied intrinsi
 
 ## Where to Start
 
-Consider the data you wish to import into CollectiveAccess (this assumes you have already successfully set up your system; see [installation](https://docs.collectiveaccess.org/providence/user/setup/install/) for more details). A few key questions can help determine how many import mappings you will need, and where this data will live in CollectiveAccess:
+Consider the data you wish to import into CollectiveAccess (this assumes you have already successfully set up your system; see [installation](../setup/install/index.md) for more details). A few key questions can help determine how many import mappings you will need, and where this data will live in CollectiveAccess:
 
 1. How many data sets are there? 
 
-2. In what format is my source data? (see [Supported File Formats](https://docs.collectiveaccess.org/providence/user/import/file_formats) for more information on file formats)
+2. In what format is my source data? (see [Supported File Formats](file_formats.md) for more information on file formats)
 
-3. What CollectiveAccess tables are represented by my data? (see [Primary Tables and Intrinsic Fields](https://docs.collectiveaccess.org/providence/user/dataModelling/primaryTables) for more information on tables)
+3. What CollectiveAccess tables are represented by my data? (see [Primary Tables and Intrinsic Fields](../dataModelling/primaryTables.md) for more information on tables)
 
 4. Are any hierarchies present in the data?
 
-5. Do I want to import media? (for more see [Media Importer](https://docs.collectiveaccess.org/providence/user/import/Importing%20Media/media_importer)).
+5. Do I want to import media? (for more see [Media Importer](Importing Media/media_importer.md)).
 
 Once this information has been gathered, you’ll have a better idea of how many mappings you will need to make–how many crosswalks you’ll need to take your data and ingest it into your CollectiveAccess system.
 
-For more on creating an import mapping, see [Creating an Import Mapping: Overview](https://docs.collectiveaccess.org/providence/user/import/c_creating_mapping).
+For more on creating an import mapping, see [Creating an Import Mapping: Overview](c_creating_mapping.md).
  
 
 

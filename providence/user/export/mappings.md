@@ -33,7 +33,7 @@ Formats](#element-values-and-general-notes-on-specific-formats).
 
 The first column of the main mapping spreadsheet is **Rule Type.**
 Similarly to Rule Types in an [import
-mapping](https://docs.collectiveaccess.org/providence/user/import/c_creating_mapping),
+mapping](../import/c_creating_mapping.md),
 in an export mapping, what you set here qualifies what this row does.
 There are several options available:
 
