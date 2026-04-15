@@ -77,5 +77,5 @@ sub-element.
 For more on the function of Groups, how to use Groups in an import
 mapping, and how to map source data into specific Containers in
 CollectiveAccess, please see [Creating an Import Mapping:
-Overview](https://docs.collectiveaccess.org/providence/user/import/c_creating_mapping).
+Overview](../c_creating_mapping.md).
 

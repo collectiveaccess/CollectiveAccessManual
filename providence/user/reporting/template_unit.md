@@ -129,7 +129,7 @@ Notice that the sort direction is ``ASC``. Sort direction may be either ASCendin
 
 ## Skipping Units
 
-From CollectiveAccess Version 1.5, you can skip records selected by unit tags using the ``skipIfExpression`` attribute. It takes an [Expression](https://docs.collectiveaccess.org/providence/user/reporting/expressions) as parameter. Note that the ``skipIfExpression`` attribute is evaluated on record level, so while you can use it if your ``relativeTo`` spec is a container or an attribute, it doesn’t really make sense to do so. Below is a simple example that would skip all entities where the ``idno`` had the sequence ``test`` in it.
+From CollectiveAccess Version 1.5, you can skip records selected by unit tags using the ``skipIfExpression`` attribute. It takes an [Expression](expressions.md) as parameter. Note that the ``skipIfExpression`` attribute is evaluated on record level, so while you can use it if your ``relativeTo`` spec is a container or an attribute, it doesn’t really make sense to do so. Below is a simple example that would skip all entities where the ``idno`` had the sequence ``test`` in it.
 
 ```
 <unit relativeTo="ca_entities" delimiter=" / " skipIfExpression="^ca_entities.idno =~ /test/">

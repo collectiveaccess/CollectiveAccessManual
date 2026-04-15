@@ -46,7 +46,7 @@ when used to find objects will return all objects related to Cynthia Hopkins wit
 
 ## Searching on Dates
 
-To search on a date or date range, simply restrict your search to a date range element and then search on the desired date, using one of the formats described on the [date and time format page](https://docs.collectiveaccess.org/providence/user/dataModelling/metadata/dateTime). You can use any supported format and any precision - the search engine will find any date (and optionally times) that overlap your search date range. Matching is by default very loose: items with any overlap will be returned. You can restrict matching to items with dates that are completely encompassed by your search date by prepending a “#” to your search data. Eg. “#May 10 2005”
+To search on a date or date range, simply restrict your search to a date range element and then search on the desired date, using one of the formats described on the [date and time format page](../dataModelling/metadata/dateTime.md). You can use any supported format and any precision - the search engine will find any date (and optionally times) that overlap your search date range. Matching is by default very loose: items with any overlap will be returned. You can restrict matching to items with dates that are completely encompassed by your search date by prepending a “#” to your search data. Eg. “#May 10 2005”
 
 ## Searching on Lengths and Widths
 

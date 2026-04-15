@@ -29,7 +29,7 @@ The full list of attribute types is listed
 |File|Uploaded file. CA will try to identify the file and extract limited metadata, but even if it can’t identify the file it will accept and store it.|Attribute settings: File|
 |Media|Uploaded media (image, sound video). CA will try to identify the file, extract metadata and create derivatives as configured in media_processing.conf. If CA cannot identify and parse the file it will reject it.|Attribute settings: Media|
 |Taxonomy|Not Used anymore. [Git commit](https://github.com/collectiveaccess/providence/commit/d517ed3c388cc480ff50f1986dfe4678ceabeacb)||
-|InformationService|Remote webservice lookup. Lookup values web services including the Getty TGN, ULAN and AAT, another CollectiveAccess instance, Wikipedia, WorldCat and uBio. See [Information Services](https://camanual.whirl-i-gig.com/providence/user/dataModelling/metadata/informationServices).|Attribute settings: InformationService|
+|InformationService|Remote webservice lookup. Lookup values web services including the Getty TGN, ULAN and AAT, another CollectiveAccess instance, Wikipedia, WorldCat and uBio. See [Information Services](informationServices.md).|Attribute settings: InformationService|
 |ObjectRepresentations|Reference object representations within your CollectiveAccess instance.|Attribute settings: ObjectRepresentations|
 |Entities|Entity value. Searches the CollectiveAccess entity authority for given text and creates a typeless pseudo-relationship with the selected entity.|Attribute settings: Entities|
 |Places|Place value. Searches the CollectiveAccess place authority for given text and creates a typeless pseudo-relationship with the selected place (typeless). Can be restricted to a single place type.|Attribute settings: Place|

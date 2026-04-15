@@ -94,7 +94,7 @@ imports), Inmagic, Omeka, TEI, iDigBio, EAD, MARC, PBCoreInst,
 TabDelimited, Excel, MARCXML, PastPerfectXML, and ULAN.
 
 For more, see [Supported File
-Formats](https://docs.collectiveaccess.org/providence/user/import/file_formats).
+Formats](file_formats.md).
 
 The following pages will walk the user through the different parts of an
 import mapping spreadsheet, how to create an import mapping, and

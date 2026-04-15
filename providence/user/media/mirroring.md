@@ -62,4 +62,4 @@ images = {
 
 Note the ``accessUsingMirror`` directive. This tells CollectiveAccess what mirror to use locally if it is available. If you omit this directive the mirror will receive files from CollectiveAccess but will not actually be used by CollectiveAccess to serve media.
 
-For further details about the mirror configuration see FTP Mirror Configuration in [Media_volumes.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/developer/media_volumes.conf).
+For further details about the mirror configuration see FTP Mirror Configuration in [Media_volumes.conf](../configuration/configuringProvidence/developer/media_volumes.conf.md).

@@ -448,7 +448,7 @@ See label name fields below for table specific name fields.
 Occassionally label table names and intrinsic fields need to be
 referenced directly, for example while configuring searching indexing.
 Search indexing in
-[Search_indexing.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/mainConfiguration/search_indexing).
+[Search_indexing.conf](../configuration/configuringProvidence/mainConfiguration/search_indexing.md).
 
 :::note
 `\<table name\>.preferred_labels.\<name of intrinsic\>` is used by data

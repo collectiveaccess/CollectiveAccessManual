@@ -7,7 +7,7 @@ title: Media_processing.conf
 The file defines the media processing rules to transform media
 representations to different media transformations.
 
-It is a standard CollectiveAccess configuration file using the [Configuration File Syntax](https://camanual.whirl-i-gig.com/providence/user/configuration/configuration_file_syntax)
+It is a standard CollectiveAccess configuration file using the [Configuration File Syntax](../../configuration_file_syntax.md)
 
 
 CollectiveAccess supports media processing configuration for
@@ -210,7 +210,7 @@ a pointer to [media transformation rules](##media_transformation_rules) that hel
 | Key | Description | Example
 |----|----|----|
 |RULE|Rule name|`RULE = rule_thumbnail_image`|
-|VOLUME|A volume label from [Media_volumes.conf file](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/developer/media_volumes.conf). Files will be stored in/retrieved from this volume.|`VOLUME = images`|
+|VOLUME|A volume label from [Media_volumes.conf file](../developer/media_volumes.conf.md). Files will be stored in/retrieved from this volume.|`VOLUME = images`|
 |QUEUE_WHEN_FILE_LARGER_THAN|Filesize (in bytes) above which media should be queued for background processing. Files smaller than the threshold will be processed at the time of upload, so you should set this to a small enough value that your server has a shot at processing the media in near-realtime. A safe bet is 500,000 bytes (eg. 0.5 megabytes), but you may need to go lower (or higher). Note that you can override this setting for specific media types and versions below if you wish. Also keep in mind a few other fun facts:<br></br><br></br><ul><li>If the queue_enabled setting in global.conf is set to zero then no background processing will take place, no matter what you set here.</li><li>The default setting for queue_enabled is zero, so make sure you change it if you want background processing to happen.</li><li>Versions that have no QUEUE_WHEN_FILE_LARGER_THAN are never queued for background processing; versions with a QUEUE_WHEN_FILE_LARGER_THAN settings of zero are similarly never queued (absence and zero are one and the same, config-wise).</li><li>Some types of media are setup by default to never queue no matter the “queue_threshold_in_bytes” and “queue_enabled” settings. This includes media types for much little or no processing is done, including SWF, XML and MSWord.</li></ul>|`QUEUE_WHEN_FILE_LARGER_THAN = 1000`|
 
 

@@ -34,7 +34,7 @@ Common examples of relationships that could require interstitial
 metadata include: objects to places; objects to entities; entities to
 places; or entities to entities. For more on interstitial relationships
 and examples, see [Interstitial
-Data](https://docs.collectiveaccess.org/providence/user/dataModelling/interstitial).
+Data](interstitial.md).
 
 ## Relationships and Relationship Types
 
@@ -69,7 +69,7 @@ necessary to define the relationships and their corresponding types
 directly in the import mapping. For instructions on creating an import
 mapping, downloading a starter template, and the necessary steps to
 incorporate related data, see [Creating an Import Mapping:
-Overview](https://docs.collectiveaccess.org/providence/user/import/c_creating_mapping).
+Overview](../import/c_creating_mapping.md).
 
 Relationships in a mapping will be defined simultaneously in the
 [Refinery
@@ -99,7 +99,7 @@ given database.
 If a data import requires related records, then refineries must be used
 to create relationships between data. For more, see the [Creating an
 Import Mapping:
-Overview](https://docs.collectiveaccess.org/providence/user/import/c_creating_mapping)
+Overview](../import/c_creating_mapping.md)
 and [Refineries and Refinery
 Parameters](/providence/user/import/mappings/refineries.html#import-mappings-refineries).
 :::

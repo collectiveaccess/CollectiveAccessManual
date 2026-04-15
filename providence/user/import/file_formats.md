@@ -7,7 +7,7 @@ sidebar_position: 9
 
 ## Overview
 
-Data may be imported into CollectiveAccess in a range of formats, including from Excel, CSV, a range of XML formats, and others including external databases such as WorldCat. The fields from these sources are matched to CollectiveAccess tables and fields using the Import Mapping document’s “Source” column (see Column 2: Source in [Creating an Import Mapping](https://docs.collectiveaccess.org/providence/user/import/c_creating_mapping)). 
+Data may be imported into CollectiveAccess in a range of formats, including from Excel, CSV, a range of XML formats, and others including external databases such as WorldCat. The fields from these sources are matched to CollectiveAccess tables and fields using the Import Mapping document’s “Source” column (see Column 2: Source in [Creating an Import Mapping](c_creating_mapping.md)). 
 
 This page provides an overview of formats compatible with data import as well as how to identify a specific element from the source file for the Mapping document.
 
@@ -28,7 +28,7 @@ XML sources are referenced using [xPath](https://en.wikipedia.org/wiki/XPath), a
 In general the Source column should be set to the name of the XML tag, proceeded with a forward slash (i.e. /Sponsoring_Department or /inm:ContactName).
 
 :::note
-For XML sources, the Import Mapping Spreadsheet must contain a mandatory "basepath" setting, located in Settings at the bottom of the spreadsheet. The basepath setting is used to supply a set of XML nodes that will be treated, for purposes of import, as individual records. If left blank, each XML document will be treated as a single record. See [Creating an Import Mapping](https://docs.collectiveaccess.org/providence/user/import/c_creating_mapping) for more.
+For XML sources, the Import Mapping Spreadsheet must contain a mandatory "basepath" setting, located in Settings at the bottom of the spreadsheet. The basepath setting is used to supply a set of XML nodes that will be treated, for purposes of import, as individual records. If left blank, each XML document will be treated as a single record. See [Creating an Import Mapping](c_creating_mapping.md) for more.
 :::
 
 Common examples of xPath expressions are provided below.

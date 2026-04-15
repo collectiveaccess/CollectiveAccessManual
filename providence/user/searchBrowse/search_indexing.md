@@ -8,7 +8,7 @@ title: Search Indexing
 
 ## Indexing: Configuration 
 
-See [Search_indexing.conf](https://docs.collectiveaccess.org/providence/user/configuration/configuringProvidence/mainConfiguration/search_indexing).
+See [Search_indexing.conf](../configuration/configuringProvidence/mainConfiguration/search_indexing.md).
 
 
 ## Indexing on related records
