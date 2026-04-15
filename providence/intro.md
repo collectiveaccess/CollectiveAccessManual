@@ -30,6 +30,6 @@ Go to the [Providence Demonstration System](https://demo.collectiveaccess.org/sy
 The back-end Providence demonstration site is for users around the world to experiment with CollectiveAccess and view its many features. The locale can be set to various languages. To set the locale throughout the system to your preferred language, nagivate to **Manage > Preferences > user interface locale**, where a list of CollectiveAccess supported locales can be selected. 
 :::
 
-Access the [Providence User Guide](https://camanual.whirl-i-gig.com/providence/user/) 
+Access the [Providence User Guide](user/index.md) 
 
-Access the [Providence Developer Guide](https://camanual.whirl-i-gig.com/providence/developer/)
+Access the [Providence Developer Guide](developer/index.md)

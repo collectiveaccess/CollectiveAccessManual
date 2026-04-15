@@ -9,7 +9,7 @@ sidebar_label: Installation
 
 CollectiveAccess can be run in any environment that supports [PHP](https://www.php.net/) version 8.2 or 8.3. (Note that we have not yet fully validated CollectiveAccess for use with PHP 8.4). This includes any recent version of Linux, Mac OS or Windows. User-contributed [installation instructions for Linux](CentOS8.md) are available, as are more detailed installation guides for:
 
-- [Ubuntu 20.04 LTS](https://docs.collectiveaccess.org/providence/user/setup/install/Ubuntu_20.02)
+- [Ubuntu 20.04 LTS](Ubuntu_20.04.md)
 - [CentOS/Red Hat Enterprise Linux 8](CentOS8.md)
 - [Mac OS 10.14](Mac.md)
 - [Windows](Windows.md) (Note: this remains for the time-being rough, user-contributed notes)

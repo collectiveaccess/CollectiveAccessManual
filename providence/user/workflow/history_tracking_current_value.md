@@ -699,7 +699,7 @@ specific to placements of the bundle in the user interface.
 At a minimum when adding a chronology bundle to the editing user
 interface, you must specify a policy. There are many other options which
 can be set in the
-[installation profile](https://camanual.whirl-i-gig.com/providence/user/dataModelling/profiles/) if desired. Available options include:
+[installation profile](../dataModelling/profiles/Profiles.md) if desired. Available options include:
 
 <table>
 	<thead>
@@ -913,7 +913,7 @@ their current value. It is typically used on storage location records to
 display a list of objects currently resident in that location.
 
 The following options are available to set in an
-[installation profile](https://camanual.whirl-i-gig.com/providence/user/dataModelling/profiles/):
+[installation profile](../dataModelling/profiles/Profiles.md):
 
 <table>
 	<thead>

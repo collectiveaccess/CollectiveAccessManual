@@ -70,7 +70,7 @@ composed into complex, multi-value fields using container elements. The
 bulk of the data schema for a typical system will be implemented using
 metadata elements to build installation-specific data structures.
 
-Read more: [Metadata Elements](https://docs.collectiveaccess.org/providence/user/dataModelling/metadata/)
+Read more: [Metadata Elements](metadata/metadata.md)
 
 ## Relationships
 
@@ -97,4 +97,4 @@ and set up your database. Every CollectiveAccess instance must have an
 installation profile. Many options are pre-loaded, but typically you
 need to customize one for your needs.
 
-Read more: [Installation Profiles](https://docs.collectiveaccess.org/providence/user/dataModelling/profiles/)
+Read more: [Installation Profiles](profiles/Profiles.md)

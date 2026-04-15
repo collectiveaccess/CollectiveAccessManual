@@ -72,7 +72,7 @@ Consider the data you wish to import into CollectiveAccess (this assumes you hav
 
 4. Are any hierarchies present in the data?
 
-5. Do I want to import media? (for more see [Media Importer](Importing Media/media_importer.md)).
+5. Do I want to import media? (for more see [Media Importer](Importing%20Media/media_importer.md)).
 
 Once this information has been gathered, you’ll have a better idea of how many mappings you will need to make–how many crosswalks you’ll need to take your data and ingest it into your CollectiveAccess system.
 
