@@ -1,8 +1,9 @@
 ---
-title: Web Service API
+title: JSON API (Legacy)
+sidebar_position: 3
 ---
 
-# Web Service API
+# JSON API (Legacy)
 
 Collective Access provides a REST API (Representational State Transfer Application Programming Interface). Short of very few HTTP GET parameters, both the request parameters and the responses are encoded in JSON.
 
