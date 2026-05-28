@@ -70,4 +70,4 @@ will display data in whatever locale *does* exist.
 
 For information on how to translate CollectiveAccess into a language for
 which a translation does not yet exist, see the the page on creating
-[Translations](https://docs.collectiveaccess.org/providence/developer/translating).
+[Translations](../../developer/translating.md).

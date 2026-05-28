@@ -197,7 +197,7 @@ configuration specifically for occurrences of type \"exhibition\", and a
 default configuration for all other types.
 
 Each per-type configuration must include entries for `date` and
-`template`. `date` is a [bundle specifier](https://camanual.whirl-i-gig.com/providence/user/dataModelling/bundleSpecifiers)
+`template`. `date` is a [bundle specifier](../dataModelling/bundleSpecifiers.md)
 for a date field in either the related table or the relationship to that
 table. The value in the specified field will be used to determine where
 in the chronology of tracked values each related record is placed. In
@@ -448,7 +448,7 @@ storage locations rather than directly on movements. Display of mixed
 movement and location data is possible using
 `display templates`
 with \<unit\> tags traversing relationships between movement and storage
-location (for more on conditional tags, see [Display Template Syntax](https://camanual.whirl-i-gig.com/providence/user/reporting/display_templates)). In the example configuration, the template displays movement
+location (for more on conditional tags, see [Display Template Syntax](../reporting/display_templates.md)). In the example configuration, the template displays movement
 identifier, label and purpose notes text, before jumping to the related
 storage location record (related with relationship type = \"location\")
 and displaying the full hierarchical location path. To adjust browsing
@@ -474,7 +474,7 @@ the change log for the location record.
 
 Some organizations require that all movements of objects, direct and
 indirect, be explicitly logged. CollectiveAccess supports this through
-location change movement logging. These [app.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/mainConfiguration/app)
+location change movement logging. These [app.conf](../configuration/configuringProvidence/mainConfiguration/app.md)
 configuration directives control creation of movement records when
 moving locations:
 
@@ -526,7 +526,7 @@ moving locations:
 
 When
 `record_movement_information_when_moving_storage_location`
-is set in [app.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/mainConfiguration/app), a movement record will be created each
+is set in [app.conf](../configuration/configuringProvidence/mainConfiguration/app.md), a movement record will be created each
 time a storage location is moved within the location hierarchy. The
 movement will be linked to all objects resident in the location, and in
 addition to a link to the location, the movement will also be linked to
@@ -699,7 +699,7 @@ specific to placements of the bundle in the user interface.
 At a minimum when adding a chronology bundle to the editing user
 interface, you must specify a policy. There are many other options which
 can be set in the
-[installation profile](https://camanual.whirl-i-gig.com/providence/user/dataModelling/profiles/) if desired. Available options include:
+[installation profile](../dataModelling/profiles/Profiles.md) if desired. Available options include:
 
 <table>
 	<thead>
@@ -913,7 +913,7 @@ their current value. It is typically used on storage location records to
 display a list of objects currently resident in that location.
 
 The following options are available to set in an
-[installation profile](https://camanual.whirl-i-gig.com/providence/user/dataModelling/profiles/):
+[installation profile](../dataModelling/profiles/Profiles.md):
 
 <table>
 	<thead>
@@ -961,7 +961,7 @@ The current value of a history tracking policy may be displayed in the
 editor \"inspector\" (the information panel on the upper left-hand
 corner of the editor interface). The policy used may be set on a
 per-table and/or per-type basis using the `inspector_tracking_displays`
-entry in [app.conf](https://camanual.whirl-i-gig.com/providence/user/configuration/configuringProvidence/mainConfiguration/app).
+entry in [app.conf](../configuration/configuringProvidence/mainConfiguration/app.md).
 
 ```
 inspector_tracking_displays = {

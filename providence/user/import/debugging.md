@@ -70,7 +70,7 @@ Which displays how the error log is organized, from left to right:
 
 #### Date Error
 
-A common import error is when a date value from the source data fails to import. Most often this is due to the source value not being in a [supported date format](https://docs.collectiveaccess.org/providence/user/dataModelling/metadata/dateTime).   
+A common import error is when a date value from the source data fails to import. Most often this is due to the source value not being in a [supported date format](../dataModelling/metadata/dateTime.md).   
 
 An example of a date error may look like:
 
@@ -113,7 +113,7 @@ In this case, the value “not being set” simply means the value from the sour
 
 This error occurs when the file format of the source data used for a data import does not match the file format specified in the "Settings" section of an import mapping spreadsheet. 
 
-The Setting "inputFormats" in the mapping spreadsheet defines the format of the source data. Make sure this setting matches the source data [file format](https://docs.collectiveaccess.org/providence/user/import/file_formats). 
+The Setting "inputFormats" in the mapping spreadsheet defines the format of the source data. Make sure this setting matches the source data [file format](file_formats.md). 
 
 * “Uploaded 0 worksheets; Skipped 1 worksheet”
 
@@ -129,7 +129,7 @@ CollectiveAccess accepts a variety of date formats. However, in order for dates 
 
 The error will display the input format of the original date, (the date from the source data), and the field name that threw the error. 
 
-To ensure that dates are formatted according to CA standards, please see [date and time formats](https://docs.collectiveaccess.org/providence/user/dataModelling/metadata/dateTime).
+To ensure that dates are formatted according to CA standards, please see [date and time formats](../dataModelling/metadata/dateTime.md).
 
 * "Value [value] was not set for [record idno] because it does not exist in list [list]”
 

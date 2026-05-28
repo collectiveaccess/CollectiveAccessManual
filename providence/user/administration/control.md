@@ -204,4 +204,4 @@ default_item_access_level = __CA_ACL_EDIT_DELETE_ACCESS__
 
 For more about configuring these settings in the user interface and
 item-level control, see [Access Control
-Settings](https://docs.collectiveaccess.org/providence/user/administration/accesscontrolsettings).
+Settings](accesscontrolsettings.md).

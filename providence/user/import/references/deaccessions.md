@@ -39,7 +39,7 @@ The user interface can be a useful way to deaccession records in small numbers. 
 
 Manually selecting a record for deaccessioning is useful; however, let’s say you have an entire data set of deaccessioned records, or, a record set containing deaccessions alongside non-deaccessioned records, to import into CollectiveAccess. 
 
-If deaccessions are recorded in a singular data set, a separate import mapping spreadsheet will need to be created for the data. This import mapping spreadsheet will be like any other spreadsheet created for a data import (see [Creating an Import Mapping](https://docs.collectiveaccess.org/providence/user/import/c_creating_mapping).
+If deaccessions are recorded in a singular data set, a separate import mapping spreadsheet will need to be created for the data. This import mapping spreadsheet will be like any other spreadsheet created for a data import (see [Creating an Import Mapping](../c_creating_mapping.md).
 
 If deaccessions are recorded alongside non-deaccessioned records, a single mapping spreadsheet can be used, with relevant fields mapped to the deaccessions container. For example, an Objects data set contains a field "deaccessioned" that has been filled in "Yes" or left blank. In addition, a date of deaccessioning, date of disposal, and other information is included if relevant.
 

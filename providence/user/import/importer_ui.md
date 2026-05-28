@@ -73,7 +73,7 @@ The run import page has 6 sections:
 
 A source data file must be selected in order for a data import to run. However, selecting specifics relating to the Log level, Limit Log to, and Testing options are optional. 
 
-For more details, see [Running an Import](https://docs.collectiveaccess.org/providence/user/import/running). 
+For more details, see [Running an Import](running.md). 
 
 
 ## Removing a Mapping from the Import List 

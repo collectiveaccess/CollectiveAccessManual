@@ -113,7 +113,7 @@ screens are defined, they simply won\'t appear.
 Setting up an interstitial relationship record through the user
 interface is essentially just like creating a user interface for any
 other type of record (see [User Interface
-Administration](https://docs.collectiveaccess.org/providence/user/editing/interfaces)).
+Administration](../editing/interfaces.md)).
 It follows the same steps wherein a metadata element is created, and
 then added, to the user interface.
 
@@ -203,7 +203,7 @@ the user interface. However, it is useful to know how to include
 interstitial data in an import mapping.
 
 In [Refineries and Refinery
-Parameters](/https://docs.collectiveaccess.org/providence/user/import/references/refineries),
+Parameters](../import/references/refineries.md),
 Splitters, Joiners, and Builders can all use the **interstitial**
 refinery parameter.
 
@@ -223,4 +223,4 @@ pulled from the source data column 4.
 
 Examples for all types of Refineries with Refinery Parameters are
 available to view
-[here](/https://docs.collectiveaccess.org/providence/user/import/references/refineries).
+[here](../import/references/refineries.md).
